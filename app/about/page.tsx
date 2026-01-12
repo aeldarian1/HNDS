@@ -7,10 +7,10 @@ import Footer from "../components/Footer";
 export default function About() {
   const chapters = [
     { name: "Split", location: "Glavna podružnica", description: "Sjedište organizacije i kulturni centar. Organizira jezične tečajeve, predavanja, izložbe i društvene događaje", icon: MapPin },
-    { name: "Makarska", location: "Obalna podružnica - Najaktivnije članske aktivnosti", description: "Služenje Makarske rivijere s aktivnostima uključujući kulinarske événements, izložbe i izlete", icon: Users },
-    { name: "Brač", location: "Otočka podružnica", description: "Kulturna razmjena na otoku s fokusom na lokalne tradicije i druženja članova", icon: Globe },
-    { name: "Sinj", location: "Cetinska krajina - U osnivanju", description: "Nova inicijativa za jačanje suradnje s Cetinskom krajinom i lokalnom zajednicom", icon: BookOpen },
-    { name: "Trogir", location: "Povijesna gradska podružnica", description: "Čuvanje kulturne baštine i promicanje svjetske kulturne baštine Trogira", icon: MapPin },
+    { name: "Makarska", location: "Obalna podružnica - Najaktivnije članske aktivnosti", description: "Opslužuje Makarske rivijere s aktivnostima uključujući kulinarskih događaka, izložbe i izlete", icon: Users },
+    { name: "Brač", location: "Otočka podružnica", description: "Kulturna razmjena na otoku s fokusom na lokalne tradicije i okupljanja članova", icon: Globe },
+    { name: "Sinj", location: "Cetinska krajina - U razvoju", description: "Nova inicijativa za jačanje suradnje s Cetinskom krajinom i lokalnom zajednicom", icon: BookOpen },
+    { name: "Trogir", location: "Povijesna gradska podružnica", description: "Čuvanje i promicanje svjetske kulturne baštine Trogira", icon: MapPin },
     { name: "Berlin", location: "Sestra organizacija", description: "Dugo trajuća suradnja s četvrti Charlottenburg-Wilmersdorf - 55 godina partnerstva", icon: Globe },
   ];
 
@@ -27,7 +27,7 @@ export default function About() {
           >
             <h1 className="text-6xl md:text-7xl font-light text-white">O HNDS-u</h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Naslijeđe izgradnje kulturnog mosta između Hrvatske i Njemačke
+              Naslijeđe razvoja kulturnog mosta između Hrvatske i Njemačke
             </p>
             <div className="w-12 h-px bg-yellow-600" />
           </motion.div>

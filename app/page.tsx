@@ -80,7 +80,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Tečajevi jezika", desc: "Savladaj njemački kroz stručnu nastavu" },
+              { title: "Tečajevi jezika", desc: "Savladajte njemački kroz stručnu nastavu" },
               { title: "Kulturni događaji", desc: "Povežite se s živim tradicijama" },
               { title: "Izleti", desc: "Istražite lijepe destinacije" },
             ].map((item, i) => (
@@ -127,14 +127,14 @@ export default function Home() {
               </div>
 
               <p className="text-gray-300 font-light leading-relaxed text-lg">
-                Hrvatsko-německo društvo Split je most između hrvatske i njemačke kulture. Osnovano 1990. godine, kontinuirano je djeluje na jačanju veza, razumijevanja i prijateljstva između naših naroda.
+                Hrvatsko-njemačko društvo Split je most između hrvatske i njemačke kulture. Osnovano 1990. godine, kontinuirano djeluje na jačanju veza, razumijevanja i prijateljstva između naših naroda.
               </p>
 
               <p className="text-gray-400 font-light leading-relaxed">
-                Sa aktivnim podružnicama u Splitu, Makarskoj, Brču, Sinju i Trogiru, te 55 godina partnerstva sa Berlinom (četvrt Charlottenburg-Wilmersdorf), organiziramo raznovrsne aktivnosti: jezične tečajeve, kulturne izložbe, znanstvena predavanja, putovanja i društvene događaje.</p>
+                S aktivnim podružnicama u Splitu, Makarskoj, Braču, Sinju i Trogiru, te 55 godina partnerstva s Berlinom (četvrt Charlottenburg-Wilmersdorf), organiziramo raznovrsne aktivnosti: jezične tečajeve, kulturne izložbe, znanstvena predavanja, putovanja i društvene događaje.</p>
 
               <p className="text-gray-400 font-light leading-relaxed">
-                Naša misija je promicati kulturnu razmjenu, jezičnu edukaciju i čvrsto prijateljstvo između Hrvatski i Njemačke, koristeći umjetnost, znanost, sport i obrazovanje kao mostove za sporazumijevanje.
+                Naša misija je promicati kulturnu razmjenu, jezičnu edukaciju i čvrsto prijateljstvo između Hrvatske i Njemačke, koristeći znanost, kulturu, sport i obrazovanje kao mostove za sporazumijevanje.
               </p>
 
               <Link href="/about" className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-600 text-white text-sm font-light hover:bg-yellow-500 transition duration-300">
@@ -168,7 +168,7 @@ export default function Home() {
             {[
               { number: "35+", label: "Godina tradicije", icon: Zap },
               { number: "500+", label: "Članova u 6 lokacija", icon: Users },
-              { number: "55", label: "Godina berlinska suradnja", icon: Globe },
+              { number: "55", label: "Godina berlinske suradnje", icon: Globe },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -269,7 +269,7 @@ export default function Home() {
             {[
               { icon: BookOpen, title: "Jezični tečajevi", description: "Učenje njemačkog jezika od početnika do napredne razine" },
               { icon: Globe, title: "Kulturne izložbe", description: "Poznavanje njemačke i hrvatske kulture i tradicije" },
-              { icon: Users, title: "Society Događaji", description: "Zazajedništa, večere, manifestacije i okupljanja članova" },
+              { icon: Users, title: "Društveni događaji", description: "Zajedništa, večere, manifestacije i okupljanja članova" },
               { icon: MapPin, title: "Izleti i putovanja", description: "Istraživanje Balkana, posjete Berlinu i drugim europskim gradovima" },
             ].map((activity, i) => (
               <motion.div

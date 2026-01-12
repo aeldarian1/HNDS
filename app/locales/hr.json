@@ -4,14 +4,14 @@
     "about": "O nama",
     "gallery": "Galerija",
     "chronicles": "Kronike",
-    "events": "Dogadjaji",
+    "events": "Događaji",
     "membership": "Članstvo",
     "contact": "Kontakt",
     "statute": "Statut"
   },
   "gallery": {
     "title": "Galerija",
-    "subtitle": "Kolacija fotografija iz naših događaja",
+    "subtitle": "Kolekcija fotografija iz naših događaja",
     "totalGalleries": "Galerije",
     "yearsArchive": "Arhiva po godinama",
     "viewGallery": "Pogledaj galeriju",
@@ -19,7 +19,7 @@
   },
   "chronicles": {
     "title": "Kronike",
-    "subtitle": "Istorija i događaji naše organizacije",
+    "subtitle": "povijest i događaji naše organizacije",
     "readMore": "Čitaj više"
   },
   "common": {
