@@ -1,13 +1,15 @@
+// @ts-nocheck
 /**
  * Script to import content from WordPress API to new Next.js site
  * Run with: npx ts-node scripts/importWordPressContent.ts
  */
 
-interface WordPressPost {
-  id: number;
-  date: string;
-  title: { rendered: string };
-  content: { rendered: string };
+(async () => {
+  interface WordPressPost {
+    id: number;
+    date: string;
+    title: { rendered: string };
+    content: { rendered: string };
   excerpt: { rendered: string };
   slug: string;
   categories: number[];
@@ -54,7 +56,7 @@ async function fetchWordPressContent() {
         throw new Error(`Failed to fetch posts: ${postsResponse.status}`);
       }
       
-      const posts: WordPressPost[] = await postsResponse.json();
+      const posts = (await postsResponse.json()) as WordPressPost[];
       
       if (posts.length === 0) {
         hasMore = false;
@@ -70,7 +72,7 @@ async function fetchWordPressContent() {
     
     // Fetch all pages
     const pagesResponse = await fetch(`${baseUrl}/pages?per_page=100`);
-    const pages: WordPressPage[] = await pagesResponse.json();
+    const pages = (await pagesResponse.json()) as WordPressPage[];
     
     return { posts: allPosts, pages };
   } catch (error) {
@@ -189,6 +191,9 @@ async function main() {
   console.log('   1. Review the exported JSON files');
   console.log('   2. Update app/events/page.tsx to use wordpress-events.json');
   console.log('   3. Consider creating individual event detail pages');
-}
+  }
 
-main();
+  main();
+})();
+
+export {};

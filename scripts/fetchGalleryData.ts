@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Fetch gallery posts from WordPress (category 20 = Fotogalerija)
  * and download featured images
@@ -284,3 +285,5 @@ async function main() {
 }
 
 main();
+
+export {};

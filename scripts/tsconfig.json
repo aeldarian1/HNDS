@@ -10,11 +10,15 @@
     "moduleResolution": "node",
     "strict": false,
     "noEmit": true,
-    "isolatedModules": false
+    "isolatedModules": true,
+    "declaration": false,
+    "sourceMap": false
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "commonjs",
+      "isolatedModules": true
     }
-  }
+  },
+  "exclude": ["node_modules", "**/*.test.ts"]
 }

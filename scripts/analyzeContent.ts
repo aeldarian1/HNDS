@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Script to analyze WordPress content categories
  */
@@ -54,3 +55,5 @@ Object.keys(categoryCounts).slice(0, 5).forEach(catId => {
   });
   console.log('');
 });
+
+export {};

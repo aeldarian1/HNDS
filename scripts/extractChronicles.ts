@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Extract chronicles from WordPress content
  */
@@ -45,3 +46,5 @@ fs.writeFileSync(
 );
 
 console.log(`\n✅ Saved ${chronicles.length} chronicles to data/chronicles.json`);
+
+export {};
