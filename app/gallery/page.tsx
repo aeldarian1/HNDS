@@ -110,9 +110,9 @@ export default function Gallery() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer h-full"
                   >
-                    <div className="bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden">
+                    <div className="bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden h-full flex flex-col">
                       {/* Image */}
                       <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden relative">
                         {item.localImage ? (
@@ -133,7 +133,7 @@ export default function Gallery() {
                       </div>
                       
                       {/* Info */}
-                      <div className="p-6 space-y-3">
+                      <div className="p-6 space-y-3 flex-grow flex flex-col">
                         <div className="flex items-center gap-2 text-sm text-gray-400">
                           <Calendar className="w-4 h-4" />
                           <span>{item.formattedDate}</span>
@@ -144,7 +144,7 @@ export default function Gallery() {
                           dangerouslySetInnerHTML={{ __html: item.title }}
                         />
                         
-                        <div className="text-yellow-500 text-sm font-semibold flex items-center gap-2">
+                        <div className="text-yellow-500 text-sm font-semibold flex items-center gap-2 mt-auto">
                           Pogledaj galeriju
                           <span className="group-hover:translate-x-1 transition-transform">→</span>
                         </div>

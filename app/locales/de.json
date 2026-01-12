@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "gallery": "Galerie",
+    "chronicles": "Chroniken",
+    "events": "Veranstaltungen",
+    "membership": "Mitgliedschaft",
+    "contact": "Kontakt",
+    "statute": "Satzung"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "Sammlung von Fotos aus unseren Veranstaltungen",
+    "totalGalleries": "Galerien",
+    "yearsArchive": "Archiv nach Jahren",
+    "viewGallery": "Galerie ansehen",
+    "allYears": "Alle Jahre"
+  },
+  "chronicles": {
+    "title": "Chroniken",
+    "subtitle": "Geschichte und Ereignisse unserer Organisation",
+    "readMore": "Mehr erfahren"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "noResults": "Keine Ergebnisse",
+    "back": "Zurück",
+    "language": "Sprache"
+  }
+}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,6 +94,7 @@ export default function Navigation() {
             <Link href="/contact" className="px-6 py-2 border border-yellow-600 text-sm font-light text-white hover:bg-yellow-600 hover:text-white transition duration-300">
               Kontakt
             </Link>
+            <LanguageSwitcher />
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -141,6 +143,10 @@ export default function Navigation() {
                   >
                     Kontakt
                   </Link>
+                </motion.div>
+
+                <motion.div variants={itemVariants} className="pt-4">
+                  <LanguageSwitcher />
                 </motion.div>
 
                 {/* Social Links in Mobile Menu */}

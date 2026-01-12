@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Početna",
+    "about": "O nama",
+    "gallery": "Galerija",
+    "chronicles": "Kronike",
+    "events": "Događaji",
+    "membership": "Članstvo",
+    "contact": "Kontakt",
+    "statute": "Statut"
+  },
+  "gallery": {
+    "title": "Galerija",
+    "subtitle": "Ovdje možete pregledati fotografije s naših događanja, stručnih skupova i okupljanja. Zabilježeni trenuci prikazuju aktivnosti i atmosferu naših susreta.",
+    "totalGalleries": "galerija",
+    "yearsArchive": "godina arhive",
+    "viewGallery": "Pogledaj galeriju",
+    "allYears": "Sve"
+  },
+  "chronicles": {
+    "title": "Kronike",
+    "subtitle": "Detaljne kronike naših aktivnosti",
+    "readMore": "Pročitaj više"
+  },
+  "common": {
+    "loading": "Učitavanje...",
+    "noResults": "Nema rezultata",
+    "back": "Natrag",
+    "language": "Jezik"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "gallery": "Gallery",
+    "chronicles": "Chronicles",
+    "events": "Events",
+    "membership": "Membership",
+    "contact": "Contact",
+    "statute": "Statute"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Here you can view photos from our events, expert meetings and gatherings. Captured moments show the activities and atmosphere of our meetings.",
+    "totalGalleries": "galleries",
+    "yearsArchive": "years of archives",
+    "viewGallery": "View gallery",
+    "allYears": "All"
+  },
+  "chronicles": {
+    "title": "Chronicles",
+    "subtitle": "Detailed chronicles of our activities",
+    "readMore": "Read more"
+  },
+  "common": {
+    "loading": "Loading...",
+    "noResults": "No results",
+    "back": "Back",
+    "language": "Language"
+  }
+}

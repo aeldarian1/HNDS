@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lora, Montserrat } from "next/font/google";
 import "./globals.css";
+import { I18nProvider } from "@/app/context/I18nContext";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -33,7 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.variable + " " + lora.variable}>
-        {children}
+        <I18nProvider>
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );
