@@ -1,0 +1,164 @@
+﻿"use client";
+
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Calendar, Image as ImageIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import Navigation from "@/app/components/Navigation";
+import Footer from "@/app/components/Footer";
+import galleryData from "@/data/gallery.json";
+
+export default function Gallery() {
+  const [selectedYear, setSelectedYear] = useState<string>("all");
+
+  // Get unique years
+  const years = Array.from(new Set(galleryData.map(item => item.year))).sort((a, b) => b - a);
+
+  // Filter by year
+  const filteredItems = selectedYear === "all"
+    ? galleryData
+    : galleryData.filter(item => item.year.toString() === selectedYear);
+
+  return (
+    <main className="bg-slate-950 text-white">
+      <Navigation />
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <ImageIcon className="w-12 h-12 text-yellow-600" />
+            </div>
+            <h1 className="text-6xl md:text-7xl font-light text-white">Galerija</h1>
+            <p className="text-xl text-gray-300 max-w-2xl font-light">
+              Ovdje možete pregledati fotografije s naših događanja, stručnih skupova i okupljanja. Zabilježeni trenuci prikazuju aktivnosti i atmosferu naših susreta.
+            </p>
+            <div className="flex items-center gap-6 text-gray-400 pt-4">
+              <div className="flex items-center gap-2">
+                <ImageIcon className="w-5 h-5 text-yellow-600" />
+                <span className="font-semibold text-white">{galleryData.length}</span>
+                <span>galerija</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5 text-yellow-600" />
+                <span>{years.length} godina arhive</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Year Filters */}
+      <section className="py-12 md:py-16 bg-slate-950 border-b border-yellow-600/30">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex gap-3 flex-wrap"
+          >
+            <button
+              onClick={() => setSelectedYear("all")}
+              className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                selectedYear === "all"
+                  ? "bg-yellow-600 text-white"
+                  : "bg-slate-800 text-gray-300 hover:bg-slate-700"
+              }`}
+            >
+              Sve ({galleryData.length})
+            </button>
+            {years.map(year => {
+              const count = galleryData.filter(item => item.year === year).length;
+              return (
+                <button
+                  key={year}
+                  onClick={() => setSelectedYear(year.toString())}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    selectedYear === year.toString()
+                      ? "bg-yellow-600 text-white"
+                      : "bg-slate-800 text-gray-300 hover:bg-slate-700"
+                  }`}
+                >
+                  {year} ({count})
+                </button>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Gallery Grid */}
+      <section className="py-20 md:py-32 bg-slate-950">
+        <div className="max-w-6xl mx-auto px-4 md:px-8">
+          {filteredItems.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-gray-400 text-lg">Nema galerija za odabrano razdoblje.</p>
+            </div>
+          ) : (
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {filteredItems.map((item, index) => (
+                <Link key={item.id} href={`/gallery/${item.slug}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                    className="group cursor-pointer"
+                  >
+                    <div className="bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden">
+                      {/* Image */}
+                      <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden relative">
+                        {item.localImage ? (
+                          <Image
+                            src={item.localImage}
+                            alt={item.title}
+                            fill
+                            priority={index < 3}
+                            quality={100}
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          />
+                        ) : (
+                          <div className="text-gray-500 group-hover:scale-110 transition-transform duration-300">
+                            <ImageIcon className="w-16 h-16" />
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Info */}
+                      <div className="p-6 space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                          <Calendar className="w-4 h-4" />
+                          <span>{item.formattedDate}</span>
+                        </div>
+                        
+                        <h3
+                          className="text-xl font-medium text-white group-hover:text-yellow-400 transition-colors line-clamp-2"
+                          dangerouslySetInnerHTML={{ __html: item.title }}
+                        />
+                        
+                        <div className="text-yellow-500 text-sm font-semibold flex items-center gap-2">
+                          Pogledaj galeriju
+                          <span className="group-hover:translate-x-1 transition-transform">→</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}

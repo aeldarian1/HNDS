@@ -1,0 +1,74 @@
+[
+  {
+    "id": 987511168,
+    "title": "Uvjeti",
+    "slug": "uvjeti",
+    "link": "https://hnds.hr/uvjeti/"
+  },
+  {
+    "id": 987510440,
+    "title": "Kronike",
+    "slug": "kronike",
+    "link": "https://hnds.hr/kronike/"
+  },
+  {
+    "id": 28985,
+    "title": "Statut",
+    "slug": "statut",
+    "link": "https://hnds.hr/statut/"
+  },
+  {
+    "id": 28311,
+    "title": "Fotogalerija",
+    "slug": "fotogalerija",
+    "link": "https://hnds.hr/fotogalerija/"
+  },
+  {
+    "id": 28304,
+    "title": "Blog",
+    "slug": "blog",
+    "link": "https://hnds.hr/blog/"
+  },
+  {
+    "id": 13,
+    "title": "Kontakt",
+    "slug": "kontakt",
+    "link": "https://hnds.hr/kontakt/"
+  },
+  {
+    "id": 11,
+    "title": "Članstvo",
+    "slug": "clanstvo",
+    "link": "https://hnds.hr/clanstvo/"
+  },
+  {
+    "id": 7,
+    "title": "O nama",
+    "slug": "o-nama",
+    "link": "https://hnds.hr/o-nama/"
+  },
+  {
+    "id": 5,
+    "title": "Naslovnica",
+    "slug": "naslovnica",
+    "link": "https://hnds.hr/"
+  },
+  {
+    "id": 3,
+    "title": "GDPR i politika privatnosti",
+    "slug": "privatnost",
+    "link": "https://hnds.hr/privatnost/"
+  },
+  {
+    "id": 28352,
+    "title": "Knjižnica",
+    "slug": "knjiznica",
+    "link": "https://hnds.hr/knjiznica/"
+  },
+  {
+    "id": 28355,
+    "title": "Škola njemačkog jezika Delfin",
+    "slug": "skola-njemackog-jezika",
+    "link": "https://hnds.hr/skola-njemackog-jezika/"
+  }
+]
