@@ -65,10 +65,7 @@ export default function LanguageSwitcher() {
         >
           <Globe size={18} className="text-yellow-500 group-hover:text-yellow-400 transition-colors" />
         </motion.div>
-        <span className="hidden sm:inline text-lg">{currentLang?.flag}</span>
-        <span className="hidden md:inline text-xs uppercase tracking-wider opacity-75 group-hover:opacity-100 transition-opacity">
-          {selectedLang}
-        </span>
+        <span className="text-lg">{currentLang?.flag}</span>
       </motion.button>
 
       <AnimatePresence>
