@@ -12,11 +12,48 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section - Modern Bold Design */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-32">
         {/* Animated background pattern */}
-        <div className="absolute inset-0 opacity-5">
+        <motion.div 
+          className="absolute inset-0 opacity-5"
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear"
+          }}
+        >
           <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(234, 179, 8) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
-        </div>
+        </motion.div>
+
+        {/* Floating orbs */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-600/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
         
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -32,15 +69,30 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
+                <motion.span 
+                  className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
                   Kulturni most
-                </span>
+                </motion.span>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-white mb-6">
                   Most između
                   <br />
-                  <span className="font-serif italic bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+                  <motion.span 
+                    className="font-serif italic bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-500 bg-clip-text text-transparent"
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    style={{ backgroundSize: "200% 200%" }}
+                  >
                     kultura
-                  </span>
+                  </motion.span>
                 </h1>
               </motion.div>
 
@@ -59,20 +111,24 @@ export default function Home() {
                 transition={{ delay: 0.6, duration: 0.6 }}
                 className="flex flex-wrap gap-4 pt-4"
               >
-                <Link 
-                  href="/#events" 
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  Istraži događaje 
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link 
-                  href="/about" 
-                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
-                >
-                  Saznaj više 
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link 
+                    href="/#events" 
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    Istraži događaje 
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link 
+                    href="/about" 
+                    className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
+                  >
+                    Saznaj više 
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
               </motion.div>
 
               {/* Stats */}
@@ -82,18 +138,22 @@ export default function Home() {
                 transition={{ delay: 0.8, duration: 0.6 }}
                 className="grid grid-cols-3 gap-8 pt-8 border-t border-yellow-600/20"
               >
-                <div>
-                  <div className="text-3xl font-light text-yellow-500 mb-1">35+</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">Godina</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-light text-yellow-500 mb-1">500+</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">Članova</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-light text-yellow-500 mb-1">6</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">Lokacija</div>
-                </div>
+                {[
+                  { value: "35+", label: "Godina" },
+                  { value: "500+", label: "Članova" },
+                  { value: "6", label: "Lokacija" }
+                ].map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9 + i * 0.1 }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="text-3xl font-light text-yellow-500 mb-1">{stat.value}</div>
+                    <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
 
@@ -106,14 +166,27 @@ export default function Home() {
             >
               <div className="relative aspect-square">
                 {/* Decorative elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/20 backdrop-blur-3xl rounded-3xl rotate-6"></div>
-                <div className="absolute inset-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl flex items-center justify-center">
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/20 backdrop-blur-3xl rounded-3xl"
+                  animate={{ rotate: [6, 8, 6] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div 
+                  className="absolute inset-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl flex items-center justify-center overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <div className="text-center space-y-4 p-8">
-                    <Globe className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    >
+                      <Globe className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
+                    </motion.div>
                     <h3 className="text-2xl font-light text-white">Hrvatski ↔ Deutsch</h3>
                     <p className="text-gray-400 text-sm">Povezujemo ljude i kulture</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>

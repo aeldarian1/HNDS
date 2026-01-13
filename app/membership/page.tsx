@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Check, Users, Heart, Globe, BookOpen, Music } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
+import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
 
 export default function MembershipPage() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -149,54 +150,70 @@ export default function MembershipPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {membershipTiers.map((tier, index) => (
-              <motion.div
-                key={tier.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`relative overflow-hidden transition duration-300 ${
-                  tier.highlighted
-                    ? 'border-2 border-yellow-600 shadow-2xl shadow-yellow-600/20'
-                    : 'border border-yellow-600/30'
-                }`}
-              >
-                {tier.highlighted && (
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 to-yellow-500" />
-                )}
-
-                <div className={`p-8 ${tier.highlighted ? 'bg-slate-900' : 'bg-slate-900/50'}`}>
-                  {tier.highlighted && (
-                    <div className="inline-block px-3 py-1 mb-4 bg-yellow-600/20 border border-yellow-600 text-yellow-600 text-xs font-light uppercase tracking-wide">
-                      Najpopularnije
-                    </div>
-                  )}
-
-                  <h3 className="text-2xl font-light text-white mb-2">{tier.name}</h3>
-                  <p className="text-gray-400 text-sm font-light mb-6">{tier.description}</p>
-
-                  <div className="mb-8">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-light text-yellow-600">{tier.price}</span>
-                      <span className="text-gray-400 font-light">{tier.period}</span>
-                    </div>
-                  </div>
-
-                  <motion.button
-                    whileHover={{ x: 5 }}
-                    className={`w-full py-3 font-light transition duration-300 mb-8 ${
+              <RevealOnScroll key={tier.id} delay={index * 0.1} direction="up">
+                <ScaleOnHover scale={tier.highlighted ? 1.05 : 1.02}>
+                  <motion.div
+                    className={`relative overflow-hidden transition duration-300 h-full flex flex-col ${
                       tier.highlighted
-                        ? 'bg-yellow-600 text-white hover:bg-yellow-500'
-                        : 'border border-yellow-600 text-yellow-600 hover:bg-yellow-600/10'
+                        ? 'border-2 border-yellow-600 shadow-2xl shadow-yellow-600/20'
+                        : 'border border-yellow-600/30 hover:border-yellow-600'
                     }`}
+                    whileHover={tier.highlighted ? { y: -8 } : {}}
                   >
-                    {tier.cta}
-                  </motion.button>
+                    {tier.highlighted && (
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 to-yellow-500">
+                        <motion.div
+                          className="h-full bg-white/50"
+                          animate={{ x: ['-100%', '100%'] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          style={{ width: '30%' }}
+                        />
+                      </div>
+                    )}
 
-                  <div className="space-y-4">
-                    {tier.benefits.map((benefit, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
+                    <div className={`p-8 flex-1 flex flex-col ${tier.highlighted ? 'bg-slate-900' : 'bg-slate-900/50'}`}>
+                      {tier.highlighted && (
+                        <motion.div 
+                          className="inline-block px-3 py-1 mb-4 bg-yellow-600/20 border border-yellow-600 text-yellow-600 text-xs font-light uppercase tracking-wide w-fit"
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        >
+                          Najpopularnije
+                        </motion.div>
+                      )}
+
+                      <h3 className="text-2xl font-light text-white mb-2">{tier.name}</h3>
+                      <p className="text-gray-400 text-sm font-light mb-6">{tier.description}</p>
+
+                      <div className="mb-8">
+                        <div className="flex items-baseline gap-1">
+                          <motion.span 
+                            className="text-4xl font-light text-yellow-600"
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            {tier.price}
+                          </motion.span>
+                          <span className="text-gray-400 font-light">{tier.period}</span>
+                        </div>
+                      </div>
+
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`w-full py-3 font-light transition duration-300 mb-8 ${
+                          tier.highlighted
+                            ? 'bg-yellow-600 text-white hover:bg-yellow-500'
+                            : 'border border-yellow-600 text-yellow-600 hover:bg-yellow-600/10'
+                        }`}
+                      >
+                        {tier.cta}
+                      </motion.button>
+
+                      <div className="space-y-4 flex-1">
+                        {tier.benefits.map((benefit, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 + idx * 0.05 }}
                         className="flex items-start gap-3"
@@ -205,9 +222,11 @@ export default function MembershipPage() {
                         <span className="text-sm text-gray-300 font-light">{benefit}</span>
                       </motion.div>
                     ))}
-                  </div>
-                </div>
-              </motion.div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </ScaleOnHover>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -228,17 +247,21 @@ export default function MembershipPage() {
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-8 border border-yellow-600/30 hover:border-yellow-600 hover:bg-slate-800/50 transition duration-300"
-                >
-                  <Icon className="w-8 h-8 text-yellow-600 mb-4" />
-                  <h3 className="text-xl font-light text-white mb-3">{benefit.title}</h3>
-                  <p className="text-gray-400 font-light text-sm">{benefit.description}</p>
-                </motion.div>
+                <RevealOnScroll key={index} delay={index * 0.1} direction="up">
+                  <ScaleOnHover scale={1.03}>
+                    <div className="p-8 border border-yellow-600/30 hover:border-yellow-600 hover:bg-slate-800/50 transition duration-300 h-full">
+                      <motion.div
+                        initial={{ rotate: 0 }}
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <Icon className="w-8 h-8 text-yellow-600 mb-4" />
+                      </motion.div>
+                      <h3 className="text-xl font-light text-white mb-3">{benefit.title}</h3>
+                      <p className="text-gray-400 font-light text-sm">{benefit.description}</p>
+                    </div>
+                  </ScaleOnHover>
+                </RevealOnScroll>
               );
             })}
           </div>

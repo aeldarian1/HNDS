@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
+import { RevealOnScroll, ScaleOnHover } from "@/app/components/InteractiveElements";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -119,18 +120,20 @@ export default function Contact() {
                 { name: "Trogir", desc: "Čuvanje svjetske baštine", contact: "Lokalni kontakti" },
                 { name: "Berlin", desc: "Sestra organizacija - 55 godina", contact: "Charlottenburg-Wilmersdorf" },
               ].map((branch, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="border border-yellow-600/30 p-6 hover:border-yellow-600 hover:bg-yellow-600/5 transition duration-300"
-                >
-                  <h3 className="text-2xl font-light text-white mb-2">{branch.name}</h3>
-                  <p className="text-gray-300 font-light text-sm mb-4">{branch.desc}</p>
-                  <p className="text-yellow-600 font-light text-xs uppercase tracking-wider">{branch.contact}</p>
-                </motion.div>
+                <RevealOnScroll key={i} delay={i * 0.05} direction="up">
+                  <ScaleOnHover scale={1.03}>
+                    <div className="border border-yellow-600/30 p-6 hover:border-yellow-600 hover:bg-yellow-600/5 transition duration-300 h-full">
+                      <motion.h3 
+                        className="text-2xl font-light text-white mb-2"
+                        whileHover={{ color: "#edb200" }}
+                      >
+                        {branch.name}
+                      </motion.h3>
+                      <p className="text-gray-300 font-light text-sm mb-4">{branch.desc}</p>
+                      <p className="text-yellow-600 font-light text-xs uppercase tracking-wider">{branch.contact}</p>
+                    </div>
+                  </ScaleOnHover>
+                </RevealOnScroll>
               ))}
             </div>
           </div>

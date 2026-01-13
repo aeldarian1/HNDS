@@ -8,6 +8,7 @@ import Link from "next/link";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import galleryData from "@/data/gallery.json";
+import { RevealOnScroll, ScaleOnHover } from "@/app/components/InteractiveElements";
 
 export default function Gallery() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
@@ -105,53 +106,64 @@ export default function Gallery() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {filteredItems.map((item, index) => (
-                <Link key={item.id} href={`/gallery/${item.slug}`}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className="group cursor-pointer h-full"
-                  >
-                    <div className="bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden h-full flex flex-col">
-                      {/* Image */}
-                      <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden relative">
-                        {item.localImage ? (
-                          <Image
-                            src={item.localImage}
-                            alt={item.title}
-                            fill
-                            priority={index < 3}
-                            quality={100}
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          />
-                        ) : (
-                          <div className="text-gray-500 group-hover:scale-110 transition-transform duration-300">
-                            <ImageIcon className="w-16 h-16" />
+                <RevealOnScroll key={item.id} delay={index * 0.05} direction="up">
+                  <Link href={`/gallery/${item.slug}`}>
+                    <ScaleOnHover scale={1.02}>
+                      <div className="group cursor-pointer h-full">
+                        <div className="bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden h-full flex flex-col hover:shadow-lg hover:shadow-yellow-600/10">
+                          {/* Image */}
+                          <div className="h-64 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden relative">
+                            {item.localImage ? (
+                              <Image
+                                src={item.localImage}
+                                alt={item.title}
+                                fill
+                                priority={index < 3}
+                                quality={100}
+                                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              />
+                            ) : (
+                              <motion.div
+                                className="text-gray-500"
+                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                              >
+                                <ImageIcon className="w-16 h-16" />
+                              </motion.div>
+                            )}
+                            {/* Overlay on hover */}
+                            <div className="absolute inset-0 bg-yellow-600/0 group-hover:bg-yellow-600/10 transition-colors duration-300" />
                           </div>
-                        )}
-                      </div>
-                      
-                      {/* Info */}
-                      <div className="p-6 space-y-3 flex-grow flex flex-col">
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                          <Calendar className="w-4 h-4" />
-                          <span>{item.formattedDate}</span>
+                          
+                          {/* Info */}
+                          <div className="p-6 space-y-3 flex-grow flex flex-col">
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <Calendar className="w-4 h-4 text-yellow-600" />
+                              <span>{item.formattedDate}</span>
+                            </div>
+                            
+                            <h3
+                              className="text-xl font-medium text-white group-hover:text-yellow-400 transition-colors line-clamp-2"
+                              dangerouslySetInnerHTML={{ __html: item.title }}
+                            />
+                            
+                            <div className="text-yellow-500 text-sm font-semibold flex items-center gap-2 mt-auto">
+                              Pogledaj galeriju
+                              <motion.span 
+                                className="inline-block"
+                                animate={{ x: [0, 4, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                              >
+                                →
+                              </motion.span>
+                            </div>
+                          </div>
                         </div>
-                        
-                        <h3
-                          className="text-xl font-medium text-white group-hover:text-yellow-400 transition-colors line-clamp-2"
-                          dangerouslySetInnerHTML={{ __html: item.title }}
-                        />
-                        
-                        <div className="text-yellow-500 text-sm font-semibold flex items-center gap-2 mt-auto">
-                          Pogledaj galeriju
-                          <span className="group-hover:translate-x-1 transition-transform">→</span>
-                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                </Link>
+                    </ScaleOnHover>
+                  </Link>
+                </RevealOnScroll>
               ))}
             </motion.div>
           )}

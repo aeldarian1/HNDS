@@ -65,18 +65,18 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-2 md:gap-3 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-yellow-600/20 rounded-full blur-lg group-hover:blur-xl transition-all" />
                 <Image 
                   src="/cropped-HD_Ikona-1.jpg" 
                   alt="HNDS Logo" 
-                  width={44} 
-                  height={44}
-                  className="relative object-contain group-hover:scale-110 transition-transform duration-300"
+                  width={40} 
+                  height={40}
+                  className="relative object-contain group-hover:scale-110 transition-transform duration-300 md:w-11 md:h-11"
                 />
               </div>
-              <span className="text-xl font-light tracking-widest text-yellow-500 group-hover:text-yellow-400 transition-colors">HNDS</span>
+              <span className="text-lg md:text-xl font-light tracking-widest text-yellow-500 group-hover:text-yellow-400 transition-colors">HNDS</span>
             </Link>
           </motion.div>
 

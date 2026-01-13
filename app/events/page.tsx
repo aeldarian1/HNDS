@@ -7,6 +7,7 @@ import { ChevronRight, ExternalLink } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import wpEvents from '@/data/wordpress-events.json';
+import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
 
 // Type definitions
 interface BaseEvent {
@@ -236,67 +237,83 @@ export default function EventsPage() {
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
               {displayedEvents.map((event, index) => (
-                <motion.div
-                  key={event.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group overflow-hidden border border-yellow-600/30 hover:border-yellow-600 transition duration-300"
-                >
-                  <div className="relative h-48 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center text-gray-600 font-light">
-                    {'isWordPress' in event && event.isWordPress ? (
-                      <div className="text-yellow-600/40 text-4xl font-light">HNDS</div>
-                    ) : (
-                      'image' in event && event.image
-                    )}
-                  </div>
-
-                  <div className="p-8 bg-slate-900">
-                    <div className="flex items-start justify-between mb-4">
-                      <span className={`text-xs font-light uppercase tracking-wide px-3 py-1 ${getTypeColor(event.type)}`}>
-                        {getTypeLabel(event.type)}
-                      </span>
-                      {'isWordPress' in event && event.isWordPress && (
-                        <span className="text-xs text-yellow-600/60 border border-yellow-600/30 px-2 py-1">
-                          hnds.hr
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="text-2xl font-light text-white mb-4 group-hover:text-yellow-600 transition">
-                      {event.title}
-                    </h3>
-
-                    <div className="space-y-3 mb-6 text-sm text-gray-400">
-                      <div className="flex items-center gap-2">
-                        <span className="text-yellow-600">📅</span>
-                        <span>{event.date}{event.time && ` u ${event.time}`}</span>
+                <RevealOnScroll key={event.id} delay={index * 0.05} direction="up">
+                  <ScaleOnHover scale={1.02}>
+                    <motion.div
+                      layout
+                      className="group overflow-hidden border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 h-full flex flex-col hover:shadow-xl hover:shadow-yellow-600/10"
+                    >
+                      <div className="relative h-48 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center text-gray-600 font-light">
+                        {'isWordPress' in event && event.isWordPress ? (
+                          <motion.div 
+                            className="text-yellow-600/40 text-4xl font-light"
+                            animate={{ 
+                              scale: [1, 1.05, 1],
+                              opacity: [0.4, 0.6, 0.4]
+                            }}
+                            transition={{ 
+                              duration: 3,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            HNDS
+                          </motion.div>
+                        ) : (
+                          'image' in event && event.image
+                        )}
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-yellow-600/0 group-hover:bg-yellow-600/5 transition-colors duration-300" />
                       </div>
-                      {event.location && (
-                        <div className="flex items-center gap-2">
-                          <span className="text-yellow-600">📍</span>
-                          <span>{event.location}</span>
+
+                      <div className="p-8 bg-slate-900 flex-1 flex flex-col">
+                        <div className="flex items-start justify-between mb-4">
+                          <motion.span 
+                            className={`text-xs font-light uppercase tracking-wide px-3 py-1 ${getTypeColor(event.type)}`}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            {getTypeLabel(event.type)}
+                          </motion.span>
+                          {'isWordPress' in event && event.isWordPress && (
+                            <span className="text-xs text-yellow-600/60 border border-yellow-600/30 px-2 py-1">
+                              hnds.hr
+                            </span>
+                          )}
                         </div>
-                      )}
-                    </div>
 
-                    <p className="text-gray-300 font-light mb-6">
-                      {event.description}
-                    </p>
+                        <h3 className="text-2xl font-light text-white mb-4 group-hover:text-yellow-600 transition">
+                          {event.title}
+                        </h3>
 
-                    {'isWordPress' in event && event.isWordPress ? (
-                      <motion.a
-                        href={event.originalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ x: 5 }}
-                        className="flex items-center gap-2 text-yellow-600 font-light hover:text-yellow-500 transition group/btn"
-                      >
-                        Pročitajte više
-                        <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition" />
-                      </motion.a>
-                    ) : (
+                        <div className="space-y-3 mb-6 text-sm text-gray-400">
+                          <div className="flex items-center gap-2">
+                            <span className="text-yellow-600">📅</span>
+                            <span>{event.date}{event.time && ` u ${event.time}`}</span>
+                          </div>
+                          {event.location && (
+                            <div className="flex items-center gap-2">
+                              <span className="text-yellow-600">📍</span>
+                              <span>{event.location}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <p className="text-gray-300 font-light mb-6 flex-1">
+                          {event.description}
+                        </p>
+
+                        {'isWordPress' in event && event.isWordPress ? (
+                          <motion.a
+                            href={event.originalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ x: 5 }}
+                            className="flex items-center gap-2 text-yellow-600 font-light hover:text-yellow-500 transition group/btn"
+                          >
+                            Pročitajte više
+                            <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition" />
+                          </motion.a>
+                        ) : (
                       <motion.button
                         whileHover={{ x: 5 }}
                         className="flex items-center gap-2 text-yellow-600 font-light hover:text-yellow-500 transition group/btn"
@@ -305,8 +322,10 @@ export default function EventsPage() {
                         <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition" />
                       </motion.button>
                     )}
-                  </div>
-                </motion.div>
+                      </div>
+                    </motion.div>
+                  </ScaleOnHover>
+                </RevealOnScroll>
               ))}
             </motion.div>
           </AnimatePresence>

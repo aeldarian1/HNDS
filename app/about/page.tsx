@@ -1,9 +1,11 @@
 ﻿"use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Users, BookOpen, Globe } from "lucide-react";
-import Link from "next/link";import Navigation from "../components/Navigation";
+import { MapPin, Users, BookOpen, Globe, Calendar, Heart, Sparkles } from "lucide-react";
+import Link from "next/link";
+import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+import { RevealOnScroll, ScaleOnHover } from "../components/InteractiveElements";
 export default function About() {
   const chapters = [
     { name: "Split", location: "Glavna podružnica", description: "Sjedište organizacije i kulturni centar. Organizira jezične tečajeve, predavanja, izložbe i društvene događaje", icon: MapPin },
@@ -91,9 +93,99 @@ export default function About() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="h-96 md:h-[500px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-sm flex items-center justify-center"
+              className="h-96 md:h-[500px] relative overflow-hidden rounded-lg"
             >
-              <div className="text-gray-600 font-light">[Organization History Image]</div>
+              {/* Decorative background with floating elements */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
+                {/* Animated grid pattern */}
+                <motion.div 
+                  className="absolute inset-0 opacity-20"
+                  animate={{
+                    backgroundPosition: ["0% 0%", "100% 100%"],
+                  }}
+                  transition={{
+                    duration: 30,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "linear"
+                  }}
+                  style={{
+                    backgroundImage: 'linear-gradient(rgba(234, 179, 8, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(234, 179, 8, 0.1) 1px, transparent 1px)',
+                    backgroundSize: '50px 50px'
+                  }}
+                />
+                
+                {/* Floating icons */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-full h-full">
+                    <motion.div
+                      className="absolute top-1/4 left-1/4"
+                      animate={{
+                        y: [-20, 20, -20],
+                        rotate: [-5, 5, -5],
+                      }}
+                      transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Calendar className="w-16 h-16 text-yellow-600/40" />
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute top-1/3 right-1/4"
+                      animate={{
+                        y: [20, -20, 20],
+                        rotate: [5, -5, 5],
+                      }}
+                      transition={{
+                        duration: 7,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Heart className="w-20 h-20 text-yellow-600/30" />
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute bottom-1/3 left-1/3"
+                      animate={{
+                        y: [-15, 15, -15],
+                        rotate: [-3, 3, -3],
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Sparkles className="w-14 h-14 text-yellow-600/50" />
+                    </motion.div>
+                    
+                    {/* Central logo */}
+                    <motion.div 
+                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      animate={{
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-yellow-600/20 rounded-full blur-3xl" />
+                        <Globe className="w-32 h-32 text-yellow-600 relative z-10" />
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/80" />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -156,21 +248,25 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {chapters.map((chapter, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="border border-yellow-600/30 p-8 hover:border-yellow-600 hover:bg-yellow-600/5 transition duration-300"
-              >
-                <chapter.icon className="w-8 h-8 text-yellow-600 mb-4" />
-                <h3 className="text-2xl font-light text-white mb-2">{chapter.name}</h3>
-                <p className="text-sm text-yellow-600 font-light uppercase tracking-wide mb-3">
-                  {chapter.location}
-                </p>
-                <p className="text-gray-300 font-light">{chapter.description}</p>
-              </motion.div>
+              <RevealOnScroll key={i} delay={i * 0.1} direction="up">
+                <ScaleOnHover scale={1.03}>
+                  <div className="border border-yellow-600/30 p-8 hover:border-yellow-600 hover:bg-yellow-600/5 transition duration-300 h-full">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 + 0.2, type: "spring", stiffness: 200 }}
+                    >
+                      <chapter.icon className="w-8 h-8 text-yellow-600 mb-4" />
+                    </motion.div>
+                    <h3 className="text-2xl font-light text-white mb-2">{chapter.name}</h3>
+                    <p className="text-sm text-yellow-600 font-light uppercase tracking-wide mb-3">
+                      {chapter.location}
+                    </p>
+                    <p className="text-gray-300 font-light">{chapter.description}</p>
+                  </div>
+                </ScaleOnHover>
+              </RevealOnScroll>
             ))}
           </div>
         </div>

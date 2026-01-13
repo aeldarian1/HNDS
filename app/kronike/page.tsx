@@ -8,6 +8,7 @@ import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import { ChronicleBadge } from '@/app/components/ChronicleBadge';
 import chronicles from '@/data/chronicles.json';
+import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
 
 export default function ChroniclesPage() {
   const [selectedDecade, setSelectedDecade] = useState<string>('all');
@@ -117,49 +118,53 @@ export default function ChroniclesPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredChronicles.map((chronicle, index) => (
-              <motion.div
-                key={chronicle.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <Link
-                  href={`/kronike/${chronicle.slug}`}
-                  className="group block bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition duration-300 overflow-hidden h-full"
-                >
-                  {/* Chronicle Cover */}
-                  <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center p-6">
-                    <ChronicleBadge
-                      number={chronicle.title.match(/#(\d+)/)?.[1] || '?'}
-                      year={new Date(chronicle.date).getFullYear().toString()}
-                      className="w-40 h-40 group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-
-                  {/* Chronicle Info */}
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
-                      <Calendar className="w-4 h-4 text-yellow-600" />
-                      <span>{chronicle.formattedDate}</span>
+              <RevealOnScroll key={chronicle.id} delay={index * 0.05} direction="up">
+                <ScaleOnHover scale={1.03}>
+                  <Link
+                    href={`/kronike/${chronicle.slug}`}
+                    className="group block bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden h-full hover:shadow-xl hover:shadow-yellow-600/10"
+                  >
+                    {/* Chronicle Cover */}
+                    <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center p-6">
+                      <ChronicleBadge
+                        number={chronicle.title.match(/#(\d+)/)?.[1] || '?'}
+                        year={new Date(chronicle.date).getFullYear().toString()}
+                        className="w-40 h-40 group-hover:scale-110 transition-transform duration-300"
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-yellow-600/0 group-hover:bg-yellow-600/5 transition-colors duration-300" />
                     </div>
 
-                    <h3 className="text-xl font-light text-white group-hover:text-yellow-600 transition line-clamp-2">
-                      {chronicle.title.replace(/&#8211;/g, '–').replace(/&amp;/g, '&')}
-                    </h3>
+                    {/* Chronicle Info */}
+                    <div className="p-6 space-y-4">
+                      <div className="flex items-center gap-2 text-sm text-gray-400">
+                        <Calendar className="w-4 h-4 text-yellow-600" />
+                        <span>{chronicle.formattedDate}</span>
+                      </div>
 
-                    {chronicle.description && (
-                      <p className="text-gray-400 font-light text-sm line-clamp-3">
-                        {chronicle.description}
-                      </p>
-                    )}
+                      <h3 className="text-xl font-light text-white group-hover:text-yellow-600 transition line-clamp-2">
+                        {chronicle.title.replace(/&#8211;/g, '–').replace(/&amp;/g, '&')}
+                      </h3>
 
-                    <div className="flex items-center gap-2 text-yellow-600 text-sm font-light pt-2">
-                      Pročitaj kroniku
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+                      {chronicle.description && (
+                        <p className="text-gray-400 font-light text-sm line-clamp-3">
+                          {chronicle.description}
+                        </p>
+                      )}
+
+                      <div className="flex items-center gap-2 text-yellow-600 text-sm font-light pt-2">
+                        Pročitaj kroniku
+                        <motion.div
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          <ArrowRight className="w-4 h-4" />
+                        </motion.div>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.div>
+                  </Link>
+                </ScaleOnHover>
+              </RevealOnScroll>
             ))}
             </div>
           )}
