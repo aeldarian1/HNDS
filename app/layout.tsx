@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/app/context/I18nContext";
+import { draftMode } from "next/headers";
+import { VisualEditingComponent } from "./components/VisualEditing";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -30,17 +32,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const draft = await draftMode()
+  
   return (
     <html lang="hr">
-      <body className={montserrat.variable + " " + lora.variable}>
+      <body className={montserrat.variable + " " + lora.variable} suppressHydrationWarning>
         <I18nProvider>
           {children}
         </I18nProvider>
+        {draft.isEnabled && <VisualEditingComponent />}
       </body>
     </html>
   );
