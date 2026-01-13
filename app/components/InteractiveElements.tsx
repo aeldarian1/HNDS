@@ -49,6 +49,7 @@ const InteractiveCard = memo(function InteractiveCard({
         rotateX,
         rotateY,
         transformStyle: 'preserve-3d',
+        willChange: 'transform',
       }}
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}

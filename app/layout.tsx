@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import { Lora, Montserrat } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { I18nProvider } from "@/app/context/I18nContext";
 import { draftMode } from "next/headers";
 import { VisualEditingComponent } from "./components/VisualEditing";
+
+// Dynamically load non-critical components for better initial page load
+const ScrollProgress = dynamic(() => import("./components/ScrollProgress"), {
+  ssr: false, // Don't render on server
+});
+
+const SmoothScroll = dynamic(() => import("./components/SmoothScroll"), {
+  ssr: false, // Don't render on server
+});
 
 const lora = Lora({
   variable: "--font-lora",
@@ -42,6 +52,8 @@ export default async function RootLayout({
   return (
     <html lang="hr">
       <body className={montserrat.variable + " " + lora.variable} suppressHydrationWarning>
+        <SmoothScroll />
+        <ScrollProgress />
         <I18nProvider>
           {children}
         </I18nProvider>
