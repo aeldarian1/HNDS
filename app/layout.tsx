@@ -16,12 +16,16 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "HNDS Split - Croatian-German Cultural Society",
-  description: "Bridge between cultures. Language courses, cultural events, and community for Croatian-German cultural exchange in Split.",
-  keywords: ["Croatian", "German", "Split", "Culture", "Language", "Society"],
+  title: "HNDS Split - Hrvatsko-njemačko društvo",
+  description: "Most između kultura. Tečajevi jezika, kulturni događaji i zajednica za hrvatsko-njemačku kulturnu razmjenu u Splitu.",
+  keywords: ["Hrvatsko", "Njemačko", "Društvo", "Split", "Kultura", "Jezik"],
+  icons: {
+    icon: '/cropped-HD_Ikona-1.jpg',
+    apple: '/cropped-HD_Ikona-1.jpg',
+  },
   openGraph: {
     title: "HNDS Split",
-    description: "Bridge between cultures",
+    description: "Most između kultura",
     type: "website",
   },
 };
@@ -32,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="hr">
       <body className={montserrat.variable + " " + lora.variable}>
         <I18nProvider>
           {children}
