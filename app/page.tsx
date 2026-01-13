@@ -25,9 +25,14 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Content */}
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="space-y-8"
             >
               <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
               >
                 <motion.span 
                   className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6"
@@ -43,11 +48,17 @@ export default function Home() {
                 </h1>
               </motion.div>
               <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
                 className="text-xl text-gray-300 font-light leading-relaxed max-w-lg"
               >
                 Promoviranje kulturnih, jezičnih i prijateljskih veza između Hrvatske i Njemačke kroz tečajeve jezika, kulturne događaje, izlete i radionice.
               </motion.p>
               <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
                 className="flex flex-wrap gap-4 pt-4"
               >
                 <motion.div>
@@ -80,6 +91,8 @@ export default function Home() {
                 ].map((stat, i) => (
                   <motion.div
                     key={i}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
                   >
                     <div className="text-3xl font-light text-yellow-500 mb-1">{stat.value}</div>
                     <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
@@ -243,6 +256,9 @@ export default function Home() {
             {/* Right: Visual Element - Takes 2 columns */}
             <motion.div
               className="relative lg:col-span-2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
             >
               <div className="relative aspect-[4/5]">
                 {/* Decorative background */}
@@ -290,6 +306,8 @@ export default function Home() {
             ].map((stat, i) => (
               <motion.div
                 key={i}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
@@ -316,6 +334,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="space-y-8"
             >
               <div>
@@ -413,6 +433,8 @@ export default function Home() {
             ].map((activity, i) => (
               <motion.div
                 key={i}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
                 className="group relative"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} to-transparent rounded-2xl blur-xl opacity-0`} />
@@ -452,6 +474,8 @@ export default function Home() {
             ].map((event, i) => (
               <motion.div
                 key={i}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
