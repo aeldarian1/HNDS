@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint"
   },
+  "overrides": {
+    "@sanity/client": "^7.14.0"
+  },
   "dependencies": {
     "@sanity/client": "^7.14.0",
     "@sanity/image-url": "^1.2.0",

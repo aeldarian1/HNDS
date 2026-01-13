@@ -7,7 +7,7 @@ import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 
 export default function Statut() {
-  const [expandedSection, setExpandedSection] = useState<number | null>(0);
+  const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   const sections = [
     {
