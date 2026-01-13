@@ -136,7 +136,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-32 pt-20 border-t border-yellow-600/30">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
