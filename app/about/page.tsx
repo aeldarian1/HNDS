@@ -60,7 +60,7 @@ export default function About() {
                 </p>
 
                 <p className="text-lg text-gray-300 font-light leading-relaxed">
-                  S ogranima u Splitu, Makarskoj, Braču, Sinju i Trogiru, te snažnom vezom s Berlinom, nastavljamo tradiciju spajanja naroda kroz kulturu, jezik i zajedničke vrijednosti.
+                  S ograncima u Splitu, Makarskoj, Braču, Sinju i Trogiru, te snažnom vezom s Berlinom, nastavljamo tradiciju spajanja naroda kroz kulturu, jezik i zajedničke vrijednosti.
                 </p>
 
                 <div className="space-y-4 pt-4">
