@@ -9,6 +9,7 @@ import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import galleryData from "@/data/gallery.json";
 import { RevealOnScroll, ScaleOnHover } from "@/app/components/InteractiveElements";
+import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
 
 export default function Gallery() {
   const [selectedYear, setSelectedYear] = useState<string>("all");
@@ -28,11 +29,7 @@ export default function Gallery() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
+          <HeroFadeIn className="space-y-6">
             <div className="flex items-center gap-4 mb-4">
               <ImageIcon className="w-12 h-12 text-yellow-600" />
             </div>
@@ -51,18 +48,14 @@ export default function Gallery() {
                 <span>{years.length} godina arhive</span>
               </div>
             </div>
-          </motion.div>
+          </HeroFadeIn>
         </div>
       </section>
 
       {/* Year Filters */}
       <section className="py-12 md:py-16 bg-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex gap-3 flex-wrap"
-          >
+          <FadeIn className="flex gap-3 flex-wrap">
             <button
               onClick={() => setSelectedYear("all")}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
@@ -89,7 +82,7 @@ export default function Gallery() {
                 </button>
               );
             })}
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
@@ -101,12 +94,9 @@ export default function Gallery() {
               <p className="text-gray-400 text-lg">Nema galerija za odabrano razdoblje.</p>
             </div>
           ) : (
-            <motion.div
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredItems.map((item, index) => (
-                <RevealOnScroll key={item.id} delay={index * 0.05} direction="up">
+                <StaggerItem key={item.id}>
                   <Link href={`/gallery/${item.slug}`}>
                     <ScaleOnHover scale={1.02}>
                       <div className="group cursor-pointer h-full">
@@ -163,9 +153,9 @@ export default function Gallery() {
                       </div>
                     </ScaleOnHover>
                   </Link>
-                </RevealOnScroll>
+                </StaggerItem>
               ))}
-            </motion.div>
+            </StaggerContainer>
           )}
         </div>
       </section>

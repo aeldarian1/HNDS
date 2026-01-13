@@ -6,6 +6,7 @@ import { ArrowRight, Calendar, BookOpen, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
+import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
 import { ChronicleBadge } from '@/app/components/ChronicleBadge';
 import chronicles from '@/data/chronicles.json';
 import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
@@ -41,11 +42,7 @@ export default function ChroniclesPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
+          <HeroFadeIn className="space-y-6">
             <div className="flex items-center gap-3 mb-4">
               <BookOpen className="w-10 h-10 text-yellow-600" />
               <h1 className="text-6xl md:text-7xl font-light text-white">Kronike</h1>
@@ -104,7 +101,7 @@ export default function ChroniclesPage() {
               })}
             </div>
             <div className="w-12 h-px bg-yellow-600" />
-          </motion.div>
+          </HeroFadeIn>
         </div>
       </section>
 
@@ -174,12 +171,7 @@ export default function ChroniclesPage() {
       {/* About Chronicles Section */}
       <section className="py-20 md:py-32 bg-slate-900 border-t border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8 text-center"
-          >
+          <FadeIn className="space-y-8 text-center">
             <h2 className="text-5xl md:text-6xl font-light text-white">
               O našim kronikama
             </h2>
@@ -216,7 +208,7 @@ export default function ChroniclesPage() {
                 Saznaj više o nama
               </a>
             </motion.div>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 

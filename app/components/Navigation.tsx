@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -10,14 +10,20 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
+  // Memoize navigation links
+  const navLinks = useMemo(() => [
     { href: "/about", label: "O nama" },
     { href: "/#events", label: "Događaji" },
     { href: "/gallery", label: "Galerija" },
     { href: "/kronike", label: "Kronike" },
     { href: "/membership", label: "Članstvo" },
     { href: "/statut", label: "Statut" },
-  ];
+  ], []);
+
+  // Memoize toggle function
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -31,7 +37,8 @@ export default function Navigation() {
     };
   }, [isOpen]);
 
-  const menuVariants = {
+  // Memoize animation variants
+  const menuVariants = useMemo(() => ({
     closed: {
       opacity: 0,
       height: 0,
@@ -49,12 +56,12 @@ export default function Navigation() {
         staggerChildren: 0.07,
       }
     }
-  };
+  }), []);
 
-  const itemVariants = {
+  const itemVariants = useMemo(() => ({
     closed: { opacity: 0, x: -20 },
     open: { opacity: 1, x: 0 }
-  };
+  }), []);
 
   return (
     <>
@@ -110,7 +117,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleMenu}
             className="md:hidden text-white hover:text-yellow-500 transition-colors z-50 relative p-2.5 hover:bg-yellow-600/10 rounded-lg active:scale-95"
             aria-label="Toggle menu"
           >

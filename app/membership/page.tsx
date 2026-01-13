@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Check, Users, Heart, Globe, BookOpen, Music } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
+import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem, SlideLeft, SlideRight } from "@/app/components/AnimatedSection";
 import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
 
 export default function MembershipPage() {
@@ -132,17 +133,13 @@ export default function MembershipPage() {
 
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
+          <HeroFadeIn className="space-y-6">
             <h1 className="text-6xl md:text-7xl font-light text-white">Članstvo</h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
               Pridruži se našoj zajednici i postani dio nečega posebnog
             </p>
             <div className="w-12 h-px bg-yellow-600" />
-          </motion.div>
+          </HeroFadeIn>
         </div>
       </section>
 
@@ -234,14 +231,10 @@ export default function MembershipPage() {
 
       <section className="py-20 md:py-32 bg-slate-900 border-y border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-16 text-center"
-          >
+          <FadeIn className="mb-16 text-center">
             <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Zašto se pridružiti?</h2>
             <p className="text-xl text-gray-300 font-light">Benefiti članstva HNDS-a</p>
-          </motion.div>
+          </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => {
@@ -270,13 +263,9 @@ export default function MembershipPage() {
 
       <section className="py-20 md:py-32 bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-16 text-center"
-          >
+          <FadeIn className="mb-16 text-center">
             <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Česta pitanja</h2>
-          </motion.div>
+          </FadeIn>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (

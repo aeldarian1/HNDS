@@ -5,6 +5,7 @@ import { ChevronDown, FileText, BookOpen } from "lucide-react";
 import { useState } from "react";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
+import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
 
 export default function Statut() {
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
@@ -177,11 +178,7 @@ export default function Statut() {
 
       {/* Header */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 px-4 pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center max-w-3xl"
-        >
+        <HeroFadeIn className="text-center max-w-3xl">
           <div className="flex items-center justify-center gap-3 mb-6">
             <FileText className="w-10 h-10 text-yellow-600" />
             <h1 className="text-6xl md:text-7xl font-light">Statut</h1>
@@ -190,18 +187,13 @@ export default function Statut() {
             Ustav Hrvatsko-njemačkog društva Split - temeljni dokument koji uređuje rad i upravljanje udrugom
           </p>
           <div className="h-1 w-12 bg-yellow-600 mx-auto" />
-        </motion.div>
+        </HeroFadeIn>
       </section>
 
       {/* Introduction */}
       <section className="py-20 bg-slate-950 border-b border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-gray-300 font-light leading-relaxed"
-          >
+          <FadeIn className="space-y-6 text-gray-300 font-light leading-relaxed">
             <p>
               Ovaj Statut donesen je na Skupštini udruge održanoj dana <strong>2. ožujka 2024. godine</strong> i služi kao temeljni ustavni dokument koji regulira sve aspekte rada Hrvatsko-njemačkog društva Split.
             </p>
@@ -213,22 +205,17 @@ export default function Statut() {
                 Statut je dostupan svim članovima i javnosti. Sve izmjene Statuta donose se većinom glasova Skupštine i ovjerljavaju kod nadležnog tijela države.
               </p>
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Sections */}
       <section className="py-20 bg-slate-900 border-b border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
+          <FadeIn className="mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-4">Sadržaj Statuta</h2>
             <div className="w-12 h-px bg-yellow-600" />
-          </motion.div>
+          </FadeIn>
 
           <div className="space-y-4">
             {sections.map((section, index) => (

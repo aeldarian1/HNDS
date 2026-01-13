@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
+import { FadeIn, HeroFadeIn, SlideLeft, SlideRight, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
 import { RevealOnScroll, ScaleOnHover } from "@/app/components/InteractiveElements";
 
 export default function Contact() {
@@ -57,11 +58,7 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
+          <HeroFadeIn className="space-y-6">
             <h1 className="text-6xl md:text-7xl font-light text-white">
               Kontaktiraj nas
             </h1>
@@ -69,23 +66,16 @@ export default function Contact() {
               Imaš pitanja? Voljeli bismo čuti od tebe. Javi nam se danas.
             </p>
             <div className="w-12 h-px bg-yellow-600" />
-          </motion.div>
+          </HeroFadeIn>
         </div>
       </section>
 
       {/* Contact Section */}
       <section className="py-20 md:py-32 bg-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
             {contactInfo.map((info, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center space-y-4"
-              >
+              <StaggerItem key={i} className="text-center space-y-4">
                 <info.icon className="w-8 h-8 text-yellow-600 mx-auto" />
                 <h3 className="text-xl font-light text-white">{info.title}</h3>
                 {info.details.map((detail, idx) => (
@@ -93,9 +83,9 @@ export default function Contact() {
                     {detail}
                   </p>
                 ))}
-              </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
           {/* Branches Section */}
           <div className="mt-20 pt-20 border-t border-yellow-600/30">

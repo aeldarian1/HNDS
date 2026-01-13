@@ -8,6 +8,7 @@ import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import wpEvents from '@/data/wordpress-events.json';
 import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
+import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from '@/app/components/AnimatedSection';
 
 // Type definitions
 interface BaseEvent {
@@ -194,27 +195,19 @@ export default function EventsPage() {
 
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6"
-          >
+          <HeroFadeIn className="space-y-6">
             <h1 className="text-6xl md:text-7xl font-light text-white">Događaji</h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
               Pridruži nam se za kulturna iskustva, edukativne tečajeve i nezaboravne izlete
             </p>
             <div className="w-12 h-px bg-yellow-600" />
-          </motion.div>
+          </HeroFadeIn>
         </div>
       </section>
 
       <section className="py-12 md:py-16 bg-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex gap-4 flex-wrap"
-          >
+          <FadeIn className="flex gap-4 flex-wrap">
             {filters.map((filter) => (
               <button
                 key={filter.value}
@@ -224,25 +217,24 @@ export default function EventsPage() {
                 {filter.label}
               </button>
             ))}
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
       <section className="py-20 md:py-32 bg-slate-950">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <AnimatePresence mode="wait">
-            <motion.div
+            <StaggerContainer
               key={activeFilter}
-              layout
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
               {displayedEvents.map((event, index) => (
-                <RevealOnScroll key={event.id} delay={index * 0.05} direction="up">
-                  <ScaleOnHover scale={1.02}>
-                    <motion.div
-                      layout
-                      className="group overflow-hidden border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 h-full flex flex-col hover:shadow-xl hover:shadow-yellow-600/10"
-                    >
+                <StaggerItem key={event.id}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    className="group overflow-hidden border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 h-full flex flex-col hover:shadow-xl hover:shadow-yellow-600/10"
+                  >
                       <div className="relative h-48 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center text-gray-600 font-light">
                         {'isWordPress' in event && event.isWordPress ? (
                           <motion.div 
@@ -324,10 +316,9 @@ export default function EventsPage() {
                     )}
                       </div>
                     </motion.div>
-                  </ScaleOnHover>
-                </RevealOnScroll>
+                </StaggerItem>
               ))}
-            </motion.div>
+            </StaggerContainer>
           </AnimatePresence>
 
           {filtered.length > 12 && !showAll && (

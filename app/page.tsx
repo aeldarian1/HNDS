@@ -1,9 +1,9 @@
 "use client";
-import { motion } from "framer-motion";
 import { ChevronRight, Calendar, Users, Zap, Globe, BookOpen, MapPin } from "lucide-react";
 import Link from "next/link";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { HeroFadeIn, FadeIn, StaggerContainer, StaggerItem, SlideLeft, SlideRight, ScaleIn } from "./components/AnimatedSection";
 export default function Home() {
   return (
     <main className="bg-slate-950 text-white">
@@ -14,31 +14,17 @@ export default function Home() {
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(234, 179, 8) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
         </div>
-        {/* Floating orbs - optimized for performance */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-600/5 rounded-full blur-3xl"
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"
-        />
+        {/* Floating orbs - static for performance */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-600/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-8"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-              >
-                <motion.span 
-                  className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6"
-                >
+            <HeroFadeIn className="space-y-8">
+              <HeroFadeIn delay={0.15}>
+                <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
                   Kulturni most
-                </motion.span>
+                </span>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-white mb-6">
                   Most između
                   <br />
@@ -46,99 +32,68 @@ export default function Home() {
                     kultura
                   </span>
                 </h1>
-              </motion.div>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-xl text-gray-300 font-light leading-relaxed max-w-lg"
-              >
+              </HeroFadeIn>
+              <HeroFadeIn delay={0.3} className="text-xl text-gray-300 font-light leading-relaxed max-w-lg">
                 Promoviranje kulturnih, jezičnih i prijateljskih veza između Hrvatske i Njemačke kroz tečajeve jezika, kulturne događaje, izlete i radionice.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex flex-wrap gap-4 pt-4"
-              >
-                <motion.div>
-                  <Link 
-                    href="/#events" 
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-shadow duration-300"
-                  >
-                    Istraži događaje 
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.div>
-                <motion.div>
-                  <Link 
-                    href="/about" 
-                    className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
-                  >
-                    Saznaj više 
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.div>
-              </motion.div>
+              </HeroFadeIn>
+              <HeroFadeIn delay={0.45} className="flex flex-wrap gap-4 pt-4">
+                <Link 
+                  href="/#events" 
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-shadow duration-300"
+                >
+                  Istraži događaje 
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  href="/about" 
+                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
+                >
+                  Saznaj više 
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </HeroFadeIn>
               {/* Stats */}
-              <motion.div
-                className="grid grid-cols-3 gap-8 pt-8 border-t border-yellow-600/20"
-              >
+              <HeroFadeIn delay={0.6} className="grid grid-cols-3 gap-8 pt-8 border-t border-yellow-600/20">
                 {[
                   { value: "35+", label: "Godina" },
                   { value: "500+", label: "Članova" },
                   { value: "6", label: "Lokacija" }
                 ].map((stat, i) => (
-                  <motion.div
-                    key={i}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-                  >
+                  <div key={i}>
                     <div className="text-3xl font-light text-yellow-500 mb-1">{stat.value}</div>
                     <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
-            </motion.div>
+              </HeroFadeIn>
+            </HeroFadeIn>
             {/* Right: Visual Element */}
-            <motion.div
-              className="relative hidden lg:block"
-            >
+            <HeroFadeIn delay={0.4} className="relative hidden lg:block">
               <div className="relative aspect-square">
                 {/* Decorative elements */}
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/20 backdrop-blur-3xl rounded-3xl"
-                />
-                <motion.div 
-                  className="absolute inset-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl flex items-center justify-center overflow-hidden"
-                >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/20 backdrop-blur-3xl rounded-3xl" />
+                <div className="absolute inset-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl flex items-center justify-center overflow-hidden">
                   <div className="text-center space-y-4 p-8">
-                    <motion.div
-                    >
-                      <Globe className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
-                    </motion.div>
+                    <Globe className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
                     <h3 className="text-2xl font-light text-white">Hrvatski ↔ Deutsch</h3>
                     <p className="text-gray-400 text-sm">Povezujemo ljude i kulture</p>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </HeroFadeIn>
           </div>
         </div>
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <div className="flex flex-col items-center gap-2 text-gray-500">
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <ChevronRight className="w-4 h-4 rotate-90" />
           </div>
-        </motion.div>
+        </div>
       </section>
       {/* Featured Works Section - Modern Cards */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-20">
+          <FadeIn className="text-center mb-20">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
               Istaknuto
             </span>
@@ -150,8 +105,8 @@ export default function Home() {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Bogatstvo programa kreiranih za povezivanje kultura i jezika
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          </FadeIn>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
               { 
                 title: "Tečajevi jezika", 
@@ -172,10 +127,7 @@ export default function Home() {
                 color: "from-yellow-600/15 to-yellow-500/10"
               },
             ].map((item, i) => (
-              <div
-                key={i}
-                className="group relative"
-              >
+              <StaggerItem key={i} className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl blur-xl opacity-50`} />
                 <div className="relative h-full bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-8">
                   <div className="flex flex-col h-full">
@@ -197,9 +149,9 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
       {/* About Section - Modern Elegant Layout */}
@@ -207,9 +159,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
             {/* Left: Content - Takes 3 columns */}
-            <motion.div
-              className="space-y-8 lg:col-span-3"
-            >
+            <SlideLeft className="space-y-8 lg:col-span-3">
               <div>
                 <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
                   Naša priča
@@ -252,14 +202,9 @@ export default function Home() {
                 Pročitaj cijelu priču 
                 <ChevronRight className="w-4 h-4" />
               </Link>
-            </motion.div>
+            </SlideLeft>
             {/* Right: Visual Element - Takes 2 columns */}
-            <motion.div
-              className="relative lg:col-span-2"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <SlideRight className="relative lg:col-span-2">
               <div className="relative aspect-[4/5]">
                 {/* Decorative background */}
                 <div className="absolute -inset-4 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-3xl blur-2xl" />
@@ -291,25 +236,20 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </SlideRight>
           </div>
         </div>
       </section>
       {/* Statistics Section - Elegant Cards */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { number: "35+", label: "Godina tradicije", icon: Zap, desc: "Kontinuirano djelovanje" },
               { number: "500+", label: "Aktivnih članova", icon: Users, desc: "U 6 lokacija" },
               { number: "55", label: "Godina partnerstva", icon: Globe, desc: "Split ↔ Berlin" },
             ].map((stat, i) => (
-              <motion.div
-                key={i}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-                className="group relative"
-              >
+              <StaggerItem key={i} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
                 <div className="relative bg-slate-900/80 backdrop-blur-sm border border-yellow-600/30 rounded-2xl p-8 text-center">
                   <stat.icon className="w-10 h-10 mx-auto text-yellow-500 mb-6" />
@@ -323,9 +263,9 @@ export default function Home() {
                     {stat.desc}
                   </p>
                 </div>
-              </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
       {/* Berlin Partnership Section - Split Layout */}
@@ -333,11 +273,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-8"
-            >
+            <SlideLeft className="space-y-8">
               <div>
                 <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
                   Međunarodno partnerstvo
@@ -373,11 +309,9 @@ export default function Home() {
                 Kronike partnerstva
                 <ChevronRight className="w-4 h-4" />
               </Link>
-            </motion.div>
+            </SlideLeft>
             {/* Right: Visual */}
-            <motion.div
-              className="relative"
-            >
+            <SlideRight className="relative">
               <div className="relative aspect-square">
                 <div className="absolute -inset-8 bg-gradient-to-br from-yellow-600/30 via-yellow-500/20 to-transparent rounded-3xl blur-3xl" />
                 <div className="relative h-full bg-slate-900/80 backdrop-blur-sm border border-yellow-600/30 rounded-3xl overflow-hidden">
@@ -402,16 +336,14 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </SlideRight>
           </div>
         </div>
       </section>
       {/* Activities Section - Refreshed Cards */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-20"
-          >
+          <FadeIn className="text-center mb-20">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
               Što činimo
             </span>
@@ -423,37 +355,30 @@ export default function Home() {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Od jezika do kulture - program za sve uzraste i interese
             </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          </FadeIn>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: BookOpen, title: "Jezični tečajevi", description: "Učenje njemačkog jezika od početnika do napredne razine", color: "from-yellow-600/20" },
               { icon: Globe, title: "Kulturne izložbe", description: "Poznavanje njemačke i hrvatske kulture i tradicije", color: "from-yellow-500/20" },
               { icon: Users, title: "Društveni događaji", description: "Zajedništa, večere, manifestacije i okupljanja članova", color: "from-yellow-600/15" },
               { icon: MapPin, title: "Izleti i putovanja", description: "Istraživanje Balkana, posjete Berlinu i drugim europskim gradovima", color: "from-yellow-500/15" },
             ].map((activity, i) => (
-              <motion.div
-                key={i}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-                className="group relative"
-              >
+              <StaggerItem key={i} className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} to-transparent rounded-2xl blur-xl opacity-0`} />
                 <div className="relative bg-slate-900/60 backdrop-blur-sm border border-yellow-600/30 rounded-2xl p-6 h-full">
                   <activity.icon className="w-10 h-10 text-yellow-500 mb-6" />
                   <h3 className="text-xl font-light text-white mb-3">{activity.title}</h3>
                   <p className="text-gray-400 font-light text-sm leading-relaxed">{activity.description}</p>
                 </div>
-              </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
       {/* Events Section - Modern Event Cards */}
       <section id="events" className="py-24 md:py-32 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-20"
-          >
+          <FadeIn className="text-center mb-20">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
               Nadolazeći
             </span>
@@ -465,19 +390,14 @@ export default function Home() {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Pridružite nam se na nadolazećim aktivnostima
             </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          </FadeIn>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {[
               { date: "25. siječnja", title: "Razgovor njemačkog jezika", location: "Centar Split", icon: Globe },
               { date: "15. veljače", title: "Večer njemačke kulture", location: "Makarska", icon: Calendar },
               { date: "10. ožujka", title: "Proljetni izlet - Otok Brač", location: "Brač", icon: MapPin },
             ].map((event, i) => (
-              <motion.div
-                key={i}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-                className="group relative"
-              >
+              <StaggerItem key={i} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
                 <div className="relative bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-8 h-full">
                   <div className="flex items-center gap-3 mb-6">
@@ -505,12 +425,10 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </StaggerItem>
             ))}
-          </div>
-          <motion.div
-            className="text-center"
-          >
+          </StaggerContainer>
+          <FadeIn className="text-center">
             <Link 
               href="/events" 
               className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
@@ -518,7 +436,7 @@ export default function Home() {
               Pogledaj sve događaje
               <ChevronRight className="w-4 h-4" />
             </Link>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
       {/* Call to Action - Modern Gradient Design */}
@@ -531,9 +449,7 @@ export default function Home() {
         </div>
         {/* Content */}
         <div className="relative max-w-5xl mx-auto px-4 md:px-8 text-center space-y-12">
-          <motion.div
-            className="space-y-8"
-          >
+          <FadeIn className="space-y-8">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest">
               Pridruži nam se
             </span>
@@ -547,10 +463,8 @@ export default function Home() {
             <p className="text-xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto">
               Otkrijte bogate veze između hrvatskih i njemačkih kultura. Pridružite se živahnoj zajednici posvećenoj kulturnoj razmjeni i međusobnom razumijevanju.
             </p>
-          </motion.div>
-          <motion.div
-            className="flex flex-wrap justify-center gap-6 pt-8"
-          >
+          </FadeIn>
+          <FadeIn delay={0.15} className="flex flex-wrap justify-center gap-6 pt-8">
             <Link
               href="/membership"
               className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-base font-medium hover:shadow-2xl hover:shadow-yellow-600/50 transition-all duration-300 hover:-translate-y-1 hover:scale-105"
@@ -565,11 +479,9 @@ export default function Home() {
               Kontaktirajte nas
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </motion.div>
+          </FadeIn>
           {/* Features grid */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-yellow-600/20"
-          >
+          <FadeIn delay={0.3} className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-yellow-600/20">
             {[
               { icon: <BookOpen className="w-6 h-6" />, label: "Jezični tečajevi" },
               { icon: <Calendar className="w-6 h-6" />, label: "Kulturni događaji" },
@@ -581,7 +493,7 @@ export default function Home() {
                 <span className="text-sm font-light text-center">{item.label}</span>
               </div>
             ))}
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
       {/* Footer */}
