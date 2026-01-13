@@ -4,14 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative bg-gradient-to-b from-slate-950 to-slate-900 border-t border-yellow-600/20">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(234, 179, 8) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-24">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 lg:py-32">
         {/* Top section with logo and tagline */}
         <div className="mb-16 pb-12 border-b border-yellow-600/20">
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
@@ -138,7 +140,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-yellow-600/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm font-light text-gray-500">
-               2026 Hrvatsko-njemačko društvo Split. Sva prava pridržana.
+               © {currentYear} Hrvatsko-njemačko društvo Split. Sva prava pridržana.
             </p>
             <div className="flex gap-6 text-xs font-light text-gray-500">
               <Link href="/statut" className="hover:text-yellow-500 transition-colors">Pravila privatnosti</Link>

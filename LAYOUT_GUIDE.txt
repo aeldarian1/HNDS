@@ -1,0 +1,263 @@
+/**
+ * PAGE STRUCTURE GUIDELINES & LAYOUT PATTERNS
+ * 
+ * This guide shows how to structure pages using the new LayoutComponents system.
+ * All pages should follow this pattern for consistency.
+ * 
+ * BASIC PATTERN:
+ * ============
+ * import { 
+ *   Container, 
+ *   Section, 
+ *   PageHeader,
+ *   TwoColumnLayout,
+ *   ResponsiveGrid,
+ *   Card,
+ *   SimpleList,
+ *   Stack,
+ *   Divider,
+ *   FeatureCard,
+ *   TextBlock,
+ * } from "@/app/components/LayoutComponents";
+ * import Navigation from "@/app/components/Navigation";
+ * import Footer from "@/app/components/Footer";
+ * import { FadeIn, SlideLeft, SlideRight, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
+ *
+ * export default function YourPage() {
+ *   return (
+ *     <main className="bg-slate-950 text-white">
+ *       <Navigation />
+ *       
+ *       {/* Page Header Section */}
+ *       <PageHeader 
+ *         title="Page Title"
+ *         description="Page description"
+ *         subtitle="Subtitle"
+ *         icon={SomeIcon}
+ *       />
+ *       
+ *       {/* Main Content Sections */}
+ *       <Section>
+ *         <Container>
+ *           {/* Your content here */}
+ *         </Container>
+ *       </Section>
+ *       
+ *       <Footer />
+ *     </main>
+ *   );
+ * }
+ *
+ * LAYOUT PATTERNS
+ * ==============
+ *
+ * PATTERN 1: Two-Column Hero Layout
+ * <Section background="gradient" border="bottom" py="lg">
+ *   <Container size="lg">
+ *     <FadeIn>
+ *       <TwoColumnLayout
+ *         left={
+ *           <div className="space-y-8">
+ *             <h1 className="text-7xl font-light">Main Title</h1>
+ *             <TextBlock>
+ *               Description paragraph here
+ *             </TextBlock>
+ *             <Stack direction="horizontal" gap="md">
+ *               <button>CTA Button</button>
+ *               <button>Secondary Button</button>
+ *             </Stack>
+ *           </div>
+ *         }
+ *         right={
+ *           <div className="relative h-96 rounded-lg bg-gradient-to-br from-yellow-600/20 to-slate-800">
+ *             {/* Visual element here */}
+ *           </div>
+ *         }
+ *         gap="lg"
+ *       />
+ *     </FadeIn>
+ *   </Container>
+ * </Section>
+ *
+ * PATTERN 2: Feature Cards Grid
+ * <Section py="lg">
+ *   <Container>
+ *     <div className="space-y-12">
+ *       <div className="text-center space-y-4">
+ *         <h2 className="text-5xl font-light">Our Features</h2>
+ *         <Divider className="mx-auto w-12" />
+ *       </div>
+ *       
+ *       <ResponsiveGrid columns="3" gap="lg">
+ *         <FeatureCard 
+ *           icon={Icon1}
+ *           title="Feature 1"
+ *           description="Description of feature 1"
+ *         />
+ *         <FeatureCard 
+ *           icon={Icon2}
+ *           title="Feature 2"
+ *           description="Description of feature 2"
+ *         />
+ *         <FeatureCard 
+ *           icon={Icon3}
+ *           title="Feature 3"
+ *           description="Description of feature 3"
+ *         />
+ *       </ResponsiveGrid>
+ *     </div>
+ *   </Container>
+ * </Section>
+ *
+ * PATTERN 3: Alternating Two-Column Layout
+ * <Section py="lg">
+ *   <Container>
+ *     <StaggerContainer className="space-y-24">
+ *       <StaggerItem>
+ *         <TwoColumnLayout
+ *           left={<div>Image/Visual</div>}
+ *           right={<TextBlock>Content goes here</TextBlock>}
+ *           gap="lg"
+ *         />
+ *       </StaggerItem>
+ *       
+ *       <StaggerItem>
+ *         <TwoColumnLayout
+ *           left={<TextBlock>Content goes here</TextBlock>}
+ *           right={<div>Image/Visual</div>}
+ *           gap="lg"
+ *           reverseOnMobile
+ *         />
+ *       </StaggerItem>
+ *     </StaggerContainer>
+ *   </Container>
+ * </Section>
+ *
+ * PATTERN 4: Centered Content with Wide Text
+ * <Section background="alt" py="lg">
+ *   <Container size="md">
+ *     <FadeIn className="space-y-8 text-center">
+ *       <h2 className="text-5xl font-light">Centered Title</h2>
+ *       <TextBlock size="lg">
+ *         <p>Wide paragraph centered on the page for maximum readability</p>
+ *       </TextBlock>
+ *       <Divider color="yellow" className="mx-auto w-12" />
+ *       <Stack direction="horizontal" gap="md" align="center">
+ *         <button>Action Button</button>
+ *       </Stack>
+ *     </FadeIn>
+ *   </Container>
+ * </Section>
+ *
+ * PATTERN 5: Full Width Section with Staggered Items
+ * <Section py="lg">
+ *   <Container>
+ *     <div className="space-y-12">
+ *       <h2 className="text-5xl font-light text-center">Gallery or Items</h2>
+ *       
+ *       <StaggerContainer>
+ *         <ResponsiveGrid columns="3" gap="lg">
+ *           {items.map((item, i) => (
+ *             <StaggerItem key={i}>
+ *               <Card>
+ *                 {/* Item content */}
+ *               </Card>
+ *             </StaggerItem>
+ *           ))}
+ *         </ResponsiveGrid>
+ *       </StaggerContainer>
+ *     </div>
+ *   </Container>
+ * </Section>
+ *
+ * SPACING GUIDELINES
+ * ==================
+ * 
+ * PADDING/MARGIN SIZES:
+ * - sm:  py-12 md:py-16  (48px / 64px)
+ * - md:  py-16 md:py-20  (64px / 80px)
+ * - lg:  py-20 md:py-32  (80px / 128px) - DEFAULT for most sections
+ * - xl:  py-24 md:py-40  (96px / 160px) - For hero/major sections
+ *
+ * GAP SIZES:
+ * - sm:  gap-8     (32px)
+ * - md:  gap-12    (48px) - DEFAULT
+ * - lg:  gap-16    (64px)
+ * - xl:  gap-20    (80px)
+ *
+ * RESPONSIVE BEHAVIOR
+ * ===================
+ *
+ * CONTAINER SIZES:
+ * - sm:   max-w-4xl  (896px)
+ * - md:   max-w-5xl  (1024px)
+ * - lg:   max-w-6xl  (1152px) - DEFAULT
+ * - xl:   max-w-7xl  (1280px)
+ * - full: no max-width
+ *
+ * GRID RESPONSIVE:
+ * - 1 column:  mobile
+ * - 2 columns: md breakpoint (768px+)
+ * - 3 columns: lg breakpoint (1024px+)
+ * - 4 columns: lg breakpoint (1024px+)
+ *
+ * PADDING:
+ * - Mobile: px-4   (16px each side)
+ * - Tablet: px-8   (32px each side)
+ *
+ * COLOR & STYLING GUIDELINES
+ * ==========================
+ *
+ * BACKGROUNDS:
+ * - default: bg-slate-950 (primary dark)
+ * - alt:     bg-slate-900 (slightly lighter)
+ * - gradient: from-slate-900 to-slate-950
+ * - none:    transparent
+ *
+ * BORDERS:
+ * - Standard: border-yellow-600/30
+ * - Hover:    border-yellow-600/50
+ *
+ * TEXT:
+ * - Primary:   text-white
+ * - Secondary: text-gray-300
+ * - Tertiary:  text-gray-400
+ * - Accents:   text-yellow-500 or text-yellow-600
+ *
+ * CARDS:
+ * - Background: bg-slate-900/30 with backdrop-blur-sm
+ * - Border: border border-slate-800/50
+ * - Hover: hover:bg-slate-800/50 hover:border-yellow-600/50
+ *
+ * ANIMATION INTEGRATION
+ * =====================
+ *
+ * Use these animation components with layout components:
+ *
+ * 1. PAGE HEROES: Wrap with <FadeIn>
+ *    <FadeIn>
+ *      <TwoColumnLayout ... />
+ *    </FadeIn>
+ *
+ * 2. ALTERNATE SECTIONS: Use <SlideLeft> and <SlideRight>
+ *    <SlideLeft>Left content</SlideLeft>
+ *    <SlideRight>Right content</SlideRight>
+ *
+ * 3. GRIDS/LISTS: Use <StaggerContainer> and <StaggerItem>
+ *    <StaggerContainer>
+ *      <ResponsiveGrid columns="3">
+ *        {items.map((item, i) => (
+ *          <StaggerItem key={i}>{item}</StaggerItem>
+ *        ))}
+ *      </ResponsiveGrid>
+ *    </StaggerContainer>
+ *
+ * 4. FULL PAGE: Wrap main sections
+ *    <Section>
+ *      <FadeIn>
+ *        <Container>...</Container>
+ *      </FadeIn>
+ *    </Section>
+ */
+
+// This file is for documentation purposes only

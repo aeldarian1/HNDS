@@ -66,7 +66,7 @@ export default function Navigation() {
   return (
     <>
       <nav className="fixed top-0 w-full z-50 bg-slate-950/98 backdrop-blur-md border-b border-yellow-600/20 shadow-lg shadow-black/5">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-5 flex items-center justify-between h-20 md:h-24">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
