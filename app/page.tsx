@@ -13,31 +13,19 @@ export default function Home() {
 
       {/* Hero Section - Modern Bold Design */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 pt-32">
-        {/* Animated background pattern */}
-        <motion.div 
-          className="absolute inset-0 opacity-5"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "linear"
-          }}
-        >
+        {/* Static background pattern - removed animation for performance */}
+        <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(234, 179, 8) 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
-        </motion.div>
+        </div>
 
-        {/* Floating orbs */}
+        {/* Floating orbs - optimized for performance */}
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-600/5 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -45,11 +33,10 @@ export default function Home() {
         <motion.div
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"
           animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.5, 0.3, 0.5],
+            scale: [1.1, 1, 1.1],
           }}
           transition={{
-            duration: 10,
+            duration: 14,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -79,20 +66,9 @@ export default function Home() {
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-white mb-6">
                   Most između
                   <br />
-                  <motion.span 
-                    className="font-serif italic bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-500 bg-clip-text text-transparent"
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    style={{ backgroundSize: "200% 200%" }}
-                  >
+                  <span className="font-serif italic bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-500 bg-clip-text text-transparent">
                     kultura
-                  </motion.span>
+                  </span>
                 </h1>
               </motion.div>
 
@@ -255,11 +231,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-50 group-hover:opacity-100`} />
-                <div className="relative h-full bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 group-hover:border-yellow-600/40 rounded-2xl p-8 transition-all duration-300">
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300`} />
+                <div className="relative h-full bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 group-hover:border-yellow-600/40 rounded-2xl p-8 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-yellow-600/20">
                   <div className="flex flex-col h-full">
                     <div className="text-yellow-500 mb-6 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
                       {item.icon}
