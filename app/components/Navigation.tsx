@@ -58,56 +58,67 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-slate-950/95 backdrop-blur-sm border-b border-yellow-600/30">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 w-full z-50 bg-slate-950/98 backdrop-blur-md border-b border-yellow-600/20 shadow-lg shadow-black/5">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-5 flex items-center justify-between">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex items-center gap-3">
-              <Image 
-                src="/cropped-HD_Ikona-1.jpg" 
-                alt="HNDS Logo" 
-                width={40} 
-                height={40}
-                className="object-contain"
-              />
-              <span className="text-xl font-light tracking-widest text-yellow-600">HNDS</span>
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-yellow-600/20 rounded-full blur-lg group-hover:blur-xl transition-all" />
+                <Image 
+                  src="/cropped-HD_Ikona-1.jpg" 
+                  alt="HNDS Logo" 
+                  width={44} 
+                  height={44}
+                  className="relative object-contain group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <span className="text-xl font-light tracking-widest text-yellow-500 group-hover:text-yellow-400 transition-colors">HNDS</span>
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="hidden md:flex gap-8 md:gap-12 items-center"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="hidden md:flex gap-1 items-center"
           >
-            {navLinks.map((link) => (
+            {navLinks.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-light text-white hover:text-yellow-600 transition"
+                className="relative px-4 py-2 text-sm font-light text-gray-300 hover:text-white transition-colors group"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-yellow-500 group-hover:w-3/4 group-hover:left-1/8 transition-all duration-300" />
               </Link>
             ))}
-            <Link href="/contact" className="px-6 py-2 border border-yellow-600 text-sm font-light text-white hover:bg-yellow-600 hover:text-white transition duration-300">
+            <Link 
+              href="/contact" 
+              className="ml-4 px-6 py-2.5 bg-yellow-600/10 border border-yellow-600/40 text-sm font-medium text-yellow-500 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-600/20"
+            >
               Kontakt
             </Link>
-            <LanguageSwitcher />
+            <div className="ml-2">
+              <LanguageSwitcher />
+            </div>
           </motion.div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-yellow-600 transition z-50 relative"
+            className="md:hidden text-white hover:text-yellow-500 transition-colors z-50 relative p-2.5 hover:bg-yellow-600/10 rounded-lg active:scale-95"
             aria-label="Toggle menu"
           >
             <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
+              animate={{ rotate: isOpen ? 90 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={26} className="text-yellow-500" /> : <Menu size={26} />}
             </motion.div>
           </button>
         </div>
@@ -120,14 +131,14 @@ export default function Navigation() {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="md:hidden overflow-hidden bg-slate-950/98 border-b border-yellow-600/30"
+              className="md:hidden overflow-hidden bg-slate-900/98 backdrop-blur-lg border-b border-yellow-600/20 shadow-2xl"
             >
-              <div className="px-4 py-6 space-y-1 max-w-7xl mx-auto">
+              <div className="px-6 py-8 space-y-2 max-w-7xl mx-auto">
                 {navLinks.map((link, index) => (
                   <motion.div key={link.href} variants={itemVariants}>
                     <Link
                       href={link.href}
-                      className="block text-base font-light text-white hover:text-yellow-600 hover:bg-yellow-600/10 transition py-3 px-4 rounded-sm text-center"
+                      className="block text-base font-light text-white hover:text-yellow-500 hover:bg-yellow-600/5 rounded-lg transition-all py-3.5 px-4 border-l-2 border-transparent hover:border-yellow-500"
                       onClick={() => setIsOpen(false)}
                     >
                       {link.label}
@@ -135,27 +146,27 @@ export default function Navigation() {
                   </motion.div>
                 ))}
                 
-                <motion.div variants={itemVariants} className="pt-4">
+                <motion.div variants={itemVariants} className="pt-2">
                   <Link
                     href="/contact"
-                    className="block w-full px-6 py-3 border border-yellow-600 text-base font-light text-white hover:bg-yellow-600 hover:text-white transition duration-300 text-center rounded-sm"
+                    className="block w-full px-6 py-3.5 border border-yellow-600/40 text-base font-medium text-yellow-500 bg-yellow-600/10 hover:bg-yellow-600 hover:text-white transition-all duration-300 text-center rounded-lg"
                     onClick={() => setIsOpen(false)}
                   >
                     Kontakt
                   </Link>
                 </motion.div>
 
-                <motion.div variants={itemVariants} className="pt-4">
+                <motion.div variants={itemVariants} className="pt-6 border-t border-yellow-600/20">
                   <LanguageSwitcher />
                 </motion.div>
 
                 {/* Social Links in Mobile Menu */}
-                <motion.div variants={itemVariants} className="pt-6 border-t border-yellow-600/30 mt-6">
-                  <p className="text-xs text-gray-400 font-light uppercase tracking-wider mb-3 px-4">Prati nas</p>
+                <motion.div variants={itemVariants} className="pt-6 border-t border-yellow-600/20 mt-6">
+                  <p className="text-xs text-gray-400 font-light uppercase tracking-wider mb-4 px-4">Prati nas</p>
                   <div className="flex gap-6 px-4">
-                    <a href="#" className="text-sm text-gray-400 hover:text-yellow-600 transition">Instagram</a>
-                    <a href="#" className="text-sm text-gray-400 hover:text-yellow-600 transition">Facebook</a>
-                    <a href="#" className="text-sm text-gray-400 hover:text-yellow-600 transition">YouTube</a>
+                    <a href="#" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">Instagram</a>
+                    <a href="#" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">Facebook</a>
+                    <a href="#" className="text-sm text-gray-400 hover:text-yellow-500 transition-colors">YouTube</a>
                   </div>
                 </motion.div>
               </div>
