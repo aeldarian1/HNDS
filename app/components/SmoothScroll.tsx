@@ -5,26 +5,18 @@ import Lenis from '@studio-freight/lenis';
 
 export default function SmoothScroll() {
   useEffect(() => {
-    // Initialize Lenis for smooth scrolling with optimized settings
+    // Initialize Lenis for smooth scrolling with minimal overhead
     const lenis = new Lenis({
-      duration: 0.8,  // Slightly reduced for better responsiveness
+      duration: 0.75,  // Fast scrolling for responsiveness
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
-    let rafId: number;
-    let lastTime = 0;
-    
-    // Throttle RAF for better performance
     function raf(time: number) {
-      // Only update if enough time has passed (roughly 60fps target)
-      if (time - lastTime > 16) {
-        lenis.raf(time);
-        lastTime = time;
-      }
-      rafId = requestAnimationFrame(raf);
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    rafId = requestAnimationFrame(raf);
+    const rafId = requestAnimationFrame(raf);
 
     return () => {
       cancelAnimationFrame(rafId);
