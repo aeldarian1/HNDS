@@ -58,8 +58,6 @@ export default function Home() {
               >
                 <motion.span 
                   className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400 }}
                 >
                   Kulturni most
                 </motion.span>
@@ -87,7 +85,7 @@ export default function Home() {
                 transition={{ delay: 0.6, duration: 0.6 }}
                 className="flex flex-wrap gap-4 pt-4"
               >
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+                <motion.div>
                   <Link 
                     href="/#events" 
                     className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-shadow duration-300"
@@ -96,7 +94,7 @@ export default function Home() {
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 20 }}>
+                <motion.div>
                   <Link 
                     href="/about" 
                     className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
@@ -124,7 +122,6 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 + i * 0.1 }}
-                    whileHover={{ y: -5 }}
                   >
                     <div className="text-3xl font-light text-yellow-500 mb-1">{stat.value}</div>
                     <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
@@ -149,8 +146,6 @@ export default function Home() {
                 />
                 <motion.div 
                   className="absolute inset-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl flex items-center justify-center overflow-hidden"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="text-center space-y-4 p-8">
                     <motion.div
@@ -224,13 +219,13 @@ export default function Home() {
                 key={i}
                 className="group relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300`} />
-                <div className="relative h-full bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 group-hover:border-yellow-600/40 rounded-2xl p-8 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-yellow-600/20">
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl blur-xl opacity-50`} />
+                <div className="relative h-full bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-8">
                   <div className="flex flex-col h-full">
-                    <div className="text-yellow-500 mb-6 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
+                    <div className="text-yellow-500 mb-6">
                       {item.icon}
                     </div>
-                    <h3 className="text-2xl font-light text-white mb-4 group-hover:text-yellow-500 transition-colors">
+                    <h3 className="text-2xl font-light text-white mb-4">
                       {item.title}
                     </h3>
                     <p className="text-gray-400 font-light leading-relaxed flex-grow">
@@ -238,7 +233,7 @@ export default function Home() {
                     </p>
                     <Link 
                       href="/events" 
-                      className="inline-flex items-center gap-2 text-yellow-500 text-sm font-medium mt-6 group-hover:gap-4 transition-all"
+                      className="inline-flex items-center gap-2 text-yellow-500 text-sm font-medium mt-6"
                     >
                       Saznaj više
                       <ChevronRight className="w-4 h-4" />
@@ -373,12 +368,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <div className="relative bg-slate-900/80 backdrop-blur-sm border border-yellow-600/30 group-hover:border-yellow-600/50 rounded-2xl p-8 text-center transition-all duration-300">
-                  <stat.icon className="w-10 h-10 mx-auto text-yellow-500 mb-6 group-hover:scale-110 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
+                <div className="relative bg-slate-900/80 backdrop-blur-sm border border-yellow-600/30 rounded-2xl p-8 text-center">
+                  <stat.icon className="w-10 h-10 mx-auto text-yellow-500 mb-6" />
                   <div className="text-5xl md:text-6xl font-light text-yellow-500 mb-3">
                     {stat.number}
                   </div>
@@ -519,13 +513,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100`} />
-                <div className="relative bg-slate-900/60 backdrop-blur-sm border border-yellow-600/30 group-hover:border-yellow-600/50 rounded-2xl p-6 h-full transition-all duration-300">
-                  <activity.icon className="w-10 h-10 text-yellow-500 mb-6 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300" />
-                  <h3 className="text-xl font-light text-white mb-3 group-hover:text-yellow-500 transition-colors">{activity.title}</h3>
+                <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} to-transparent rounded-2xl blur-xl opacity-0`} />
+                <div className="relative bg-slate-900/60 backdrop-blur-sm border border-yellow-600/30 rounded-2xl p-6 h-full">
+                  <activity.icon className="w-10 h-10 text-yellow-500 mb-6" />
+                  <h3 className="text-xl font-light text-white mb-3">{activity.title}</h3>
                   <p className="text-gray-400 font-light text-sm leading-relaxed">{activity.description}</p>
                 </div>
               </motion.div>
@@ -568,11 +561,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-50 group-hover:opacity-100" />
-                <div className="relative bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 group-hover:border-yellow-600/40 rounded-2xl p-8 h-full transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
+                <div className="relative bg-slate-900/90 backdrop-blur-sm border border-yellow-600/20 rounded-2xl p-8 h-full">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-full bg-yellow-600/20 flex items-center justify-center text-yellow-500">
                       <event.icon className="w-6 h-6" />
@@ -581,7 +573,7 @@ export default function Home() {
                       {event.date}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-light text-white mb-4 group-hover:text-yellow-500 transition-colors leading-snug">
+                  <h3 className="text-2xl font-light text-white mb-4 leading-snug">
                     {event.title}
                   </h3>
                   <p className="flex items-center gap-2 text-gray-400 font-light text-sm">
@@ -591,7 +583,7 @@ export default function Home() {
                   <div className="mt-6 pt-6 border-t border-yellow-600/20">
                     <Link 
                       href="/events" 
-                      className="inline-flex items-center gap-2 text-yellow-500 text-sm font-medium group-hover:gap-4 transition-all"
+                      className="inline-flex items-center gap-2 text-yellow-500 text-sm font-medium"
                     >
                       Više detalja
                       <ChevronRight className="w-4 h-4" />
