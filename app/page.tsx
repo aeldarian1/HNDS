@@ -65,7 +65,7 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative h-screen min-h-[600px] overflow-hidden border-b border-yellow-600/30">
+      <section ref={heroRef} className="relative h-screen min-h-[600px] pt-20 md:pt-24 overflow-hidden border-b border-yellow-600/30">
         {/* Hero Image with overlay */}
         <motion.div 
           className="absolute inset-0"

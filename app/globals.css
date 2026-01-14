@@ -12,6 +12,13 @@
     scroll-padding-top: 5rem;
   }
 
+  /* Ensure anchor scrolling accounts for taller nav on larger screens */
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 6rem;
+    }
+  }
+
   body {
     @apply bg-white text-gray-900 font-light;
     -webkit-font-smoothing: antialiased;
