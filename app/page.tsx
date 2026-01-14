@@ -32,7 +32,7 @@ export default function Home() {
                 <div className="space-y-8">
                   <HeroFadeIn delay={0.15}>
                     <Badge variant="primary" className="inline-block">
-                      Kulturni most
+                      •
                     </Badge>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-white mb-6 mt-6">
                       Most između
@@ -114,15 +114,15 @@ export default function Home() {
         <Container>
           <FadeIn className="text-center mb-20 space-y-8">
             <Badge variant="primary" className="inline-block">
-              Istaknuto
+              •
             </Badge>
             <h2 className="text-4xl md:text-6xl font-light text-white">
-              Otkrijte naše
+              
               <br />
-              <span className="font-serif italic text-yellow-500">aktivnosti</span>
+              <span className="font-serif italic text-yellow-500"></span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Bogatstvo programa kreiranih za povezivanje kultura i jezika
+              
             </p>
           </FadeIn>
 
@@ -130,18 +130,18 @@ export default function Home() {
             <ResponsiveGrid columns="3" gap="lg">
               {[
                 { 
-                  title: "Tečajevi jezika", 
-                  desc: "Stručno vodena nastava njemačkog jezika za sve razine znanja",
+                  title: "", 
+                  desc: "",
                   icon: BookOpen,
                 },
                 { 
-                  title: "Kulturni događaji", 
-                  desc: "Izložbe, koncerti i predstave koje oživljavaju tradiciju",
+                  title: "", 
+                  desc: "",
                   icon: Calendar,
                 },
                 { 
-                  title: "Kulturni izleti", 
-                  desc: "Putovanja koja obogaćuju i povezuju naše članove",
+                  title: "", 
+                  desc: "",
                   icon: MapPin,
                 },
               ].map((item, i) => (
@@ -167,24 +167,24 @@ export default function Home() {
                 <div className="space-y-8">
                   <div>
                     <Badge variant="primary" className="inline-block mb-6">
-                      Naša priča
+                      •
                     </Badge>
                     <h2 className="text-4xl md:text-6xl font-light text-white">
-                      Most između 
+                      
                       <br />
-                      <span className="font-serif italic text-yellow-500">naroda</span>
+                      <span className="font-serif italic text-yellow-500"></span>
                     </h2>
                   </div>
 
                   <TextBlock size="md">
                     <p>
-                      Hrvatsko-njemačko društvo Split je most između hrvatske i njemačke kulture. Osnovano 1990. godine, kontinuirano djeluje na jačanju veza, razumijevanja i prijateljstva između naših naroda.
+                      
                     </p>
                     <p>
-                      S aktivnim podružnicama u Splitu, Makarskoj, Braču, Sinju i Trogiru, te 55 godina partnerstva s Berlinom (četvrt Charlottenburg-Wilmersdorf), organiziramo raznovrsne aktivnosti: jezične tečajeve, kulturne izložbe, znanstvena predavanja, putovanja i društvene događaje.
+                      
                     </p>
                     <p>
-                      Naša misija je promicati kulturnu razmjenu, jezičnu edukaciju i čvrsto prijateljstvo između Hrvatske i Njemačke, koristeći znanost, kulturu, sport i obrazovanje kao mostove za sporazumijevanje.
+                      
                     </p>
                   </TextBlock>
 
@@ -283,24 +283,24 @@ export default function Home() {
                 <div className="space-y-8">
                   <div>
                     <Badge variant="primary" className="inline-block mb-6">
-                      Međunarodno partnerstvo
+                      •
                     </Badge>
                     <h2 className="text-4xl md:text-6xl font-light text-white">
-                      Preko pola stoljeća
+                      
                       <br />
-                      <span className="font-serif italic text-yellow-500">suradnje</span>
+                      <span className="font-serif italic text-yellow-500"></span>
                     </h2>
                   </div>
 
                   <TextBlock>
-                    55 godina partnerstva između Splita i berlinske četvrti Charlottenburg-Wilmersdorf čini temelj dugogodišnje tradicije suradnje.
+                    •
                   </TextBlock>
 
                   <div className="space-y-4">
                     {[
-                      { title: "Kulturna razmjena", desc: "Izleti, izložbe i gostovanja između Splita i Berlina", icon: Globe },
-                      { title: "Jezični programi", desc: "Njemački tečajevi i edukativni projekti", icon: BookOpen },
-                      { title: "Društveni događaji", desc: "Obilježavanje zajedničkih praznika i godišnjica", icon: Calendar },
+                      { title: "", desc: "", icon: Globe },
+                      { title: "", desc: "", icon: BookOpen },
+                      { title: "", desc: "", icon: Calendar },
                     ].map((item, i) => (
                       <div key={i} className="flex gap-4 p-4 border-l-2 border-yellow-600/50 hover:border-yellow-600 hover:bg-yellow-600/5 transition-all duration-300">
                         <div className="text-yellow-500"><item.icon className="w-5 h-5" /></div>
@@ -354,23 +354,23 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <FadeIn className="text-center mb-20">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
-              Što činimo
+              •
             </span>
             <h2 className="text-4xl md:text-6xl font-light text-white mb-6">
-              Raznolike 
+              
               <br />
-              <span className="font-serif italic text-yellow-500">aktivnosti</span>
+              <span className="font-serif italic text-yellow-500"></span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Od jezika do kulture - program za sve uzraste i interese
+              
             </p>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: BookOpen, title: "Jezični tečajevi", description: "Učenje njemačkog jezika od početnika do napredne razine", color: "from-yellow-600/20" },
-              { icon: Globe, title: "Kulturne izložbe", description: "Poznavanje njemačke i hrvatske kulture i tradicije", color: "from-yellow-500/20" },
-              { icon: Users, title: "Društveni događaji", description: "Zajedništa, večere, manifestacije i okupljanja članova", color: "from-yellow-600/15" },
-              { icon: MapPin, title: "Izleti i putovanja", description: "Istraživanje Balkana, posjete Berlinu i drugim europskim gradovima", color: "from-yellow-500/15" },
+              { icon: BookOpen, title: "", description: "", color: "from-yellow-600/20" },
+              { icon: Globe, title: "", description: "", color: "from-yellow-500/20" },
+              { icon: Users, title: "", description: "", color: "from-yellow-600/15" },
+              { icon: MapPin, title: "", description: "", color: "from-yellow-500/15" },
             ].map((activity, i) => (
               <StaggerItem key={i} className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-br ${activity.color} to-transparent rounded-2xl blur-xl opacity-0`} />
@@ -389,22 +389,22 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <FadeIn className="text-center mb-20">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest mb-6">
-              Nadolazeći
+              •
             </span>
             <h2 className="text-4xl md:text-6xl font-light text-white mb-6">
-              Događaji i
+              
               <br />
-              <span className="font-serif italic text-yellow-500">doživljaji</span>
+              <span className="font-serif italic text-yellow-500"></span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Pridružite nam se na nadolazećim aktivnostima
+              
             </p>
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {[
-              { date: "25. siječnja", title: "Razgovor njemačkog jezika", location: "Centar Split", icon: Globe },
-              { date: "15. veljače", title: "Večer njemačke kulture", location: "Makarska", icon: Calendar },
-              { date: "10. ožujka", title: "Proljetni izlet - Otok Brač", location: "Brač", icon: MapPin },
+              { date: "", title: "", location: "", icon: Globe },
+              { date: "", title: "", location: "", icon: Calendar },
+              { date: "", title: "", location: "", icon: MapPin },
             ].map((event, i) => (
               <StaggerItem key={i} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 to-yellow-500/10 rounded-2xl blur-xl opacity-50" />
@@ -460,17 +460,17 @@ export default function Home() {
         <div className="relative max-w-5xl mx-auto px-4 md:px-8 text-center space-y-12">
           <FadeIn className="space-y-8">
             <span className="inline-block px-4 py-1.5 bg-yellow-600/10 border border-yellow-600/30 rounded-full text-yellow-500 font-medium text-xs uppercase tracking-widest">
-              Pridruži nam se
+              •
             </span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight">
-              Postanite dio
+              
               <br />
               <span className="font-serif italic bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-                naše zajednice
+                
               </span>
             </h2>
             <p className="text-xl text-gray-300 font-light leading-relaxed max-w-3xl mx-auto">
-              Otkrijte bogate veze između hrvatskih i njemačkih kultura. Pridružite se živahnoj zajednici posvećenoj kulturnoj razmjeni i međusobnom razumijevanju.
+              
             </p>
           </FadeIn>
           <FadeIn delay={0.15} className="flex flex-wrap justify-center gap-6 pt-8">
@@ -492,10 +492,10 @@ export default function Home() {
           {/* Features grid */}
           <FadeIn delay={0.3} className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-yellow-600/20">
             {[
-              { icon: <BookOpen className="w-6 h-6" />, label: "Jezični tečajevi" },
-              { icon: <Calendar className="w-6 h-6" />, label: "Kulturni događaji" },
-              { icon: <MapPin className="w-6 h-6" />, label: "Putovanja" },
-              { icon: <Users className="w-6 h-6" />, label: "Zajednica" },
+              { icon: <BookOpen className="w-6 h-6" />, label: "" },
+              { icon: <Calendar className="w-6 h-6" />, label: "" },
+              { icon: <MapPin className="w-6 h-6" />, label: "" },
+              { icon: <Users className="w-6 h-6" />, label: "" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-3 text-gray-400 hover:text-yellow-500 transition-colors">
                 <div className="text-yellow-500">{item.icon}</div>

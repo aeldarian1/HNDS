@@ -196,9 +196,9 @@ export default function EventsPage() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white">Događaji</h1>
+            <h1 className="text-6xl md:text-7xl font-light text-white"></h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Pridruži nam se za kulturna iskustva, edukativne tečajeve i nezaboravne izlete
+              
             </p>
             <div className="w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
@@ -342,9 +342,9 @@ export default function EventsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Nema mogu pronaći?</h2>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
             <p className="text-gray-300 font-light text-lg">
-              Kontaktiraj nas za privatne grupne događaje, prilagođene izlete ili posebne zahtjeve
+              
             </p>
           </motion.div>
           <motion.div

@@ -9,12 +9,12 @@ import { HeroFadeIn, FadeIn, SlideLeft, SlideRight, StaggerContainer, StaggerIte
 import { RevealOnScroll, ScaleOnHover } from "../components/InteractiveElements";
 export default function About() {
   const chapters = [
-    { name: "Split", location: "Glavna podružnica", description: "Sjedište organizacije i kulturni centar. Organizira jezične tečajeve, predavanja, izložbe i društvene događaje", icon: MapPin },
-    { name: "Makarska", location: "Obalna podružnica - Najaktivnije članske aktivnosti", description: "Opslužuje Makarske rivijere s aktivnostima uključujući kulinarskih događaka, izložbe i izlete", icon: Users },
-    { name: "Brač", location: "Otočka podružnica", description: "Kulturna razmjena na otoku s fokusom na lokalne tradicije i okupljanja članova", icon: Globe },
-    { name: "Sinj", location: "Cetinska krajina - U razvoju", description: "Nova inicijativa za jačanje suradnje s Cetinskom krajinom i lokalnom zajednicom", icon: BookOpen },
-    { name: "Trogir", location: "Povijesna gradska podružnica", description: "Čuvanje i promicanje svjetske kulturne baštine Trogira", icon: MapPin },
-    { name: "Berlin", location: "Sestra organizacija", description: "Dugo trajuća suradnja s četvrti Charlottenburg-Wilmersdorf - 55 godina partnerstva", icon: Globe },
+    { name: "Split", location: "", description: "", icon: MapPin },
+    { name: "Makarska", location: "", description: "", icon: Users },
+    { name: "Brač", location: "", description: "", icon: Globe },
+    { name: "Sinj", location: "", description: "", icon: BookOpen },
+    { name: "Trogir", location: "", description: "", icon: MapPin },
+    { name: "Berlin", location: "", description: "", icon: Globe },
   ];
 
   return (
@@ -24,9 +24,9 @@ export default function About() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white">O HNDS-u</h1>
+            <h1 className="text-6xl md:text-7xl font-light text-white"></h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Naslijedše razvoja kulturnog mosta između Hrvatske i Njemačke
+              
             </p>
             <div className="w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
@@ -44,15 +44,15 @@ export default function About() {
 
               <div className="space-y-6">
                 <p className="text-lg text-gray-300 font-light leading-relaxed">
-                  Hrvatsko-njemačko društvo Split promiče kulturne, jezične i prijateljske veze između Hrvatske i Njemačke. Kao most između dviju kultura, organiziramo jezične tečajeve, kulturna događanja, izlete i putovanja, predavanja i radionice.
+                  
                 </p>
 
                 <p className="text-lg text-gray-300 font-light leading-relaxed">
-                  Tijekom više od 35 godina naši članovi su izgradili trajne veze kroz razumijevanje, suradnju i iskreno prijateljstvo. Naš rad obuhvaća sve vrste kulturne razmjene, od edukativnih programa do društvenih događaja i izleta po našoj lijepoj hrvatskoj obali.
+                  
                 </p>
 
                 <p className="text-lg text-gray-300 font-light leading-relaxed">
-                  S ograncima u Splitu, Makarskoj, Braču, Sinju i Trogiru, te snažnom vezom s Berlinom, nastavljamo tradiciju spajanja naroda kroz kulturu, jezik i zajedničke vrijednosti.
+                  
                 </p>
 
                 <div className="space-y-4 pt-4">
@@ -181,16 +181,16 @@ export default function About() {
       <section className="py-20 md:py-32 bg-slate-900 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <FadeIn className="mb-16">
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Naša povijest</h2>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
             <div className="w-12 h-px bg-yellow-600" />
           </FadeIn>
 
           <StaggerContainer>
             {[
-              { year: "1990", title: "Osnivanje", description: "HNDS osnovan kako bi promovira kulturnu razmjenu između Hrvatske i Njemačke" },
-              { year: "2000", title: "Ekspanzija", description: "Uspostavljene podružnice u Makarskoj, Brču i Sinju" },
-              { year: "2010", title: "Rast", description: "Proširenje u Trogir i osnivanje sestre organizacije u Berlinu" },
-              { year: "2024", title: "Prema sadašnjosti", description: "500+ članova na 6 lokacija, 50+ događaja godišnje" },
+              { year: "1990", title: "", description: "" },
+              { year: "2000", title: "", description: "" },
+              { year: "2010", title: "", description: "" },
+              { year: "2024", title: "", description: "" },
             ].map((item, i) => (
               <StaggerItem key={i} className="flex gap-8 items-start">
                 <div className="flex flex-col items-center">
@@ -238,15 +238,15 @@ export default function About() {
       <section className="py-20 md:py-32 bg-slate-900 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <FadeIn className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Što vrijedujemo</h2>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
             <div className="w-12 h-px bg-yellow-600 mx-auto" />
           </FadeIn>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { title: "Kulturni poštovanje", description: "Poštovanje hrvatskih i njemačkih tradicija s jednakom vrijednosti. Čuvanje baštine i moderna perspektiva zajedno oblikuju našu kulturnu misiju." },
-              { title: "Jezična edukacija", description: "Pružanje pristupačnih i kvalitetnih tečajeva koji jačaju međusobnu komunikaciju i razumijevanje. Jezik je most između naroda." },
-              { title: "Međunarodno prijateljstvo", description: "55 godina aktivne suradnje s Berlinom dokazuje da dugotrajne veze nastaju kroz doslednost, zajedničke vrijednosti i autentično čovjekovo prijateljstvo." },
+              { title: "", description: "" },
+              { title: "", description: "" },
+              { title: "", description: "" },
             ].map((value, i) => (
               <StaggerItem key={i} className="text-center space-y-4">
                 <h3 className="text-2xl font-light text-white">{value.title}</h3>
@@ -260,8 +260,8 @@ export default function About() {
       <section className="py-20 md:py-32 bg-yellow-600 text-white border-t border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-8">
           <FadeIn>
-            <h2 className="text-5xl md:text-6xl font-light mb-4">Pridruži se našoj zajednici</h2>
-            <p className="text-yellow-100 font-light text-lg">Postani dio nečeg smislenog</p>
+            <h2 className="text-5xl md:text-6xl font-light mb-4"></h2>
+            <p className="text-yellow-100 font-light text-lg"></p>
           </FadeIn>
 
           <FadeIn>

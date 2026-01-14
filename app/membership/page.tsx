@@ -15,54 +15,54 @@ export default function MembershipPage() {
   const membershipTiers = [
     {
       id: 1,
-      name: 'Učenik',
+      name: '',
       price: '50 kn',
       period: 'godišnje',
-      description: 'Savršeno za studente i mlade profesionalce',
+      description: '',
       benefits: [
-        'Popust na ulaznice za događaje (20% popusta)',
-        'Pristup događajima samo za članove',
-        'Mjesečni newsletter',
-        'Značka člana zajednice',
-        'Glasačko pravo na sjednicama podružnice',
+        '',
+        '',
+        '',
+        '',
+        '',
       ],
-      cta: 'Pridruži se kao učenik',
+      cta: '',
       highlighted: false,
     },
     {
       id: 2,
-      name: 'Pojedinac',
+      name: '',
       price: '150 kn',
       period: 'godišnje',
-      description: 'Naš najpopularniji nivo članstva',
+      description: '',
       benefits: [
-        'Svi benefiti učenika',
-        'Popust na ulaznice za događaje (30% popusta)',
-        'Prioritetna registracija za događaje',
-        'Ekskluzivni događaji samo za članove',
-        'Pristup digitalnom direktoriju članova',
-        'Popusti na robu',
-        'Privilegije za goste (voditi 1 gosta na događaje)',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
       ],
-      cta: 'Pridruži se kao pojedinac',
+      cta: '',
       highlighted: true,
     },
     {
       id: 3,
-      name: 'Obitelj',
+      name: '',
       price: '300 kn',
       period: 'godišnje',
-      description: 'Za obitelji koje žele sudjelovati zajedno',
+      description: '',
       benefits: [
-        'Svi benefiti pojedinca za do 4 člana',
-        'Popusti za obiteljske događaje (40% popusta)',
-        'Prioritetna registracija za obiteljske događaje',
-        'Namjenski koordinator obitelji',
-        'Obiteljska sekcija u direktoriju članova',
-        'Ekskluzivna obiteljska okupljanja',
-        'Plus 2 gostoprimstva po članu',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
       ],
-      cta: 'Pridruži se kao obitelj',
+      cta: '',
       highlighted: false,
     },
   ];
@@ -102,28 +102,28 @@ export default function MembershipPage() {
 
   const faqs = [
     {
-      question: 'Kako postati član?',
-      answer: 'Možete se pridružiti online putem našeg obrasca za članstvo ili nas posjetiti osobno na našem uredu. Odaberite nivo članstva i dovršite registraciju. Članstvo je aktivno odmah nakon uplate.',
+      question: '',
+      answer: '',
     },
     {
-      question: 'Mogu li promijeniti nivo članstva kasnije?',
-      answer: 'Da! Možete nadograditi ili sniziti članstvo bilo kada. Ako nadogradite sredinom godine, razmotriti ćemo razliku. Snižavanja stupaju na snagu na datum vašeg sljedećeg obnavljanja.',
+      question: '',
+      answer: '',
     },
     {
-      question: 'Se li članstva automatski obnavljaju?',
-      answer: 'Da, članstva se automatski obnavljaju na datum vaše godišnjice. Poslat ćemo vam email podsjetnika prije obnavljanja. Možete otkazati bilo kada kontaktiranjem našeg ureda.',
+      question: '',
+      answer: '',
     },
     {
-      question: 'Postoje li dodatne naknade?',
-      answer: 'Članarine uključuju sve navedene benefite. Pojedini događaji mogu imati dodatne naknade za materijale, hranu ili transport, ali članovi uvijek dobijaju popuste na njih.',
+      question: '',
+      answer: '',
     },
     {
-      question: 'Mogu li se nečlanovi pojaviti na našim događajima?',
-      answer: 'Da! Nečlanovi mogu sudjelovati na većini naših javnih događaja po punoj cijeni. Članovi dobijaju značajne popuste i pristup ranoj registraciji.',
+      question: '',
+      answer: '',
     },
     {
-      question: 'Što ako želim otkazati članstvo?',
-      answer: 'Možete otkazati bilo kada obavijestom našeg ureda. Ne nudimo povrat za trenutni period članstva, ali vaše članstvo ostaje aktivno do datuma obnavljanja.',
+      question: '',
+      answer: '',
     },
   ];
 
@@ -134,9 +134,9 @@ export default function MembershipPage() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white">Članstvo</h1>
+            <h1 className="text-6xl md:text-7xl font-light text-white"></h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Pridruži se našoj zajednici i postani dio nečega posebnog
+              
             </p>
             <div className="w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
@@ -232,8 +232,8 @@ export default function MembershipPage() {
       <section className="py-20 md:py-32 bg-slate-900 border-y border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <FadeIn className="mb-16 text-center">
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Zašto se pridružiti?</h2>
-            <p className="text-xl text-gray-300 font-light">Benefiti članstva HNDS-a</p>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
+            <p className="text-xl text-gray-300 font-light"></p>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -314,9 +314,9 @@ export default function MembershipPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Spreman/sprema za pridruživanje?</h2>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
             <p className="text-gray-300 font-light text-lg mb-8">
-              Odaberite nivo članstva i počnite uživati benefite danas
+              
             </p>
           </motion.div>
           <motion.div
