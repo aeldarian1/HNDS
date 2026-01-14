@@ -10,7 +10,7 @@ import { useI18n } from "../context/I18nContext";
 export default function PrivacyPolicy() {
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
-  const { t } = useI18n();
+  const { t, language } = useI18n();
 
   // Default Croatian content (fallback)
   const defaultSections = [
@@ -131,6 +131,12 @@ export default function PrivacyPolicy() {
 
   // Try to load translations from i18n; if missing, fall back to defaults
   const privacyTrans: any = (t as any)("pages.privacy");
+
+  // Debug info to help identify why translations may not load
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line no-console
+    console.log("I18n debug -> language:", language, "pages.privacy:", privacyTrans);
+  }
 
   const headerTitle = privacyTrans && typeof privacyTrans === "object" && privacyTrans.header?.title
     ? privacyTrans.header.title
