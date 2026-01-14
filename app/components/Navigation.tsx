@@ -12,12 +12,12 @@ export default function Navigation() {
 
   // Memoize navigation links
   const navLinks = useMemo(() => [
-    { href: "/about", label: "O nama" },
-    { href: "/#events", label: "Događaji" },
-    { href: "/gallery", label: "Galerija" },
-    { href: "/kronike", label: "Kronike" },
-    { href: "/membership", label: "Članstvo" },
-    { href: "/statut", label: "Statut" },
+    { href: "/", label: "Naslovna" },
+    { href: "/o-nama", label: "O nama" },
+    { href: "/aktivnosti", label: "Aktivnosti" },
+    { href: "/vijesti", label: "Vijesti" },
+    { href: "/galerija", label: "Galerija" },
+    { href: "/kontakt", label: "Kontakt" },
   ], []);
 
   // Memoize toggle function
