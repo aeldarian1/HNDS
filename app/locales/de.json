@@ -1,13 +1,11 @@
 {
   "navigation": {
-    "home": "Startseite",
-    "about": "Über uns",
-    "gallery": "Galerie",
-    "chronicles": "Chroniken",
-    "events": "Veranstaltungen",
-    "membership": "Mitgliedschaft",
-    "contact": "Kontakt",
-    "statute": "Satzung"
+    "home": "STARTSEITE",
+    "about": "ÜBER UNS",
+    "activities": "AKTIVITÄTEN",
+    "news": "NACHRICHTEN",
+    "gallery": "GALERIE",
+    "contact": "KONTAKT"
   },
   "gallery": {
     "title": "Galerie",

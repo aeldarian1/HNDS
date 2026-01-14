@@ -16,8 +16,8 @@ export default function Navigation() {
   const navLinks = useMemo(() => [
     { href: "/", label: t("navigation.home") },
     { href: "/o-nama", label: t("navigation.about") },
-    { href: "/aktivnosti", label: t("navigation.events") },
-    { href: "/vijesti", label: t("chronicles.title") },
+    { href: "/aktivnosti", label: t("navigation.activities") },
+    { href: "/vijesti", label: t("navigation.news") },
     { href: "/galerija", label: t("navigation.gallery") },
     { href: "/kontakt", label: t("navigation.contact") },
   ], [t]);

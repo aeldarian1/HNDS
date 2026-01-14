@@ -1,13 +1,11 @@
 {
   "navigation": {
-    "home": "Početna",
-    "about": "O nama",
-    "gallery": "Galerija",
-    "chronicles": "Kronike",
-    "events": "Događaji",
-    "membership": "Članstvo",
-    "contact": "Kontakt",
-    "statute": "Statut"
+    "home": "NASLOVNA",
+    "about": "O NAMA",
+    "activities": "AKTIVNOSTI",
+    "news": "VIJESTI",
+    "gallery": "GALERIJA",
+    "contact": "KONTAKT"
   },
   "gallery": {
     "title": "Galerija",
