@@ -12,7 +12,7 @@
     "subtitle": "Sammlung von Fotos aus unseren Veranstaltungen",
     "totalGalleries": "Galerien",
     "yearsArchive": "Archiv nach Jahren",
-    "viewGallery": "Galerie ansehen",
+    "viewGallery": "Galerie anzeigen",
     "allYears": "Alle Jahre",
     "photos": "Fotos",
     "shareTitle": "Teilen Sie mit uns",
@@ -24,7 +24,7 @@
     "readMore": "Mehr erfahren"
   },
   "common": {
-    "loading": "Lädt...",
+    "loading": "Wird geladen...",
     "noResults": "Keine Ergebnisse",
     "back": "Zurück",
     "language": "Sprache"
@@ -54,7 +54,7 @@
     "readMore": "Mehr lesen"
   },
   "cta": {
-    "joinCommunity": "Unserer Gemeinschaft beitreten",
+    "joinCommunity": "Treten Sie der Gemeinschaft bei",
     "joinDescription": "Werden Sie Teil einer lebendigen Gemeinschaft, die sich dem interkulturellen Austausch und der Freundschaft widmet",
     "contactUs": "Kontaktieren Sie uns",
     "viewGallery": "Galerie anzeigen"
@@ -68,7 +68,7 @@
   "contact": {
     "title": "Kontaktieren Sie uns",
     "subtitle": "Haben Sie Fragen? Kontaktieren Sie uns gerne – wir antworten schnell!",
-    "name": "Name",
+    "name": "Name und Vorname",
     "email": "E-Mail",
     "subject": "Betreff",
     "message": "Nachricht",
