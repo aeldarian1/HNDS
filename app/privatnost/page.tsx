@@ -197,7 +197,7 @@ export default function PrivacyPolicy() {
       <section className="py-20 bg-slate-900 border-b border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
           <FadeIn className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">Detaljne informacije</h2>
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">{t('pages.privacy.header.title') || 'Detaljne informacije'}</h2>
             <div className="w-12 h-px bg-yellow-600" />
           </FadeIn>
 
@@ -281,11 +281,11 @@ export default function PrivacyPolicy() {
           >
             <h3 className="text-2xl font-light text-white mb-6">Hrvatsko-njemačko društvo Split</h3>
             <div className="space-y-4 text-gray-300 font-light">
-              <p><strong>Email:</strong> hnjd.split@gmail.com</p>
-              <p><strong>Telefon:</strong> +385 98 244 124</p>
-              <p><strong>Sjedište:</strong> Sinjska 3, 21000 Split</p>
+              <p><strong>{t('contact.email') || 'Email'}:</strong> hnjd.split@gmail.com</p>
+              <p><strong>{t('contact.phone') || 'Telefon'}:</strong> +385 98 244 124</p>
+              <p><strong>{t('contact.address') || 'Sjedište'}:</strong> Sinjska 3, 21000 Split</p>
               <p className="text-sm text-gray-400 pt-4">
-                Zadnja ažuriranja: {new Date().toLocaleDateString('hr-HR')}
+                {language === 'de' ? 'Letzte Aktualisierung:' : 'Zadnja ažuriranja:'} {new Date().toLocaleDateString(language === 'de' ? 'de-DE' : 'hr-HR')}
               </p>
             </div>
           </motion.div>
