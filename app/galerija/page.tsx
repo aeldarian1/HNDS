@@ -48,7 +48,7 @@ export default function GalerijaPage() {
                         <span className="text-4xl font-light text-yellow-600">{category.count}</span>
                       </div>
                       <h3 className="text-2xl font-light text-white">{category.name}</h3>
-                      <p className="text-gray-400 font-light text-sm">fotografija</p>
+                      <p className="text-gray-400 font-light text-sm">{t('gallery.photos')}</p>
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -73,10 +73,8 @@ export default function GalerijaPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Podijelite sa nama</h2>
-            <p className="text-gray-300 font-light text-lg">
-              Imate interesantnu fotografiju? Pošaljite nam je!
-            </p>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">{t('gallery.shareTitle')}</h2>
+            <p className="text-gray-300 font-light text-lg">{t('gallery.shareSubtitle')}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}

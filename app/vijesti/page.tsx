@@ -219,10 +219,8 @@ export default function VijestiPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Pratite nas</h2>
-            <p className="text-gray-300 font-light text-lg">
-              Prijavite se na našu newsletter za najnovije vijesti i obavijesti
-            </p>
+            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">{t('newsletter.title')}</h2>
+            <p className="text-gray-300 font-light text-lg">{t('newsletter.description')}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
