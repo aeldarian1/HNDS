@@ -7,6 +7,7 @@ import { ChevronRight, ExternalLink, BookOpen, Calendar, MapPin, Users, Music, G
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from '@/app/components/AnimatedSection';
+import { EventCalendar } from '@/app/components/EventCalendar';
 
 export default function AktivnostiPage() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -88,6 +89,17 @@ export default function AktivnostiPage() {
           </HeroFadeIn>
         </div>
       </section>
+
+          {/* Event Calendar */}
+          <section className="py-20 md:py-32 bg-slate-900 border-y border-yellow-600/30">
+            <div className="max-w-6xl mx-auto px-4 md:px-8">
+              <FadeIn className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-light text-white">Kalendar aktivnosti</h2>
+                <p className="text-gray-300 font-light">Pogledajte nadolazeće tečajeve, događaje i izlete</p>
+              </FadeIn>
+              <EventCalendar />
+            </div>
+          </section>
 
       <section className="py-20 md:py-32 bg-slate-950">
         <div className="max-w-6xl mx-auto px-4 md:px-8">

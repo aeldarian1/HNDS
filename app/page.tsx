@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { HeroFadeIn, FadeIn, StaggerContainer, StaggerItem } from "./components/AnimatedSection";
 import { motion } from "framer-motion";
+import { NewsletterSignup } from "./components/NewsletterSignup";
 
 export default function Home() {
   const stats = [
@@ -219,6 +220,9 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
+
+      {/* Newsletter Signup */}
+      <NewsletterSignup />
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 bg-slate-950 border-t border-yellow-600/30">

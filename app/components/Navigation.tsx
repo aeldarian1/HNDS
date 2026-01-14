@@ -105,7 +105,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link 
-              href="/contact" 
+              href="/kontakt" 
               className="ml-4 px-6 py-2.5 bg-yellow-600/10 border border-yellow-600/40 text-sm font-medium text-yellow-500 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-600/20"
             >
               Kontakt
