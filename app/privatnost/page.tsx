@@ -5,11 +5,15 @@ import { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { HeroFadeIn, FadeIn } from "../components/AnimatedSection";
+import { useI18n } from "../context/I18nContext";
 
 export default function PrivacyPolicy() {
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
-  const sections = [
+  const { t } = useI18n();
+
+  // Default Croatian content (fallback)
+  const defaultSections = [
     {
       title: "1. Uvod i odgovornost",
       subtitle: "O zaštiti vaših podataka",
@@ -124,6 +128,33 @@ export default function PrivacyPolicy() {
       ],
     },
   ];
+
+  // Try to load translations from i18n; if missing, fall back to defaults
+  const privacyTrans: any = (t as any)("pages.privacy");
+
+  const headerTitle = privacyTrans && typeof privacyTrans === "object" && privacyTrans.header?.title
+    ? privacyTrans.header.title
+    : "Pravila privatnosti";
+
+  const headerSubtitle = privacyTrans && typeof privacyTrans === "object" && privacyTrans.header?.subtitle
+    ? privacyTrans.header.subtitle
+    : "Kako čuvamo i štitimo vaše osobne podatke";
+
+  const intro: string[] = privacyTrans && typeof privacyTrans === "object" && Array.isArray(privacyTrans.intro)
+    ? privacyTrans.intro
+    : [
+        "Zaštita vaše privatnosti je temeljna vrijednost Hrvatsko-njemačkog društva Split.",
+        "Ova pravila privatnosti objašnjavaju kako prikupljamo, koristimo, štitimo i dijelimo ",
+        "vaše osobne podatke kada koristite našu web stranicu i naše usluge.",
+      ];
+
+  const note: string = privacyTrans && typeof privacyTrans === "object" && privacyTrans.note
+    ? privacyTrans.note
+    : "Vaši podaci se čuvaju sigurno i koriste se isključivo za namjene opisane u ovim pravilima. Imate potpuna prava na pristup, ispravak i brisanje vaših podataka.";
+
+  const sections = privacyTrans && typeof privacyTrans === "object" && Array.isArray(privacyTrans.sections)
+    ? privacyTrans.sections
+    : defaultSections;
 
   return (
     <main className="bg-slate-950 text-white">
