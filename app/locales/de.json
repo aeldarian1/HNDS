@@ -136,7 +136,18 @@
         "branchesLabel": "Aktive Zweigstellen"
       }
     },
-    "activities": { "title": "Aktivitäten", "subtitle": "Sprachkurse, Kulturveranstaltungen, Ausflüge und gesellschaftliche Aktivitäten" },
+    "activities": { 
+      "title": "Aktivitäten", 
+      "subtitle": "Sprachkurse, Kulturveranstaltungen, Ausflüge und gesellschaftliche Aktivitäten",
+      "filters": {
+        "all": "Alle Aktivitäten",
+        "courses": "Kurse",
+        "events": "Veranstaltungen",
+        "excursions": "Ausflüge",
+        "social": "Gesellschaftlich",
+        "cultural": "Kultur"
+      }
+    },
     "news": {
       "title": "Nachrichten",
       "subtitle": "Neueste Ankündigungen und Ereignisse",

@@ -136,7 +136,18 @@
         "branchesLabel": "Aktivna ogranka"
       }
     },
-    "activities": { "title": "Aktivnosti", "subtitle": "Jezični tečajevi, kulturni događaji, izleti i društvene aktivnosti" },
+    "activities": { 
+      "title": "Aktivnosti", 
+      "subtitle": "Jezični tečajevi, kulturni događaji, izleti i društvene aktivnosti",
+      "filters": {
+        "all": "Sve aktivnosti",
+        "courses": "Tečajevi",
+        "events": "Događaji",
+        "excursions": "Izleti",
+        "social": "Društveni",
+        "cultural": "Kultura"
+      }
+    },
     "news": {
       "title": "Vijesti",
       "subtitle": "Najnovije obavijesti i događaji",
