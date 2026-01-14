@@ -78,7 +78,64 @@
     "followUs": "Folgen Sie uns"
   },
   "pages": {
-    "about": { "title": "Über uns", "subtitle": "Wir verbinden kroatische und deutsche Kultur seit 1990" },
+    "about": { 
+      "title": "Über uns", 
+      "subtitle": "Verbindung der kroatischen und deutschen Kultur seit 1990.",
+      "mission": {
+        "title": "Unsere Mission",
+        "description": "Die Kroatisch-Deutsche Gesellschaft Split fördert kulturelle, sprachliche und freundschaftliche Beziehungen zwischen Kroatien und Deutschland. Als Brücke zwischen zwei Kulturen organisieren wir Sprachkurse, kulturelle Veranstaltungen, Ausflüge und Reisen, Vorträge und Workshops – und bieten so Gelegenheit zum Lernen und zur Zusammenarbeit.",
+        "quote": "Die Kroatisch-Deutsche Gesellschaft Split bemüht sich, durch zahlreiche Aktivitäten die Zusammenarbeit der Bürger Kroatiens und Deutschlands, einschließlich des gesamten deutschsprachigen Raums, zu fördern.",
+        "quoteAuthor": "Nikola Horvat",
+        "quoteTitle": "Präsident",
+        "community": "Gemeinschaft",
+        "communityDesc": "Menschen über Grenzen und Sprachen hinweg zusammenbringen",
+        "learning": "Lernen",
+        "learningDesc": "Sprachkurse, Vorträge und kulturelle Workshops",
+        "connection": "Verbindung",
+        "connectionDesc": "Internationale Freundschaft und Zusammenarbeit zwischen den Völkern"
+      },
+      "leadership": {
+        "title": "Führung",
+        "subtitle": "Unsere erfahrene Führung leitet die Gesellschaft zu den gesetzten Zielen und der Vision der Stärkung internationaler Beziehungen.",
+        "president": "Präsident seit 2022.",
+        "vicePresident": "Vizepräsident",
+        "boardChair": "Vorsitzender des Aufsichtsrats",
+        "members": {
+          "nikolaHorvat": "Nikola Horvat",
+          "dragutinKorlaet": "Dragutin Korlaet",
+          "petarFabjanovic": "Petar - Petrito Fabjanović",
+          "tomislavDraskovic": "Tomislav Drašković"
+        }
+      },
+      "branches": {
+        "title": "Zweigstellen",
+        "subtitle": "Unsere Zweigstellen ermöglichen Mitgliedern aus verschiedenen Regionen die aktive Teilnahme an der Arbeit der Gesellschaft.",
+        "makarska": "Makarska Riviera",
+        "brac": "Brač",
+        "sinj": "Sinj",
+        "trogir": "Trogir",
+        "kastela": "Kaštela",
+        "inFormation": "In Gründung",
+        "president": "Präsident"
+      },
+      "partners": {
+        "title": "Partnerorganisationen",
+        "subtitle": "Durch Partnerschaften mit relevanten Organisationen stärken wir die internationale Zusammenarbeit und den kulturellen Austausch.",
+        "ahk": "Deutsch-Kroatische Industrie- und Handelskammer Zagreb",
+        "mainz": "Deutsch-Kroatische Gesellschaft Mainz",
+        "berlin": "Deutsch-Kroatische Gesellschaft Berlin Brandenburg"
+      },
+      "stats": {
+        "years": "35",
+        "yearsLabel": "Jahre Tätigkeit",
+        "members": "120+",
+        "membersLabel": "Mitglieder",
+        "events": "20+",
+        "eventsLabel": "Veranstaltungen jährlich",
+        "branches": "3",
+        "branchesLabel": "Aktive Zweigstellen"
+      }
+    },
     "activities": { "title": "Aktivitäten", "subtitle": "Sprachkurse, Kulturveranstaltungen, Ausflüge und gesellschaftliche Aktivitäten" },
     "news": {
       "title": "Nachrichten",
@@ -97,5 +154,24 @@
       }
     },
     "gallery": { "title": "Galerie", "subtitle": "Fotos von unseren Veranstaltungen und Aktivitäten" }
+  },
+  "footer": {
+    "tagline": "Kulturen verbinden, Freundschaften seit 1990 aufbauen",
+    "becomeMember": "Mitglied werden",
+    "contact": "Kontakt",
+    "links": "Links",
+    "membership": "Mitgliedschaft",
+    "howToJoin": "Wie man beitritt",
+    "statute": "Satzung",
+    "branches": "Niederlassungen",
+    "locations": "Standorte",
+    "contactInfo": "Kontakt",
+    "address": "Sinjska 3",
+    "city": "21000 Split, Kroatien",
+    "phone": "+385 98 244 124",
+    "email": "hnjd.split@gmail.com",
+    "copyright": "© {year} Kroatisch-Deutsche Gesellschaft Split. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen"
   }
 }

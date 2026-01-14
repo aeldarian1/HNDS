@@ -78,7 +78,64 @@
     "followUs": "Prati nas"
   },
   "pages": {
-    "about": { "title": "O nama", "subtitle": "Povezujemo hrvatsku i njemačku kulturu od 1990." },
+    "about": { 
+      "title": "O nama", 
+      "subtitle": "Povezujemo hrvatsku i njemačku kulturu od 1990.",
+      "mission": {
+        "title": "Naša misija",
+        "description": "Hrvatsko-njemačko društvo Split promiče kulturne, jezične i prijateljske veze između Hrvatske i Njemačke. Kao most između dviju kultura, organiziramo jezične tečajeve, kulturna događanja, izlete i putovanja, predavanja i radionice – pružajući priliku za učenje i suradnju.",
+        "quote": "Hrvatsko-njemačko društvo Split nastoji brojnim aktivnostima pospješiti suradnju građana Hrvatske i Njemačke, uključujući cijelo njemačko govorno područje.",
+        "quoteAuthor": "Nikola Horvat",
+        "quoteTitle": "Predsjednik",
+        "community": "Zajednica",
+        "communityDesc": "Okupljanje ljudi preko granica i jezika",
+        "learning": "Učenje",
+        "learningDesc": "Jezični tečajevi, predavanja i kulturne radionice",
+        "connection": "Veza",
+        "connectionDesc": "Međunarodno prijateljstvo i suradnja između naroda"
+      },
+      "leadership": {
+        "title": "Rukovodstvo",
+        "subtitle": "Naše iskusno rukovodstvo vodi Društvo prema postavljenim ciljevima i viziji jačanja međunarodnih veza.",
+        "president": "Predsjednik od 2022.",
+        "vicePresident": "Potpredsjednik",
+        "boardChair": "Predsjednik nadzornog odbora",
+        "members": {
+          "nikolaHorvat": "Nikola Horvat",
+          "dragutinKorlaet": "Dragutin Korlaet",
+          "petarFabjanovic": "Petar - Petrito Fabjanović",
+          "tomislavDraskovic": "Tomislav Drašković"
+        }
+      },
+      "branches": {
+        "title": "Ogranci",
+        "subtitle": "Naši ogranci omogućavaju članovima iz različitih regija aktivno sudjelovanje u radu Društva.",
+        "makarska": "Makarska Rivijera",
+        "brac": "Brač",
+        "sinj": "Sinj",
+        "trogir": "Trogir",
+        "kaštela": "Kaštela",
+        "inFormation": "U osnivanju",
+        "president": "Predsjednik"
+      },
+      "partners": {
+        "title": "Društva sa kojima surađujemo",
+        "subtitle": "Kroz partnerstva s relevantnim organizacijama jačamo međunarodnu suradnju i kulturnu razmjenu.",
+        "ahk": "Njemačko-hrvatska industrijska i trgovačka komora Zagreb",
+        "mainz": "Njemačko-hrvatsko društvo Mainz",
+        "berlin": "Njemačko-hrvatsko društvo Berlin Brandenburg"
+      },
+      "stats": {
+        "years": "35",
+        "yearsLabel": "Godina djelovanja",
+        "members": "120+",
+        "membersLabel": "Članova",
+        "events": "20+",
+        "eventsLabel": "Događanja godišnje",
+        "branches": "3",
+        "branchesLabel": "Aktivna ogranka"
+      }
+    },
     "activities": { "title": "Aktivnosti", "subtitle": "Jezični tečajevi, kulturni događaji, izleti i društvene aktivnosti" },
     "news": {
       "title": "Vijesti",
@@ -97,5 +154,24 @@
       }
     },
     "gallery": { "title": "Galerija", "subtitle": "Pogledajte fotografije iz naših događaja i aktivnosti" }
+  },
+  "footer": {
+    "tagline": "Povezivanje kultura, izgradnja prijateljstava od 1990.",
+    "becomeMember": "Postani član",
+    "contact": "Kontakt",
+    "links": "Poveznice",
+    "membership": "Članstvo",
+    "howToJoin": "Kako se učlaniti",
+    "statute": "Statut",
+    "branches": "Podružnice",
+    "locations": "Lokacije",
+    "contactInfo": "Kontakt",
+    "address": "Sinjska 3",
+    "city": "21000 Split, Hrvatska",
+    "phone": "+385 98 244 124",
+    "email": "hnjd.split@gmail.com",
+    "copyright": "© {year} Hrvatsko-njemačko društvo Split. Sva prava pridržana.",
+    "privacy": "Pravila privatnosti",
+    "terms": "Uvjeti korištenja"
   }
 }
