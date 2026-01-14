@@ -206,7 +206,7 @@ export default function PrivacyPolicy() {
           </FadeIn>
 
           <div className="space-y-4">
-            {sections.map((section, index) => (
+            {sections.map((section: any, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -243,7 +243,7 @@ export default function PrivacyPolicy() {
                 >
                   <div className="px-6 pb-6 pt-0 border-t border-yellow-600/20 bg-yellow-600/5">
                     <ul className="space-y-3">
-                      {section.content.map((item, idx) => (
+                      {section.content.map((item: any, idx: number) => (
                         <motion.li
                           key={idx}
                           initial={{ opacity: 0, x: -10 }}
