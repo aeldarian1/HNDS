@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Users, BookOpen, Globe, Award, Building2 } from "lucide-react";
+import Image from "next/image";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { HeroFadeIn, FadeIn, SlideLeft, SlideRight } from "../components/AnimatedSection";
@@ -14,22 +15,26 @@ export default function About() {
     { 
       name: t("pages.about.leadership.members.nikolaHorvat"), 
       role: t("pages.about.leadership.president"),
-      icon: Award 
+      icon: Award,
+      image: "/images/leadership/nikola-horvat.jpg"
     },
     { 
       name: t("pages.about.leadership.members.dragutinKorlaet"), 
       role: t("pages.about.leadership.vicePresident"),
-      icon: Users 
+      icon: Users,
+      image: "/images/leadership/dragutin-korlaet.jpg"
     },
     { 
       name: t("pages.about.leadership.members.petarFabjanovic"), 
       role: t("pages.about.leadership.vicePresident"),
-      icon: Users 
+      icon: Users,
+      image: "/images/leadership/petar-fabjanovic.jpg"
     },
     { 
       name: t("pages.about.leadership.members.tomislavDraskovic"), 
       role: t("pages.about.leadership.boardChair"),
-      icon: Building2 
+      icon: Building2,
+      image: "/images/leadership/tomislav-draskovic.jpg"
     },
   ];
 
@@ -174,13 +179,21 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-slate-900/50 border border-yellow-600/20 rounded-lg p-6 text-center hover:border-yellow-600/40 transition-all"
+                className="bg-slate-900/50 border border-yellow-600/20 rounded-lg overflow-hidden hover:border-yellow-600/40 transition-all group"
               >
-                <div className="w-16 h-16 mx-auto mb-4 bg-yellow-600/10 rounded-full flex items-center justify-center">
-                  <member.icon className="w-8 h-8 text-yellow-600" />
+                <div className="relative w-full aspect-square overflow-hidden bg-slate-800">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
-                <h3 className="font-semibold text-white mb-2">{member.name}</h3>
-                <p className="text-gray-400 text-sm">{member.role}</p>
+                <div className="p-6 text-center">
+                  <h3 className="font-semibold text-white mb-2">{member.name}</h3>
+                  <p className="text-gray-400 text-sm">{member.role}</p>
+                </div>
               </motion.div>
             ))}
           </div>
