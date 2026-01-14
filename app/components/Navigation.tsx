@@ -106,13 +106,7 @@ export default function Navigation() {
                 <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-yellow-500 group-hover:w-3/4 group-hover:left-1/8 transition-all duration-300" />
               </Link>
             ))}
-            <Link 
-              href="/kontakt" 
-              className="ml-4 px-6 py-2.5 bg-yellow-600/10 border border-yellow-600/40 text-sm font-medium text-yellow-500 hover:bg-yellow-600 hover:text-white hover:border-yellow-600 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-600/20"
-            >
-              {t("navigation.contact")}
-            </Link>
-            <div className="ml-2">
+            <div className="ml-4">
               <LanguageSwitcher />
             </div>
           </motion.div>
@@ -155,16 +149,6 @@ export default function Navigation() {
                   </motion.div>
                 ))}
                 
-                <motion.div variants={itemVariants} className="pt-2">
-                  <Link
-                    href="/contact"
-                    className="block w-full px-6 py-3.5 border border-yellow-600/40 text-base font-medium text-yellow-500 bg-yellow-600/10 hover:bg-yellow-600 hover:text-white transition-all duration-300 text-center rounded-lg"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Kontakt
-                  </Link>
-                </motion.div>
-
                 <motion.div variants={itemVariants} className="pt-6 border-t border-yellow-600/20">
                   <LanguageSwitcher />
                 </motion.div>
