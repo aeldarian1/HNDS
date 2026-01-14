@@ -7,8 +7,10 @@ import { ChevronRight, Calendar, User, ArrowRight } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from '@/app/components/AnimatedSection';
+import { useI18n } from '@/app/context/I18nContext';
 
 export default function VijestiPage() {
+  const { t } = useI18n();
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const news = [
@@ -75,10 +77,10 @@ export default function VijestiPage() {
   ];
 
   const categories = [
-    { value: 'all', label: 'Sve vijesti' },
-    { value: 'news', label: 'Novosti' },
-    { value: 'events', label: 'Događaji' },
-    { value: 'announcement', label: 'Obavijesti' },
+    { value: 'all', label: t('pages.news.filters.all') },
+    { value: 'news', label: t('pages.news.filters.news') },
+    { value: 'events', label: t('pages.news.filters.events') },
+    { value: 'announcement', label: t('pages.news.filters.announcements') },
   ];
 
   const filtered = selectedCategory === 'all' 
@@ -101,13 +103,13 @@ export default function VijestiPage() {
   const getCategoryLabel = (category: string) => {
     switch (category) {
       case 'events':
-        return 'Događaj';
+        return t('pages.news.category.event');
       case 'news':
-        return 'Novost';
+        return t('pages.news.category.news');
       case 'announcement':
-        return 'Obavijest';
+        return t('pages.news.category.announcement');
       default:
-        return 'Vijest';
+        return t('pages.news.category.generic');
     }
   };
 
@@ -127,10 +129,8 @@ export default function VijestiPage() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white">Vijesti</h1>
-            <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Pratite najnovije obavijesti, događaje i zanimljivosti iz našeg društva
-            </p>
+            <h1 className="text-6xl md:text-7xl font-light text-white">{t('pages.news.title')}</h1>
+            <p className="text-xl text-gray-300 max-w-2xl font-light">{t('pages.news.subtitle')}</p>
             <div className="w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
         </div>
@@ -194,7 +194,7 @@ export default function VijestiPage() {
                         href={`/vijesti/${article.slug}`}
                         className="text-yellow-600 hover:text-yellow-500 transition inline-flex items-center gap-2 text-sm font-light"
                       >
-                        Pročitaj više
+                        {t('news.readMore')}
                         <ChevronRight className="w-4 h-4" />
                       </Link>
                     </div>
@@ -206,7 +206,7 @@ export default function VijestiPage() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-400 font-light text-lg">Nema vijesti u toj kategoriji</p>
+              <p className="text-gray-400 font-light text-lg">{t('common.noResults')}</p>
             </div>
           )}
         </div>
@@ -235,13 +235,13 @@ export default function VijestiPage() {
               href="/kontakt"
               className="px-8 py-3 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300"
             >
-              Kontaktiraj nas
+              {t('cta.contactUs')}
             </Link>
             <Link
               href="/aktivnosti"
               className="px-8 py-3 border border-yellow-600 text-yellow-600 font-light hover:bg-yellow-600/10 transition duration-300"
             >
-              Pogledaj aktivnosti
+              {t('hero.exploreActivities')}
             </Link>
           </motion.div>
         </div>

@@ -27,5 +27,74 @@
     "noResults": "Nema rezultata",
     "back": "Nazad",
     "language": "Jezik"
+  },
+  "hero": {
+    "title": "Spajamo ljude i kulturu",
+    "subtitle": "Hrvatski-njemačko društvo Split - Kultura, jezik i međunarodno prijateljstvo",
+    "exploreActivities": "Istražite aktivnosti",
+    "learnMore": "Saznaj više"
+  },
+  "features": {
+    "history": { "number": "01", "title": "Naša povijest", "description": "Kontinuirano djelovanje od 1990. godine" },
+    "courses": { "number": "02", "title": "Jezični tečajevi", "description": "Stručno vodena nastava njemačkog jezika" },
+    "events": { "number": "03", "title": "Kulturni događaji", "description": "Izložbe, koncerti i kulturne aktivnosti" },
+    "trips": { "number": "04", "title": "Izleti i putovanja", "description": "Putovanja koja povezuju i obogaćuju" }
+  },
+  "stats": {
+    "years": "Godina postojanja",
+    "members": "Članova",
+    "locations": "Lokacija",
+    "partnership": "God. partnerstva"
+  },
+  "news": {
+    "title": "Posljednje vijesti",
+    "subtitle": "Pratite najnovije događaje i obavijesti iz našeg društva",
+    "viewAll": "Pogledaj sve vijesti",
+    "readMore": "Pročitaj više"
+  },
+  "cta": {
+    "joinCommunity": "Pridruži se zajednici",
+    "joinDescription": "Postanite dio žive zajednice posvećene međukulturnoj razmjeni i prijateljstvu",
+    "contactUs": "Kontaktiraj nas",
+    "viewGallery": "Pogledaj galeriju"
+  },
+  "newsletter": {
+    "title": "Ostani u toku",
+    "description": "Pretplati se na naš newsletter za najnovije informacije",
+    "email": "Tvoj email",
+    "subscribe": "Pretplati se"
+  },
+  "contact": {
+    "title": "Kontaktiraj nas",
+    "subtitle": "Imaš pitanja? Slobodno nas kontaktiraj - odgovorimo brzo!",
+    "name": "Ime i prezime",
+    "email": "Email",
+    "subject": "Naslov",
+    "message": "Poruka",
+    "send": "Pošalji",
+    "phone": "Telefon",
+    "address": "Adresa",
+    "followUs": "Prati nas"
+  },
+  "pages": {
+    "about": { "title": "O nama", "subtitle": "Povezujemo hrvatsku i njemačku kulturu od 1990." },
+    "activities": { "title": "Aktivnosti", "subtitle": "Jezični tečajevi, kulturni događaji, izleti i društvene aktivnosti" },
+    "news": {
+      "title": "Vijesti",
+      "subtitle": "Najnovije obavijesti i događaji",
+      "filters": {
+        "all": "Sve vijesti",
+        "news": "Novosti",
+        "events": "Događaji",
+        "announcements": "Obavijesti"
+      },
+      "category": {
+        "event": "Događaj",
+        "news": "Novost",
+        "announcement": "Obavijest",
+        "generic": "Vijest"
+      }
+    },
+    "gallery": { "title": "Galerija", "subtitle": "Pogledajte fotografije iz naših događaja i aktivnosti" }
   }
 }

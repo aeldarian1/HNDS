@@ -27,5 +27,74 @@
     "noResults": "Keine Ergebnisse",
     "back": "Zurück",
     "language": "Sprache"
+  },
+  "hero": {
+    "title": "Menschen und Kultur verbinden",
+    "subtitle": "Kroatisch-Deutsche Gesellschaft Split - Kultur, Sprache und internationale Freundschaft",
+    "exploreActivities": "Aktivitäten erkunden",
+    "learnMore": "Mehr erfahren"
+  },
+  "features": {
+    "history": { "number": "01", "title": "Unsere Geschichte", "description": "Kontinuierliche Tätigkeit seit 1990" },
+    "courses": { "number": "02", "title": "Sprachkurse", "description": "Fachkundig geleiteter Deutschunterricht" },
+    "events": { "number": "03", "title": "Kulturelle Veranstaltungen", "description": "Ausstellungen, Konzerte und kulturelle Aktivitäten" },
+    "trips": { "number": "04", "title": "Ausflüge und Reisen", "description": "Reisen, die verbinden und bereichern" }
+  },
+  "stats": {
+    "years": "Jahre Bestehen",
+    "members": "Mitglieder",
+    "locations": "Standorte",
+    "partnership": "Jahre Partnerschaft"
+  },
+  "news": {
+    "title": "Aktuelle Nachrichten",
+    "subtitle": "Verfolgen Sie die neuesten Ereignisse und Ankündigungen unserer Gesellschaft",
+    "viewAll": "Alle Nachrichten anzeigen",
+    "readMore": "Mehr lesen"
+  },
+  "cta": {
+    "joinCommunity": "Unserer Gemeinschaft beitreten",
+    "joinDescription": "Werden Sie Teil einer lebendigen Gemeinschaft, die sich dem interkulturellen Austausch und der Freundschaft widmet",
+    "contactUs": "Kontaktieren Sie uns",
+    "viewGallery": "Galerie anzeigen"
+  },
+  "newsletter": {
+    "title": "Bleiben Sie auf dem Laufenden",
+    "description": "Abonnieren Sie unseren Newsletter für die neuesten Informationen",
+    "email": "Ihre E-Mail",
+    "subscribe": "Abonnieren"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Haben Sie Fragen? Kontaktieren Sie uns gerne – wir antworten schnell!",
+    "name": "Name",
+    "email": "E-Mail",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "send": "Senden",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "followUs": "Folgen Sie uns"
+  },
+  "pages": {
+    "about": { "title": "Über uns", "subtitle": "Wir verbinden kroatische und deutsche Kultur seit 1990" },
+    "activities": { "title": "Aktivitäten", "subtitle": "Sprachkurse, Kulturveranstaltungen, Ausflüge und gesellschaftliche Aktivitäten" },
+    "news": {
+      "title": "Nachrichten",
+      "subtitle": "Neueste Ankündigungen und Ereignisse",
+      "filters": {
+        "all": "Alle Nachrichten",
+        "news": "Neuigkeiten",
+        "events": "Veranstaltungen",
+        "announcements": "Mitteilungen"
+      },
+      "category": {
+        "event": "Veranstaltung",
+        "news": "Neuigkeit",
+        "announcement": "Mitteilung",
+        "generic": "Nachricht"
+      }
+    },
+    "gallery": { "title": "Galerie", "subtitle": "Fotos von unseren Veranstaltungen und Aktivitäten" }
   }
 }

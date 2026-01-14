@@ -6,8 +6,10 @@ import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from '@/app/compone
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { useI18n } from '@/app/context/I18nContext';
 
 export default function GalerijaPage() {
+  const { t } = useI18n();
   const galleryCategories = [
     { name: '2025', slug: '2025', count: '12' },
     { name: '2024', slug: '2024', count: '18' },
@@ -24,10 +26,8 @@ export default function GalerijaPage() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white">Galerija</h1>
-            <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Pogledajte fotogafije iz naših događaja i aktivnosti
-            </p>
+            <h1 className="text-6xl md:text-7xl font-light text-white">{t('pages.gallery.title')}</h1>
+            <p className="text-xl text-gray-300 max-w-2xl font-light">{t('pages.gallery.subtitle')}</p>
             <div className="w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
         </div>
@@ -56,7 +56,7 @@ export default function GalerijaPage() {
                       href={`/galerija/${category.slug}`}
                       className="flex items-center gap-2 text-yellow-600 hover:text-yellow-500 transition font-light"
                     >
-                      Pogledaj <ChevronRight className="w-4 h-4" />
+                      {t('gallery.viewGallery')} <ChevronRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </motion.div>
@@ -88,7 +88,7 @@ export default function GalerijaPage() {
               href="/kontakt"
               className="px-8 py-3 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300 inline-flex items-center gap-2"
             >
-              Kontaktiraj nas <ChevronRight className="w-4 h-4" />
+              {t('cta.contactUs')} <ChevronRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </div>

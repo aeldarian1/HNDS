@@ -8,8 +8,10 @@ import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from '@/app/components/AnimatedSection';
 import { EventCalendar } from '@/app/components/EventCalendar';
+import { useI18n } from '@/app/context/I18nContext';
 
 export default function AktivnostiPage() {
+  const { t } = useI18n();
   const [activeFilter, setActiveFilter] = useState('all');
 
   const activities = [
@@ -81,9 +83,9 @@ export default function AktivnostiPage() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white">Aktivnosti</h1>
+            <h1 className="text-6xl md:text-7xl font-light text-white">{t('pages.activities.title')}</h1>
             <p className="text-xl text-gray-300 max-w-2xl font-light">
-              Jezični tečajevi, kulturni događaji, izleti i društvene aktivnosti
+              {t('pages.activities.subtitle')}
             </p>
             <div className="w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
