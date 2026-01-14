@@ -171,11 +171,9 @@ export default function PrivacyPolicy() {
         <HeroFadeIn className="text-center max-w-3xl">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Lock className="w-10 h-10 text-yellow-600" />
-            <h1 className="text-6xl md:text-7xl font-light">Pravila privatnosti</h1>
+            <h1 className="text-6xl md:text-7xl font-light">{headerTitle}</h1>
           </div>
-          <p className="text-xl text-gray-300 font-light mb-8">
-            Kako čuvamo i štitimo vaše osobne podatke
-          </p>
+          <p className="text-xl text-gray-300 font-light mb-8">{headerSubtitle}</p>
           <div className="h-1 w-12 bg-yellow-600 mx-auto" />
         </HeroFadeIn>
       </section>
@@ -184,20 +182,12 @@ export default function PrivacyPolicy() {
       <section className="py-20 bg-slate-950 border-b border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
           <FadeIn className="space-y-6 text-gray-300 font-light leading-relaxed">
-            <p>
-              Zaštita vaše privatnosti je temeljna vrijednost Hrvatsko-njemačkog društva Split. 
-              Ova pravila privatnosti objašnjavaju kako prikupljamo, koristimo, štitimo i dijelimo 
-              vaše osobne podatke kada koristite našu web stranicu i naše usluge.
-            </p>
-            <p>
-              Ako imate bilo kakva pitanja o ovim pravilima privatnosti ili vašim podacima, 
-              slobodno nas kontaktirajte.
-            </p>
+            {intro.map((p: string, i: number) => (
+              <p key={i}>{p}</p>
+            ))}
+
             <div className="bg-yellow-600/10 border-l-4 border-yellow-600 p-6 mt-8">
-              <p className="text-yellow-100">
-                Vaši podaci se čuvaju sigurno i koriste se isključivo za namjene opisane u ovim pravilima. 
-                Imate potpuna prava na pristup, ispravak i brisanje vaših podataka.
-              </p>
+              <p className="text-yellow-100">{note}</p>
             </div>
           </FadeIn>
         </div>
