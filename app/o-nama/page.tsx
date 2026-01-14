@@ -42,32 +42,50 @@ export default function About() {
     { 
       name: t("pages.about.branches.makarska"), 
       president: "Herbert Buche", 
-      icon: MapPin 
+      icon: MapPin,
+      gradient: "from-blue-600/20 to-cyan-600/20",
+      iconBg: "bg-blue-600/10",
+      image: "/images/cities/Makarska-Riviera-Kroatien-Tipps-e1726048350267.webp"
     },
     { 
       name: t("pages.about.branches.brac"), 
       president: t("pages.about.leadership.members.petarFabjanovic"), 
-      icon: Globe 
+      icon: Globe,
+      gradient: "from-emerald-600/20 to-green-600/20",
+      iconBg: "bg-emerald-600/10",
+      image: "/images/cities/1679584344Island_of_Brac-e1726048476766.jpg"
     },
     { 
       name: t("pages.about.branches.sinj"), 
       president: t("pages.about.branches.inFormation"), 
-      icon: BookOpen 
+      icon: BookOpen,
+      gradient: "from-purple-600/20 to-pink-600/20",
+      iconBg: "bg-purple-600/10",
+      image: "/images/cities/Slike-sa-snimanja-Grad-Sinj-2-2022-no-logo-27-1024x682-1.jpg.webp"
     },
   ];
 
   const partners = [
     {
       name: t("pages.about.partners.ahk"),
-      icon: Building2
+      icon: Building2,
+      gradient: "from-red-600/20 to-orange-600/20",
+      iconBg: "bg-red-600/10",
+      image: "/images/partners/ahk_kroatien_njema_ko_hrvatska_industrijska_i_trgovinska_komora_logo.png"
     },
     {
       name: t("pages.about.partners.mainz"),
-      icon: Globe
+      icon: Globe,
+      gradient: "from-blue-600/20 to-indigo-600/20",
+      iconBg: "bg-blue-600/10",
+      image: "/images/partners/Coat_of_arms_of_Mainz-2008_new.png"
     },
     {
       name: t("pages.about.partners.berlin"),
-      icon: Globe
+      icon: Globe,
+      gradient: "from-yellow-600/20 to-amber-600/20",
+      iconBg: "bg-yellow-600/10",
+      image: "/images/partners/Country_symbol_of_Berlin_color.png.webp"
     },
   ];
 
@@ -218,13 +236,24 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-slate-900/50 border border-yellow-600/20 rounded-lg p-8 hover:border-yellow-600/40 transition-all"
+                className="relative bg-slate-900/50 border border-yellow-600/20 rounded-lg overflow-hidden hover:border-yellow-600/40 transition-all group"
               >
-                <branch.icon className="w-12 h-12 text-yellow-600 mb-4" />
-                <h3 className="text-2xl font-semibold text-white mb-2">{branch.name}</h3>
-                <div className="border-t border-yellow-600/20 pt-4 mt-4">
-                  <p className="text-gray-400 text-sm mb-2">{t("pages.about.branches.president")}</p>
-                  <p className="text-gray-300">{branch.president}</p>
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={branch.image}
+                    alt={branch.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
+                </div>
+                <div className="relative p-6">
+                  <h3 className="text-2xl font-semibold text-white mb-4">{branch.name}</h3>
+                  <div className="border-t border-yellow-600/20 pt-4">
+                    <p className="text-gray-400 text-sm mb-2">{t("pages.about.branches.president")}</p>
+                    <p className="text-gray-300">{branch.president}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -251,12 +280,22 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-slate-900/50 border border-yellow-600/20 rounded-lg p-8 text-center hover:border-yellow-600/40 transition-all"
+                className="relative bg-slate-900/50 border border-yellow-600/20 rounded-lg overflow-hidden hover:border-yellow-600/40 transition-all group"
               >
-                <div className="w-16 h-16 mx-auto mb-4 bg-yellow-600/10 rounded-full flex items-center justify-center">
-                  <partner.icon className="w-8 h-8 text-yellow-600" />
+                <div className="relative w-full h-32 overflow-hidden bg-slate-800/50 flex items-center justify-center p-8">
+                  <div className="relative w-full h-full max-h-20">
+                    <Image
+                      src={partner.image}
+                      alt={partner.name}
+                      fill
+                      className="object-contain group-hover:scale-105 transition-transform duration-300 mix-blend-lighten"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-lg font-medium text-white">{partner.name}</h3>
+                <div className="relative p-6 text-center bg-slate-900/80 border-t border-yellow-600/20">
+                  <h3 className="text-lg font-medium text-white">{partner.name}</h3>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -19,7 +19,7 @@ export default function Statut() {
         "Naziv na njemačkom: Kroatisch-Deutsche Gesellschaft Split",
         "Sjedište: Split - Sinjska 3",
         "Udruga je registrirana kao neprofitna pravna osoba",
-        "Udrugu zastupa predsjednica/predsjednici",
+        "Udrugu zastupa predsjednica/predsjednik",
       ],
     },
     {
@@ -54,10 +54,10 @@ export default function Statut() {
         "Skupština - najviše upravljačko tijelo",
         "Upravni odbor - vodi poslove udruge",
         "Nadzorni odbor - nadzire zakonitost poslovanja",
-        "Predsjednica/Predsjednici - zastupa udrugu",
+        "Predsjednica/predsjednik - zastupa udrugu",
         "Tajnik - obavlja administrativne poslove",
         "Komisije i radna tijela prema potrebi",
-        "Ogranci u Split, Makarska, Brač, Sinj, Trogir i Berlin",
+        "Ogranci u Splitu, Makarskoj, Braču, Sinju, Trogiru i Berlinu",
       ],
     },
     {
@@ -76,9 +76,9 @@ export default function Statut() {
       title: "VI. Upravni odbor",
       subtitle: "Izvršno tijelo",
       content: [
-        "Predsjednica/Predsjedniki, dva potpredsjednika i člani",
+        "Predsjednica/predsjednik, dva potpredsjednika i članovi",
         "Mandat traje dvije godine",
-        "Bira je Skupština",
+        "Bira ga Skupština",
         "Sastaje se najmanje jednom mjesečno",
         "Upravlja imovinom i poslovima udruge",
         "Priprema materijale za Skupštinu",
@@ -89,7 +89,7 @@ export default function Statut() {
       title: "VII. Nadzorni odbor",
       subtitle: "Kontrola financijskog poslovanja",
       content: [
-        "Čine ga predsjednica/predsjedniki i dva člana",
+        "Čine ga predsjednica/predsjednik i dva člana",
         "Mandat traje dvije godine",
         "Nadzire zakonitost financijskog poslovanja",
         "Prati izvršenje zakonskih i ugovornih obveza",
@@ -103,7 +103,7 @@ export default function Statut() {
       content: [
         "Redovno ili počasno članstvo",
         "Pravo sudjelovanja u radnim aktivnostima",
-        "Pravo sučlanstva u upravljanju",
+        "Pravo sudjelovanja u upravljanju",
         "Pravo uvida u dokumente i odluke",
         "Čuvanje ugleda udruge",
         "Pravovremeno plaćanje članarine",
@@ -126,7 +126,7 @@ export default function Statut() {
       title: "X. Zaštita osobnih podataka",
       subtitle: "Privatnost članova",
       content: [
-        "Obrada podataka prema GDPR regulaciji",
+        "Obrada podataka u skladu s GDPR-om",
         "Tajnik je odgovoran za vođenje evidencije",
         "Članovi imaju pravo pristupa i ispravka svojih podataka",
         "Tajnost i sigurnost podataka",
@@ -162,7 +162,7 @@ export default function Statut() {
       title: "XIII. Izmjene Statuta",
       subtitle: "Redakcija i ažuriranje",
       content: [
-        "Zadnji Statut usvođen: 2. ožujka 2024.",
+        "Posljednji Statut usvojen: 2. ožujka 2024.",
         "Skupština donosi odluke većinom glasova",
         "Izmjene stupaju na snagu danom donošenja",
         "Dostavlja se nadležnom uredu državne uprave",
@@ -198,11 +198,11 @@ export default function Statut() {
               Ovaj Statut donesen je na Skupštini udruge održanoj dana <strong>2. ožujka 2024. godine</strong> i služi kao temeljni ustavni dokument koji regulira sve aspekte rada Hrvatsko-njemačkog društva Split.
             </p>
             <p>
-              Statut je izrađen u skladu s <strong>Zakonom o udrugama</strong> i definiše organizacijsku strukturu, prava i obveze članova, način upravljanja, financijsko poslovanje, te sve ostale bitne elemente funkcioniranja udruge.
+              Statut je izrađen u skladu sa <strong>Zakonom o udrugama</strong> i definira organizacijsku strukturu, prava i obveze članova, način upravljanja, financijsko poslovanje te sve ostale bitne elemente funkcioniranja udruge.
             </p>
             <div className="bg-yellow-600/10 border-l-4 border-yellow-600 p-6 mt-8">
               <p className="text-yellow-100">
-                Statut je dostupan svim članovima i javnosti. Sve izmjene Statuta donose se većinom glasova Skupštine i ovjerljavaju kod nadležnog tijela države.
+                Statut je dostupan svim članovima i javnosti. Sve izmjene Statuta donose se većinom glasova Skupštine i ovjeravaju u nadležnom tijelu.
               </p>
             </div>
           </FadeIn>
@@ -405,7 +405,7 @@ export default function Statut() {
                 <div>
                   <h4 className="text-lg font-light text-white mb-2">Ogranci (Podružnice)</h4>
                   <p className="text-gray-300 font-light text-sm">
-                    Aktivne podružnice u Split, Makarska, Brač, Sinj, Trogir i Berlin. Svaki ogranak ima svojeg predsjednika/icu i vodi samostalno financiranje.
+                    Aktivne podružnice u Splitu, Makarskoj, Braču, Sinju, Trogiru i Berlinu. Svaki ogranak ima svojeg predsjednika/icu i vodi samostalno financiranje.
                   </p>
                 </div>
               </motion.div>
@@ -422,12 +422,12 @@ export default function Statut() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-yellow-600 font-light text-xs uppercase tracking-widest mb-4">Imaju pitanja?</p>
+            <p className="text-yellow-600 font-light text-xs uppercase tracking-widest mb-4">Imate pitanja?</p>
             <h2 className="text-5xl md:text-6xl font-light text-white mb-6">
               Trebate više informacija?
             </h2>
             <p className="text-gray-300 font-light text-lg max-w-2xl mx-auto">
-              Ako imate pitanja vezano uz Statut ili rad udruge, slobodno nas kontaktirajte. Dostupni smo tijekom radnih dana.
+              Ako imate pitanja vezana uz Statut ili rad udruge, slobodno nas kontaktirajte. Dostupni smo tijekom radnih dana.
             </p>
           </motion.div>
 
@@ -438,8 +438,8 @@ export default function Statut() {
             transition={{ delay: 0.2 }}
             className="space-y-4"
           >
-            <a href="/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300">
-              Kontaktiraj nas
+            <a href="/kontakt" className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300">
+              Kontaktirajte nas
             </a>
             <p className="text-sm text-gray-400 font-light">
               +385 98 244 124 | hnjd.split@gmail.com

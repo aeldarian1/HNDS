@@ -40,15 +40,17 @@ export default function Footer() {
             <div className="flex gap-4">
               <Link 
                 href="/membership" 
-                className="px-6 py-3 bg-yellow-600/10 border border-yellow-600/40 text-yellow-500 hover:bg-yellow-600 hover:text-white rounded-lg transition-all duration-300 text-sm font-medium"
+                className="group relative px-6 py-3 bg-yellow-600/10 border border-yellow-600/40 text-yellow-500 hover:bg-yellow-600 hover:text-white rounded-lg transition-all duration-300 text-sm font-medium uppercase hover:scale-105 hover:shadow-lg hover:shadow-yellow-600/50 overflow-hidden"
               >
-                {t("footer.becomeMember")}
+                <span className="absolute inset-0 bg-gradient-to-r from-yellow-600/0 via-yellow-600/50 to-yellow-600/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative">{t("footer.becomeMember")}</span>
               </Link>
               <Link 
-                href="/contact" 
-                className="px-6 py-3 border border-yellow-600/40 text-white hover:bg-yellow-600/10 rounded-lg transition-all duration-300 text-sm font-medium"
+                href="/kontakt" 
+                className="group relative px-6 py-3 border border-yellow-600/40 text-white hover:bg-yellow-600/10 rounded-lg transition-all duration-300 text-sm font-medium uppercase hover:scale-105 hover:shadow-lg hover:shadow-yellow-600/30 overflow-hidden"
               >
-                {t("footer.contact")}
+                <span className="absolute inset-0 bg-gradient-to-r from-yellow-600/0 via-yellow-600/20 to-yellow-600/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative">{t("footer.contact")}</span>
               </Link>
             </div>
           </div>
@@ -56,81 +58,96 @@ export default function Footer() {
 
         {/* Links grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          {/* Useful Links */}
           <div>
-            <h4 className="font-medium text-white mb-6 uppercase text-xs tracking-widest text-yellow-500">{t("footer.links")}</h4>
+            <h4 className="font-medium text-white mb-6 uppercase text-xs tracking-widest text-yellow-500">{t("footer.usefulLinks")}</h4>
             <ul className="space-y-3 text-sm font-light text-gray-400">
               <li>
-                <Link href="/o-nama" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
+                <Link href="/" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group uppercase">
+                  <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
+                  {t("navigation.home")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/o-nama" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group uppercase">
                   <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
                   {t("navigation.about")}
                 </Link>
               </li>
               <li>
-                <Link href="/aktivnosti" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
+                <Link href="/kronike" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group uppercase">
                   <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
-                  {t("navigation.activities")}
+                  {t("footer.chronicles")}
                 </Link>
               </li>
               <li>
-                <Link href="/galerija" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
-                  <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
-                  {t("navigation.gallery")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/vijesti" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
+                <Link href="/vijesti" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group uppercase">
                   <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
                   {t("navigation.news")}
                 </Link>
               </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-medium text-white mb-6 uppercase text-xs tracking-widest text-yellow-500">{t("footer.membership")}</h4>
-            <ul className="space-y-3 text-sm font-light text-gray-400">
               <li>
-                <Link href="/membership" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
-                  <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
-                  {t("footer.howToJoin")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/statut" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
+                <Link href="/statut" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group uppercase">
                   <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
                   {t("footer.statute")}
                 </Link>
               </li>
-              <li>
-                <Link href="/o-nama" className="hover:text-yellow-500 transition-colors inline-flex items-center gap-2 group">
-                  <span className="w-0 h-px bg-yellow-500 group-hover:w-4 transition-all" />
-                  {t("footer.branches")}
-                </Link>
-              </li>
             </ul>
           </div>
+
+          {/* Bank Details & Social */}
+          <div>
+            <h4 className="font-medium text-white mb-6 uppercase text-xs tracking-widest text-yellow-500">{t("footer.bankDetails")}</h4>
+            <div className="space-y-2 text-sm font-light text-gray-400 mb-8">
+              <p><span className="text-gray-300">OIB:</span> 72936951527</p>
+              <p><span className="text-gray-300">IBAN:</span><br />HR5324070001024070003</p>
+              <p><span className="text-gray-300">BIC:</span> OTPVHR2X</p>
+              <p><span className="text-gray-300">{t("footer.bank")}:</span> OTP Bank</p>
+            </div>
+            
+            <h4 className="font-medium text-white mb-4 uppercase text-xs tracking-widest text-yellow-500">{t("footer.followUs")}</h4>
+            <div className="flex gap-4">
+              <a href="https://www.facebook.com/people/Hrvatsko-njema%C4%8Dko-dru%C5%A1tvo-Split/61571711064231/" target="_blank" rel="noopener noreferrer" className="relative text-gray-400 hover:text-yellow-500 transition-all duration-300 hover:scale-110 group" aria-label="Facebook">
+                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/20 rounded-full blur-md transition-all duration-300" />
+                <svg className="w-5 h-5 relative" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/hnjd.split/" target="_blank" rel="noopener noreferrer" className="relative text-gray-400 hover:text-yellow-500 transition-all duration-300 hover:scale-110 group" aria-label="Instagram">
+                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/20 rounded-full blur-md transition-all duration-300" />
+                <svg className="w-5 h-5 relative" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@hnds-hr" target="_blank" rel="noopener noreferrer" className="relative text-gray-400 hover:text-yellow-500 transition-all duration-300 hover:scale-110 group" aria-label="YouTube">
+                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/20 rounded-full blur-md transition-all duration-300" />
+                <svg className="w-5 h-5 relative" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Branches/Locations */}
           <div>
             <h4 className="font-medium text-white mb-6 uppercase text-xs tracking-widest text-yellow-500">{t("footer.locations")}</h4>
             <ul className="space-y-3 text-sm font-light text-gray-400">
               <li>Split</li>
               <li>Makarska</li>
-              <li>Bra�</li>
+              <li>Brač</li>
               <li>Sinj</li>
-              <li>Trogir</li>
-              <li>Ka�tela</li>
             </ul>
           </div>
+
+          {/* Contact Info */}
           <div>
             <h4 className="font-medium text-white mb-6 uppercase text-xs tracking-widest text-yellow-500">{t("footer.contactInfo")}</h4>
             <div className="space-y-3 text-sm font-light text-gray-400">
               <p>{t("footer.address")}</p>
               <p>{t("footer.city")}</p>
               <p className="pt-2">
+                <span className="text-gray-300">Tel:</span><br />
                 <a href="tel:+38598244124" className="hover:text-yellow-500 transition-colors">
                   +385 98 244 124
                 </a>
               </p>
               <p>
-                <a href="mailto:hnjd.split@gmail.com" className="hover:text-yellow-500 transition-colors">
+                <span className="text-gray-300">Email:</span><br />
+                <a href="mailto:hnjd.split@gmail.com" className="hover:text-yellow-500 transition-colors break-all">
                   hnjd.split@gmail.com
                 </a>
               </p>
@@ -142,11 +159,11 @@ export default function Footer() {
         <div className="pt-8 border-t border-yellow-600/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm font-light text-gray-500">
-              � {currentYear} {t("footer.copyright")}
+              © {currentYear} {t("footer.copyright")}
             </p>
             <div className="flex gap-6 text-xs font-light text-gray-500">
-              <Link href="/privacy" className="hover:text-yellow-500 transition-colors">{t("footer.privacy")}</Link>
-              <Link href="/terms" className="hover:text-yellow-500 transition-colors">{t("footer.terms")}</Link>
+              <Link href="/privatnost" className="hover:text-yellow-500 transition-colors uppercase">{t("footer.privacy")}</Link>
+              <Link href="/uvjeti" className="hover:text-yellow-500 transition-colors uppercase">{t("footer.terms")}</Link>
             </div>
           </div>
         </div>

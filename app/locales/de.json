@@ -171,6 +171,11 @@
     "becomeMember": "Mitglied werden",
     "contact": "Kontakt",
     "links": "Links",
+    "usefulLinks": "Nützliche Links",
+    "chronicles": "Chroniken",
+    "bankDetails": "Bankverbindung",
+    "followUs": "Folgen Sie uns",
+    "bank": "Bank",
     "membership": "Mitgliedschaft",
     "howToJoin": "Wie man beitritt",
     "statute": "Satzung",
@@ -181,7 +186,7 @@
     "city": "21000 Split, Kroatien",
     "phone": "+385 98 244 124",
     "email": "hnjd.split@gmail.com",
-    "copyright": "© {year} Kroatisch-Deutsche Gesellschaft Split. Alle Rechte vorbehalten.",
+    "copyright": "Kroatisch-Deutsche Gesellschaft Split. Alle Rechte vorbehalten.",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen"
   }

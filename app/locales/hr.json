@@ -31,7 +31,7 @@
   },
   "hero": {
     "title": "Spajamo ljude i kulturu",
-    "subtitle": "Hrvatski-njemačko društvo Split - Kultura, jezik i međunarodno prijateljstvo",
+    "subtitle": "Hrvatsko-njemačko društvo Split - Kultura, jezik i međunarodno prijateljstvo",
     "exploreActivities": "Istražite aktivnosti",
     "learnMore": "Saznaj više"
   },
@@ -171,6 +171,11 @@
     "becomeMember": "Postani član",
     "contact": "Kontakt",
     "links": "Poveznice",
+    "usefulLinks": "Korisne poveznice",
+    "chronicles": "Kronike",
+    "bankDetails": "Bankovni podaci",
+    "followUs": "Zapratite nas",
+    "bank": "Banka",
     "membership": "Članstvo",
     "howToJoin": "Kako se učlaniti",
     "statute": "Statut",
@@ -181,7 +186,7 @@
     "city": "21000 Split, Hrvatska",
     "phone": "+385 98 244 124",
     "email": "hnjd.split@gmail.com",
-    "copyright": "© {year} Hrvatsko-njemačko društvo Split. Sva prava pridržana.",
+    "copyright": "Hrvatsko-njemačko društvo Split. Sva prava pridržana.",
     "privacy": "Pravila privatnosti",
     "terms": "Uvjeti korištenja"
   }

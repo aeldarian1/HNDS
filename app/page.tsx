@@ -1,15 +1,27 @@
 "use client";
 import { ChevronRight, Calendar, Users, Zap, Globe, BookOpen, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { HeroFadeIn, FadeIn, StaggerContainer, StaggerItem } from "./components/AnimatedSection";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { NewsletterSignup } from "./components/NewsletterSignup";
 import { useI18n } from "@/app/context/I18nContext";
+import { useRef } from "react";
 
 export default function Home() {
   const { t } = useI18n();
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.5]);
+  
   const stats = [
     { value: "35+", label: t("stats.years") },
     { value: "500+", label: t("stats.members") },
@@ -53,36 +65,63 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 md:pt-56 md:pb-32 relative overflow-hidden border-b border-yellow-600/30">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-950" />
+      <section ref={heroRef} className="relative h-screen min-h-[600px] overflow-hidden border-b border-yellow-600/30">
+        {/* Hero Image with overlay */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{ y, scale }}
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
+          <Image
+            src="/images/hero-poznati-nijemci.jpg"
+            alt="Poznati Nijemci"
+            fill
+            priority
+            className="object-cover object-center"
+            quality={95}
+            style={{
+              filter: 'brightness(1.15) contrast(1.1) saturate(0.95)',
+            }}
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/70 to-slate-950/90" />
+          {/* Additional vignette effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/50 via-transparent to-slate-950/50" />
+          {/* Subtle yellow tint overlay */}
+          <div className="absolute inset-0 bg-yellow-600/5 mix-blend-overlay" />
+        </motion.div>
         
-        {/* Grid pattern */}
+        {/* Grid pattern overlay */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(234, 179, 8) 1px, transparent 0)', backgroundSize: '50px 50px'}}></div>
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 md:px-8">
-          <HeroFadeIn className="space-y-8 text-center">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-tight">
+        <motion.div 
+          className="relative h-full flex items-center max-w-6xl mx-auto px-4 md:px-8"
+          style={{ opacity }}
+        >
+          <HeroFadeIn className="space-y-8 text-center w-full">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-tight drop-shadow-2xl">
               {t("hero.title")}
             </h1>
 
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto font-light drop-shadow-lg">
               {t("hero.subtitle")}
             </p>
 
             <HeroFadeIn delay={0.2} className="flex gap-4 justify-center flex-wrap pt-4">
               <Link
                 href="/aktivnosti"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all duration-300"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all duration-300 hover:scale-105"
               >
                 {t("hero.exploreActivities")}
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/o-nama"
-                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
+                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300 backdrop-blur-sm hover:scale-105"
               >
                 {t("hero.learnMore")}
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -97,6 +136,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 + i * 0.1 }}
+                  className="backdrop-blur-md bg-slate-950/50 p-4 rounded-lg border border-yellow-600/30 shadow-lg shadow-yellow-600/10 hover:bg-slate-950/60 hover:border-yellow-600/50 hover:shadow-yellow-600/20 transition-all duration-300"
                 >
                   <div className="text-3xl md:text-4xl font-light text-yellow-500 mb-2">{stat.value}</div>
                   <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-light">{stat.label}</div>
@@ -104,7 +144,7 @@ export default function Home() {
               ))}
             </HeroFadeIn>
           </HeroFadeIn>
-        </div>
+        </motion.div>
       </section>
 
       {/* Featured Sections - 4 Columns */}
