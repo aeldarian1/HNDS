@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Montserrat } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/app/context/I18nContext";
+import { Analytics } from "@vercel/analytics/react";
 import { draftMode } from "next/headers";
 import { VisualEditingComponent } from "./components/VisualEditing";
 import { LayoutClientProviders } from "./components/LayoutClientProviders";
@@ -80,6 +81,7 @@ export default async function RootLayout({
         <LayoutClientProviders />
         <I18nProvider>
           {children}
+          <Analytics />
         </I18nProvider>
         {draft.isEnabled && <VisualEditingComponent />}
       </body>
