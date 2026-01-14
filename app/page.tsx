@@ -74,7 +74,7 @@ export default function Home() {
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <Image
+            <Image
             src="/images/hero-poznati-nijemci.jpg"
             alt="Poznati Nijemci"
             fill
