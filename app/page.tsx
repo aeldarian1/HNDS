@@ -6,41 +6,43 @@ import Footer from "./components/Footer";
 import { HeroFadeIn, FadeIn, StaggerContainer, StaggerItem } from "./components/AnimatedSection";
 import { motion } from "framer-motion";
 import { NewsletterSignup } from "./components/NewsletterSignup";
+import { useI18n } from "@/app/context/I18nContext";
 
 export default function Home() {
+  const { t } = useI18n();
   const stats = [
-    { value: "35+", label: "Godina postojanja" },
-    { value: "500+", label: "Članova" },
-    { value: "6", label: "Lokacija" },
-    { value: "55", label: "God. partnerstva" }
+    { value: "35+", label: t("stats.years") },
+    { value: "500+", label: t("stats.members") },
+    { value: "6", label: t("stats.locations") },
+    { value: "55", label: t("stats.partnership") }
   ];
 
   const features = [
     {
-      number: "01",
-      title: "Naša povijest",
-      description: "Kontinuirano djelovanje od 1990. godine",
+      number: t("features.history.number"),
+      title: t("features.history.title"),
+      description: t("features.history.description"),
       link: "/o-nama",
       icon: Calendar,
     },
     {
-      number: "02",
-      title: "Jezični tečajevi",
-      description: "Stručno vodena nastava njemačkog jezika",
+      number: t("features.courses.number"),
+      title: t("features.courses.title"),
+      description: t("features.courses.description"),
       link: "/aktivnosti",
       icon: BookOpen,
     },
     {
-      number: "03",
-      title: "Kulturni događaji",
-      description: "Izložbe, koncerti i kulturne aktivnosti",
+      number: t("features.events.number"),
+      title: t("features.events.title"),
+      description: t("features.events.description"),
       link: "/aktivnosti",
       icon: Globe,
     },
     {
-      number: "04",
-      title: "Izleti i putovanja",
-      description: "Putovanja koja povezuju i obogaćuju",
+      number: t("features.trips.number"),
+      title: t("features.trips.title"),
+      description: t("features.trips.description"),
       link: "/aktivnosti",
       icon: MapPin,
     },
@@ -63,15 +65,11 @@ export default function Home() {
         <div className="relative max-w-6xl mx-auto px-4 md:px-8">
           <HeroFadeIn className="space-y-8 text-center">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-tight">
-              Spajamo
-              <br />
-              <span className="font-serif italic bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-500 bg-clip-text text-transparent">
-                ljude i kulturu
-              </span>
+              {t("hero.title")}
             </h1>
 
             <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light">
-              Hrvatski-njemačko društvo Split - Kultura, jezik i međunarodno prijateljstvo
+              {t("hero.subtitle")}
             </p>
 
             <HeroFadeIn delay={0.2} className="flex gap-4 justify-center flex-wrap pt-4">
@@ -79,14 +77,14 @@ export default function Home() {
                 href="/aktivnosti"
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all duration-300"
               >
-                Istražite aktivnosti
+                {t("hero.exploreActivities")}
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/o-nama"
                 className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
               >
-                Saznaj više
+                {t("hero.learnMore")}
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </HeroFadeIn>
@@ -160,8 +158,8 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-slate-900 border-y border-yellow-600/30">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <FadeIn className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-light text-white mb-4">Posljednje vijesti</h2>
-            <p className="text-gray-400 font-light text-lg">Pratite najnovije događaje i obavijesti iz našeg društva</p>
+            <h2 className="text-4xl md:text-6xl font-light text-white mb-4">{t("news.title")}</h2>
+            <p className="text-gray-400 font-light text-lg">{t("news.subtitle")}</p>
           </FadeIn>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -201,7 +199,7 @@ export default function Home() {
                     href={`/vijesti/${news.slug}`}
                     className="text-yellow-600 hover:text-yellow-500 transition flex items-center gap-2 text-sm font-light group"
                   >
-                    Pročitaj više
+                    {t("news.readMore")}
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.article>
@@ -214,7 +212,7 @@ export default function Home() {
               href="/vijesti"
               className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
             >
-              Pogledaj sve vijesti
+              {t("news.viewAll")}
               <ChevronRight className="w-4 h-4" />
             </Link>
           </FadeIn>
@@ -228,9 +226,9 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-slate-950 border-t border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-8">
           <FadeIn className="space-y-4">
-            <h2 className="text-4xl md:text-6xl font-light text-white">Pridruži se zajednici</h2>
+            <h2 className="text-4xl md:text-6xl font-light text-white">{t("cta.joinCommunity")}</h2>
             <p className="text-xl text-gray-300 font-light">
-              Postanite dio žive zajednice posvećene međukulturnoj razmjeni i prijateljstvu
+              {t("cta.joinDescription")}
             </p>
           </FadeIn>
 
@@ -239,14 +237,14 @@ export default function Home() {
               href="/kontakt"
               className="px-8 py-4 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300 inline-flex items-center gap-2"
             >
-              Kontaktiraj nas
+              {t("cta.contactUs")}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/galerija"
               className="px-8 py-4 border-2 border-yellow-600 text-yellow-600 font-light hover:bg-yellow-600/10 transition duration-300"
             >
-              Pogledaj galeriju
+              {t("cta.viewGallery")}
             </Link>
           </FadeIn>
         </div>

@@ -21,13 +21,47 @@ const categoryLabels = {
   social: { hr: 'Društveni', de: 'Gesellschaftlich' },
 };
 
+function getMonthMatrix(date: Date) {
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+
+  const startDayOfWeek = (firstDay.getDay() + 6) % 7; // Monday=0
+  const daysInMonth = lastDay.getDate();
+
+  const days: Date[] = [];
+
+  // Leading days from previous month
+  for (let i = 0; i < startDayOfWeek; i++) {
+    days.push(new Date(year, month, i - startDayOfWeek + 1));
+  }
+  // Current month days
+  for (let d = 1; d <= daysInMonth; d++) {
+    days.push(new Date(year, month, d));
+  }
+  // Trailing days to fill 6x7 grid
+  while (days.length % 7 !== 0) {
+    const last = days[days.length - 1];
+    days.push(new Date(last.getFullYear(), last.getMonth(), last.getDate() + 1));
+  }
+
+  // Chunk into weeks
+  const weeks: Date[][] = [];
+  for (let i = 0; i < days.length; i += 7) {
+    weeks.push(days.slice(i, i + 7));
+  }
+  return weeks;
+}
+
 export function EventCalendar() {
   const { language } = useI18n();
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  const monthEvents = useMemo(() => {
-    return getEventsByMonth(currentDate.getFullYear(), currentDate.getMonth());
-  }, [currentDate]);
+  const monthEvents = useMemo(() => getEventsByMonth(currentDate.getFullYear(), currentDate.getMonth()), [currentDate]);
+  const weeks = useMemo(() => getMonthMatrix(currentDate), [currentDate]);
+
+  const isSameDay = (a: Date, b: Date) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 
   const handlePrevMonth = () => {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1));
@@ -67,88 +101,54 @@ export function EventCalendar() {
         </motion.button>
       </div>
 
-      {/* Events List */}
-      {monthEvents.length > 0 ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {monthEvents.map((event, idx) => {
-            const colors = categoryColors[event.category];
-            const label = categoryLabels[event.category][language as 'hr' | 'de'];
-
-            return (
-              <motion.div
-                key={event.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className={`group relative overflow-hidden rounded-lg border border-yellow-600/30 hover:border-yellow-600 transition-all p-6 bg-gradient-to-br ${colors.bg}`}
-              >
-                <div className="space-y-4">
-                  {/* Header */}
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className={`inline-block px-3 py-1 rounded text-xs font-medium uppercase tracking-wider ${colors.badge}`}>
-                        {label}
-                      </div>
-                      <h3 className="text-xl font-light text-white mt-2 group-hover:text-yellow-400 transition">
-                        {language === 'de' ? event.titleDe : event.title}
-                      </h3>
+      {/* Month Grid */}
+      <div className="overflow-hidden rounded-lg border border-yellow-600/30">
+        {/* Weekday header */}
+        <div className="grid grid-cols-7 bg-slate-900/60 border-b border-yellow-600/20">
+          {["Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned"].map((d) => (
+            <div key={d} className="px-3 py-2 text-xs text-gray-400 uppercase tracking-wider text-center">{d}</div>
+          ))}
+        </div>
+        {/* Weeks */}
+        <div className="divide-y divide-yellow-600/10">
+          {weeks.map((week, wi) => (
+            <div key={wi} className="grid grid-cols-7">
+              {week.map((day, di) => {
+                const inCurrentMonth = day.getMonth() === currentDate.getMonth();
+                const todaysEvents = monthEvents.filter(e => isSameDay(e.date, day));
+                return (
+                  <div key={di} className={`min-h-[110px] p-2 border-r border-yellow-600/10 last:border-r-0 ${inCurrentMonth ? 'bg-slate-950' : 'bg-slate-950/60'} hover:bg-slate-900/60 transition-colors`}>
+                    <div className="flex items-center justify-between">
+                      <span className={`text-xs ${inCurrentMonth ? 'text-gray-300' : 'text-gray-600'}`}>{day.getDate()}</span>
+                      {isSameDay(day, new Date()) && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-yellow-600/20 text-yellow-500">danas</span>
+                      )}
+                    </div>
+                    <div className="mt-2 space-y-1">
+                      {todaysEvents.map((event) => {
+                        const colors = categoryColors[event.category];
+                        const label = categoryLabels[event.category][language as 'hr' | 'de'];
+                        return (
+                          <div key={event.id} className={`px-2 py-1 rounded border border-yellow-600/20 bg-gradient-to-r ${colors.bg}`}>
+                            <div className="flex items-center gap-2">
+                              <span className={`text-[10px] ${colors.badge} px-1 py-0.5 rounded`}>{label}</span>
+                              <span className="text-xs text-white truncate">{language === 'de' ? event.titleDe : event.title}</span>
+                            </div>
+                            <div className="flex items-center gap-2 mt-1 text-[10px] text-gray-400">
+                              <Clock className="w-3 h-3 text-yellow-600" />
+                              <span>{event.time}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
-
-                  {/* Description */}
-                  <p className="text-gray-300 font-light text-sm">
-                    {language === 'de' ? event.descriptionDe : event.description}
-                  </p>
-
-                  {/* Details */}
-                  <div className="space-y-2 pt-4 border-t border-yellow-600/20">
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
-                      <CalendarIcon className="w-4 h-4 text-yellow-600" />
-                      {event.date.toLocaleDateString(language === 'de' ? 'de-DE' : 'hr-HR')}
-                    </div>
-
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
-                      <Clock className="w-4 h-4 text-yellow-600" />
-                      {event.time}
-                    </div>
-
-                    <div className="flex items-center gap-2 text-sm text-gray-400">
-                      <MapPin className="w-4 h-4 text-yellow-600" />
-                      {event.location}
-                    </div>
-
-                    {event.capacity && (
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <Users className="w-4 h-4 text-yellow-600" />
-                        {event.registered || 0} / {event.capacity} {language === 'de' ? 'Teilnehmer' : 'Sudionika'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* CTA */}
-                  <button className="w-full mt-4 px-4 py-2 bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-400 font-light rounded transition">
-                    {language === 'de' ? 'Mehr erfahren' : 'Saznaj više'}
-                  </button>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center py-12"
-        >
-          <p className="text-gray-400 font-light">
-            {language === 'de' ? 'Keine Veranstaltungen in diesem Monat' : 'Nema događaja ovaj mjesec'}
-          </p>
-        </motion.div>
-      )}
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
