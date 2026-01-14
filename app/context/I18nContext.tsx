@@ -19,15 +19,16 @@ const translations: Record<Language, Record<string, any>> = {
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('hr');
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    // Get saved language from localStorage
-    const saved = localStorage.getItem('language') as Language | null;
-    if (saved && (saved === 'hr' || saved === 'de')) {
-      setLanguageState(saved);
+    // Get saved language from localStorage (client only)
+    try {
+      const saved = localStorage.getItem('language') as Language | null;
+      if (saved && (saved === 'hr' || saved === 'de')) {
+        setLanguageState(saved);
+      }
+    } catch (e) {
+      // ignore (localStorage may be unavailable in some environments)
     }
-    setMounted(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -45,10 +46,6 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
     return value || key;
   };
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
 
   return (
     <I18nContext.Provider value={{ language, setLanguage, t }}>

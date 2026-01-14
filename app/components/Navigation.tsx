@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Menu, X, Home, Info, Activity, Newspaper, Image as ImageIcon, Mail, ChevronRight, Instagram, Facebook, Youtube } from "lucide-react";
@@ -42,7 +42,7 @@ export default function Navigation() {
   }, [isOpen]);
 
   // Memoize animation variants
-  const menuVariants = useMemo(() => ({
+  const menuVariants: Variants = useMemo(() => ({
     closed: {
       x: "100%",
       transition: {
@@ -59,9 +59,9 @@ export default function Navigation() {
         damping: 40,
       }
     }
-  }), []);
+  }) as Variants, []);
 
-  const itemVariants = useMemo(() => ({
+  const itemVariants: Variants = useMemo(() => ({
     closed: { 
       opacity: 0, 
       x: 50,
@@ -78,9 +78,9 @@ export default function Navigation() {
         ease: "easeOut"
       }
     })
-  }), []);
+  }) as Variants, []);
 
-  const backdropVariants = useMemo(() => ({
+  const backdropVariants: Variants = useMemo(() => ({
     closed: { 
       opacity: 0,
       transition: {
@@ -93,7 +93,7 @@ export default function Navigation() {
         duration: 0.3
       }
     }
-  }), []);
+  }) as Variants, []);
 
   return (
     <>
