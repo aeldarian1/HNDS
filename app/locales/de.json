@@ -190,4 +190,134 @@
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen"
   }
+  ,
+  "pages": {
+    "privacy": {
+      "header": {
+        "title": "Datenschutzerklärung",
+        "subtitle": "Wie wir Ihre personenbezogenen Daten schützen"
+      },
+      "intro": [
+        "Der Schutz Ihrer Privatsphäre ist ein Grundwert der Kroatisch-Deutschen Gesellschaft Split.",
+        "Diese Datenschutzerklärung erläutert, wie wir Ihre personenbezogenen Daten sammeln, verwenden, schützen und weitergeben, wenn Sie unsere Website und Dienstleistungen nutzen.",
+        "Wenn Sie Fragen zu dieser Datenschutzerklärung oder Ihren Daten haben, kontaktieren Sie uns bitte."
+      ],
+      "note": "Ihre Daten werden sicher gespeichert und nur für die in dieser Erklärung genannten Zwecke verwendet. Sie haben volle Rechte auf Zugang, Berichtigung und Löschung Ihrer Daten.",
+      "sections": [
+        {
+          "title": "1. Einleitung und Verantwortlichkeit",
+          "subtitle": "Zum Schutz Ihrer Daten",
+          "content": [
+            "Die Kroatisch-Deutsche Gesellschaft Split betreibt diese Website",
+            "Der Schutz Ihrer personenbezogenen Daten hat für uns Priorität",
+            "Diese Seite erklärt, wie wir Ihre Daten erheben, verwenden und schützen",
+            "Diese Richtlinie entspricht der DSGVO",
+            "Bei Fragen kontaktieren Sie uns unter hnjd.split@gmail.com"
+          ]
+        },
+        {
+          "title": "2. Arten der erhobenen Daten",
+          "subtitle": "Welche Daten wir erheben",
+          "content": [
+            "Personenbezogene Daten (Name, E-Mail, Telefonnummer)",
+            "Adressdaten (Adresse, Stadt, Postleitzahl)",
+            "Daten aus Formularen, die Sie freiwillig ausfüllen",
+            "Technische Daten (IP-Adresse, Browser-Typ, Zugriffszeiten)",
+            "Cookies und Daten über Ihre Aktivitäten auf der Website"
+          ]
+        },
+        {
+          "title": "3. Wie wir Ihre Daten verwenden",
+          "subtitle": "Zwecke der Datenverarbeitung",
+          "content": [
+            "Bereitstellung und Verbesserung unserer Dienste und Website",
+            "Kommunikation mit Ihnen über unsere Aktivitäten und Veranstaltungen",
+            "Beantwortung Ihrer Anfragen und Anliegen",
+            "Analyse der Website-Nutzung zur Verbesserung",
+            "Einhaltung gesetzlicher und regulatorischer Verpflichtungen",
+            "Analytik und Statistiken"
+          ]
+        },
+        {
+          "title": "4. Rechtsgrundlage der Verarbeitung",
+          "subtitle": "Rechtliche Grundlagen",
+          "content": [
+            "Ihre Einwilligung zur Datenverarbeitung",
+            "Erfüllung vertraglicher Verpflichtungen",
+            "Einhaltung gesetzlicher Pflichten",
+            "Berechtigte Interessen der Kroatisch-Deutschen Gesellschaft Split",
+            "Schutz Ihrer und fremder Rechte"
+          ]
+        },
+        {
+          "title": "5. Datensicherheit",
+          "subtitle": "Wie wir Ihre Daten schützen",
+          "content": [
+            "Technische Schutzmaßnahmen: Verschlüsselung, Firewalls",
+            "Organisatorische Maßnahmen: Zugriffsrechte, Mitarbeiterschulungen",
+            "Regelmäßige Audits und Sicherheitsprüfungen",
+            "Zugriff nur für berechtigtes Personal",
+            "Schnelle Benachrichtigung im Falle eines Sicherheitsvorfalls"
+          ]
+        },
+        {
+          "title": "6. Ihre Rechte",
+          "subtitle": "Was Sie mit Ihren Daten tun können",
+          "content": [
+            "Recht auf Auskunft über Ihre personenbezogenen Daten",
+            "Recht auf Berichtigung unrichtiger Daten",
+            "Recht auf Löschung ('Recht auf Vergessenwerden')",
+            "Recht auf Einschränkung der Verarbeitung",
+            "Recht auf Datenübertragbarkeit",
+            "Widerspruchsrecht gegen die Verarbeitung",
+            "Recht auf Auswahl und Kontrolle automatisierter Verarbeitung"
+          ]
+        },
+        {
+          "title": "7. Cookies",
+          "subtitle": "Wie wir Cookies verwenden",
+          "content": [
+            "Cookies werden verwendet, um Ihr Erlebnis zu verbessern",
+            "Technische Cookies für grundlegende Funktionalität",
+            "Analytische Cookies zur Nutzungsauswertung",
+            "Sie können Cookies in Ihren Browsereinstellungen ablehnen",
+            "Das Ablehnen von Cookies kann die Funktionalität der Seite beeinträchtigen"
+          ]
+        },
+        {
+          "title": "8. Weitergabe von Daten",
+          "subtitle": "Mit wem wir Daten teilen",
+          "content": [
+            "Daten werden nicht ohne Ihre Einwilligung an Dritte weitergegeben",
+            "Ausnahme: gesetzliche Verpflichtungen und gerichtliche Anordnungen",
+            "Externe Partner (Hosting, E-Mail-Dienste) mit vertraglicher Geheimhaltungspflicht",
+            "Alle Partner sind zur Vertraulichkeit verpflichtet",
+            "Daten bleiben unter Kontrolle der Kroatisch-Deutschen Gesellschaft Split"
+          ]
+        },
+        {
+          "title": "9. Aufbewahrungsdauer",
+          "subtitle": "Wie lange wir Daten speichern",
+          "content": [
+            "Daten werden so lange aufbewahrt, wie es für den genannten Zweck erforderlich ist",
+            "Mitgliedsdaten werden während der Mitgliedschaft und darüber hinaus aufbewahrt",
+            "Technische Daten werden nach 12 Monaten gelöscht",
+            "Sie können jederzeit die Löschung Ihrer Daten verlangen",
+            "Gesetzliche Verpflichtungen können längere Aufbewahrung erfordern"
+          ]
+        },
+        {
+          "title": "10. Kontakt und Ausübung Ihrer Rechte",
+          "subtitle": "Wie Sie Ihre Rechte ausüben",
+          "content": [
+            "Senden Sie Anfragen zur Ausübung Ihrer Rechte an hnjd.split@gmail.com",
+            "Eine Antwort erfolgt innerhalb von 30 Tagen",
+            "Wenn Sie mit der Antwort unzufrieden sind, können Sie die Datenschutzbehörde kontaktieren",
+            "Kontakt: Datenschutzbehörde (AZOP)",
+            "E-Mail: info@azop.hr | Tel: +385 1 6109 0800"
+          ]
+        }
+      ]
+    }
+  }
 }
