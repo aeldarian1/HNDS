@@ -197,7 +197,7 @@ export default function PrivacyPolicy() {
       <section className="py-20 bg-slate-900 border-b border-yellow-600/30">
         <div className="max-w-4xl mx-auto px-4 md:px-8">
           <FadeIn className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">{t('pages.privacy.header.title') || 'Detaljne informacije'}</h2>
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">{t('pages.privacy.details') || 'Detaljne informacije'}</h2>
             <div className="w-12 h-px bg-yellow-600" />
           </FadeIn>
 

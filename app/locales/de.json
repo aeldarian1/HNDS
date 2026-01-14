@@ -319,5 +319,10 @@
         }
       ]
     }
+    ,
+    "privacy": {
+      "details": "Detaillierte Informationen"
+    }
   }
 }
+

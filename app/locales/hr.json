@@ -106,6 +106,10 @@
           "petarFabjanovic": "Petar - Petrito Fabjanović",
           "tomislavDraskovic": "Tomislav Drašković"
         }
+        ,
+        "privacy": {
+          "details": "Detaljne informacije"
+        }
       },
       "branches": {
         "title": "Ogranci",
