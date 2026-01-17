@@ -121,7 +121,7 @@ export default function Home() {
             alt="HNDS Hero"
             fill
             priority
-            quality={90}
+            quality={75}
             className="object-cover object-center"
             style={{ filter: 'brightness(1.1) contrast(1.05)' }}
           />

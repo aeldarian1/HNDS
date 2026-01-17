@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import { withGTConfig } from 'gt-next/config';
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
   // Enable React Strict Mode for development
@@ -104,10 +105,16 @@ const nextConfig: NextConfig = {
 };
 
 // Wrap with General Translation config
-export default withGTConfig(nextConfig, {
-  // Disable SSG warnings since we use client-side language switching
-  disableSSGWarnings: true,
-  // Use localStorage for detecting locale
-  defaultLocale: 'hr',
-  locales: ['hr', 'de'],
+const withAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
 });
+
+export default withAnalyzer(
+  withGTConfig(nextConfig, {
+    // Disable SSG warnings since we use client-side language switching
+    disableSSGWarnings: true,
+    // Use localStorage for detecting locale
+    defaultLocale: 'hr',
+    locales: ['hr', 'de'],
+  })
+);
