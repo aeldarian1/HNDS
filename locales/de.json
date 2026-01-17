@@ -1,31 +1,1267 @@
 {
   "navigation": {
-    "home": "Home",
-    "about": "About",
-    "gallery": "Gallery",
-    "chronicles": "Chronicles",
-    "events": "Events",
-    "membership": "Membership",
-    "contact": "Contact",
-    "statute": "Statute"
+    "home": "STARTSEITE",
+    "about": "ÜBER UNS",
+    "activities": "AKTIVITÄTEN",
+    "news": "NACHRICHTEN",
+    "gallery": "GALERIE",
+    "chronicles": "CHRONIKEN",
+    "events": "VERANSTALTUNGEN",
+    "membership": "MITGLIEDSCHAFT",
+    "contact": "KONTAKT",
+    "statute": "SATZUNG",
+    "homepage": "Startseite",
+    "searchPlaceholder": "Suchen...",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "close": "Schließen"
+  },
+  "hero": {
+    "title": "Willkommen bei der Kroatisch-Deutschen Gesellschaft Split",
+    "subtitle": "Wir bauen seit 1990 Brücken zwischen Kulturen",
+    "exploreActivities": "Aktivitäten erkunden",
+    "learnMore": "Mehr erfahren"
+  },
+  "stats": {
+    "years": "Jahre Tradition",
+    "members": "Aktive Mitglieder",
+    "locations": "Zweigstelle",
+    "partnership": "Jahre Partnerschaft"
+  },
+  "features": {
+    "history": {
+      "title": "Reiche Geschichte",
+      "description": "Seit 1990 bauen wir Brücken zwischen der kroatischen und deutschen Kultur durch vielfaltige Programme und Aktivitäten."
+    },
+    "courses": {
+      "title": "Sprachkurse",
+      "description": "Hochwertige Deutschkurse für alle Niveaus, vom Anfanger bis zum Fortgeschrittenen."
+    },
+    "events": {
+      "title": "Kulturveranstaltungen",
+      "description": "Vielfaltige Kulturprogramme, Vortrage, Konzerte und Ausstellungen das ganze Jahr über."
+    },
+    "trips": {
+      "title": "Reisen",
+      "description": "Organisierte Reisen nach Deutschland und durch Kroatien mit reichem Kulturprogramm."
+    },
+    "learnMore": "Mehr erfahren"
+  },
+  "aboutPreview": {
+    "badge": "Über uns",
+    "title": "Brücke zwischen den Kulturen",
+    "description": "Die Kroatisch-Deutsche Gesellschaft Split verbindet seit 1990 Menschen, Kulturen und Sprachen. Unsere Mission ist die Förderung der Freundschaft zwischen Kroatien und Deutschland durch kulturelle Veranstaltungen, Sprachkurse und gemeinsame Projekte.",
+    "learnMore": "Mehr erfahren",
+    "becomeMember": "Mitglied werden"
+  },
+  "newsPlaceholder": {
+    "date1": "14. Januar 2026",
+    "category1": "Ankündigung",
+    "title1": "Neueste Nachrichten aus unserer Gesellschaft",
+    "date2": "10. Januar 2026",
+    "category2": "Veranstaltung",
+    "title2": "Bevorstehende kulturelle Veranstaltungen",
+    "date3": "5. Januar 2026",
+    "category3": "Neuigkeit",
+    "title3": "Neue Deutschkurse"
+  },
+  "news": {
+    "title": "Neueste Nachrichten",
+    "subtitle": "Bleiben Sie über unsere Aktivitaten auf dem Laufenden",
+    "viewAll": "Alle Nachrichten"
   },
   "gallery": {
-    "title": "Gallery",
-    "subtitle": "Here you can view photos from our events, expert meetings and gatherings. Captured moments show the activities and atmosphere of our meetings.",
-    "totalGalleries": "galleries",
-    "yearsArchive": "years of archives",
-    "viewGallery": "View gallery",
-    "allYears": "All"
+    "title": "Galerie",
+    "subtitle": "Sehen Sie sich Momente unserer Aktivitaten an",
+    "shareTitle": "Teilen Sie Ihre Momente",
+    "shareSubtitle": "Sie haben Fotos von unseren Veranstaltungen? Teilen Sie diese mit uns!"
   },
-  "chronicles": {
-    "title": "Chronicles",
-    "subtitle": "Detailed chronicles of our activities",
-    "readMore": "Read more"
+  "cta": {
+    "joinCommunity": "Treten Sie unserer Gemeinschaft bei",
+    "joinDescription": "Werden Sie Teil unserer großen Familie und genießen Sie alle Vorteile der Mitgliedschaft.",
+    "contactUs": "Kontaktieren Sie uns",
+    "viewGallery": "Galerie anschauen"
+  },
+  "newsletter": {
+    "title": "Melden Sie sich für unseren Newsletter an",
+    "description": "Bleiben Sie über unsere Veranstaltungen und Aktivitaten auf dem Laufenden",
+    "email": "Ihre E-Mail-Adresse",
+    "subscribe": "Abonnieren",
+    "sending": "Wird gesendet...",
+    "success": "Sie haben sich erfolgreich angemeldet!",
+    "error": "Ein Fehler ist aufgetreten: "
+  },
+  "footer": {
+    "hnds": "Kroatisch-Deutsche Gesellschaft Split",
+    "chronicles": "Chroniken",
+    "statute": "Satzung",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "ctaTitle": "Werden Sie Teil unserer Gemeinschaft",
+    "tagline": "Wir bauen seit 1990 Brucken zwischen Kulturen",
+    "becomeMember": "Mitglied werden",
+    "contact": "Kontakt",
+    "usefulLinks": "Nützliche Links",
+    "legal": "Rechtlich",
+    "locations": "Standorte",
+    "contactInfo": "Kontaktinformationen",
+    "address": "Sinjska 3",
+    "city": "21000 Split, Kroatien",
+    "bank": "Bank",
+    "copyright": "Kroatisch-Deutsche Gesellschaft Split. Alle Rechte vorbehalten."
+  },
+  "errors": {
+    "title": "Hoppla! Etwas ist schief gelaufen",
+    "description": "Es tut uns leid, ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "tryAgain": "Erneut versuchen",
+    "backHome": "Zurück zur Startseite",
+    "notFound": {
+      "title": "404 - Seite nicht gefunden",
+      "description": "Es tut uns leid, aber die gesuchte Seite existiert nicht oder wurde entfernt.",
+      "suggestions": "Diese Seiten konnten Sie interessieren:"
+    }
+  },
+  "pages": {
+    "news": {
+      "title": "Nachrichten und Veranstaltungen",
+      "subtitle": "Folgen Sie unseren Aktivitaten und Veranstaltungen",
+      "filters": {
+        "all": "Alle",
+        "news": "Nachrichten",
+        "events": "Veranstaltungen",
+        "announcements": "Ankundigung"
+      }
+    },
+    "about": {
+      "title": "Über uns",
+      "subtitle": "Lernen Sie unsere reiche Geschichte und Mission kennen",
+      "mission": {
+        "title": "Unsere Mission",
+        "description": "Die Kroatisch-Deutsche Gesellschaft Split wurde 1990 gegründet, um die kulturelle Zusammenarbeit zwischen Kroatien und Deutschland zu fördern. Durch verschiedene Programme und Aktivitaten verbinden wir Menschen, Kultur und Traditionen.",
+        "quote": "Kultur verbindet Menschen und schafft Brücken des Verstandnisses zwischen Nationen.",
+        "quoteAuthor": "Dr. Nikola Horvat",
+        "quoteTitle": "Prasident der Gesellschaft",
+        "community": "Gemeinschaft",
+        "communityDesc": "Wir schaffen einen Raum für kulturellen Austausch und Freundschaft",
+        "learning": "Lernen",
+        "learningDesc": "Wir bieten hochwertige Deutschkurse an",
+        "connection": "Vernetzung",
+        "connectionDesc": "Wir verbinden Kroatien und Deutschland durch Kultur"
+      },
+      "leadership": {
+        "title": "Unsere Führung",
+        "subtitle": "Lernen Sie das Team kennen, das unsere Gemeinschaft für eine glanzzende Zukunft leitet",
+        "president": "Prasident",
+        "vicePresident": "Vizeprasident",
+        "boardChair": "Vorsitzender des Verwaltungsrats",
+        "members": {
+          "nikolaHorvat": "Dr. Nikola Horvat",
+          "dragutinKorlaet": "Dragutin Korlaet",
+          "petarFabjanovic": "Petar Fabjanovici",
+          "tomislavDraskovic": "Tomislav Draskovic"
+        }
+      },
+      "branches": {
+        "title": "Unsere Zweigstellen",
+        "subtitle": "Wir sind in ganz Dalmatien prasent",
+        "president": "Prasident",
+        "makarska": "Makarska",
+        "brac": "Brac",
+        "sinj": "Sinj",
+        "inFormation": "In Grundung"
+      },
+      "partners": {
+        "title": "Unsere Partner",
+        "subtitle": "Zusammenarbeit, die Brucken baut",
+        "ahk": "Deutsch-Kroatische Wirtschaftskammer",
+        "mainz": "Stadt Mainz",
+        "berlin": "Land Berlin"
+      },
+      "stats": {
+        "years": "35+",
+        "yearsLabel": "Jahre Tradition",
+        "members": "500+",
+        "membersLabel": "Aktive Mitglieder",
+        "events": "1000+",
+        "eventsLabel": "Organisierte Veranstaltungen",
+        "branches": "6",
+        "branchesLabel": "Aktive Zweigstellen"
+      }
+    },
+    "activities": {
+      "title": "Unsere Aktivitaten",
+      "subtitle": "Entdecken Sie die Vielfalt unserer Programme",
+      "filters": {
+        "all": "Alle Aktivitaten",
+        "courses": "Kurse",
+        "events": "Veranstaltungen",
+        "excursions": "Ausfluge",
+        "social": "Gesellige Programme",
+        "cultural": "Kulturprogramme"
+      }
+    },
+    "gallery": {
+      "title": "Galerie",
+      "subtitle": "Sehen Sie sich Momente unserer Aktivitaten an"
+    },
+    "privacy": {
+      "details": "Ausfuhrliche Informationen",
+      "title": "Datenschutzerklärung",
+      "subtitle": "Wie wir Ihre personenbezogenen Daten erheben, verwenden und schützen",
+      "intro": {
+        "title": "1. Einleitung",
+        "text": "HNJD Split verpflichtet sich, die Privatsphäre seiner Nutzer zu schützen. Diese Richtlinie erläutert, wie wir Ihre personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO) erheben, verwenden und schützen."
+      },
+      "dataCollection": {
+        "title": "2. Datenerhebung",
+        "intro": "Wir erfassen folgende Arten von Daten:",
+        "personal": "Personenbezogene Daten: Vorname, Nachname, E-Mail-Adresse, Telefonnummer",
+        "technical": "Technische Daten: IP-Adresse, Browsertyp, Gerät",
+        "usage": "Nutzungsdaten: besuchte Seiten, Verweildauer",
+        "cookies": "Cookies: zur Verbesserung der Benutzererfahrung"
+      },
+      "dataUsage": {
+        "title": "3. Verwendung von Daten",
+        "intro": "Wir verwenden Ihre Daten für folgende Zwecke:",
+        "use1": "Dienstleistungserbringung und Antragsbearbeitung",
+        "use2": "Kommunikation über Aktivitäten und Veranstaltungen",
+        "use3": "Versand des Newsletters (mit Ihrer Zustimmung)",
+        "use4": "Verbesserung der Website und der Benutzererfahrung",
+        "use5": "Erfüllung gesetzlicher Verpflichtungen"
+      },
+      "dataSharing": {
+        "title": "4. Datenaustausch",
+        "text": "Wir verkaufen oder geben Ihre personenbezogenen Daten nicht an Dritte weiter. Wir geben Daten nur an vertrauenswürdige Partner weiter, die uns bei unserer Arbeit unterstützen (z. B. Hosting, E-Mail-Dienste), und zwar im Rahmen verbindlicher Datenschutzvereinbarungen."
+      },
+      "dataSecurity": {
+        "title": "5. Datensicherheit",
+        "text": "Wir verwenden moderne Sicherheitsmaßnahmen zum Schutz Ihrer Daten, darunter SSL-Verschlüsselung, sichere Server und regelmäßige Sicherheitsaudits. Nur autorisierte Mitarbeiter haben Zugriff auf die Daten."
+      },
+      "cookies": {
+        "title": "6. Cookies",
+        "intro": "Wir verwenden Cookies, um:",
+        "essential": "Unbedingt erforderliche Cookies: für die grundlegende Funktion der Website.",
+        "analytics": "Analytische Cookies: um zu verstehen, wie Nutzer die Website verwenden.",
+        "preferences": "Präferenz-Cookies: zum Speichern Ihrer Einstellungen (z. B. Sprache)",
+        "manage": "Sie können Cookies in Ihren Browsereinstellungen verwalten."
+      },
+      "rights": {
+        "title": "7. Ihre Rechte",
+        "intro": "Gemäß der DSGVO haben Sie das Recht:",
+        "access": "Auskunftsrecht – um zu erfahren, welche Daten wir über Sie gespeichert haben",
+        "rectification": "Recht auf Berichtigung – zur Korrektur unrichtiger Daten",
+        "erasure": "Recht auf Löschung – Beantragen Sie die Löschung Ihrer Daten",
+        "restriction": "Recht auf Einschränkung der Verarbeitung – Einschränkung der Verwendung von Daten",
+        "portability": "Recht auf Datenübertragbarkeit – Erhalt von Daten in einem maschinenlesbaren Format",
+        "objection": "Widerspruchsrecht – Widerspruch gegen die Verarbeitung von Daten"
+      },
+      "retention": {
+        "title": "8. Datenspeicherung",
+        "text": "Wir speichern Ihre Daten nur so lange, wie es für die Erbringung unserer Dienstleistungen oder die Erfüllung unserer gesetzlichen Verpflichtungen erforderlich ist. Danach werden die Daten sicher gelöscht oder anonymisiert."
+      },
+      "changes": {
+        "title": "9. Änderungen der Richtlinien",
+        "text": "Wir behalten uns das Recht vor, diese Datenschutzerklärung zu ändern. Änderungen werden auf dieser Seite mit dem Datum der Aktualisierung veröffentlicht. Wir empfehlen Ihnen, diese Seite regelmäßig zu überprüfen."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte wenden Sie sich bitte an hnjd.split@gmail.com."
+      },
+      "lastUpdated": "Zuletzt aktualisiert"
+    },
+    "statute": {
+      "title": "Satzung des HNJD Split",
+      "subtitle": "Der grundlegende Rechtsakt, der die Organisation und den Betrieb des Unternehmens regelt.",
+      "mission": {
+        "title": "Aufgabe und Aktivitäten",
+        "intro": "Die Kroatisch-Deutsche Gesellschaft Split ist eine gemeinnützige Kulturorganisation, die in Split und Umgebung tätig ist und folgende Ziele verfolgt:",
+        "point1": "Stärkung der kulturellen, bildungspolitischen und wirtschaftlichen Beziehungen zwischen Kroatien und Deutschland",
+        "point2": "Organisation von Sprachkursen und kulturellen Veranstaltungen",
+        "point3": "Förderung des interkulturellen Dialogs und Austauschs",
+        "point4": "Unterstützung der Mitglieder bei der Aus- und Weiterbildung",
+        "point5": "Zusammenarbeit mit kulturellen Einrichtungen in Kroatien und Deutschland"
+      },
+      "membership": {
+        "title": "Mitgliedschaft",
+        "types": "Mitgliedschaftsarten:",
+        "regular": "Ordentliche Mitgliedschaft – für Personen, die sich für die Arbeit der Gesellschaft interessieren",
+        "premium": "Premium-Mitgliedschaft – mit zusätzlichen Vorteilen und Vorrang bei Veranstaltungen",
+        "sponsor": "Fördermitgliedschaft – für Organisationen und Einzelpersonen, die die Arbeit der Gesellschaft unterstützen möchten",
+        "rights": "Rechte der Mitglieder:",
+        "right1": "Teilnahme an allen Aktivitäten der Gesellschaft",
+        "right2": "Stimmrecht bei der Generalversammlung der Gesellschaft",
+        "right3": "Rabatte auf Kurse und Veranstaltungen",
+        "right4": "Zugang zur Bibliothek und zu Lehrmaterialien",
+        "right5": "Die Möglichkeit, neue Programme und Aktivitäten vorzuschlagen"
+      },
+      "organization": {
+        "title": "Organisationsstruktur",
+        "intro": "Das Unternehmen wird geleitet von:",
+        "assembly": "Versammlung – das höchste Entscheidungsgremium",
+        "board": "Vorstand – das Exekutivorgan zwischen den Hauptversammlungen",
+        "president": "Präsident – vertritt das Unternehmen und handelt in dessen Namen.",
+        "secretary": "Sekretär/in – verwaltet administrative Angelegenheiten",
+        "treasurer": "Schatzmeister – verwaltet die Finanzen des Vereins"
+      },
+      "finance": {
+        "title": "Finanzierung",
+        "intro": "Der Verein wird finanziert aus:",
+        "source1": "Mitgliedsbeitrag",
+        "source2": "Spenden und Sponsoring",
+        "source3": "Gebühren für Kurse und Dienstleistungen",
+        "source4": "Projekte und Fördermittel",
+        "source5": "Einnahmen aus Kultur- und Bildungsprogrammen"
+      },
+      "amendments": {
+        "title": "Änderungen der Statuten",
+        "text": "Die Satzung kann durch einen Beschluss der Versammlung mit der erforderlichen Stimmenmehrheit geändert werden. Die Änderungen treten mit der Eintragung in das Vereinsregister in Kraft."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Bei Fragen zu den Statuten wenden Sie sich bitte an hnjd.split@gmail.com."
+      }
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Bitte lesen Sie diese sorgfältig durch, bevor Sie unsere Website weiter nutzen.",
+      "acceptance": {
+        "title": "Annahme der Bedingungen",
+        "text": "Durch die Nutzung der Website von HNJD Split akzeptieren Sie diese Nutzungsbedingungen vollständig. Wenn Sie mit diesen Bedingungen nicht einverstanden sind, nutzen Sie unsere Website bitte nicht."
+      },
+      "services": {
+        "title": "2. Dienstleistungen",
+        "intro": "Unsere Website bietet folgende Dienste an:",
+        "service1": "Informationen über das Unternehmen und unsere Aktivitäten",
+        "service2": "Anmeldung für Sprachkurse und Veranstaltungen",
+        "service3": "Kontaktformular für Anfragen",
+        "service4": "Zugang zur Bildergalerie und Chroniken",
+        "service5": "Newsletter-Abonnement"
+      },
+      "userResponsibilities": {
+        "title": "3. Verantwortlichkeiten des Benutzers",
+        "intro": "Die Nutzer verpflichten sich:",
+        "resp1": "Geben Sie bei der Registrierung genaue und aktuelle Informationen an.",
+        "resp2": "Geben Sie Ihre Benutzerdaten nicht an Dritte weiter.",
+        "resp3": "Verwenden Sie die Website nicht für rechtswidrige Zwecke.",
+        "resp4": "Stören Sie nicht den Betrieb der Website oder des Servers.",
+        "resp5": "Respektieren Sie geistige Eigentumsrechte"
+      },
+      "intellectualProperty": {
+        "title": "4. Geistiges Eigentum",
+        "text": "Alle Inhalte dieser Website, einschließlich Text, Bilder, Logos und Design, sind Eigentum von HNJD Split oder werden mit Genehmigung des Eigentümers verwendet. Das Kopieren, Verbreiten oder Reproduzieren der Inhalte ohne schriftliche Genehmigung ist untersagt."
+      },
+      "privacy": {
+        "title": "5. Datenschutz",
+        "text": "Die Verwendung personenbezogener Daten unterliegt unserer Datenschutzerklärung. Wir verwenden die Daten ausschließlich zur Erbringung von Dienstleistungen und zur Kommunikation mit Mitgliedern."
+      },
+      "limitation": {
+        "title": "6. Haftungsbeschränkung",
+        "text": "HNJD Split haftet nicht für direkte oder indirekte Schäden, die durch die Nutzung oder Nichtnutzbarkeit der Website entstehen können. Die Website wird ohne Mängelgewähr und ohne jegliche Gewährleistung bereitgestellt."
+      },
+      "modifications": {
+        "title": "7. Änderungen der Bedingungen",
+        "text": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden auf dieser Seite mit dem Datum der Aktualisierung veröffentlicht. Durch die weitere Nutzung der Website nach den Änderungen akzeptieren Sie die neuen Bedingungen."
+      },
+      "termination": {
+        "title": "8. Kündigung",
+        "text": "Wir behalten uns das Recht vor, jedem Nutzer, der gegen diese Bedingungen verstößt, ohne vorherige Ankündigung den Zugriff auf die Website zu verweigern oder zu sperren."
+      },
+      "law": {
+        "title": "9. Anwendbares Recht",
+        "text": "Diese Bedingungen unterliegen den Gesetzen der Republik Kroatien. Alle Streitigkeiten werden von den zuständigen Gerichten in Split beigelegt."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Bei Fragen zu den Nutzungsbedingungen wenden Sie sich bitte an hnjd.split@gmail.com."
+      },
+      "lastUpdated": "Zuletzt aktualisiert"
+    }
+  },
+  "contact": {
+    "badge": "Kontakt",
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Wir sind hier, um Ihre Fragen zu beantworten",
+    "sendInquiry": "Anfrage senden",
+    "fillForm": "Fullen Sie das Formular aus und wir melden uns baldmoglichst bei Ihnen",
+    "thankYou": "Danke!",
+    "messageSent": "Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei Ihnen.",
+    "sendNew": "Neue Nachricht senden",
+    "error": "Bei der Nachrichtenuebermittlung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "sending": "Wird gesendet...",
+    "sendMessage": "Nachricht senden",
+    "findUs": "Finden Sie uns",
+    "visitUs": "Besuchen Sie uns in unserem Büro in der Innenstadt von Split",
+    "howToReach": "Wie man uns erreicht",
+    "followUs": "Folgen Sie uns",
+    "address": "Adresse",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "name": "Name",
+    "send": "Senden",
+    "form": {
+      "name": "Name und Nachname",
+      "namePlaceholder": "Ihr Name und Nachname",
+      "email": "E-Mail",
+      "emailPlaceholder": "ihre.email@beispiel.com",
+      "subject": "Betreff",
+      "message": "Nachricht",
+      "messagePlaceholder": "Ihre Nachricht...",
+      "agreeWith": "Ich stimme zu",
+      "privacyPolicy": "Datenschutzrichtlinie"
+    },
+    "directions": {
+      "bus": "Mit den Buslinien 3, 7 oder 11 bis zur Sinjska-Strae",
+      "parking": "Parking in der Nahe verfugbar (Matoseva-Strae)",
+      "walk": "5 Gehminuten von der Riva entfernt"
+    }
+  },
+  "search": {
+    "placeholder": "Suchen...",
+    "noResults": "Keine Ergebnisse fur",
+    "quickLinks": "Schnelllinks",
+    "navigation": "Navigation",
+    "open": "Offnen",
+    "close": "Schlieen"
   },
   "common": {
-    "loading": "Loading...",
-    "noResults": "No results",
-    "back": "Back",
-    "language": "Language"
+    "language": "Sprache",
+    "followUs": "Folgen Sie uns",
+    "loading": "Wird geladen...",
+    "noResults": "Keine Ergebnisse",
+    "back": "Zurück",
+    "readMore": "Mehr lesen",
+    "read": "Lesen",
+    "downloadPDF": "PDF herunterladen",
+    "loadingCalendar": "Kalender wird geladen...",
+    "searchPlaceholder": "Suchen...",
+    "contactUsToday": "Kontaktieren Sie uns heute",
+    "learnMore": "Mehr erfahren",
+    "readCarefully": "Bitte lesen Sie dies sorgfältig, bevor Sie fortfahren",
+    "cannotSeePDF": "Wenn Sie das PDF nicht sehen können",
+    "downloadHere": "laden Sie es hier herunter"
+  },
+  "ui": {
+    "buttons": {
+      "becomeMember": "Mitglied werden",
+      "becomePremium": "Premium werden",
+      "becomeSponsor": "Sponsor werden",
+      "contactUs": "Kontaktieren Sie uns"
+    },
+    "search": {
+      "newsPlaceholder": "Nachrichten durchsuchen...",
+      "chroniclesPlaceholder": "Chroniken durchsuchen..."
+    }
+  },
+  "hardcoded": {
+    "weekly": {
+      "0": "wöchentlich"
+    },
+    "yearly": {
+      "1": "jährlich"
+    },
+    "use": {
+      "client": {
+        "2": "Kunden verwenden"
+      }
+    },
+    "framer": {
+      "motion": {
+        "3": "Rahmenbewegung"
+      }
+    },
+    "lucide": {
+      "react": {
+        "4": "lucid-reagieren"
+      }
+    },
+    "end": {
+      "start": {
+        "5": "Ende Start"
+      }
+    },
+    "label": {
+      "t": {
+        "6": ", Etikett: t("
+      }
+    },
+    "vijest": {
+      "1": {
+        "7": "Nachrichten 1"
+      },
+      "2": {
+        "8": "Nachrichten 2"
+      },
+      "3": {
+        "9": "Nachrichten 3"
+      }
+    },
+    "bg": {
+      "slate": {
+        "950": {
+          "text": {
+            "white": {
+              "overflow": {
+                "x": {
+                  "hidde": {
+                    "10": "bg-slate-950 text-white overflow-x-hidden"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "relative": {
+      "40": "relativ",
+      "min": {
+        "h": {
+          "screen": {
+            "flex": {
+              "items": {
+                "center": {
+                  "": {
+                    "11": "relative min-h-screen flex items-center justify-center pt-20 md:pt-24 overflow-hidden"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "z": {
+        "10": {
+          "w": {
+            "full": {
+              "max": {
+                "w": {
+                  "6xl": {
+                    "mx": {
+                      "auto": {
+                        "p": {
+                          "16": "relativ z-10 w-voll max-w-6xl mx-auto px-4 md:px-8 Text-Zentrierung"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "mx": {
+        "auto": {
+          "w": {
+            "20": {
+              "h": {
+                "20": {
+                  "67": "Relativ mx-auto w-20 h-20"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "absolute": {
+      "inset": {
+        "0": {
+          "z": {
+            "0": {
+              "12": "absolute Einrückung-0 z-0"
+            }
+          },
+          "bg": {
+            "grid": {
+              "pattern": {
+                "opacity": {
+                  "15": "absolute Einrückung-0 Hintergrundraster-Opazität-5 z-[1]"
+                }
+              }
+            }
+          },
+          "flex": {
+            "items": {
+              "center": {
+                "justi": {
+                  "52": "absolute Einrückung-0 Flex-Elemente-Zentrieren-Zentrieren"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "hnds": {
+      "hero": {
+        "13": "HNDS-Held"
+      },
+      "događaj": {
+        "41": "HNDS-Veranstaltung"
+      },
+      "split": {
+        "90": "HNDS Split",
+        "hrvatsko": {
+          "njemačko": {
+            "društvo": {
+              "81": "HNDS Split – Kroatisch-Deutsche Gesellschaft"
+            }
+          }
+        }
+      }
+    },
+    "object": {
+      "cover": {
+        "42": "Objektabdeckung",
+        "object": {
+          "center": {
+            "14": "Objektabdeckung Objektmitte"
+          }
+        }
+      }
+    },
+    "space": {
+      "y": {
+        "2": {
+          "69": "Raum-y-2"
+        },
+        "4": {
+          "54": "Raum-y-4"
+        },
+        "6": {
+          "34": "Raum-y-6",
+          "md": {
+            "space": {
+              "y": {
+                "8": {
+                  "17": "Raum-y-6 md:Raum-y-8"
+                }
+              }
+            }
+          }
+        },
+        "8": {
+          "51": "Raum-y-8"
+        }
+      }
+    },
+    "text": {
+      "lg": {
+        "sm": {
+          "text": {
+            "xl": {
+              "md": {
+                "text": {
+                  "2xl": {
+                    "text": {
+                      "gray": {
+                        "18": "text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto font-light px-2"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "yellow": {
+        "500": {
+          "text": {
+            "sm": {
+              "uppercase": {
+                "tracki": {
+                  "35": "Text-Gelb-500 Text-sm Großbuchstaben Tracking-Breiteste Schriftart-Hell"
+                }
+              }
+            }
+          },
+          "hover": {
+            "text": {
+              "yellow": {
+                "400": {
+                  "tr": {
+                    "60": "text-yellow-500 hover:text-yellow-400 Übergang"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "4xl": {
+        "md": {
+          "text": {
+            "5xl": {
+              "font": {
+                "light": {
+                  "text": {
+                    "whi": {
+                      "36": "text-4xl md:text-5xl font-light text-white mt-2"
+                    }
+                  }
+                }
+              }
+            },
+            "6xl": {
+              "font": {
+                "light": {
+                  "text": {
+                    "whi": {
+                      "45": "text-4xl md:text-6xl font-light text-white"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "gray": {
+        "300": {
+          "font": {
+            "light": {
+              "text": {
+                "lg": {
+                  "leading": {
+                    "38": "Text grau 300, Schriftart hell, Text groß, Zeilenabstand locker"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "font": {
+            "light": {
+              "max": {
+                "w": {
+                  "md": {
+                    "mx": {
+                      "aut": {
+                        "56": "text-grau-400 Schriftart-hell max-w-md mx-auto"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "text": {
+            "sm": {
+              "font": {
+                "light": {
+                  "70": "Text-Grau-400 Text-Klein Schrift-Hell"
+                }
+              }
+            }
+          }
+        },
+        "500": {
+          "text": {
+            "sm": {
+              "mb": {
+                "4": {
+                  "58": "Text-Grau-500 Text-sm mb-4"
+                }
+              }
+            }
+          }
+        }
+      },
+      "center": {
+        "44": "Text in der Mitte",
+        "py": {
+          "20": {
+            "50": "Text zentriert, 20 Pixel hoch"
+          }
+        },
+        "space": {
+          "y": {
+            "6": {
+              "66": "Text-Center Space-Y-6"
+            }
+          }
+        }
+      },
+      "xl": {
+        "text": {
+          "gray": {
+            "300": {
+              "font": {
+                "light": {
+                  "max": {
+                    "w": {
+                      "2": {
+                        "46": "text-xl text-gray-300 font-light max-w-2xl mx-auto"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "6xl": {
+        "md": {
+          "text": {
+            "8xl": {
+              "font": {
+                "light": {
+                  "text": {
+                    "yel": {
+                      "53": "text-6xl md:text-8xl font-light text-yellow-500"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "3xl": {
+        "md": {
+          "text": {
+            "4xl": {
+              "font": {
+                "light": {
+                  "text": {
+                    "whi": {
+                      "55": "text-3xl md:text-4xl font-light text-white"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "2xl": {
+        "font": {
+          "light": {
+            "text": {
+              "yellow": {
+                "500": {
+                  "68": "doppelte Breite hellgelber Text"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "flex": {
+      "flex": {
+        "col": {
+          "sm": {
+            "flex": {
+              "row": {
+                "gap": {
+                  "3": {
+                    "sm": {
+                      "gap": {
+                        "4": {
+                          "19": "flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4 px-4 sm:px-0"
+                        }
+                      }
+                    }
+                  },
+                  "4": {
+                    "pt": {
+                      "4": {
+                        "39": "flex flex-col sm:flex-row gap-4 pt-4"
+                      }
+                    },
+                    "justify": {
+                      "": {
+                        "47": "flex flex-col sm:flex-row gap-4 justify-center pt-8"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "wrap": {
+          "justify": {
+            "center": {
+              "gap": {
+                "4": {
+                  "57": "flex flex-wrap justify-center gap-4",
+                  "text": {
+                    "59": "flex flex-wrap justify-center gap-4 text-sm"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "gap": {
+        "1": {
+          "justify": {
+            "center": {
+              "71": "flex gap-1 justify-center"
+            }
+          }
+        },
+        "4": {
+          "overflow": {
+            "x": {
+              "auto": {
+                "pb": {
+                  "4": {
+                    "snap": {
+                      "x": {
+                        "s": {
+                          "29": "flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "none": {
+        "w": {
+          "85": {
+            "min": {
+              "w": {
+                "280px": {
+                  "snap": {
+                    "center": {
+                      "30": "flex-none w-[85 %] min-w-[280px] snap-center"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "justify": {
+        "center": {
+          "gap": {
+            "2": {
+              "mt": {
+                "4": {
+                  "31": "flex justify-center gap-2 mt-4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "w": {
+      "2": {
+        "h": {
+          "2": {
+            "bg": {
+              "yellow": {
+                "600": {
+                  "rounded": {
+                    "full": {
+                      "anima": {
+                        "72": "w-2 h-2 bg-gelb-600 abgerundet-voll animiert-springen"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "12": {
+        "h": {
+          "px": {
+            "bg": {
+              "yellow": {
+                "600": {
+                  "mt": {
+                    "6": {
+                      "37": "w-12 h-px bg-gelb-600 mt-6"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "full": {
+        "sm": {
+          "w": {
+            "auto": {
+              "20": "w-voll sm:w-auto"
+            }
+          }
+        }
+      }
+    },
+    "classname": {
+      "21": "Klassenname="
+    },
+    "outline": {
+      "22": "Umriss"
+    },
+    "grid": {
+      "grid": {
+        "cols": {
+          "1": {
+            "md": {
+              "grid": {
+                "cols": {
+                  "2": {
+                    "lg": {
+                      "grid": {
+                        "": {
+                          "27": "Raster Raster-Spalten-1 md:Raster-Spalten-2 lg:Raster-Spalten-4 Abstand-6 lg:Abstand-8"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "lg": {
+              "grid": {
+                "cols": {
+                  "2": {
+                    "gap": {
+                      "12": {
+                        "l": {
+                          "33": "Raster Raster-Spalten-1 lg:Raster-Spalten-2 Abstand-12 lg:Abstand-16 Elemente-Mitte"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "2": {
+            "md": {
+              "grid": {
+                "cols": {
+                  "4": {
+                    "gap": {
+                      "3": {
+                        "sm": {
+                          "23": "Raster Raster-Spalten-2 md:Raster-Spalten-4 Abstand-3 sm:Abstand-4 md:Abstand-8"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "easeinout": {
+      "24": "einfaches Ein- und Aussteigen"
+    },
+    "default": {
+      "25": "Standard"
+    },
+    "hidden": {
+      "md": {
+        "block": {
+          "26": "versteckter md:block"
+        }
+      }
+    },
+    "md": {
+      "hidden": {
+        "mx": {
+          "4": {
+            "px": {
+              "4": {
+                "28": "md:versteckt -mx-4 px-4"
+              }
+            }
+          }
+        }
+      }
+    },
+    "alternate": {
+      "32": "abwechselnd"
+    },
+    "center": {
+      "43": "Zentrum"
+    },
+    "variant": {
+      "48": "Variante="
+    },
+    "min": {
+      "h": {
+        "screen": {
+          "bg": {
+            "slate": {
+              "950": {
+                "flex": {
+                  "items": {
+                    "cen": {
+                      "49": "min-h-screen bg-slate-950 flex items-center justify-center"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "hrvatsko": {
+      "njemačko": {
+        "društvo": {
+          "83": "Kroatisch-Deutsche Gesellschaft",
+          "split": {
+            "61": "Kroatisch-Deutsche Gesellschaft Split"
+          }
+        }
+      }
+    },
+    "službena": {
+      "web": {
+        "stranica": {
+          "hrvatsko": {
+            "njemačkog": {
+              "62": "Offizielle Website der Kroatisch-Deutschen Gesellschaft Split – seit über 30 Jahren Förderer der kroatisch-deutschen kulturellen Beziehungen."
+            }
+          }
+        }
+      }
+    },
+    "standalone": {
+      "63": "eigenständig"
+    },
+    "portrait": {
+      "primary": {
+        "64": "Hauptporträt"
+      }
+    },
+    "maskable": {
+      "65": "maskierbar"
+    },
+    "latin": {
+      "ext": {
+        "73": "Lateinisch erweitert"
+      }
+    },
+    "georgia": {
+      "74": "Georgien"
+    },
+    "font": {
+      "montserrat": {
+        "75": "Montserrat-Schriftart"
+      }
+    },
+    "system": {
+      "ui": {
+        "76": "System-UI"
+      }
+    },
+    "sans": {
+      "serif": {
+        "77": "ohne Serifen"
+      }
+    },
+    "device": {
+      "width": {
+        "78": "Gerätebreite"
+      }
+    },
+    "prefers": {
+      "color": {
+        "scheme": {
+          "dark": {
+            "79": "(Bevorzugt ein dunkles Farbschema)"
+          },
+          "light": {
+            "80": "(bevorzugtes Farbschema: hell)"
+          }
+        }
+      }
+    },
+    "s": {
+      "hnds": {
+        "split": {
+          "82": "%s | HNDS Split"
+        }
+      }
+    },
+    "njemački": {
+      "jezik": {
+        "84": "deutsche Sprache"
+      }
+    },
+    "tečaj": {
+      "njemačkog": {
+        "85": "Deutschkurs"
+      }
+    },
+    "kultura": {
+      "86": "Kultur"
+    },
+    "međukulturna": {
+      "razmjena": {
+        "87": "Kultureller Austausch"
+      }
+    },
+    "berlin": {
+      "88": "Berlin"
+    },
+    "njemačka": {
+      "89": "Deutsch"
+    },
+    "website": {
+      "91": "Website"
+    },
+    "most": {
+      "između": {
+        "kultura": {
+          "92": "Brücke zwischen Kulturen"
+        }
+      }
+    },
+    "max": {
+      "video": {
+        "preview": {
+          "93": "maximale Videovorschau"
+        }
+      },
+      "image": {
+        "preview": {
+          "94": "maximale Bildvorschau"
+        }
+      },
+      "snippet": {
+        "95": "maximaler Ausschnitt"
+      }
+    },
+    "education": {
+      "96": "Bildung"
+    },
+    "context": {
+      "97": "@Kontext"
+    },
+    "organization": {
+      "98": "Organisation"
+    },
+    "contactpoint": {
+      "99": "Kontaktpunkt"
+    }
   }
 }

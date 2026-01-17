@@ -2,345 +2,361 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Check, Users, Heart, Globe, BookOpen, Music } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Check, Users, Heart, Globe, BookOpen, Music, ChevronDown, Star, Shield, Award } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem, SlideLeft, SlideRight } from "@/app/components/AnimatedSection";
-import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
+import { useI18n } from '@/app/context/I18nContext';
+import {
+  HeroFadeIn,
+  FadeIn,
+  StaggerContainer,
+  StaggerItem,
+  Counter,
+} from '@/app/components/ui/Animations';
+import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
+import { MotionCard, FeatureCard } from '@/app/components/ui/Card';
+import { Button } from '@/app/components/ui/Button';
+
+const membershipTiers = [
+  {
+    id: 1,
+    name: 'Osnovni član',
+    price: '50',
+    currency: 'kn',
+    period: 'godišnje',
+    description: 'Savršeno za one koji žele biti dio zajednice',
+    benefits: [
+      'Pristup svim javnim događajima',
+      'Mjesečni newsletter',
+      'Popusti na tečajeve jezika',
+      'Pristup knjižnici',
+      'Pozivnice na godišnju skupštinu',
+    ],
+    cta: 'Postani član',
+    highlighted: false,
+    icon: Users,
+  },
+  {
+    id: 2,
+    name: 'Premium član',
+    price: '150',
+    currency: 'kn',
+    period: 'godišnje',
+    description: 'Za aktivne članove koji žele više',
+    benefits: [
+      'Sve pogodnosti osnovnog članstva',
+      'Besplatan pristup jednom tečaju',
+      'Prioritetne prijave na izlete',
+      'Ekskluzivni članovi događaji',
+      'Popusti kod partnera',
+      'Članska iskaznica s pogodnostima',
+      'Pristup online resursima',
+    ],
+    cta: 'Postani premium',
+    highlighted: true,
+    icon: Star,
+  },
+  {
+    id: 3,
+    name: 'Pokrovitelj',
+    price: '300',
+    currency: 'kn',
+    period: 'godišnje',
+    description: 'Podržite naše aktivnosti i misiju',
+    benefits: [
+      'Sve premium pogodnosti',
+      'Priznanje na web stranici',
+      'VIP pristup događajima',
+      'Godišnji poklon paket',
+      'Direktan kontakt s vodstvom',
+      'Utjecaj na programske odluke',
+      'Posebne zahvalnice',
+    ],
+    cta: 'Postani pokrovitelj',
+    highlighted: false,
+    icon: Award,
+  },
+];
+
+const benefits = [
+  {
+    icon: Users,
+    title: 'Povezanost zajednice',
+    description: 'Pridružite se živahnoj zajednici entuzijasta hrvatske i njemačke kulture i gradite trajne prijateljstva.',
+  },
+  {
+    icon: Heart,
+    title: 'Ekskluzivni događaji',
+    description: 'Pristupite događajima samo za članove, okupljanjima i proslavama tijekom godine.',
+  },
+  {
+    icon: Globe,
+    title: 'Kulturna razmjena',
+    description: 'Sudjelujte u kulturnim radionicama, tečajevima jezika i edukativnim programima.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Resursi i knjižnica',
+    description: 'Pristupite članskoj knjižnici s knjigama, člancima i resursima o njemačkoj kulturi.',
+  },
+  {
+    icon: Music,
+    title: 'Kulturni programi',
+    description: 'Uživajte u sniženim ulaznicama za koncerte, izložbe i kulturne nastupe.',
+  },
+  {
+    icon: Shield,
+    title: 'Umrežavanje',
+    description: 'Povežite se s istomišljenim pojedincima i proširite svoju profesionalnu mrežu.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Kako se mogu učlaniti?',
+    answer: 'Učlaniti se možete ispunjavanjem online obrasca ili osobno u našim prostorijama. Nakon prijave, primit ćete potvrdu i upute za plaćanje članarine.',
+  },
+  {
+    question: 'Mogu li nadograditi članstvo?',
+    answer: 'Da, možete nadograditi svoje članstvo u bilo kojem trenutku. Razlika u cijeni bit će proporcionalno obračunata za preostalo razdoblje.',
+  },
+  {
+    question: 'Postoje li popusti za obitelji?',
+    answer: 'Da, nudimo obiteljski paket s 20% popusta za dodatne članove iste obitelji. Kontaktirajte nas za više informacija.',
+  },
+  {
+    question: 'Kako mogu koristiti pogodnosti kod partnera?',
+    answer: 'Nakon učlanjenja dobit ćete člansku iskaznicu koju možete pokazati kod naših partnera za ostvarivanje popusta.',
+  },
+  {
+    question: 'Što ako ne mogu prisustvovati događajima?',
+    answer: 'Mnogi naši sadržaji dostupni su online. Također, snimke predavanja i materijali dostupni su članovima putem našeg portala.',
+  },
+  {
+    question: 'Mogu li otkazati članstvo?',
+    answer: 'Članstvo je na godišnjoj bazi i automatski se obnavlja. Otkazivanje je moguće 30 dana prije isteka tekućeg razdoblja.',
+  },
+];
 
 export default function MembershipPage() {
+  const { t } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
-  const membershipTiers = [
-    {
-      id: 1,
-      name: '',
-      price: '50 kn',
-      period: 'godišnje',
-      description: '',
-      benefits: [
-        '',
-        '',
-        '',
-        '',
-        '',
-      ],
-      cta: '',
-      highlighted: false,
-    },
-    {
-      id: 2,
-      name: '',
-      price: '150 kn',
-      period: 'godišnje',
-      description: '',
-      benefits: [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-      ],
-      cta: '',
-      highlighted: true,
-    },
-    {
-      id: 3,
-      name: '',
-      price: '300 kn',
-      period: 'godišnje',
-      description: '',
-      benefits: [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-      ],
-      cta: '',
-      highlighted: false,
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: Users,
-      title: 'Povezanost zajednice',
-      description: 'Pridruži se živahnoj zajednici entuzijasta hrvatske kulture i gradi trajne prijateljstva.',
-    },
-    {
-      icon: Heart,
-      title: 'Ekskluzivni događaji',
-      description: 'Pristupite događajima samo za članove, okupljanjima i proslavama tijekom godine.',
-    },
-    {
-      icon: Globe,
-      title: 'Kulturna razmjena',
-      description: 'Sudjeluj u kulturnim radionicama, tečajevima jezika i edukativnim programima.',
-    },
-    {
-      icon: BookOpen,
-      title: 'Resursi i knjižnica',
-      description: 'Pristupite članskoj knjižnici s knjigama, člancima i resursima o hrvatskoj kulturi.',
-    },
-    {
-      icon: Music,
-      title: 'Događaji i nastopi',
-      description: 'Uživajte u sniženim ulaznicama za koncerte, izložbe i kulturne nastupe.',
-    },
-    {
-      icon: Globe,
-      title: 'Umrežavanje',
-      description: 'Povežite se s umno istomišljenim pojedincima i proširite svoju poslovnu mrežu.',
-    },
-  ];
-
-  const faqs = [
-    {
-      question: '',
-      answer: '',
-    },
-    {
-      question: '',
-      answer: '',
-    },
-    {
-      question: '',
-      answer: '',
-    },
-    {
-      question: '',
-      answer: '',
-    },
-    {
-      question: '',
-      answer: '',
-    },
-    {
-      question: '',
-      answer: '',
-    },
-  ];
-
   return (
-    <main className="bg-slate-950">
+    <main className="bg-slate-950 min-h-screen">
       <Navigation />
 
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <HeroFadeIn className="space-y-6">
-            <h1 className="text-6xl md:text-7xl font-light text-white"></h1>
-            <p className="text-xl text-gray-300 max-w-2xl font-light">
-              
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(234,179,8,0.1),transparent_50%)]" />
+        <Container className="relative">
+          <HeroFadeIn className="space-y-6 max-w-3xl text-center mx-auto">
+            <Badge variant="outline" className="mb-4">
+              <Users className="w-3 h-3 mr-1" />
+              Članstvo
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">
+              Postanite član
+            </h1>
+            <p className="text-xl text-gray-300 font-light leading-relaxed">
+              Pridružite se našoj zajednici i uživajte u brojnim pogodnostima članstva u Hrvatsko-njemačkom društvu Split.
             </p>
-            <div className="w-12 h-px bg-yellow-600" />
+            <div className="w-16 h-px bg-gradient-to-r from-transparent via-yellow-600 to-transparent mx-auto" />
           </HeroFadeIn>
-        </div>
+        </Container>
       </section>
 
-      <section className="py-20 md:py-32 bg-slate-950">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {membershipTiers.map((tier, index) => (
-              <RevealOnScroll key={tier.id} delay={index * 0.1} direction="up">
-                <ScaleOnHover scale={tier.highlighted ? 1.05 : 1.02}>
-                  <motion.div
-                    className={`relative overflow-hidden transition duration-300 h-full flex flex-col ${
+      {/* Stats */}
+      <Section className="bg-slate-900 border-b border-yellow-600/30 py-12">
+        <Container>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <FadeIn>
+              <Counter to={500} suffix="+" className="text-4xl md:text-5xl font-light text-yellow-500" />
+              <p className="text-gray-400 font-light mt-2">Aktivnih članova</p>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <Counter to={30} suffix="+" className="text-4xl md:text-5xl font-light text-yellow-500" />
+              <p className="text-gray-400 font-light mt-2">Godina tradicije</p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Counter to={50} suffix="+" className="text-4xl md:text-5xl font-light text-yellow-500" />
+              <p className="text-gray-400 font-light mt-2">Godišnjih događanja</p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <Counter to={15} suffix="+" className="text-4xl md:text-5xl font-light text-yellow-500" />
+              <p className="text-gray-400 font-light mt-2">Partnerskih organizacija</p>
+            </FadeIn>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Membership Tiers */}
+      <Section>
+        <Container>
+          <FadeIn>
+            <SectionHeader
+              title="Odaberite članstvo"
+              subtitle="Pronađite paket koji odgovara vašim potrebama"
+              centered
+            />
+          </FadeIn>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {membershipTiers.map((tier) => {
+              const Icon = tier.icon;
+              return (
+                <StaggerItem key={tier.id}>
+                  <MotionCard
+                    className={`relative h-full flex flex-col p-8 border ${
                       tier.highlighted
-                        ? 'border-2 border-yellow-600 shadow-2xl shadow-yellow-600/20'
-                        : 'border border-yellow-600/30 hover:border-yellow-600'
+                        ? 'border-yellow-500 bg-gradient-to-b from-yellow-600/10 to-slate-900/50'
+                        : 'border-yellow-600/20 bg-slate-900/50'
                     }`}
-                    whileHover={tier.highlighted ? { y: -8 } : {}}
+                    hoverY={-8}
                   >
                     {tier.highlighted && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 to-yellow-500">
-                        <motion.div
-                          className="h-full bg-white/50"
-                          animate={{ x: ['-100%', '100%'] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                          style={{ width: '30%' }}
-                        />
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                        <Badge variant="primary">Najpopularnije</Badge>
                       </div>
                     )}
 
-                    <div className={`p-8 flex-1 flex flex-col ${tier.highlighted ? 'bg-slate-900' : 'bg-slate-900/50'}`}>
-                      {tier.highlighted && (
-                        <motion.div 
-                          className="inline-block px-3 py-1 mb-4 bg-yellow-600/20 border border-yellow-600 text-yellow-600 text-xs font-light uppercase tracking-wide w-fit"
-                          animate={{ scale: [1, 1.05, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          Najpopularnije
-                        </motion.div>
-                      )}
-
+                    <div className="text-center mb-6">
+                      <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                        tier.highlighted ? 'bg-yellow-600' : 'bg-yellow-600/20'
+                      }`}>
+                        <Icon className={`w-8 h-8 ${tier.highlighted ? 'text-white' : 'text-yellow-500'}`} />
+                      </div>
                       <h3 className="text-2xl font-light text-white mb-2">{tier.name}</h3>
-                      <p className="text-gray-400 text-sm font-light mb-6">{tier.description}</p>
-
-                      <div className="mb-8">
-                        <div className="flex items-baseline gap-1">
-                          <motion.span 
-                            className="text-4xl font-light text-yellow-600"
-                            whileHover={{ scale: 1.1 }}
-                          >
-                            {tier.price}
-                          </motion.span>
-                          <span className="text-gray-400 font-light">{tier.period}</span>
-                        </div>
-                      </div>
-
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`w-full py-3 font-light transition duration-300 mb-8 ${
-                          tier.highlighted
-                            ? 'bg-yellow-600 text-white hover:bg-yellow-500'
-                            : 'border border-yellow-600 text-yellow-600 hover:bg-yellow-600/10'
-                        }`}
-                      >
-                        {tier.cta}
-                      </motion.button>
-
-                      <div className="space-y-4 flex-1">
-                        {tier.benefits.map((benefit, idx) => (
-                          <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 + idx * 0.05 }}
-                        className="flex items-start gap-3"
-                      >
-                        <Check className="w-4 h-4 text-yellow-600 mt-1 flex-shrink-0" />
-                        <span className="text-sm text-gray-300 font-light">{benefit}</span>
-                      </motion.div>
-                    ))}
-                      </div>
+                      <p className="text-gray-400 font-light text-sm">{tier.description}</p>
                     </div>
-                  </motion.div>
-                </ScaleOnHover>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="py-20 md:py-32 bg-slate-900 border-y border-yellow-600/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <FadeIn className="mb-16 text-center">
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
-            <p className="text-xl text-gray-300 font-light"></p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <RevealOnScroll key={index} delay={index * 0.1} direction="up">
-                  <ScaleOnHover scale={1.03}>
-                    <div className="p-8 border border-yellow-600/30 hover:border-yellow-600 hover:bg-slate-800/50 transition duration-300 h-full">
-                      <motion.div
-                        initial={{ rotate: 0 }}
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <Icon className="w-8 h-8 text-yellow-600 mb-4" />
-                      </motion.div>
-                      <h3 className="text-xl font-light text-white mb-3">{benefit.title}</h3>
-                      <p className="text-gray-400 font-light text-sm">{benefit.description}</p>
+                    <div className="text-center mb-8">
+                      <span className="text-5xl font-light text-white">{tier.price}</span>
+                      <span className="text-gray-400 font-light ml-1">{tier.currency}/{tier.period}</span>
                     </div>
-                  </ScaleOnHover>
-                </RevealOnScroll>
+
+                    <ul className="space-y-3 mb-8 flex-grow">
+                      {tier.benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <Check className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-300 font-light text-sm">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      variant={tier.highlighted ? 'default' : 'outline'}
+                      className="w-full"
+                      asChild
+                    >
+                      <Link href="/kontakt">{tier.cta}</Link>
+                    </Button>
+                  </MotionCard>
+                </StaggerItem>
               );
             })}
-          </div>
-        </div>
-      </section>
+          </StaggerContainer>
+        </Container>
+      </Section>
 
-      <section className="py-20 md:py-32 bg-slate-950">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <FadeIn className="mb-16 text-center">
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4">Česta pitanja</h2>
+      {/* Benefits */}
+      <Section className="bg-slate-900 border-y border-yellow-600/30">
+        <Container>
+          <FadeIn>
+            <SectionHeader
+              title="Pogodnosti članstva"
+              subtitle="Što dobivate učlanjenjem u naše društvo"
+              centered
+            />
           </FadeIn>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: index * 0.05 }}
-                className="border border-yellow-600/30 overflow-hidden"
-              >
-                <button
-                  onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  className="w-full p-6 text-left hover:bg-slate-900 transition duration-300 flex items-center justify-between"
-                >
-                  <h3 className="text-lg font-light text-white">{faq.question}</h3>
-                  <motion.div
-                    animate={{ rotate: expandedFaq === index ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-yellow-600"
-                  >
-                    ▼
-                  </motion.div>
-                </button>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            {benefits.map((benefit, index) => (
+              <StaggerItem key={index}>
+                <FeatureCard
+                  icon={benefit.icon}
+                  title={benefit.title}
+                  description={benefit.description}
+                />
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </Container>
+      </Section>
 
+      {/* FAQ */}
+      <Section>
+        <Container>
+          <FadeIn>
+            <SectionHeader
+              title="Česta pitanja"
+              subtitle="Odgovori na najčešća pitanja o članstvu"
+              centered
+            />
+          </FadeIn>
+
+          <div className="max-w-3xl mx-auto mt-12 space-y-4">
+            {faqs.map((faq, index) => (
+              <FadeIn key={index} delay={index * 0.05}>
                 <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{
-                    height: expandedFaq === index ? 'auto' : 0,
-                    opacity: expandedFaq === index ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden bg-slate-900/50 border-t border-yellow-600/30"
+                  className="border border-yellow-600/20 rounded-lg overflow-hidden"
+                  initial={false}
                 >
-                  <p className="p-6 text-gray-300 font-light">{faq.answer}</p>
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-900/50 transition-colors"
+                  >
+                    <span className="text-white font-light pr-4">{faq.question}</span>
+                    <motion.div
+                      animate={{ rotate: expandedFaq === index ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="w-5 h-5 text-yellow-500 flex-shrink-0" />
+                    </motion.div>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {expandedFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="px-6 pb-6 text-gray-400 font-light">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="py-20 md:py-32 bg-slate-900 border-t border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-6xl font-light text-white mb-4"></h2>
-            <p className="text-gray-300 font-light text-lg mb-8">
-              
+      {/* CTA */}
+      <Section className="bg-gradient-to-b from-slate-900 to-slate-950 border-t border-yellow-600/30">
+        <Container>
+          <FadeIn className="text-center max-w-2xl mx-auto space-y-6">
+            <h2 className="text-4xl md:text-5xl font-light text-white">
+              Spremni za pridruživanje?
+            </h2>
+            <p className="text-gray-300 font-light text-lg">
+              Kontaktirajte nas danas i postanite dio naše zajednice.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex gap-4 justify-center flex-wrap"
-          >
-            <Link
-              href="/contact"
-              className="px-8 py-3 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300"
-            >
-              Kontaktiraj nas
-            </Link>
-            <Link
-              href="/events"
-              className="px-8 py-3 border border-yellow-600 text-yellow-600 font-light hover:bg-yellow-600/10 transition duration-300"
-            >
-              Pogledaj događaje
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <Button asChild size="lg">
+                <Link href="/kontakt">Kontaktirajte nas</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/o-nama">Saznajte više</Link>
+              </Button>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
 
       <Footer />
     </main>

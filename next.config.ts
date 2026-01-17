@@ -1,29 +1,113 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import { withGTConfig } from 'gt-next/config';
 
 const nextConfig: NextConfig = {
-  // Performance optimizations
+  // Enable React Strict Mode for development
   reactStrictMode: true,
-  
-  // Image optimization
+
+  // Image optimization configuration
   images: {
     formats: ['image/avif', 'image/webp'],
-    qualities: [75, 95],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/**',
+      },
+    ],
   },
 
   // Compiler optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? {
-      exclude: ['error', 'warn'],
-    } : false,
+    // Remove console.log in production (keep errors and warnings)
+    removeConsole:
+      process.env.NODE_ENV === 'production'
+        ? { exclude: ['error', 'warn'] }
+        : false,
   },
 
-  // Experimental features for better performance
+  // Experimental features for performance
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react'],
+    // Optimize specific package imports
+    optimizePackageImports: [
+      'framer-motion',
+      'lucide-react',
+      '@sanity/client',
+      '@sanity/image-url',
+    ],
+  },
+
+  // Headers for security and caching
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        // Cache static assets aggressively
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Cache fonts
+        source: '/:path*.woff2',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+
+  // Rewrites for cleaner URLs if needed
+  async rewrites() {
+    return [];
+  },
+
+  // Redirects
+  async redirects() {
+    return [
+      // Add any legacy URL redirects here
+    ];
+  },
+
+  // Logging configuration
+  logging: {
+    fetches: {
+      fullUrl: process.env.NODE_ENV === 'development',
+    },
   },
 };
 
-export default nextConfig;
+// Wrap with General Translation config
+export default withGTConfig(nextConfig, {
+  // Disable SSG warnings since we use client-side language switching
+  disableSSGWarnings: true,
+  // Use localStorage for detecting locale
+  defaultLocale: 'hr',
+  locales: ['hr', 'de'],
+});

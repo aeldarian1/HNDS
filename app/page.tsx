@@ -1,294 +1,369 @@
-"use client";
-import { ChevronRight, Calendar, Users, Zap, Globe, BookOpen, MapPin, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import { HeroFadeIn, FadeIn, StaggerContainer, StaggerItem } from "./components/AnimatedSection";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { NewsletterSignup } from "./components/NewsletterSignup";
-import { useI18n } from "@/app/context/I18nContext";
-import { useRef } from "react";
+'use client';
+
+import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ChevronRight, ArrowRight, Calendar, BookOpen, Globe, MapPin } from 'lucide-react';
+
+// Components
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import { NewsletterSignup } from './components/NewsletterSignup';
+import { useI18n } from '@/app/context/I18nContext';
+
+// UI Components
+import {
+  Button,
+  Container,
+  Section,
+  SectionHeader,
+  Grid,
+  FeatureCard,
+  StatsCard,
+  NewsCard,
+  HeroFadeIn,
+  FadeIn,
+  StaggerContainer,
+  StaggerItem,
+} from './components/ui';
 
 export default function Home() {
   const { t } = useI18n();
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLElement>(null);
+  
+  // Parallax effect for hero
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"]
+    offset: ['start start', 'end start'],
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.5]);
-  
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.5]);
+
+  // Stats data
   const stats = [
-    { value: "35+", label: t("stats.years") },
-    { value: "500+", label: t("stats.members") },
-    { value: "6", label: t("stats.locations") },
-    { value: "55", label: t("stats.partnership") }
+    { value: '35+', label: t('stats.years') },
+    { value: '500+', label: t('stats.members') },
+    { value: '6', label: t('stats.locations') },
+    { value: '55', label: t('stats.partnership') },
   ];
 
+  // Features data
   const features = [
     {
-      number: t("features.history.number"),
-      title: t("features.history.title"),
-      description: t("features.history.description"),
-      link: "/o-nama",
+      number: '01',
+      title: t('features.history.title'),
+      description: t('features.history.description'),
+      href: '/o-nama',
       icon: Calendar,
     },
     {
-      number: t("features.courses.number"),
-      title: t("features.courses.title"),
-      description: t("features.courses.description"),
-      link: "/aktivnosti",
+      number: '02',
+      title: t('features.courses.title'),
+      description: t('features.courses.description'),
+      href: '/aktivnosti',
       icon: BookOpen,
     },
     {
-      number: t("features.events.number"),
-      title: t("features.events.title"),
-      description: t("features.events.description"),
-      link: "/aktivnosti",
+      number: '03',
+      title: t('features.events.title'),
+      description: t('features.events.description'),
+      href: '/aktivnosti',
       icon: Globe,
     },
     {
-      number: t("features.trips.number"),
-      title: t("features.trips.title"),
-      description: t("features.trips.description"),
-      link: "/aktivnosti",
+      number: '04',
+      title: t('features.trips.title'),
+      description: t('features.trips.description'),
+      href: '/aktivnosti',
       icon: MapPin,
     },
   ];
 
+  // News data (placeholder)
+  const newsItems = [
+    {
+      date: t('newsPlaceholder.date1'),
+      category: t('newsPlaceholder.category1'),
+      title: t('newsPlaceholder.title1'),
+      slug: 'vijest-1',
+    },
+    {
+      date: t('newsPlaceholder.date2'),
+      category: t('newsPlaceholder.category2'),
+      title: t('newsPlaceholder.title2'),
+      slug: 'vijest-2',
+    },
+    {
+      date: t('newsPlaceholder.date3'),
+      category: t('newsPlaceholder.category3'),
+      title: t('newsPlaceholder.title3'),
+      slug: 'vijest-3',
+    },
+  ];
+
   return (
-    <main className="bg-slate-950 text-white">
+    <main className="bg-slate-950 text-white overflow-x-hidden">
       <Navigation />
 
-      {/* Hero Section */}
-      <section ref={heroRef} className="relative h-screen min-h-[600px] pt-20 md:pt-24 overflow-hidden border-b border-yellow-600/30">
-        {/* Hero Image with overlay */}
-        <motion.div 
-          className="absolute inset-0"
-          style={{ y, scale }}
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+      {/* ==================== HERO SECTION ==================== */}
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center pt-20 md:pt-24 overflow-hidden"
+      >
+        {/* Background Image with Parallax */}
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ y: heroY, scale: heroScale }}
         >
-            <Image
-            src="/images/hero-poznati-nijemci.jpg"
-            alt="Poznati Nijemci"
+          <Image
+            src="/images/hero-poznati-nijemci.avif"
+            alt="HNDS Hero"
             fill
             priority
+            quality={90}
             className="object-cover object-center"
-            quality={95}
-            style={{
-              filter: 'brightness(1.15) contrast(1.1) saturate(0.95)',
-            }}
+            style={{ filter: 'brightness(1.1) contrast(1.05)' }}
           />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/70 to-slate-950/90" />
-          {/* Additional vignette effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/50 via-transparent to-slate-950/50" />
-          {/* Subtle yellow tint overlay */}
+          {/* Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 via-transparent to-slate-950/40" />
           <div className="absolute inset-0 bg-yellow-600/5 mix-blend-overlay" />
         </motion.div>
-        
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(234, 179, 8) 1px, transparent 0)', backgroundSize: '50px 50px'}}></div>
-        </div>
 
-        <motion.div 
-          className="relative h-full flex items-center max-w-6xl mx-auto px-4 md:px-8"
-          style={{ opacity }}
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5 z-[1]" />
+
+        {/* Hero Content */}
+        <motion.div
+          className="relative z-10 w-full max-w-6xl mx-auto px-4 md:px-8 text-center"
+          style={{ opacity: heroOpacity }}
         >
-          <HeroFadeIn className="space-y-8 text-center w-full">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-tight drop-shadow-2xl">
-              {t("hero.title")}
+          <HeroFadeIn className="space-y-6 md:space-y-8">
+            {/* Main Heading */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-balance">
+              <span className="block">{t('hero.title')}</span>
             </h1>
 
-            <p className="text-xl text-gray-200 max-w-2xl mx-auto font-light drop-shadow-lg">
-              {t("hero.subtitle")}
+            {/* Subtitle */}
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto font-light px-2">
+              {t('hero.subtitle')}
             </p>
 
-            <HeroFadeIn delay={0.2} className="flex gap-4 justify-center flex-wrap pt-4">
-              <Link
-                href="/aktivnosti"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all duration-300 hover:scale-105"
-              >
-                {t("hero.exploreActivities")}
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            {/* CTA Buttons - Stack on mobile */}
+            <HeroFadeIn delay={0.2} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4 px-4 sm:px-0">
+              <Link href="/aktivnosti" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto justify-center">
+                  {t('hero.exploreActivities')}
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
               </Link>
-              <Link
-                href="/o-nama"
-                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300 backdrop-blur-sm hover:scale-105"
-              >
-                {t("hero.learnMore")}
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link href="/o-nama" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto justify-center">
+                  {t('hero.learnMore')}
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
               </Link>
             </HeroFadeIn>
 
-            {/* Stats Grid */}
-            <HeroFadeIn delay={0.4} className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-yellow-600/20 mt-16">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  className="backdrop-blur-md bg-slate-950/50 p-4 rounded-lg border border-yellow-600/30 shadow-lg shadow-yellow-600/10 hover:bg-slate-950/60 hover:border-yellow-600/50 hover:shadow-yellow-600/20 transition-all duration-300"
-                >
-                  <div className="text-3xl md:text-4xl font-light text-yellow-500 mb-2">{stat.value}</div>
-                  <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wider font-light">{stat.label}</div>
-                </motion.div>
-              ))}
+            {/* Stats Grid - 2x2 on mobile */}
+            <HeroFadeIn delay={0.4} className="pt-8 sm:pt-16 mt-8 sm:mt-16 border-t border-yellow-600/20">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
+                {stats.map((stat, i) => (
+                  <StatsCard key={i} value={stat.value} label={stat.label} />
+                ))}
+              </div>
             </HeroFadeIn>
           </HeroFadeIn>
         </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-6 h-10 rounded-full border-2 border-yellow-600/50 flex items-start justify-center p-2"
+          >
+            <motion.div className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* Featured Sections - 4 Columns */}
-      <section className="py-24 md:py-32 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
+      {/* ==================== FEATURES SECTION ==================== */}
+      <Section variant="default" padding="lg">
+        <Container size="xl">
+          {/* Mobile: Horizontal scroll, Desktop: Grid */}
+          <div className="hidden md:block">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {features.map((feature, i) => (
                 <StaggerItem key={i}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="group relative"
-                  >
-                    <Link href={feature.link} className="block">
-                      <div className="relative overflow-hidden rounded-lg border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 h-full p-8 bg-gradient-to-br from-slate-900 to-slate-950 hover:shadow-lg hover:shadow-yellow-600/20">
-                        {/* Number */}
-                        <div className="text-6xl font-light text-yellow-600/20 mb-6 group-hover:text-yellow-600/40 transition-colors">
-                          {feature.number}
-                        </div>
-
-                        {/* Icon */}
-                        <Icon className="w-10 h-10 text-yellow-600 mb-6" />
-
-                        {/* Title */}
-                        <h3 className="text-2xl font-light text-white mb-3 group-hover:text-yellow-500 transition-colors">
-                          {feature.title}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-gray-400 font-light mb-6 text-sm leading-relaxed">
-                          {feature.description}
-                        </p>
-
-                        {/* CTA */}
-                        <div className="flex items-center gap-2 text-yellow-600 group-hover:gap-3 transition-all duration-300">
-                          <span className="text-sm font-light">Saznaj više</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
+                  <FeatureCard
+                    icon={feature.icon}
+                    number={feature.number}
+                    title={feature.title}
+                    description={feature.description}
+                    href={feature.href}
+                    ctaText={t('features.learnMore')}
+                  />
                 </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
-        </div>
-      </section>
+              ))}
+            </StaggerContainer>
+          </div>
+          {/* Mobile horizontal scroll */}
+          <div className="md:hidden -mx-4 px-4">
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+              {features.map((feature, i) => (
+                <div key={i} className="flex-none w-[85%] min-w-[280px] snap-center">
+                  <FeatureCard
+                    icon={feature.icon}
+                    number={feature.number}
+                    title={feature.title}
+                    description={feature.description}
+                    href={feature.href}
+                    ctaText={t('features.learnMore')}
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Scroll indicator dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {features.map((_, i) => (
+                <div key={i} className="w-2 h-2 rounded-full bg-yellow-600/30" />
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
 
-      {/* Recent News Section */}
-      <section className="py-24 md:py-32 bg-slate-900 border-y border-yellow-600/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <FadeIn className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-light text-white mb-4">{t("news.title")}</h2>
-            <p className="text-gray-400 font-light text-lg">{t("news.subtitle")}</p>
+      {/* ==================== ABOUT PREVIEW SECTION ==================== */}
+      <Section variant="alternate" border padding="lg">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Text Content */}
+            <FadeIn className="space-y-6">
+              <div>
+                <span className="text-yellow-500 text-sm uppercase tracking-widest font-light">
+                  {t('aboutPreview.badge')}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-light text-white mt-2">
+                  {t('aboutPreview.title')}
+                </h2>
+                <div className="w-12 h-px bg-yellow-600 mt-6" />
+              </div>
+              
+              <p className="text-gray-300 font-light text-lg leading-relaxed">
+                {t('aboutPreview.description')}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Link href="/o-nama">
+                  <Button>
+                    {t('aboutPreview.learnMore')}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link href="/membership">
+                  <Button variant="ghost">
+                    {t('aboutPreview.becomeMember')}
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
+            </FadeIn>
+
+            {/* Image/Visual */}
+            <FadeIn delay={0.2} className="relative">
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <Image
+                  src="/images/gallery/1566.avif"
+                  alt="HNDS događaj"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 border border-yellow-600/30 rounded-lg -z-10" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-600/10 rounded-lg -z-10" />
+            </FadeIn>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ==================== NEWS SECTION ==================== */}
+      <Section variant="default" padding="lg">
+        <Container>
+          <FadeIn className="mb-12">
+            <SectionHeader
+              title={t('news.title')}
+              subtitle={t('news.subtitle')}
+              align="center"
+            />
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                date: "14. siječanj 2026",
-                category: "Obavijest",
-                title: "•",
-                slug: "vijest-1",
-              },
-              {
-                date: "10. siječanj 2026",
-                category: "Događaj",
-                title: "•",
-                slug: "vijest-2",
-              },
-              {
-                date: "5. siječanj 2026",
-                category: "Novost",
-                title: "•",
-                slug: "vijest-3",
-              },
-            ].map((news, i) => (
-              <StaggerItem key={i}>
-                <motion.article
-                  whileHover={{ y: -4 }}
-                  className="border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 p-8 bg-slate-950"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-light uppercase tracking-wide text-yellow-600 px-3 py-1 bg-yellow-600/10 rounded">
-                      {news.category}
-                    </span>
-                    <span className="text-xs text-gray-500 font-light">{news.date}</span>
-                  </div>
-                  <h3 className="text-xl font-light text-white mb-4 line-clamp-2">{news.title}</h3>
-                  <Link
-                    href={`/vijesti/${news.slug}`}
-                    className="text-yellow-600 hover:text-yellow-500 transition flex items-center gap-2 text-sm font-light group"
-                  >
-                    {t("news.readMore")}
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.article>
-              </StaggerItem>
-            ))}
+          <StaggerContainer>
+            <Grid cols={3} gap="lg" className="mb-12">
+              {newsItems.map((news, i) => (
+                <StaggerItem key={i}>
+                  <NewsCard
+                    date={news.date}
+                    category={news.category}
+                    title={news.title}
+                    slug={news.slug}
+                  />
+                </StaggerItem>
+              ))}
+            </Grid>
           </StaggerContainer>
 
           <FadeIn className="text-center">
-            <Link
-              href="/vijesti"
-              className="inline-flex items-center gap-3 px-8 py-4 border-2 border-yellow-600/50 text-white text-sm font-medium hover:bg-yellow-600/10 hover:border-yellow-600 transition-all duration-300"
-            >
-              {t("news.viewAll")}
-              <ChevronRight className="w-4 h-4" />
+            <Link href="/vijesti">
+              <Button variant="outline">
+                {t('news.viewAll')}
+                <ChevronRight className="w-4 h-4" />
+              </Button>
             </Link>
           </FadeIn>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Newsletter Signup */}
+      {/* ==================== NEWSLETTER SECTION ==================== */}
       <NewsletterSignup />
 
-      {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-slate-950 border-t border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-8">
-          <FadeIn className="space-y-4">
-            <h2 className="text-4xl md:text-6xl font-light text-white">{t("cta.joinCommunity")}</h2>
-            <p className="text-xl text-gray-300 font-light">
-              {t("cta.joinDescription")}
+      {/* ==================== CTA SECTION ==================== */}
+      <Section variant="default" padding="lg" className="border-t border-yellow-600/30">
+        <Container size="md" className="text-center">
+          <FadeIn className="space-y-6">
+            <h2 className="text-4xl md:text-6xl font-light text-white">
+              {t('cta.joinCommunity')}
+            </h2>
+            <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
+              {t('cta.joinDescription')}
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.2} className="flex gap-4 justify-center flex-wrap pt-4">
-            <Link
-              href="/kontakt"
-              className="px-8 py-4 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition duration-300 inline-flex items-center gap-2"
-            >
-              {t("cta.contactUs")}
-              <ArrowRight className="w-4 h-4" />
+          <FadeIn delay={0.2} className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+            <Link href="/kontakt">
+              <Button size="lg" variant="glow">
+                {t('cta.contactUs')}
+                <ArrowRight className="w-5 h-5" />
+              </Button>
             </Link>
-            <Link
-              href="/galerija"
-              className="px-8 py-4 border-2 border-yellow-600 text-yellow-600 font-light hover:bg-yellow-600/10 transition duration-300"
-            >
-              {t("cta.viewGallery")}
+            <Link href="/galerija">
+              <Button size="lg" variant="outline">
+                {t('cta.viewGallery')}
+              </Button>
             </Link>
           </FadeIn>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       <Footer />
     </main>

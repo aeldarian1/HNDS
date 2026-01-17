@@ -12,11 +12,18 @@ export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [selectedLang, setSelectedLang] = useState(language);
+  const [mounted, setMounted] = useState(false);
 
   const languages = [
     { code: 'hr', label: 'Hrvatski', fullLabel: 'Croatian', flag: '🇭🇷' },
     { code: 'de', label: 'Deutsch', fullLabel: 'German', flag: '🇩🇪' },
   ];
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+    setSelectedLang(language);
+  }, [language]);
 
   // Handle click outside to close dropdown
   useEffect(() => {
@@ -39,6 +46,21 @@ export default function LanguageSwitcher() {
   };
 
   const currentLang = languages.find(l => l.code === selectedLang);
+
+  // Render placeholder during SSR to match initial server render
+  if (!mounted) {
+    return (
+      <div className="relative">
+        <button
+          className="flex items-center gap-2 px-3 sm:px-4 py-2.5 rounded-lg text-white text-sm font-light transition-all duration-300 group hover:bg-gradient-to-r hover:from-yellow-600/30 hover:to-yellow-500/20 border border-transparent hover:border-yellow-600/50 min-h-[44px] min-w-[44px] justify-center sm:justify-start"
+          aria-label="Select language"
+        >
+          <Globe size={18} className="text-yellow-500" />
+          <span className="text-lg">🇭🇷</span>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="relative" ref={dropdownRef}>

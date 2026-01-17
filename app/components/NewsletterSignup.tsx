@@ -65,7 +65,7 @@ export function NewsletterSignup() {
             className="flex items-center justify-center gap-3 py-6 px-6 bg-emerald-600/20 border border-emerald-600/50 rounded"
           >
             <Check className="w-5 h-5 text-emerald-400" />
-            <p className="text-emerald-300 font-light">Hvala! Provjerite svoju email za potvrdu.</p>
+                        <p className="text-emerald-300 font-light">{t('newsletter.success')}</p>
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -88,7 +88,7 @@ export function NewsletterSignup() {
               disabled={loading}
               className="px-8 py-3 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all disabled:opacity-50 cursor-pointer"
             >
-              {loading ? 'Slanje...' : t('newsletter.subscribe')}
+                            {loading ? t('newsletter.sending') : t('newsletter.subscribe')}
             </motion.button>
           </form>
         )}
@@ -99,7 +99,7 @@ export function NewsletterSignup() {
             animate={{ opacity: 1 }}
             className="mt-3 text-red-400 text-sm"
           >
-            Greška: {error}
+                        {t('newsletter.error')}{error}
           </motion.p>
         )}
       </div>

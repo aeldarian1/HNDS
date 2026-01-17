@@ -4,203 +4,108 @@ import { ChevronDown, Lock } from "lucide-react";
 import { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { HeroFadeIn, FadeIn } from "../components/AnimatedSection";
+import { HeroFadeIn, FadeIn } from "@/app/components/ui/Animations";
+import { Container, Section } from "@/app/components/ui/Common";
 import { useI18n } from "../context/I18nContext";
 
 export default function PrivacyPolicy() {
-  const [expandedSection, setExpandedSection] = useState<number | null>(null);
-
   const { t, language } = useI18n();
 
-  // Default Croatian content (fallback)
-  const defaultSections = [
+  const [expandedSection, setExpandedSection] = useState<number | null>(null);
+
+  // Build sections from translation keys
+  const sections = [
     {
-      title: "1. Uvod i odgovornost",
-      subtitle: "O zaštiti vaših podataka",
+      title: t("pages.privacy.intro.title"),
+      content: [t("pages.privacy.intro.text")],
+    },
+    {
+      title: t("pages.privacy.dataCollection.title"),
       content: [
-        "Hrvatsko-njemačko društvo Split vodi ovu web stranicu",
-        "Zaštita vaših osobnih podataka naš je prioritet",
-        "Ova stranica objašnjava kako prikupljamo, koristimo i štitimo vaše podatke",
-        "Ova stranica je usklađena s GDPR-om",
-        "Za sva pitanja kontaktirajte nas na hnjd.split@gmail.com",
+        t("pages.privacy.dataCollection.intro"),
+        `• ${t("pages.privacy.dataCollection.personal")}`,
+        `• ${t("pages.privacy.dataCollection.technical")}`,
+        `• ${t("pages.privacy.dataCollection.usage")}`,
+        `• ${t("pages.privacy.dataCollection.cookies")}`,
       ],
     },
     {
-      title: "2. Vrste podataka koje prikupljamo",
-      subtitle: "Kakve podatke od vas prikupljamo",
+      title: t("pages.privacy.dataUsage.title"),
       content: [
-        "Osobni podaci (ime, prezime, email, telefonski broj)",
-        "Adresni podaci (adresa, grad, poštanski broj)",
-        "Podaci iz obrazaca koje dobrovoljno popunjavate",
-        "Tehnički podaci (IP adresa, vrsta preglednika, vrijeme pristupa)",
-        "Kolačiće i podatke o vašoj aktivnosti na stranici",
+        t("pages.privacy.dataUsage.intro"),
+        `• ${t("pages.privacy.dataUsage.use1")}`,
+        `• ${t("pages.privacy.dataUsage.use2")}`,
+        `• ${t("pages.privacy.dataUsage.use3")}`,
+        `• ${t("pages.privacy.dataUsage.use4")}`,
+        `• ${t("pages.privacy.dataUsage.use5")}`,
       ],
     },
     {
-      title: "3. Kako koristimo vaše podatke",
-      subtitle: "Namjena obrade podataka",
+      title: t("pages.privacy.dataSharing.title"),
+      content: [t("pages.privacy.dataSharing.text")],
+    },
+    {
+      title: t("pages.privacy.dataSecurity.title"),
+      content: [t("pages.privacy.dataSecurity.text")],
+    },
+    {
+      title: t("pages.privacy.cookies.title"),
       content: [
-        "Pružanje i poboljšanje naših usluga i web stranice",
-        "Komunikacija s vama o našim aktivnostima i događanjima",
-        "Odgovori na vaše upite i zahtjeve",
-        "Analiza korištenja web stranice radi poboljšanja",
-        "Sukladnost sa zakonskim i regulatornim obvezama",
-        "Analitika i statistika",
+        t("pages.privacy.cookies.intro"),
+        `• ${t("pages.privacy.cookies.essential")}`,
+        `• ${t("pages.privacy.cookies.analytics")}`,
+        `• ${t("pages.privacy.cookies.preferences")}`,
+        `• ${t("pages.privacy.cookies.manage")}`,
       ],
     },
     {
-      title: "4. Osnova za obradu podataka",
-      subtitle: "Pravni temelj naše aktivnosti",
+      title: t("pages.privacy.rights.title"),
       content: [
-        "Vaš pristanak na obradu podataka",
-        "Ispunjavanje ugovornih obveza",
-        "Poštovanje zakonskih obveza",
-        "Legitimni interesi Hrvatsko-njemačkog društva Split",
-        "Zaštita vaših i tuđih prava",
+        t("pages.privacy.rights.intro"),
+        `• ${t("pages.privacy.rights.access")}`,
+        `• ${t("pages.privacy.rights.rectification")}`,
+        `• ${t("pages.privacy.rights.erasure")}`,
+        `• ${t("pages.privacy.rights.restriction")}`,
+        `• ${t("pages.privacy.rights.portability")}`,
+        `• ${t("pages.privacy.rights.objection")}`,
       ],
     },
     {
-      title: "5. Sigurnost podataka",
-      subtitle: "Kako štitimo vaše podatke",
-      content: [
-        "Tehničke mjere zaštite: šifriranje, vatrozidi",
-        "Organizacijske mjere zaštite: pristupne dozvole, obuka zaposlenika",
-        "Redoviti auditi i provjere sigurnosti",
-        "Ograničen pristup samo ovlaštenom osoblju",
-        "Brzo obavješćivanje u slučaju sigurnosnog incidenta",
-      ],
+      title: t("pages.privacy.retention.title"),
+      content: [t("pages.privacy.retention.text")],
     },
     {
-      title: "6. Vaša prava",
-      subtitle: "Što možete učiniti s vašim podacima",
-      content: [
-        "Pravo na pristup vašim osobnim podacima",
-        "Pravo na ispravak netočnih podataka",
-        "Pravo na brisanje podataka ('pravo na zaboravljanje')",
-        "Pravo na ograničenje obrade podataka",
-        "Pravo na prijenosivost podataka",
-        "Pravo na prigovor obrade podataka",
-        "Pravo na izbor i kontrolu automatizirane obrade",
-      ],
+      title: t("pages.privacy.changes.title"),
+      content: [t("pages.privacy.changes.text")],
     },
     {
-      title: "7. Kolačići",
-      subtitle: "Kako koristimo kolačiće",
-      content: [
-        "Kolačići se koriste za poboljšanje vašeg doživljaja",
-        "Tehnički kolačići koji omogućuju osnovnu funkcionalnost",
-        "Analitički kolačići koji prate korištenje stranice",
-        "Možete odbiti kolačiće kroz postavke preglednika",
-        "Odbijanje kolačića može utjecati na funkcionalnost stranice",
-      ],
-    },
-    {
-      title: "8. Dijeljenje podataka",
-      subtitle: "S kim dijelimo vaše podatke",
-      content: [
-        "Podaci se ne dijele s trećim stranama bez vašeg pristanka",
-        "Iznimka: zakonske obveze i sudska naređenja",
-        "Vanjski partneri (web hosting, email servisi) s ugovornom obvezom zaštite",
-        "Svi partneri su obvezani čuvanjem povjerljivosti",
-        "Podaci ostaju pod kontrolom Hrvatsko-njemačkog društva Split",
-      ],
-    },
-    {
-      title: "9. Razdoblje čuvanja podataka",
-      subtitle: "Koliko dugo čuvamo vaše podatke",
-      content: [
-        "Podaci se čuvaju dok su potrebni za navedenu svrhu",
-        "Članski podaci se čuvaju tijekom članstva i nakon toga",
-        "Tehnički podaci se brišu nakon 12 mjeseci",
-        "Možete zahtijevati brisanje podataka u bilo koje vrijeme",
-        "Zakonske obveze mogu zahtijevati duže čuvanje podataka",
-      ],
-    },
-    {
-      title: "10. Kontakt i ostvarivanje prava",
-      subtitle: "Kako ostvariti svoja prava",
-      content: [
-        "Za ostvarenje prava pošaljite zahtjev na hnjd.split@gmail.com",
-        "Odgovor je obvezan u roku od 30 dana",
-        "Ako niste zadovoljni odgovorom, možete se obratiti Agenciji za zaštitu osobnih podataka (AZOP)",
-        "Kontakt: Agencija za zaštitu osobnih podataka (AZOP)",
-        "Email: info@azop.hr | Tel: +385 1 6109 0800",
-      ],
+      title: t("pages.privacy.contact.title"),
+      content: [t("pages.privacy.contact.text")],
     },
   ];
 
-  // Try to load translations from i18n; if missing, fall back to defaults
-  const privacyTrans: any = (t as any)("pages.privacy");
-
-  // Debug info to help identify why translations may not load
-  if (typeof window !== "undefined") {
-    // eslint-disable-next-line no-console
-    console.log("I18n debug -> language:", language, "pages.privacy:", privacyTrans);
-  }
-
-  const headerTitle = privacyTrans && typeof privacyTrans === "object" && privacyTrans.header?.title
-    ? privacyTrans.header.title
-    : "Pravila privatnosti";
-
-  const headerSubtitle = privacyTrans && typeof privacyTrans === "object" && privacyTrans.header?.subtitle
-    ? privacyTrans.header.subtitle
-    : "Kako čuvamo i štitimo vaše osobne podatke";
-
-  const intro: string[] = privacyTrans && typeof privacyTrans === "object" && Array.isArray(privacyTrans.intro)
-    ? privacyTrans.intro
-    : [
-        "Zaštita vaše privatnosti je temeljna vrijednost Hrvatsko-njemačkog društva Split.",
-        "Ova pravila privatnosti objašnjavaju kako prikupljamo, koristimo, štitimo i dijelimo ",
-        "vaše osobne podatke kada koristite našu web stranicu i naše usluge.",
-      ];
-
-  const note: string = privacyTrans && typeof privacyTrans === "object" && privacyTrans.note
-    ? privacyTrans.note
-    : "Vaši podaci se čuvaju sigurno i koriste se isključivo za namjene opisane u ovim pravilima. Imate potpuna prava na pristup, ispravak i brisanje vaših podataka.";
-
-  const sections = privacyTrans && typeof privacyTrans === "object" && Array.isArray(privacyTrans.sections)
-    ? privacyTrans.sections
-    : defaultSections;
-
   return (
-    <main className="bg-slate-950 text-white">
+    <main className="bg-slate-950 min-h-screen">
       <Navigation />
 
       {/* Header */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 px-4 pt-20">
-        <HeroFadeIn className="text-center max-w-3xl">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Lock className="w-10 h-10 text-yellow-600" />
-            <h1 className="text-6xl md:text-7xl font-light">{headerTitle}</h1>
-          </div>
-          <p className="text-xl text-gray-300 font-light mb-8">{headerSubtitle}</p>
-          <div className="h-1 w-12 bg-yellow-600 mx-auto" />
-        </HeroFadeIn>
-      </section>
-
-      {/* Introduction */}
-      <section className="py-20 bg-slate-950 border-b border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <FadeIn className="space-y-6 text-gray-300 font-light leading-relaxed">
-            {intro.map((p: string, i: number) => (
-              <p key={i}>{p}</p>
-            ))}
-
-            <div className="bg-yellow-600/10 border-l-4 border-yellow-600 p-6 mt-8">
-              <p className="text-yellow-100">{note}</p>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(234,179,8,0.08),transparent_50%)]" />
+        <Container className="relative">
+          <HeroFadeIn className="text-center max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <Lock className="w-10 h-10 text-yellow-600" />
+              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">{t('pages.privacy.title')}</h1>
             </div>
-          </FadeIn>
-        </div>
+            <p className="text-xl text-gray-300 font-light mb-8">{t('pages.privacy.subtitle')}</p>
+            <div className="w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent mx-auto" />
+          </HeroFadeIn>
+        </Container>
       </section>
 
       {/* Sections */}
-      <section className="py-20 bg-slate-900 border-b border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <FadeIn className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">{t('pages.privacy.details') || 'Detaljne informacije'}</h2>
-            <div className="w-12 h-px bg-yellow-600" />
-          </FadeIn>
-
+      <Section className="bg-slate-900 border-b border-yellow-600/30">
+        <Container className="max-w-4xl">
           <div className="space-y-4">
             {sections.map((section: any, index: number) => (
               <motion.div
@@ -217,7 +122,6 @@ export default function PrivacyPolicy() {
                 >
                   <div className="flex-1">
                     <h3 className="text-xl font-light text-white mb-1">{section.title}</h3>
-                    <p className="text-sm text-gray-400 font-light">{section.subtitle}</p>
                   </div>
                   <motion.div
                     animate={{ rotate: expandedSection === index ? 180 : 0 }}
@@ -238,38 +142,43 @@ export default function PrivacyPolicy() {
                   className="overflow-hidden"
                 >
                   <div className="px-6 pb-6 pt-0 border-t border-yellow-600/20 bg-yellow-600/5">
-                    <ul className="space-y-3">
-                      {section.content.map((item: any, idx: number) => (
-                        <motion.li
+                    <div className="space-y-3 text-gray-300 font-light">
+                      {section.content.map((item: string, idx: number) => (
+                        <motion.div
                           key={idx}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: idx * 0.05 }}
-                          className="flex gap-3 text-gray-300 font-light"
                         >
-                          <span className="text-yellow-600 mt-1">•</span>
-                          <span>{item}</span>
-                        </motion.li>
+                          {item.startsWith("•") ? (
+                            <div className="flex gap-3">
+                              <span className="text-yellow-600 flex-shrink-0">•</span>
+                              <span>{item.substring(1).trim()}</span>
+                            </div>
+                          ) : (
+                            <p>{item}</p>
+                          )}
+                        </motion.div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-slate-950 border-b border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
+      <Section className="bg-slate-950 border-b border-yellow-600/30">
+        <Container className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">Kontaktirajte nas</h2>
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">{t('contact.title') || 'Kontaktirajte nas'}</h2>
             <div className="w-12 h-px bg-yellow-600" />
           </motion.div>
 
@@ -289,8 +198,8 @@ export default function PrivacyPolicy() {
               </p>
             </div>
           </motion.div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       <Footer />
     </main>

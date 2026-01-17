@@ -1,13 +1,17 @@
 "use client";
 
+import { useI18n } from '@/app/context/I18nContext';
 import { motion } from "framer-motion";
 import { ChevronDown, FileText, BookOpen } from "lucide-react";
 import { useState } from "react";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
-import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
+import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/ui/Animations";
+import { Container, Section } from "@/app/components/ui/Common";
 
 export default function Statut() {
+  const { t } = useI18n();
+
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   const sections = [
@@ -173,26 +177,29 @@ export default function Statut() {
   ];
 
   return (
-    <main className="bg-slate-950 text-white">
+    <main className="bg-slate-950 min-h-screen">
       <Navigation />
 
       {/* Header */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 px-4 pt-20">
-        <HeroFadeIn className="text-center max-w-3xl">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <FileText className="w-10 h-10 text-yellow-600" />
-            <h1 className="text-6xl md:text-7xl font-light">Statut</h1>
-          </div>
-          <p className="text-xl text-gray-300 font-light mb-8">
-            Ustav Hrvatsko-njemačkog društva Split - temeljni dokument koji uređuje rad i upravljanje udrugom
-          </p>
-          <div className="h-1 w-12 bg-yellow-600 mx-auto" />
-        </HeroFadeIn>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(234,179,8,0.08),transparent_50%)]" />
+        <Container className="relative">
+          <HeroFadeIn className="text-center max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <FileText className="w-10 h-10 text-yellow-600" />
+              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">{t('pages.statute.title')}</h1>
+            </div>
+            <p className="text-xl text-gray-300 font-light mb-8">
+              {t('pages.statute.subtitle')}
+            </p>
+            <div className="w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent mx-auto" />
+          </HeroFadeIn>
+        </Container>
       </section>
 
       {/* Introduction */}
-      <section className="py-20 bg-slate-950 border-b border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
+      <Section className="bg-slate-950 border-b border-yellow-600/30">
+        <Container className="max-w-4xl">
           <FadeIn className="space-y-6 text-gray-300 font-light leading-relaxed">
             <p>
               Ovaj Statut donesen je na Skupštini udruge održanoj dana <strong>2. ožujka 2024. godine</strong> i služi kao temeljni ustavni dokument koji regulira sve aspekte rada Hrvatsko-njemačkog društva Split.
@@ -206,12 +213,12 @@ export default function Statut() {
               </p>
             </div>
           </FadeIn>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Sections */}
-      <section className="py-20 bg-slate-900 border-b border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
+      <Section className="bg-slate-900 border-b border-yellow-600/30">
+        <Container className="max-w-4xl">
           <FadeIn className="mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-4">Sadržaj Statuta</h2>
             <div className="w-12 h-px bg-yellow-600" />
@@ -273,12 +280,12 @@ export default function Statut() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Key Information */}
-      <section className="py-20 bg-slate-950 border-b border-yellow-600/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
+      <Section className="bg-slate-950 border-b border-yellow-600/30">
+        <Container className="max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -329,12 +336,12 @@ export default function Statut() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Governance Structure */}
-      <section className="py-20 bg-slate-900 border-b border-yellow-600/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
+      <Section className="bg-slate-900 border-b border-yellow-600/30">
+        <Container className="max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -411,12 +418,12 @@ export default function Statut() {
               </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Call to Action */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-8">
+      <Section className="py-20 md:py-32 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-yellow-600/30">
+        <Container className="max-w-4xl text-center space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -445,8 +452,8 @@ export default function Statut() {
               +385 98 244 124 | hnjd.split@gmail.com
             </p>
           </motion.div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       <Footer />
     </main>

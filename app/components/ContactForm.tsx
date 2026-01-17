@@ -123,9 +123,7 @@ export function ContactForm() {
           >
             <Check className="w-5 h-5 text-emerald-400 flex-shrink-0" />
             <p className="text-emerald-300 font-light">
-              {language === 'de'
-                ? 'Vielen Dank! Wir werden Sie bald kontaktieren.'
-                : 'Hvala! Brzo ćemo vas kontaktirati.'}
+              {t('contact.messageSent')}
             </p>
           </motion.div>
         )}
@@ -224,7 +222,7 @@ export function ContactForm() {
           className="w-full px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
         >
           <Send className="w-4 h-4" />
-          {loading ? (language === 'de' ? 'Wird gesendet...' : 'Slanje...') : t('contact.send')}
+                    {loading ? t('contact.sending') : t('contact.send')}
         </motion.button>
       </motion.form>
     </div>

@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": [
     "next-env.d.ts",
@@ -30,7 +31,13 @@
     "lib/**/*.tsx",
     "sanity/**/*.ts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "__tests__/**/*.ts",
+    "__tests__/**/*.tsx",
+    "e2e/**/*.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "playwright.config.ts"
   ],
-  "exclude": ["node_modules", "scripts", "**/*.test.ts"]
+  "exclude": ["node_modules", "scripts"]
 }

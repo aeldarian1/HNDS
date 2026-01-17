@@ -1,216 +1,269 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, BookOpen, TrendingUp } from 'lucide-react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Calendar, BookOpen, TrendingUp, Search, Download, ExternalLink } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/AnimatedSection";
+import { useI18n } from '@/app/context/I18nContext';
+import {
+  HeroFadeIn,
+  FadeIn,
+  StaggerContainer,
+  StaggerItem,
+  Counter,
+} from '@/app/components/ui/Animations';
+import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
+import { MotionCard } from '@/app/components/ui/Card';
+import { Button, MotionButton } from '@/app/components/ui/Button';
+import { Input } from '@/app/components/ui/Form';
 import { ChronicleBadge } from '@/app/components/ChronicleBadge';
 import chronicles from '@/data/chronicles.json';
-import { RevealOnScroll, ScaleOnHover } from '@/app/components/InteractiveElements';
 
 export default function ChroniclesPage() {
+  const { t } = useI18n();
   const [selectedDecade, setSelectedDecade] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Get unique decades
-  const decades = Array.from(
-    new Set(
-      chronicles.map(c => Math.floor(new Date(c.date).getFullYear() / 10) * 10)
-    )
-  ).sort((a, b) => b - a);
+  const decades = useMemo(() => 
+    Array.from(
+      new Set(
+        chronicles.map(c => Math.floor(new Date(c.date).getFullYear() / 10) * 10)
+      )
+    ).sort((a, b) => b - a),
+    []
+  );
 
-  // Filter chronicles by decade
-  const filteredChronicles = selectedDecade === 'all'
-    ? chronicles
-    : chronicles.filter(c => {
+  // Filter chronicles
+  const filteredChronicles = useMemo(() => {
+    let result = chronicles;
+    
+    if (selectedDecade !== 'all') {
+      result = result.filter(c => {
         const year = new Date(c.date).getFullYear();
         const decade = Math.floor(year / 10) * 10;
         return decade.toString() === selectedDecade;
       });
+    }
+    
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(c => 
+        c.title.toLowerCase().includes(query) ||
+        (c.description && c.description.toLowerCase().includes(query))
+      );
+    }
+    
+    return result;
+  }, [selectedDecade, searchQuery]);
 
   // Calculate statistics
   const years = chronicles.map(c => new Date(c.date).getFullYear());
   const minYear = Math.min(...years);
   const maxYear = Math.max(...years);
   const yearSpan = maxYear - minYear + 1;
+
   return (
-    <main className="bg-slate-950">
+    <main className="bg-slate-950 min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <HeroFadeIn className="space-y-6">
-            <div className="flex items-center gap-3 mb-4">
-              <BookOpen className="w-10 h-10 text-yellow-600" />
-              <h1 className="text-6xl md:text-7xl font-light text-white">Kronike</h1>
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-slate-900 to-slate-950 border-b border-yellow-600/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(234,179,8,0.08),transparent_50%)]" />
+        <Container className="relative">
+          <HeroFadeIn className="space-y-6 max-w-3xl">
+            <div className="flex items-center gap-4 mb-4">
+              <BookOpen className="w-10 h-10 text-yellow-500" />
+              <Badge variant="outline">
+                {chronicles.length} izdanja
+              </Badge>
             </div>
-            <p className="text-xl text-gray-300 max-w-3xl font-light">
+            <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">
+              Kronike
+            </h1>
+            <p className="text-xl text-gray-300 font-light leading-relaxed">
               Povijesni zapis naših aktivnosti i događanja kroz godine. 
-              Otkrijte bogatu povijest Hrvatsko-njemačkog društva Split od 1990. godine.
+              Otkrijte bogatu povijest Hrvatsko-njemačkog društva Split od {minYear}. godine.
             </p>
+            
             {/* Statistics */}
-            <div className="flex flex-wrap items-center gap-6 text-gray-400 mb-6">
+            <div className="flex flex-wrap items-center gap-6 text-gray-400 pt-4">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-yellow-600" />
-                <span className="font-semibold text-white">{chronicles.length}</span>
+                <Calendar className="w-5 h-5 text-yellow-500" />
+                <span className="font-medium text-white">{chronicles.length}</span>
                 <span>izdanja</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-yellow-600">📚</span>
+                <span className="text-yellow-500">📚</span>
                 <span>{minYear} - {maxYear}</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-yellow-600" />
+                <TrendingUp className="w-5 h-5 text-yellow-500" />
                 <span>{yearSpan} godina povijesti</span>
               </div>
             </div>
             
-            {/* Year Filters */}
+            <div className="w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent" />
+          </HeroFadeIn>
+        </Container>
+      </section>
+
+      {/* Search & Filters */}
+      <Section>
+        <Container>
+          <FadeIn className="mb-12 space-y-6">
+            {/* Search */}
+            <div className="relative max-w-md">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Input
+                type="text"
+                placeholder={t('ui.search.chroniclesPlaceholder')}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12"
+              />
+            </div>
+
+            {/* Decade filters */}
             <div className="flex flex-wrap gap-3">
-              <button
+              <MotionButton
                 onClick={() => setSelectedDecade('all')}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                  selectedDecade === 'all'
-                    ? 'bg-yellow-600 text-white'
-                    : 'bg-slate-800 text-gray-300 hover:bg-slate-700'
-                }`}
+                variant={selectedDecade === 'all' ? 'default' : 'outline'}
+                size="sm"
               >
                 Sve ({chronicles.length})
-              </button>
+              </MotionButton>
               {decades.map(decade => {
                 const count = chronicles.filter(c => {
                   const year = new Date(c.date).getFullYear();
                   return Math.floor(year / 10) * 10 === decade;
                 }).length;
                 return (
-                  <button
+                  <MotionButton
                     key={decade}
                     onClick={() => setSelectedDecade(decade.toString())}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                      selectedDecade === decade.toString()
-                        ? 'bg-yellow-600 text-white'
-                        : 'bg-slate-800 text-gray-300 hover:bg-slate-700'
-                    }`}
+                    variant={selectedDecade === decade.toString() ? 'default' : 'outline'}
+                    size="sm"
                   >
                     {decade}e ({count})
-                  </button>
+                  </MotionButton>
                 );
               })}
             </div>
-            <div className="w-12 h-px bg-yellow-600" />
-          </HeroFadeIn>
-        </div>
-      </section>
-
-      {/* Chronicles Grid */}
-      <section className="py-20 md:py-32 bg-slate-950">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          {filteredChronicles.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-400 text-lg">Nema kronika za odabrano razdoblje.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredChronicles.map((chronicle, index) => (
-              <RevealOnScroll key={chronicle.id} delay={index * 0.05} direction="up">
-                <ScaleOnHover scale={1.03}>
-                  <Link
-                    href={`/kronike/${chronicle.slug}`}
-                    className="group block bg-slate-900 border border-yellow-600/30 hover:border-yellow-600 transition-all duration-300 overflow-hidden h-full hover:shadow-xl hover:shadow-yellow-600/10"
-                  >
-                    {/* Chronicle Cover */}
-                    <div className="relative h-64 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center p-6">
-                      <ChronicleBadge
-                        number={chronicle.title.match(/#(\d+)/)?.[1] || '?'}
-                        year={new Date(chronicle.date).getFullYear().toString()}
-                        className="w-40 h-40 group-hover:scale-110 transition-transform duration-300"
-                      />
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-yellow-600/0 group-hover:bg-yellow-600/5 transition-colors duration-300" />
-                    </div>
-
-                    {/* Chronicle Info */}
-                    <div className="p-6 space-y-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <Calendar className="w-4 h-4 text-yellow-600" />
-                        <span>{chronicle.formattedDate}</span>
-                      </div>
-
-                      <h3 className="text-xl font-light text-white group-hover:text-yellow-600 transition line-clamp-2">
-                        {chronicle.title.replace(/&#8211;/g, '–').replace(/&amp;/g, '&')}
-                      </h3>
-
-                      {chronicle.description && (
-                        <p className="text-gray-400 font-light text-sm line-clamp-3">
-                          {chronicle.description}
-                        </p>
-                      )}
-
-                      <div className="flex items-center gap-2 text-yellow-600 text-sm font-light pt-2">
-                        Pročitaj kroniku
-                        <motion.div
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                          <ArrowRight className="w-4 h-4" />
-                        </motion.div>
-                      </div>
-                    </div>
-                  </Link>
-                </ScaleOnHover>
-              </RevealOnScroll>
-            ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* About Chronicles Section */}
-      <section className="py-20 md:py-32 bg-slate-900 border-t border-yellow-600/30">
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <FadeIn className="space-y-8 text-center">
-            <h2 className="text-5xl md:text-6xl font-light text-white">
-              O našim kronikama
-            </h2>
-            
-            <div className="space-y-6 text-gray-300 font-light text-lg max-w-3xl mx-auto text-left">
-              <p>
-                HD Kronike su povijesni zapis aktivnosti Hrvatsko-njemačkog društva Split. 
-                Svako izdanje dokumentira događaje, susrete, kulturne razmjene i projekte 
-                koji su obilježili rad našeg društva kroz godine.
-              </p>
-              
-              <p>
-                Od osnivanja 1990. godine, naše društvo potiče kulturnu suradnju između 
-                Hrvatske i Njemačke. Kronike čuvaju uspomene na brojne prijateljstva, 
-                putovanja, kulturne manifestacije i obrazovne programe koji su povezali 
-                naše dvije zemlje.
-              </p>
-
-              <p>
-                Pregledajte kronike i otkrijte kako je Društvo raslo i razvijalo se kroz 
-                desetljeća, doprinoseći međunarodnoj suradnji i kulturnom obogaćivanju 
-                zajednice.
-              </p>
-            </div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="inline-block"
-            >
-              <a
-                href="/about"
-                className="inline-block px-8 py-3 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition border border-yellow-600"
-              >
-                Saznaj više o nama
-              </a>
-            </motion.div>
           </FadeIn>
-        </div>
-      </section>
+
+          {/* Chronicles Grid */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${selectedDecade}-${searchQuery}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {filteredChronicles.length === 0 ? (
+                <div className="text-center py-20">
+                  <p className="text-gray-400 text-lg mb-4">Nema kronika za odabrano razdoblje.</p>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setSelectedDecade('all');
+                    }}
+                  >
+                    Poništi filtre
+                  </Button>
+                </div>
+              ) : (
+                <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredChronicles.map((chronicle) => (
+                    <StaggerItem key={chronicle.id}>
+                      <Link href={`/kronike/${chronicle.slug}`}>
+                        <MotionCard
+                          className="group bg-slate-900/50 border border-yellow-600/20 overflow-hidden h-full"
+                          hoverY={-8}
+                        >
+                          {/* Chronicle Cover */}
+                          <div className="relative h-56 bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden flex items-center justify-center p-6">
+                            <ChronicleBadge
+                              number={chronicle.title.match(/#(\d+)/)?.[1] || '?'}
+                              year={new Date(chronicle.date).getFullYear().toString()}
+                              className="w-36 h-36 group-hover:scale-110 transition-transform duration-300"
+                            />
+                            {/* Hover overlay */}
+                            <div className="absolute inset-0 bg-yellow-600/0 group-hover:bg-yellow-600/5 transition-colors duration-300" />
+                          </div>
+
+                          {/* Chronicle Info */}
+                          <div className="p-6 space-y-4">
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <Calendar className="w-4 h-4 text-yellow-500" />
+                              <span>{chronicle.formattedDate}</span>
+                            </div>
+
+                            <h3 className="text-lg font-light text-white group-hover:text-yellow-500 transition line-clamp-2">
+                              {chronicle.title.replace(/&#8211;/g, '–').replace(/&amp;/g, '&')}
+                            </h3>
+
+                            {chronicle.description && (
+                              <p className="text-gray-400 font-light text-sm line-clamp-2">
+                                {chronicle.description}
+                              </p>
+                            )}
+
+                            <div className="flex items-center justify-between pt-4 border-t border-yellow-600/10">
+                              <span className="text-yellow-500 text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                                Pročitaj više
+                                <ArrowRight className="w-4 h-4" />
+                              </span>
+                              {chronicle.pdfUrl && (
+                                <a
+                                  href={chronicle.pdfUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="p-2 text-gray-400 hover:text-yellow-500 transition-colors"
+                                  title={t('common.downloadPDF')}
+                                >
+                                  <Download className="w-4 h-4" />
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </MotionCard>
+                      </Link>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </Container>
+      </Section>
+
+      {/* Archive CTA */}
+      <Section className="bg-slate-900 border-t border-yellow-600/30">
+        <Container>
+          <FadeIn className="text-center max-w-2xl mx-auto space-y-6">
+            <h2 className="text-4xl md:text-5xl font-light text-white">
+              Istražite našu povijest
+            </h2>
+            <p className="text-gray-300 font-light text-lg">
+              Kronike dokumentiraju više od {yearSpan} godina aktivnosti našeg društva - od tečajeva jezika do kulturnih razmjena i prijateljstava.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 pt-4">
+              <Button asChild size="lg">
+                <Link href="/o-nama">O nama</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/galerija">Pogledaj galeriju</Link>
+              </Button>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
 
       <Footer />
     </main>
