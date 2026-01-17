@@ -198,8 +198,8 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${lora.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <LayoutClientProviders />
         <ThemeProvider>
+          <LayoutClientProviders />
           {/* Skip to main content link for accessibility */}
           <a
             href="#main-content"
