@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { MapPin, Users, BookOpen, Globe, Award, Building2 } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import {
   Container,
   Section,
@@ -22,31 +21,29 @@ import {
 } from '../components/ui';
 
 export default function About() {
-  const { t } = useI18n();
-
   // Leadership data
   const leadership = [
     {
-      name: t('pages.about.leadership.members.nikolaHorvat'),
-      role: t('pages.about.leadership.president'),
+      name: 'Nikola Horvat',
+      role: 'Predsjednik',
       icon: Award,
       image: '/images/leadership/nikola-horvat.avif',
     },
     {
-      name: t('pages.about.leadership.members.dragutinKorlaet'),
-      role: t('pages.about.leadership.vicePresident'),
+      name: 'Dragutin Korlaet',
+      role: 'Potpredsjednik',
       icon: Users,
       image: '/images/leadership/dragutin-korlaet.avif',
     },
     {
-      name: t('pages.about.leadership.members.petarFabjanovic'),
-      role: t('pages.about.leadership.vicePresident'),
+      name: 'Petar Fabijanović',
+      role: 'Potpredsjednik',
       icon: Users,
       image: '/images/leadership/petar-fabjanovic.avif',
     },
     {
-      name: t('pages.about.leadership.members.tomislavDraskovic'),
-      role: t('pages.about.leadership.boardChair'),
+      name: 'Tomislav Drašković',
+      role: 'Predsjednik Upravnog odbora',
       icon: Building2,
       image: '/images/leadership/tomislav-draskovic.avif',
     },
@@ -55,22 +52,22 @@ export default function About() {
   // Branches data
   const branches = [
     {
-      name: t('pages.about.branches.makarska'),
+      name: 'Ogranak Makarska',
       president: 'Herbert Buche',
       icon: MapPin,
       color: 'from-blue-600/20 to-cyan-600/20',
       image: '/images/cities/Makarska-Riviera-Kroatien-Tipps-e1726048350267.webp',
     },
     {
-      name: t('pages.about.branches.brac'),
-      president: t('pages.about.leadership.members.petarFabjanovic'),
+      name: 'Ogranak Brač',
+      president: 'Petar Fabijanović',
       icon: Globe,
       color: 'from-emerald-600/20 to-green-600/20',
       image: '/images/cities/1679584344Island_of_Brac-e1726048476766.avif',
     },
     {
-      name: t('pages.about.branches.sinj'),
-      president: t('pages.about.branches.inFormation'),
+      name: 'Ogranak Sinj',
+      president: 'U osnivanju',
       icon: BookOpen,
       color: 'from-purple-600/20 to-pink-600/20',
       image: '/images/cities/Slike-sa-snimanja-Grad-Sinj-2-2022-no-logo-27-1024x682-1.jpg.webp',
@@ -79,10 +76,10 @@ export default function About() {
 
   // Stats data
   const stats = [
-    { value: t('pages.about.stats.years'), label: t('pages.about.stats.yearsLabel') },
-    { value: t('pages.about.stats.members'), label: t('pages.about.stats.membersLabel') },
-    { value: t('pages.about.stats.events'), label: t('pages.about.stats.eventsLabel') },
-    { value: t('pages.about.stats.branches'), label: t('pages.about.stats.branchesLabel') },
+    { value: '30+', label: 'Godina tradicije' },
+    { value: '500+', label: 'Aktivnih članova' },
+    { value: '50+', label: 'Godišnjih događanja' },
+    { value: '5', label: 'Ogranaka' },
   ];
 
   return (
@@ -97,10 +94,10 @@ export default function About() {
               Od 1990. godine
             </Badge>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-light text-white text-balance">
-              {t('pages.about.title')}
+              O nama
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl font-light">
-              {t('pages.about.subtitle')}
+              Hrvatsko-njemačko društvo Split
             </p>
             <div className="w-10 sm:w-12 h-px bg-yellow-600" />
           </HeroFadeIn>
@@ -114,34 +111,34 @@ export default function About() {
             <SlideLeft className="space-y-6 sm:space-y-8">
               <div>
                 <h2 className="text-2xl sm:text-4xl md:text-5xl font-light text-white mb-3 sm:mb-4">
-                  {t('pages.about.mission.title')}
+                  Naša misija
                 </h2>
                 <div className="w-10 sm:w-12 h-px bg-yellow-600" />
               </div>
 
               <p className="text-base sm:text-lg text-gray-300 font-light leading-relaxed">
-                {t('pages.about.mission.description')}
+                Hrvatsko-njemačko društvo Split posvećeno je promicanju kulturne razmjene, obrazovanja i trajnog prijateljstva između Hrvatske i Njemačke.
               </p>
 
               {/* Quote */}
               <blockquote className="border-l-2 border-yellow-600 pl-4 sm:pl-6 py-3 sm:py-4">
                 <p className="text-base sm:text-lg text-gray-300 font-light italic leading-relaxed mb-3 sm:mb-4">
-                  "{t('pages.about.mission.quote')}"
+                  "Gradimo mostove razumijevanja i prijateljstva između naših naroda već više od tri desetljeća."
                 </p>
                 <footer>
                   <cite className="not-italic text-yellow-600 font-medium">
-                    {t('pages.about.mission.quoteAuthor')}
+                    Nikola Horvat
                   </cite>
-                  <p className="text-gray-400 text-sm">{t('pages.about.mission.quoteTitle')}</p>
+                  <p className="text-gray-400 text-sm">Predsjednik HNDS-a</p>
                 </footer>
               </blockquote>
 
               {/* Mission Points */}
               <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
                 {[
-                  { icon: Users, title: t('pages.about.mission.community'), desc: t('pages.about.mission.communityDesc') },
-                  { icon: BookOpen, title: t('pages.about.mission.learning'), desc: t('pages.about.mission.learningDesc') },
-                  { icon: Globe, title: t('pages.about.mission.connection'), desc: t('pages.about.mission.connectionDesc') },
+                  { icon: Users, title: 'Izgradnja zajednice', desc: 'Povezivanje ljudi koji dijele strast prema hrvatsko-njemačkoj kulturnoj razmjeni' },
+                  { icon: BookOpen, title: 'Edukacija', desc: 'Pružanje tečajeva njemačkog jezika i kulturnih obrazovnih programa' },
+                  { icon: Globe, title: 'Povezivanje', desc: 'Njegovanje međunarodnih veza i suradnje' },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-3 sm:gap-4">
                     <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600 flex-shrink-0 mt-0.5 sm:mt-1" />
@@ -198,8 +195,8 @@ export default function About() {
         <Container>
           <FadeIn className="mb-8 sm:mb-12">
             <SectionHeader
-              title={t('pages.about.leadership.title')}
-              subtitle={t('pages.about.leadership.subtitle')}
+              title="Vodstvo"
+              subtitle="Upoznajte tim iza HNDS-a"
               align="center"
             />
           </FadeIn>
@@ -248,8 +245,8 @@ export default function About() {
         <Container>
           <FadeIn className="mb-8 sm:mb-12">
             <SectionHeader
-              title={t('pages.about.branches.title')}
-              subtitle={t('pages.about.branches.subtitle')}
+              title="Naši ogranci"
+              subtitle="Širimo kulturu diljem Dalmacije"
               align="center"
             />
           </FadeIn>
@@ -284,7 +281,7 @@ export default function About() {
                           </h3>
                         </div>
                         <p className="text-xs sm:text-sm text-gray-400 font-light">
-                          <span className="text-gray-500">{t('pages.about.branches.president')}:</span>{' '}
+                          <span className="text-gray-500">Predsjednik:</span>{' '}
                           {branch.president}
                         </p>
                       </div>
@@ -302,8 +299,8 @@ export default function About() {
         <Container>
           <FadeIn className="mb-8 sm:mb-12">
             <SectionHeader
-              title={t('pages.about.partners.title')}
-              subtitle={t('pages.about.partners.subtitle')}
+              title="Naši partneri"
+              subtitle="Zajedno gradimo jače veze"
               align="center"
             />
           </FadeIn>
@@ -311,9 +308,9 @@ export default function About() {
           <StaggerContainer>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               {[
-                { name: t('pages.about.partners.ahk'), image: '/images/partners/ahk_kroatien_njema_ko_hrvatska_industrijska_i_trgovinska_komora_logo.png' },
-                { name: t('pages.about.partners.mainz'), image: '/images/partners/Coat_of_arms_of_Mainz-2008_new.png' },
-                { name: t('pages.about.partners.berlin'), image: '/images/partners/Country_symbol_of_Berlin_color.png.webp' },
+                { name: 'AHK Hrvatska', image: '/images/partners/ahk_kroatien_njema_ko_hrvatska_industrijska_i_trgovinska_komora_logo.png' },
+                { name: 'Grad Mainz', image: '/images/partners/Coat_of_arms_of_Mainz-2008_new.png' },
+                { name: 'Grad Berlin', image: '/images/partners/Country_symbol_of_Berlin_color.png.webp' },
               ].map((partner, i) => (
                 <StaggerItem key={i}>
                   <MotionCard variant="outline" className="p-5 sm:p-6 md:p-8 flex flex-col items-center text-center h-full active:scale-[0.98] transition-transform" hoverY={-4}>

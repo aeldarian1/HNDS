@@ -6,10 +6,8 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { HeroFadeIn, FadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
-import { useI18n } from '@/app/context/I18nContext';
 
 export default function TermsOfUse() {
-  const { t } = useI18n();
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   const sections = [
@@ -138,10 +136,10 @@ export default function TermsOfUse() {
           <HeroFadeIn className="text-center max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-6">
               <FileText className="w-10 h-10 text-yellow-600" />
-              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">{t('pages.terms.title')}</h1>
+              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">Uvjeti korištenja</h1>
             </div>
             <p className="text-xl text-gray-300 font-light mb-8">
-              {t('pages.terms.subtitle')}
+              Pravila i uvjeti korištenja naše web stranice
             </p>
             <div className="w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent mx-auto" />
           </HeroFadeIn>

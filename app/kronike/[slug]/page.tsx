@@ -85,7 +85,7 @@ export default function ChroniclePage() {
                   className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors"
                 >
                   <FileText className="w-4 h-4" />
-                  {t('common.downloadPDF')}
+                  Preuzmi PDF
                 </a>
               )}
             </div>
@@ -109,7 +109,7 @@ export default function ChroniclePage() {
               />
             </div>
             <p className="text-gray-400 text-sm mt-4 text-center">
-              {t('common.cannotSeePDF')}, <a href={chronicle.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300">{t('common.downloadHere')}</a>.
+              Ako ne možete vidjeti PDF, <a href={chronicle.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-yellow-300">preuzmite ga ovdje</a>.
             </p>
           </motion.div>
         )}

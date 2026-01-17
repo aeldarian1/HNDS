@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
-import { useI18n } from '@/app/context/I18nContext';
+import { Mail, Phone, Send, Check } from 'lucide-react';
 
 export function ContactForm() {
-  const { t, language } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -60,7 +58,7 @@ export function ContactForm() {
         className="space-y-8"
       >
         <div>
-          <h3 className="text-2xl font-light text-white mb-2">{t('contact.address')}</h3>
+          <h3 className="text-2xl font-light text-white mb-2">Adresa</h3>
           <p className="text-gray-400 font-light">
             Hrvatsko-njemačko društvo Split<br />
             Obala Hrvatskog narodnog preporoda 10<br />
@@ -71,7 +69,7 @@ export function ContactForm() {
         <div>
           <h3 className="text-2xl font-light text-white mb-2 flex items-center gap-3">
             <Phone className="w-5 h-5 text-yellow-600" />
-            {t('contact.phone')}
+            Telefon
           </h3>
           <p className="text-gray-400 font-light">
             +385 21 123 456<br />
@@ -91,7 +89,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-light text-white mb-4">{t('contact.followUs')}</h3>
+          <h3 className="text-2xl font-light text-white mb-4">Pratite nas</h3>
           <div className="flex gap-4">
             {['Facebook', 'Instagram', 'YouTube'].map((social, i) => (
               <motion.a
@@ -123,7 +121,7 @@ export function ContactForm() {
           >
             <Check className="w-5 h-5 text-emerald-400 flex-shrink-0" />
             <p className="text-emerald-300 font-light">
-              {t('contact.messageSent')}
+              Vaša poruka je uspješno poslana. Javit ćemo vam se uskoro!
             </p>
           </motion.div>
         )}
@@ -141,7 +139,7 @@ export function ContactForm() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-light text-gray-300 mb-2">
-              {t('contact.name')}
+              Ime i prezime
             </label>
             <input
               type="text"
@@ -156,7 +154,7 @@ export function ContactForm() {
 
           <div>
             <label className="block text-sm font-light text-gray-300 mb-2">
-              {t('contact.email')}
+              Email
             </label>
             <input
               type="email"
@@ -172,7 +170,7 @@ export function ContactForm() {
 
         <div>
           <label className="block text-sm font-light text-gray-300 mb-2">
-            {t('contact.phone')}
+            Telefon
           </label>
           <input
             type="tel"
@@ -186,7 +184,7 @@ export function ContactForm() {
 
         <div>
           <label className="block text-sm font-light text-gray-300 mb-2">
-            {t('contact.subject')}
+            Predmet
           </label>
           <input
             type="text"
@@ -201,7 +199,7 @@ export function ContactForm() {
 
         <div>
           <label className="block text-sm font-light text-gray-300 mb-2">
-            {t('contact.message')}
+            Poruka
           </label>
           <textarea
             name="message"
@@ -222,7 +220,7 @@ export function ContactForm() {
           className="w-full px-8 py-4 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
         >
           <Send className="w-4 h-4" />
-                    {loading ? t('contact.sending') : t('contact.send')}
+          {loading ? 'Šaljem...' : 'Pošalji poruku'}
         </motion.button>
       </motion.form>
     </div>

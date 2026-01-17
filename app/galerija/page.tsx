@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Camera, X, ZoomIn, Grid, List, Calendar } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import {
   HeroFadeIn,
   FadeIn,
@@ -75,7 +74,6 @@ const featuredImages = [
 ];
 
 export default function GalerijaPage() {
-  const { t } = useI18n();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
@@ -95,10 +93,10 @@ export default function GalerijaPage() {
               {totalPhotos} fotografija
             </Badge>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-light text-white tracking-tight">
-              {t('pages.gallery.title')}
+              Galerija
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-              {t('pages.gallery.subtitle')}
+              Fotografije s naših događanja
             </p>
             <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent" />
           </HeroFadeIn>
@@ -278,10 +276,10 @@ export default function GalerijaPage() {
         <Container>
           <FadeIn className="text-center max-w-2xl mx-auto space-y-4 sm:space-y-6 px-4">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-light text-white">
-              {t('gallery.shareTitle')}
+              Imate fotografije s naših događanja?
             </h2>
             <p className="text-gray-300 font-light text-base sm:text-lg">
-              {t('gallery.shareSubtitle')}
+              Podijelite ih s nama i postanite dio naše galerije.
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-2 sm:pt-4">
               <Button asChild size="lg" className="w-full sm:w-auto min-h-[48px]">

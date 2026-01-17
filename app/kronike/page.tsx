@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Calendar, BookOpen, TrendingUp, Search, Download, ExternalLink } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import {
   HeroFadeIn,
   FadeIn,
@@ -22,7 +21,6 @@ import { ChronicleBadge } from '@/app/components/ChronicleBadge';
 import chronicles from '@/data/chronicles.json';
 
 export default function ChroniclesPage() {
-  const { t } = useI18n();
   const [selectedDecade, setSelectedDecade] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -119,7 +117,7 @@ export default function ChroniclesPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <Input
                 type="text"
-                placeholder={t('ui.search.chroniclesPlaceholder')}
+                placeholder="Pretraži kronike..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-12"
@@ -225,7 +223,7 @@ export default function ChroniclesPage() {
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
                                   className="p-2 text-gray-400 hover:text-yellow-500 transition-colors"
-                                  title={t('common.downloadPDF')}
+                                  title="Preuzmi PDF"
                                 >
                                   <Download className="w-4 h-4" />
                                 </a>

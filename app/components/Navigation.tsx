@@ -6,9 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Menu, X, ChevronRight, Home, Info, Activity, Newspaper, Image as ImageIcon, Mail, Instagram, Facebook, Youtube, Sun, Moon, Search } from 'lucide-react';
-import LanguageSwitcher, { LanguageSwitcherMobile } from './LanguageSwitcher';
 import { GlobalSearch, useGlobalSearch } from './GlobalSearch';
-import { useI18n } from '@/app/context/I18nContext';
 import { cn } from '@/lib/utils';
 
 // Navigation link type
@@ -21,19 +19,18 @@ interface NavLink {
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t } = useI18n();
   const pathname = usePathname();
   const { isOpen: isSearchOpen, open: openSearch, close: closeSearch } = useGlobalSearch();
 
   // Navigation links configuration
   const navLinks: NavLink[] = useMemo(() => [
-    { href: '/', label: t('navigation.home'), icon: Home },
-    { href: '/o-nama', label: t('navigation.about'), icon: Info },
-    { href: '/aktivnosti', label: t('navigation.activities'), icon: Activity },
-    { href: '/vijesti', label: t('navigation.news'), icon: Newspaper },
-    { href: '/galerija', label: t('navigation.gallery'), icon: ImageIcon },
-    { href: '/kontakt', label: t('navigation.contact'), icon: Mail },
-  ], [t]);
+    { href: '/', label: 'Naslovna', icon: Home },
+    { href: '/o-nama', label: 'O nama', icon: Info },
+    { href: '/aktivnosti', label: 'Aktivnosti', icon: Activity },
+    { href: '/vijesti', label: 'Vijesti', icon: Newspaper },
+    { href: '/galerija', label: 'Galerija', icon: ImageIcon },
+    { href: '/kontakt', label: 'Kontakt', icon: Mail },
+  ], []);
 
   // Handle scroll effect
   useEffect(() => {
@@ -81,7 +78,7 @@ export default function Navigation() {
             <Link 
               href="/" 
               className="group flex items-center gap-3 relative z-10"
-              aria-label={t('navigation.homepage')}
+              aria-label="Početna stranica"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-yellow-600/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -118,21 +115,17 @@ export default function Navigation() {
               <button
                 onClick={openSearch}
                 className="nav-link flex items-center gap-2"
-                aria-label={t('navigation.searchPlaceholder')}
+                aria-label="Pretraži..."
               >
                 <Search size={18} />
               </button>
-              
-              <div className="ml-2 pl-4 border-l border-yellow-600/20">
-                <LanguageSwitcher />
-              </div>
             </div>
 
             {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
               className="md:hidden relative z-50 p-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:text-yellow-500 hover:border-yellow-600/30 hover:bg-yellow-600/10 transition-all duration-300"
-              aria-label={isOpen ? t('navigation.closeMenu') : t('navigation.openMenu')}
+              aria-label={isOpen ? 'Zatvori izbornik' : 'Otvori izbornik'}
               aria-expanded={isOpen}
               whileTap={{ scale: 0.9 }}
             >
@@ -220,7 +213,7 @@ export default function Navigation() {
                     <button
                       onClick={closeMenu}
                       className="p-3 rounded-full bg-white/5 text-gray-400 hover:text-yellow-500 active:scale-95 transition-all border border-white/10"
-                      aria-label={t('navigation.close')}
+                      aria-label="Zatvori"
                     >
                       <X size={22} />
                     </button>
@@ -267,15 +260,9 @@ export default function Navigation() {
                       })}
                     </div>
 
-                    {/* Settings Row */}
-                    <div className="mt-6 p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                      <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3">{t('common.language')}</p>
-                      <LanguageSwitcherMobile />
-                    </div>
-
                     {/* Social Links */}
-                    <div className="mt-4">
-                      <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3 px-1">{t('common.followUs')}</p>
+                    <div className="mt-6">
+                      <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3 px-1">Pratite nas</p>
                       <div className="flex gap-2">
                         {[
                           { href: 'https://www.instagram.com/hnjd.split/', icon: Instagram, label: 'Instagram' },

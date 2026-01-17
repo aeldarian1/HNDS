@@ -1,6 +1,5 @@
 "use client";
 
-import { useI18n } from '@/app/context/I18nContext';
 import { motion } from "framer-motion";
 import { ChevronDown, FileText, BookOpen } from "lucide-react";
 import { useState } from "react";
@@ -10,8 +9,6 @@ import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/compone
 import { Container, Section } from "@/app/components/ui/Common";
 
 export default function Statut() {
-  const { t } = useI18n();
-
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
   const sections = [
@@ -187,10 +184,10 @@ export default function Statut() {
           <HeroFadeIn className="text-center max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-6">
               <FileText className="w-10 h-10 text-yellow-600" />
-              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">{t('pages.statute.title')}</h1>
+              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">Statut</h1>
             </div>
             <p className="text-xl text-gray-300 font-light mb-8">
-              {t('pages.statute.subtitle')}
+              Temeljni dokument Hrvatsko-njemačkog društva Split
             </p>
             <div className="w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent mx-auto" />
           </HeroFadeIn>

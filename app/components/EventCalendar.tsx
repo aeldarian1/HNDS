@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, MapPin, Users, Clock } from 'lucide-react';
 import { getEventsByMonth } from '@/app/lib/events';
 import type { Event } from '@/app/lib/events';
-import { useI18n } from '@/app/context/I18nContext';
 
 const categoryColors: Record<Event['category'], { bg: string; text: string; badge: string }> = {
   course: { bg: 'from-blue-600/10 to-blue-500/10', text: 'text-blue-400', badge: 'bg-blue-600/20 text-blue-400' },
@@ -55,7 +54,6 @@ function getMonthMatrix(date: Date) {
 }
 
 export function EventCalendar() {
-  const { language } = useI18n();
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const monthEvents = useMemo(() => getEventsByMonth(currentDate.getFullYear(), currentDate.getMonth()), [currentDate]);
@@ -71,7 +69,7 @@ export function EventCalendar() {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1));
   };
 
-  const monthName = new Intl.DateTimeFormat(language === 'de' ? 'de-DE' : 'hr-HR', {
+  const monthName = new Intl.DateTimeFormat('hr-HR', {
     month: 'long',
     year: 'numeric',
   }).format(currentDate);
@@ -127,12 +125,12 @@ export function EventCalendar() {
                     <div className="mt-2 space-y-1">
                       {todaysEvents.map((event) => {
                         const colors = categoryColors[event.category];
-                        const label = categoryLabels[event.category][language as 'hr' | 'de'];
+                        const label = categoryLabels[event.category].hr;
                         return (
                           <div key={event.id} className={`px-2 py-1 rounded border border-yellow-600/20 bg-gradient-to-r ${colors.bg}`}>
                             <div className="flex items-center gap-2">
                               <span className={`text-[10px] ${colors.badge} px-1 py-0.5 rounded`}>{label}</span>
-                              <span className="text-xs text-white truncate">{language === 'de' ? event.titleDe : event.title}</span>
+                              <span className="text-xs text-white truncate">{event.title}</span>
                             </div>
                             <div className="flex items-center gap-2 mt-1 text-[10px] text-gray-400">
                               <Clock className="w-3 h-3 text-yellow-600" />

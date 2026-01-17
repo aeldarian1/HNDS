@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Users, Heart, Globe, BookOpen, Music, ChevronDown, Star, Shield, Award } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import {
   HeroFadeIn,
   FadeIn,
@@ -140,7 +139,6 @@ const faqs = [
 ];
 
 export default function MembershipPage() {
-  const { t } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   return (

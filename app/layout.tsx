@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Lora, Montserrat } from 'next/font/google';
 import './globals.css';
-import { I18nProvider } from '@/app/context/I18nContext';
 import { ThemeProvider } from '@/app/context/ThemeContext';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -201,21 +200,19 @@ export default async function RootLayout({
       >
         <LayoutClientProviders />
         <ThemeProvider>
-          <I18nProvider>
-            {/* Skip to main content link for accessibility */}
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-yellow-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
-            >
-              Preskoči na sadržaj
-            </a>
-            
-            <div id="main-content">{children}</div>
-            
-            {/* Analytics */}
-            <Analytics />
-            <SpeedInsights />
-          </I18nProvider>
+          {/* Skip to main content link for accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-yellow-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
+          >
+            Preskoči na sadržaj
+          </a>
+          
+          <div id="main-content">{children}</div>
+          
+          {/* Analytics */}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
         
         {/* Visual editing for Sanity preview */}

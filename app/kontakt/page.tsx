@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import {
   HeroFadeIn,
   FadeIn,
@@ -59,7 +58,6 @@ const subjectOptions = [
 ];
 
 export default function KontaktPage() {
-  const { t } = useI18n();
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
@@ -110,13 +108,13 @@ export default function KontaktPage() {
           <HeroFadeIn className="space-y-4 sm:space-y-6 max-w-3xl text-center mx-auto">
             <Badge variant="outline" className="mb-2 sm:mb-4">
               <Mail className="w-3 h-3 mr-1" />
-              {t('contact.badge')}
+              Javite nam se
             </Badge>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-light text-white tracking-tight">
-              {t('contact.title')}
+              Kontaktirajte nas
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-              {t('contact.subtitle')}
+              Javite nam se za više informacija
             </p>
             <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent via-yellow-600 to-transparent mx-auto" />
           </HeroFadeIn>
@@ -159,9 +157,9 @@ export default function KontaktPage() {
             {/* Form */}
             <FadeIn>
               <div className="bg-slate-900/50 border border-yellow-600/20 rounded-lg p-5 sm:p-6 md:p-8">
-                <h2 className="text-2xl sm:text-3xl font-light text-white mb-2">{t('contact.sendInquiry')}</h2>
+                <h2 className="text-2xl sm:text-3xl font-light text-white mb-2">Pošaljite upit</h2>
                 <p className="text-gray-400 font-light mb-6 sm:mb-8 text-sm sm:text-base">
-                  {t('contact.fillForm')}
+                  Ispunite obrazac i javit ćemo vam se u najkraćem roku.
                 </p>
 
                 {formStatus === 'success' ? (
@@ -171,38 +169,38 @@ export default function KontaktPage() {
                     className="text-center py-12"
                   >
                     <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-light text-white mb-2">{t('contact.thankYou')}</h3>
+                    <h3 className="text-2xl font-light text-white mb-2">Hvala vam!</h3>
                     <p className="text-gray-400 font-light mb-6">
-                      {t('contact.messageSent')}
+                      Vaša poruka je uspješno poslana. Javit ćemo vam se uskoro.
                     </p>
                     <Button onClick={() => setFormStatus('idle')}>
-                      {t('contact.sendNew')}
+                      Pošalji novu poruku
                     </Button>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <Input
-                        label={t('contact.form.name')}
+                        label="Ime i prezime"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder={t('contact.form.namePlaceholder')}
+                        placeholder="Vaše ime i prezime"
                       />
                       <Input
-                        label={t('contact.form.email')}
+                        label="Email"
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder={t('contact.form.emailPlaceholder')}
+                        placeholder="vasa@email.adresa"
                       />
                     </div>
 
                     <Select
-                      label={t('contact.form.subject')}
+                      label="Tema"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
@@ -211,21 +209,21 @@ export default function KontaktPage() {
                     />
 
                     <Textarea
-                      label={t('contact.form.message')}
+                      label="Poruka"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      placeholder={t('contact.form.messagePlaceholder')}
+                      placeholder="Vaša poruka..."
                       rows={5}
                     />
 
                     <Checkbox
                       label={
                         <>
-                          {t('contact.form.agreeWith')}{' '}
+                          Slažem se s{' '}
                           <a href="/privatnost" className="text-yellow-500 hover:underline">
-                            {t('contact.form.privacyPolicy')}
+                            pravilima privatnosti
                           </a>
                         </>
                       }
@@ -238,7 +236,7 @@ export default function KontaktPage() {
                     {formStatus === 'error' && (
                       <div className="flex items-center gap-2 text-red-400 text-sm">
                         <AlertCircle className="w-4 h-4" />
-                        {t('contact.error')}
+                        Došlo je do pogreške. Pokušajte ponovno.
                       </div>
                     )}
 
@@ -254,12 +252,12 @@ export default function KontaktPage() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                           </svg>
-                          {t('contact.sending')}
+                          Slanje...
                         </>
                       ) : (
                         <>
                           <Send className="w-5 h-5" />
-                          {t('contact.sendMessage')}
+                          Pošalji poruku
                         </>
                       )}
                     </Button>
@@ -271,9 +269,9 @@ export default function KontaktPage() {
             {/* Map */}
             <FadeIn delay={0.2}>
               <div className="space-y-4 sm:space-y-6">
-                <h2 className="text-2xl sm:text-3xl font-light text-white mb-2">{t('contact.findUs')}</h2>
+                <h2 className="text-2xl sm:text-3xl font-light text-white mb-2">Pronađite nas</h2>
                 <p className="text-gray-400 font-light text-sm sm:text-base">
-                  {t('contact.visitUs')}
+                  Posjetite nas u našem uredu u centru Splita.
                 </p>
 
                 <div className="aspect-video bg-slate-900 border border-yellow-600/20 rounded-lg overflow-hidden">
@@ -290,19 +288,19 @@ export default function KontaktPage() {
                 </div>
 
                 <div className="bg-slate-900/50 border border-yellow-600/20 rounded-lg p-4 sm:p-5 md:p-6">
-                  <h3 className="text-base sm:text-lg font-light text-white mb-3 sm:mb-4">{t('contact.howToReach')}</h3>
+                  <h3 className="text-base sm:text-lg font-light text-white mb-3 sm:mb-4">Kako do nas</h3>
                   <ul className="space-y-2 sm:space-y-3 text-gray-400 font-light text-xs sm:text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-yellow-500">•</span>
-                      {t('contact.directions.bus')}
+                      Autobusne linije 1, 2, 5, 9 - stanica kod Matice hrvatske
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-yellow-500">•</span>
-                      {t('contact.directions.parking')}
+                      Javni parking dostupan 50m od ureda
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-yellow-500">•</span>
-                      {t('contact.directions.walk')}
+                      5 minuta hoda od Rive
                     </li>
                   </ul>
                 </div>

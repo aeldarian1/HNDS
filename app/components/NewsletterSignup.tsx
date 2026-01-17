@@ -3,10 +3,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Check } from 'lucide-react';
-import { useI18n } from '@/app/context/I18nContext';
 
 export function NewsletterSignup() {
-  const { t } = useI18n();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -51,10 +49,10 @@ export function NewsletterSignup() {
       <div className="max-w-2xl mx-auto px-4 md:px-8">
         <div className="text-center space-y-6 mb-10">
           <h2 className="text-4xl md:text-5xl font-light text-white">
-            {t('newsletter.title')}
+            Pretplatite se na naš newsletter
           </h2>
           <p className="text-lg text-gray-400 font-light">
-            {t('newsletter.description')}
+            Saznajte prvi za naše novosti i događanja
           </p>
         </div>
 
@@ -65,7 +63,7 @@ export function NewsletterSignup() {
             className="flex items-center justify-center gap-3 py-6 px-6 bg-emerald-600/20 border border-emerald-600/50 rounded"
           >
             <Check className="w-5 h-5 text-emerald-400" />
-                        <p className="text-emerald-300 font-light">{t('newsletter.success')}</p>
+            <p className="text-emerald-300 font-light">Uspješno ste se pretplatili!</p>
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -74,7 +72,7 @@ export function NewsletterSignup() {
               <input
                 type="email"
                 required
-                placeholder={t('newsletter.email')}
+                placeholder="Vaša email adresa"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={loading}
@@ -88,7 +86,7 @@ export function NewsletterSignup() {
               disabled={loading}
               className="px-8 py-3 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-medium hover:shadow-lg hover:shadow-yellow-600/50 transition-all disabled:opacity-50 cursor-pointer"
             >
-                            {loading ? t('newsletter.sending') : t('newsletter.subscribe')}
+              {loading ? 'Šaljem...' : 'Pretplati se'}
             </motion.button>
           </form>
         )}
@@ -99,7 +97,7 @@ export function NewsletterSignup() {
             animate={{ opacity: 1 }}
             className="mt-3 text-red-400 text-sm"
           >
-                        {t('newsletter.error')}{error}
+            Greška: {error}
           </motion.p>
         )}
       </div>

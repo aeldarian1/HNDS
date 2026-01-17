@@ -6,81 +6,78 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { HeroFadeIn, FadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
-import { useI18n } from "../context/I18nContext";
 
 export default function PrivacyPolicy() {
-  const { t, language } = useI18n();
-
   const [expandedSection, setExpandedSection] = useState<number | null>(null);
 
-  // Build sections from translation keys
+  // Build sections with hardcoded Croatian text
   const sections = [
     {
-      title: t("pages.privacy.intro.title"),
-      content: [t("pages.privacy.intro.text")],
+      title: "Uvod",
+      content: ["Hrvatsko-njemačko društvo Split posvećeno je zaštiti vaše privatnosti. Ova pravila privatnosti objašnjavaju kako prikupljamo, koristimo i štitimo vaše osobne podatke."],
     },
     {
-      title: t("pages.privacy.dataCollection.title"),
+      title: "Prikupljanje podataka",
       content: [
-        t("pages.privacy.dataCollection.intro"),
-        `• ${t("pages.privacy.dataCollection.personal")}`,
-        `• ${t("pages.privacy.dataCollection.technical")}`,
-        `• ${t("pages.privacy.dataCollection.usage")}`,
-        `• ${t("pages.privacy.dataCollection.cookies")}`,
+        "Prikupljamo sljedeće vrste podataka:",
+        "• Osobni podaci: ime, email adresa, broj telefona",
+        "• Tehnički podaci: IP adresa, vrsta preglednika, operativni sustav",
+        "• Podaci o korištenju: posjećene stranice, vrijeme provedeno na stranici",
+        "• Kolačići: za poboljšanje korisničkog iskustva",
       ],
     },
     {
-      title: t("pages.privacy.dataUsage.title"),
+      title: "Korištenje podataka",
       content: [
-        t("pages.privacy.dataUsage.intro"),
-        `• ${t("pages.privacy.dataUsage.use1")}`,
-        `• ${t("pages.privacy.dataUsage.use2")}`,
-        `• ${t("pages.privacy.dataUsage.use3")}`,
-        `• ${t("pages.privacy.dataUsage.use4")}`,
-        `• ${t("pages.privacy.dataUsage.use5")}`,
+        "Vaše podatke koristimo za:",
+        "• Pružanje i poboljšanje naših usluga",
+        "• Komunikaciju s vama",
+        "• Slanje newslettera (uz vašu suglasnost)",
+        "• Analizu korištenja web stranice",
+        "• Ispunjavanje zakonskih obveza",
       ],
     },
     {
-      title: t("pages.privacy.dataSharing.title"),
-      content: [t("pages.privacy.dataSharing.text")],
+      title: "Dijeljenje podataka",
+      content: ["Vaše podatke ne prodajemo i ne dijelimo s trećim stranama, osim kada je to potrebno za pružanje usluga ili zakonski obavezno."],
     },
     {
-      title: t("pages.privacy.dataSecurity.title"),
-      content: [t("pages.privacy.dataSecurity.text")],
+      title: "Sigurnost podataka",
+      content: ["Koristimo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših podataka od neovlaštenog pristupa, gubitka ili zlouporabe."],
     },
     {
-      title: t("pages.privacy.cookies.title"),
+      title: "Kolačići",
       content: [
-        t("pages.privacy.cookies.intro"),
-        `• ${t("pages.privacy.cookies.essential")}`,
-        `• ${t("pages.privacy.cookies.analytics")}`,
-        `• ${t("pages.privacy.cookies.preferences")}`,
-        `• ${t("pages.privacy.cookies.manage")}`,
+        "Naša web stranica koristi kolačiće:",
+        "• Nužni kolačići: potrebni za funkcioniranje stranice",
+        "• Analitički kolačići: za razumijevanje kako koristite stranicu",
+        "• Kolačići za postavke: za pamćenje vaših preferencija",
+        "• Možete upravljati kolačićima kroz postavke preglednika",
       ],
     },
     {
-      title: t("pages.privacy.rights.title"),
+      title: "Vaša prava",
       content: [
-        t("pages.privacy.rights.intro"),
-        `• ${t("pages.privacy.rights.access")}`,
-        `• ${t("pages.privacy.rights.rectification")}`,
-        `• ${t("pages.privacy.rights.erasure")}`,
-        `• ${t("pages.privacy.rights.restriction")}`,
-        `• ${t("pages.privacy.rights.portability")}`,
-        `• ${t("pages.privacy.rights.objection")}`,
+        "Prema GDPR-u imate pravo na:",
+        "• Pristup vašim osobnim podacima",
+        "• Ispravak netočnih podataka",
+        "• Brisanje vaših podataka",
+        "• Ograničenje obrade",
+        "• Prenosivost podataka",
+        "• Prigovor na obradu",
       ],
     },
     {
-      title: t("pages.privacy.retention.title"),
-      content: [t("pages.privacy.retention.text")],
+      title: "Zadržavanje podataka",
+      content: ["Vaše podatke zadržavamo samo onoliko dugo koliko je potrebno za svrhe za koje su prikupljeni ili prema zakonskim zahtjevima."],
     },
     {
-      title: t("pages.privacy.changes.title"),
-      content: [t("pages.privacy.changes.text")],
+      title: "Promjene pravila",
+      content: ["Možemo povremeno ažurirati ova pravila privatnosti. O svim značajnim promjenama obavijestit ćemo vas putem naše web stranice."],
     },
     {
-      title: t("pages.privacy.contact.title"),
-      content: [t("pages.privacy.contact.text")],
+      title: "Kontakt",
+      content: ["Za sva pitanja vezana uz vaše osobne podatke možete nas kontaktirati na info@hnds.hr ili putem kontakt obrasca na našoj web stranici."],
     },
   ];
 
@@ -95,9 +92,9 @@ export default function PrivacyPolicy() {
           <HeroFadeIn className="text-center max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Lock className="w-10 h-10 text-yellow-600" />
-              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">{t('pages.privacy.title')}</h1>
+              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tight">Pravila privatnosti</h1>
             </div>
-            <p className="text-xl text-gray-300 font-light mb-8">{t('pages.privacy.subtitle')}</p>
+            <p className="text-xl text-gray-300 font-light mb-8">Kako štitimo vaše osobne podatke</p>
             <div className="w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent mx-auto" />
           </HeroFadeIn>
         </Container>
@@ -178,7 +175,7 @@ export default function PrivacyPolicy() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">{t('contact.title') || 'Kontaktirajte nas'}</h2>
+            <h2 className="text-4xl md:text-5xl font-light text-white mb-4">Kontaktirajte nas</h2>
             <div className="w-12 h-px bg-yellow-600" />
           </motion.div>
 
@@ -190,11 +187,11 @@ export default function PrivacyPolicy() {
           >
             <h3 className="text-2xl font-light text-white mb-6">Hrvatsko-njemačko društvo Split</h3>
             <div className="space-y-4 text-gray-300 font-light">
-              <p><strong>{t('contact.email') || 'Email'}:</strong> hnjd.split@gmail.com</p>
-              <p><strong>{t('contact.phone') || 'Telefon'}:</strong> +385 98 244 124</p>
-              <p><strong>{t('contact.address') || 'Sjedište'}:</strong> Sinjska 3, 21000 Split</p>
+              <p><strong>Email:</strong> hnjd.split@gmail.com</p>
+              <p><strong>Telefon:</strong> +385 98 244 124</p>
+              <p><strong>Sjedište:</strong> Sinjska 3, 21000 Split</p>
               <p className="text-sm text-gray-400 pt-4">
-                {language === 'de' ? 'Letzte Aktualisierung:' : 'Zadnja ažuriranja:'} {new Date().toLocaleDateString(language === 'de' ? 'de-DE' : 'hr-HR')}
+                Zadnja ažuriranja: {new Date().toLocaleDateString('hr-HR')}
               </p>
             </div>
           </motion.div>

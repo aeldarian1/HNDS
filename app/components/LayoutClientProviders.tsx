@@ -1,11 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-// Lazy load non-critical components
-const SmoothScroll = dynamic(() => import('./SmoothScroll'), {
-  ssr: false,
-});
+import SmoothScroll from './SmoothScroll';
 
 export function LayoutClientProviders() {
   return (

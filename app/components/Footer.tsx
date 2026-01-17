@@ -4,25 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight, ChevronRight } from "lucide-react";
-import { useI18n } from "@/app/context/I18nContext";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { t } = useI18n();
 
   const quickLinks = [
-    { href: "/", label: t("navigation.home") },
-    { href: "/o-nama", label: t("navigation.about") },
-    { href: "/aktivnosti", label: t("navigation.activities") },
-    { href: "/vijesti", label: t("navigation.news") },
-    { href: "/galerija", label: t("navigation.gallery") },
-    { href: "/kronike", label: t("footer.chronicles") },
+    { href: "/", label: "Naslovna" },
+    { href: "/o-nama", label: "O nama" },
+    { href: "/aktivnosti", label: "Aktivnosti" },
+    { href: "/vijesti", label: "Vijesti" },
+    { href: "/galerija", label: "Galerija" },
+    { href: "/kronike", label: "Kronike" },
   ];
 
   const legalLinks = [
-    { href: "/statut", label: t("footer.statute") },
-    { href: "/privatnost", label: t("footer.privacy") },
-    { href: "/uvjeti", label: t("footer.terms") },
+    { href: "/statut", label: "Statut" },
+    { href: "/privatnost", label: "Privatnost" },
+    { href: "/uvjeti", label: "Uvjeti" },
   ];
 
   const locations = ["Split", "Makarska", "Brač", "Sinj"];
@@ -76,7 +74,7 @@ export default function Footer() {
                 viewport={{ once: true }}
                 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-3"
               >
-                {t("footer.ctaTitle") || "Postanite dio naše zajednice"}
+                Postanite dio naše zajednice
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -85,7 +83,7 @@ export default function Footer() {
                 transition={{ delay: 0.1 }}
                 className="text-gray-400 font-light max-w-lg text-sm sm:text-base"
               >
-                {t("footer.tagline")}
+                Pridružite se Hrvatsko-njemačkom društvu Split
               </motion.p>
             </div>
             <motion.div
@@ -99,14 +97,14 @@ export default function Footer() {
                 href="/membership"
                 className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-yellow-600 text-white font-light hover:bg-yellow-500 transition-all duration-300 text-sm sm:text-base"
               >
-                {t("footer.becomeMember")}
+                Postanite član
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
                 href="/kontakt"
                 className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 border border-white/20 text-white font-light hover:bg-white/5 hover:border-white/30 transition-all duration-300 text-sm sm:text-base"
               >
-                {t("footer.contact")}
+                Kontakt
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
@@ -131,7 +129,7 @@ export default function Footer() {
               <span className="text-xl font-light tracking-wider text-white">HNDS</span>
             </div>
             <p className="text-sm text-gray-500 font-light leading-relaxed mb-4 sm:mb-6">
-              {t("footer.hnds")}
+              Hrvatsko-njemačko društvo Split - promicanje suradnje između Hrvatske i Njemačke
             </p>
             {/* Social Links - Larger touch targets on mobile */}
             <div className="flex gap-2 sm:gap-3">
@@ -153,7 +151,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="text-xs font-medium uppercase tracking-widest text-yellow-600 mb-6">
-              {t("footer.usefulLinks")}
+              Korisne poveznice
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -173,7 +171,7 @@ export default function Footer() {
           {/* Legal */}
           <div>
             <h4 className="text-xs font-medium uppercase tracking-widest text-yellow-600 mb-6">
-              {t("footer.legal") || "Pravno"}
+              Pravno
             </h4>
             <ul className="space-y-3">
               {legalLinks.map((link) => (
@@ -193,7 +191,7 @@ export default function Footer() {
           {/* Locations */}
           <div>
             <h4 className="text-xs font-medium uppercase tracking-widest text-yellow-600 mb-6">
-              {t("footer.locations")}
+              Lokacije
             </h4>
             <ul className="space-y-3">
               {locations.map((location) => (
@@ -208,7 +206,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="text-xs font-medium uppercase tracking-widest text-yellow-600 mb-6">
-              {t("footer.contactInfo")}
+              Kontakt
             </h4>
             <ul className="space-y-4">
               <li>
@@ -232,9 +230,9 @@ export default function Footer() {
               <li className="text-sm text-gray-400 font-light flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-yellow-600/50 mt-0.5 flex-shrink-0" />
                 <span>
-                  {t("footer.address")}
+                  Domovinskog rata 2A
                   <br />
-                  {t("footer.city")}
+                  21000 Split
                 </span>
               </li>
             </ul>
@@ -257,7 +255,7 @@ export default function Footer() {
             </span>
             <span className="hidden sm:inline text-white/10">|</span>
             <span>
-              <span className="text-gray-400">{t("footer.bank")}:</span> OTP Bank
+              <span className="text-gray-400">Banka:</span> OTP Bank
             </span>
           </div>
         </div>
@@ -266,7 +264,7 @@ export default function Footer() {
         <div className="py-6 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <p className="text-xs text-gray-600 font-light">
-              © {currentYear} {t("footer.copyright")}
+              © {currentYear} Hrvatsko-njemačko društvo Split. Sva prava pridržana.
             </p>
           </div>
         </div>

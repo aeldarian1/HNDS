@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, User, ArrowRight, Clock, Tag, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import {
   HeroFadeIn,
   FadeIn,
@@ -92,16 +91,15 @@ const news = [
 const ITEMS_PER_PAGE = 6;
 
 export default function VijestiPage() {
-  const { t } = useI18n();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
   const categories = [
-    { value: 'all', label: t('pages.news.filters.all') },
-    { value: 'news', label: t('pages.news.filters.news') },
-    { value: 'events', label: t('pages.news.filters.events') },
-    { value: 'announcement', label: t('pages.news.filters.announcements') },
+    { value: 'all', label: 'Sve' },
+    { value: 'news', label: 'Vijesti' },
+    { value: 'events', label: 'Događaji' },
+    { value: 'announcement', label: 'Najave' },
   ];
 
   const filtered = useMemo(() => {
@@ -173,10 +171,10 @@ export default function VijestiPage() {
               {news.length} objava
             </Badge>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-light text-white tracking-tight">
-              {t('pages.news.title')}
+              Vijesti
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-              {t('pages.news.subtitle')}
+              Najnovije vijesti i obavijesti
             </p>
             <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent" />
           </HeroFadeIn>
@@ -192,7 +190,7 @@ export default function VijestiPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <Input
                 type="text"
-                placeholder={t('ui.search.newsPlaceholder')}
+                placeholder="Pretraži vijesti..."
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -276,7 +274,7 @@ export default function VijestiPage() {
                               href={`/vijesti/${item.slug}`}
                               className="text-yellow-500 hover:text-yellow-400 text-sm inline-flex items-center gap-1 group min-h-[44px] items-center"
                             >
-                              {t('common.read')}
+                              Pročitaj više
                               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
                           </div>
@@ -352,15 +350,15 @@ export default function VijestiPage() {
         <Container>
           <FadeIn className="text-center max-w-2xl mx-auto space-y-4 sm:space-y-6">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-light text-white">
-              {t('newsletter.title')}
+              Prijavite se na newsletter
             </h2>
             <p className="text-gray-300 font-light text-base sm:text-lg px-4">
-              {t('newsletter.description')}
+              Primajte najnovije vijesti i obavijesti direktno u vaš inbox.
             </p>
             <form className="flex flex-col gap-3 sm:flex-row sm:gap-4 max-w-md mx-auto pt-2 sm:pt-4">
               <Input
                 type="email"
-                placeholder={t('newsletter.email')}
+                placeholder="Vaša email adresa"
                 className="flex-grow min-h-[48px]"
               />
               <Button type="submit" className="min-h-[48px] w-full sm:w-auto">Prijavi se</Button>

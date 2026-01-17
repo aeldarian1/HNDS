@@ -6,7 +6,6 @@ import { Home, RefreshCw, AlertTriangle } from 'lucide-react';
 import { Button } from '@/app/components/ui/Button';
 import { HeroFadeIn, FadeIn } from '@/app/components/ui/Animations';
 import { Container } from '@/app/components/ui/Common';
-import { useI18n } from '@/app/context/I18nContext';
 
 export default function Error({
   error,
@@ -15,8 +14,6 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const { t } = useI18n();
-  
   return (
     <main className="min-h-screen bg-slate-950 flex items-center justify-center">
       <Container className="text-center py-20">
@@ -32,10 +29,10 @@ export default function Error({
           
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-light text-white">
-              {t('errors.title')}
+              Došlo je do greške
             </h1>
             <p className="text-gray-400 font-light max-w-md mx-auto">
-              {t('errors.description')}
+              Nešto je pošlo po zlu. Molimo pokušajte ponovo.
             </p>
             {error.digest && (
               <p className="text-gray-500 text-sm font-mono">
@@ -48,12 +45,12 @@ export default function Error({
             <div className="flex flex-wrap justify-center gap-4">
               <Button onClick={reset} size="lg">
                 <RefreshCw className="w-5 h-5 mr-2" />
-                {t('errors.tryAgain')}
+                Pokušaj ponovo
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link href="/">
                   <Home className="w-5 h-5 mr-2" />
-                  {t('errors.backHome')}
+                  Natrag na naslovnu
                 </Link>
               </Button>
             </div>

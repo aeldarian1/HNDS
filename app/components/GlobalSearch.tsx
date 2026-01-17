@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, FileText, Calendar, Image, Users, ArrowRight, Loader2 } from 'lucide-react';
-import { useI18n } from '@/app/context/I18nContext';
 import { Input } from '@/app/components/ui/Form';
 import { Badge } from '@/app/components/ui/Common';
 
@@ -40,11 +39,11 @@ const typeIcons = {
 };
 
 const typeLabels: Record<string, string> = {
-  page: 'search.types.page',
-  news: 'search.types.news',
-  chronicle: 'search.types.chronicle',
-  gallery: 'search.types.gallery',
-  activity: 'search.types.activity',
+  page: 'Stranica',
+  news: 'Vijesti',
+  chronicle: 'Kronika',
+  gallery: 'Galerija',
+  activity: 'Aktivnost',
 };
 
 interface GlobalSearchProps {
@@ -58,7 +57,6 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
   const [isSearching, setIsSearching] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const { t } = useI18n();
 
   // Focus input when opened
   useEffect(() => {
@@ -168,7 +166,7 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                                    placeholder={t('search.placeholder')}
+                  placeholder="Pretraži..."
                   className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-lg font-light"
                 />
                 {isSearching && <Loader2 className="w-5 h-5 text-yellow-500 animate-spin" />}
@@ -185,7 +183,7 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                 {query && results.length === 0 && !isSearching && (
                   <div className="p-8 text-center text-gray-400">
                     <Search className="w-12 h-12 mx-auto mb-4 opacity-30" />
-                                        <p>{t('search.noResults')} "{query}"</p>
+                    <p>Nema rezultata za "{query}"</p>
                   </div>
                 )}
 
@@ -215,8 +213,8 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                 <p className="text-sm text-gray-400 truncate">{result.description}</p>
                               )}
                             </div>
-                                                        <Badge variant="secondary" size="sm">
-                              {t(typeLabels[result.type])}
+                            <Badge variant="secondary" size="sm">
+                              {typeLabels[result.type]}
                             </Badge>
                             <ArrowRight className={`w-4 h-4 transition-transform ${
                               index === selectedIndex ? 'translate-x-1' : ''
@@ -230,13 +228,13 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
 
                 {!query && (
                   <div className="p-6">
-                                        <p className="text-gray-500 text-sm mb-4">{t('search.quickLinks')}</p>
+                    <p className="text-gray-500 text-sm mb-4">Brze veze</p>
                     <div className="grid grid-cols-2 gap-2">
                       {[
-                        { href: '/o-nama', label: t('navigation.about') },
-                        { href: '/aktivnosti', label: t('navigation.activities') },
-                        { href: '/vijesti', label: t('navigation.news') },
-                        { href: '/kontakt', label: t('navigation.contact') }
+                        { href: '/o-nama', label: 'O nama' },
+                        { href: '/aktivnosti', label: 'Aktivnosti' },
+                        { href: '/vijesti', label: 'Vijesti' },
+                        { href: '/kontakt', label: 'Kontakt' }
                       ].map((item) => (
                         <Link
                           key={item.href}
@@ -256,10 +254,10 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
               <div className="px-4 py-3 border-t border-yellow-600/20 bg-slate-950/50">
                 <div className="flex items-center justify-between text-xs text-gray-500">
                   <div className="flex items-center gap-4">
-                                        <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded">↑↓</kbd> {t('search.navigation')}</span>
-                    <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded">↵</kbd> {t('search.open')}</span>
+                    <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded">↑↓</kbd> za navigaciju</span>
+                    <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded">↵</kbd> za otvaranje</span>
                   </div>
-                  <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded">esc</kbd> {t('search.close')}</span>
+                  <span><kbd className="px-1.5 py-0.5 bg-slate-800 rounded">esc</kbd> za zatvaranje</span>
                 </div>
               </div>
             </div>

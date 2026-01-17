@@ -10,7 +10,6 @@ import { ChevronRight, ArrowRight, Calendar, BookOpen, Globe, MapPin } from 'luc
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import { NewsletterSignup } from './components/NewsletterSignup';
-import { useI18n } from '@/app/context/I18nContext';
 
 // UI Components
 import {
@@ -29,7 +28,6 @@ import {
 } from './components/ui';
 
 export default function Home() {
-  const { t } = useI18n();
   const heroRef = useRef<HTMLElement>(null);
   
   // Parallax effect for hero
@@ -44,39 +42,39 @@ export default function Home() {
 
   // Stats data
   const stats = [
-    { value: '35+', label: t('stats.years') },
-    { value: '500+', label: t('stats.members') },
-    { value: '6', label: t('stats.locations') },
-    { value: '55', label: t('stats.partnership') },
+    { value: '35+', label: 'Godina tradicije' },
+    { value: '500+', label: 'Članova' },
+    { value: '6', label: 'Lokacija' },
+    { value: '55', label: 'Godina prijateljstva' },
   ];
 
   // Features data
   const features = [
     {
       number: '01',
-      title: t('features.history.title'),
-      description: t('features.history.description'),
+      title: 'Bogata povijest',
+      description: 'Više od tri desetljeća promicanja hrvatsko-njemačkih veza.',
       href: '/o-nama',
       icon: Calendar,
     },
     {
       number: '02',
-      title: t('features.courses.title'),
-      description: t('features.courses.description'),
+      title: 'Tečajevi jezika',
+      description: 'Kvalitetni tečajevi njemačkog jezika za sve razine.',
       href: '/aktivnosti',
       icon: BookOpen,
     },
     {
       number: '03',
-      title: t('features.events.title'),
-      description: t('features.events.description'),
+      title: 'Kulturni događaji',
+      description: 'Izložbe, predavanja, koncerti i kulturne večeri.',
       href: '/aktivnosti',
       icon: Globe,
     },
     {
       number: '04',
-      title: t('features.trips.title'),
-      description: t('features.trips.description'),
+      title: 'Izleti i putovanja',
+      description: 'Organizirani izleti po Hrvatskoj i Njemačkoj.',
       href: '/aktivnosti',
       icon: MapPin,
     },
@@ -85,21 +83,21 @@ export default function Home() {
   // News data (placeholder)
   const newsItems = [
     {
-      date: t('newsPlaceholder.date1'),
-      category: t('newsPlaceholder.category1'),
-      title: t('newsPlaceholder.title1'),
+      date: '15. siječnja 2026.',
+      category: 'Događaji',
+      title: 'Svečana proslava 55. obljetnice prijateljstva Split-Berlin',
       slug: 'vijest-1',
     },
     {
-      date: t('newsPlaceholder.date2'),
-      category: t('newsPlaceholder.category2'),
-      title: t('newsPlaceholder.title2'),
+      date: '10. siječnja 2026.',
+      category: 'Tečajevi',
+      title: 'Novi tečajevi njemačkog jezika - upisi u tijeku',
       slug: 'vijest-2',
     },
     {
-      date: t('newsPlaceholder.date3'),
-      category: t('newsPlaceholder.category3'),
-      title: t('newsPlaceholder.title3'),
+      date: '5. siječnja 2026.',
+      category: 'Kultura',
+      title: 'Najava: Kulturna večer s njemačkim filmom',
       slug: 'vijest-3',
     },
   ];
@@ -144,25 +142,25 @@ export default function Home() {
           <HeroFadeIn className="space-y-6 md:space-y-8">
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-balance">
-              <span className="block">{t('hero.title')}</span>
+              <span className="block">Most između kultura</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto font-light px-2">
-              {t('hero.subtitle')}
+              Hrvatsko-njemačko društvo Split - više od 35 godina prijateljstva i suradnje.
             </p>
 
             {/* CTA Buttons - Stack on mobile */}
             <HeroFadeIn delay={0.2} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4 px-4 sm:px-0">
               <Link href="/aktivnosti" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full sm:w-auto justify-center">
-                  {t('hero.exploreActivities')}
+                  Istražite aktivnosti
                   <ChevronRight className="w-5 h-5" />
                 </Button>
               </Link>
               <Link href="/o-nama" className="w-full sm:w-auto">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto justify-center">
-                  {t('hero.learnMore')}
+                  Saznajte više
                   <ChevronRight className="w-5 h-5" />
                 </Button>
               </Link>
@@ -210,7 +208,7 @@ export default function Home() {
                     title={feature.title}
                     description={feature.description}
                     href={feature.href}
-                    ctaText={t('features.learnMore')}
+                    ctaText="Saznajte više"
                   />
                 </StaggerItem>
               ))}
@@ -227,7 +225,7 @@ export default function Home() {
                     title={feature.title}
                     description={feature.description}
                     href={feature.href}
-                    ctaText={t('features.learnMore')}
+                    ctaText="Saznajte više"
                   />
                 </div>
               ))}
@@ -250,28 +248,28 @@ export default function Home() {
             <FadeIn className="space-y-6">
               <div>
                 <span className="text-yellow-500 text-sm uppercase tracking-widest font-light">
-                  {t('aboutPreview.badge')}
+                  O nama
                 </span>
                 <h2 className="text-4xl md:text-5xl font-light text-white mt-2">
-                  {t('aboutPreview.title')}
+                  Tko smo mi?
                 </h2>
                 <div className="w-12 h-px bg-yellow-600 mt-6" />
               </div>
               
               <p className="text-gray-300 font-light text-lg leading-relaxed">
-                {t('aboutPreview.description')}
+                Hrvatsko-njemačko društvo Split od 1990. godine promiče kulturne, jezične i prijateljske veze između Hrvatske i Njemačke. Naša misija je graditi mostove između dviju kultura.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link href="/o-nama">
                   <Button>
-                    {t('aboutPreview.learnMore')}
+                    Saznajte više
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <Link href="/membership">
                   <Button variant="ghost">
-                    {t('aboutPreview.becomeMember')}
+                    Postanite član
                     <ChevronRight className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -302,8 +300,8 @@ export default function Home() {
         <Container>
           <FadeIn className="mb-12">
             <SectionHeader
-              title={t('news.title')}
-              subtitle={t('news.subtitle')}
+              title="Najnovije vijesti"
+              subtitle="Pratite naše aktivnosti i događanja"
               align="center"
             />
           </FadeIn>
@@ -326,7 +324,7 @@ export default function Home() {
           <FadeIn className="text-center">
             <Link href="/vijesti">
               <Button variant="outline">
-                {t('news.viewAll')}
+                Sve vijesti
                 <ChevronRight className="w-4 h-4" />
               </Button>
             </Link>
@@ -342,23 +340,23 @@ export default function Home() {
         <Container size="md" className="text-center">
           <FadeIn className="space-y-6">
             <h2 className="text-4xl md:text-6xl font-light text-white">
-              {t('cta.joinCommunity')}
+              Pridružite se zajednici
             </h2>
             <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
-              {t('cta.joinDescription')}
+              Postanite dio naše zajednice i otkrijte bogate kulturne veze između Hrvatske i Njemačke.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.2} className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
             <Link href="/kontakt">
               <Button size="lg" variant="glow">
-                {t('cta.contactUs')}
+                Kontaktirajte nas
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
             <Link href="/galerija">
               <Button size="lg" variant="outline">
-                {t('cta.viewGallery')}
+                Pogledajte galeriju
               </Button>
             </Link>
           </FadeIn>

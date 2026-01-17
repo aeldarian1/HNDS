@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, BookOpen, Calendar, MapPin, Users, Music, Globe, Filter } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
-import { useI18n } from '@/app/context/I18nContext';
 import dynamic from 'next/dynamic';
 import {
   HeroFadeIn,
@@ -24,7 +23,7 @@ const EventCalendar = dynamic(
     ssr: false, 
     loading: () => (
       <div className="min-h-[300px] bg-slate-900/50 rounded-lg animate-pulse flex items-center justify-center">
-        <span className="text-gray-400">{useI18n().t('common.loadingCalendar')}</span>
+        <span className="text-gray-400">Učitavanje kalendara...</span>
       </div>
     )
   }
@@ -89,16 +88,15 @@ const activities = [
 ];
 
 export default function AktivnostiPage() {
-  const { t } = useI18n();
   const [activeFilter, setActiveFilter] = useState('all');
 
   const filters = [
-    { value: 'all', label: t("pages.activities.filters.all"), count: activities.length },
-    { value: 'courses', label: t("pages.activities.filters.courses"), count: activities.filter(a => a.type === 'courses').length },
-    { value: 'events', label: t("pages.activities.filters.events"), count: activities.filter(a => a.type === 'events').length },
-    { value: 'excursions', label: t("pages.activities.filters.excursions"), count: activities.filter(a => a.type === 'excursions').length },
-    { value: 'social', label: t("pages.activities.filters.social"), count: activities.filter(a => a.type === 'social').length },
-    { value: 'cultural', label: t("pages.activities.filters.cultural"), count: activities.filter(a => a.type === 'cultural').length },
+    { value: 'all', label: 'Sve', count: activities.length },
+    { value: 'courses', label: 'Tečajevi', count: activities.filter(a => a.type === 'courses').length },
+    { value: 'events', label: 'Događaji', count: activities.filter(a => a.type === 'events').length },
+    { value: 'excursions', label: 'Izleti', count: activities.filter(a => a.type === 'excursions').length },
+    { value: 'social', label: 'Društveni', count: activities.filter(a => a.type === 'social').length },
+    { value: 'cultural', label: 'Kulturni', count: activities.filter(a => a.type === 'cultural').length },
   ];
 
   const filtered = useMemo(() => {
@@ -120,10 +118,10 @@ export default function AktivnostiPage() {
               {activities.length} aktivnosti
             </Badge>
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-light text-white tracking-tight">
-              {t('pages.activities.title')}
+              Aktivnosti
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light leading-relaxed">
-              {t('pages.activities.subtitle')}
+              Naši događaji i programi
             </p>
             <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-yellow-600 to-transparent" />
           </HeroFadeIn>
