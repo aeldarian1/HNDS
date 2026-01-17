@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next';
-import { withGTConfig } from 'gt-next/config';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
@@ -104,17 +103,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-// Wrap with General Translation config
 const withAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-export default withAnalyzer(
-  withGTConfig(nextConfig, {
-    // Disable SSG warnings since we use client-side language switching
-    disableSSGWarnings: true,
-    // Use localStorage for detecting locale
-    defaultLocale: 'hr',
-    locales: ['hr', 'de'],
-  })
-);
+export default withAnalyzer(nextConfig);
