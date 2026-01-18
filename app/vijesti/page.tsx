@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, ArrowRight, Clock, Tag, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Calendar, ArrowRight, Clock, Tag } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import {
@@ -12,8 +11,10 @@ import {
 } from '@/app/components/ui/Animations';
 import { Container, Section, Badge } from '@/app/components/ui/Common';
 import { MotionCard } from '@/app/components/ui/Card';
-import { Button, MotionButton } from '@/app/components/ui/Button';
+import { Button } from '@/app/components/ui/Button';
 import { Input } from '@/app/components/ui/Form';
+import { FilterableList } from '@/app/components/ui/FilterableList';
+import type { FilterOption } from '@/app/components/ui/FilterableList';
 
 // Sample news data - in production, this would come from Sanity CMS
 const news = [
@@ -87,73 +88,116 @@ const news = [
 
 const ITEMS_PER_PAGE = 6;
 
-export default function VijestiPage() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+// Category configuration
+const categories: FilterOption[] = [
+  { value: 'all', label: 'Sve' },
+  { value: 'news', label: 'Vijesti' },
+  { value: 'events', label: 'Događaji' },
+  { value: 'announcement', label: 'Najave' },
+];
 
-  const categories = [
-    { value: 'all', label: 'Sve' },
-    { value: 'news', label: 'Vijesti' },
-    { value: 'events', label: 'Događaji' },
-    { value: 'announcement', label: 'Najave' },
-  ];
+const getCategoryColor = (category: string) => {
+  switch (category) {
+    case 'events':
+      return 'bg-yellow-600/20 text-yellow-500 border-yellow-600/30';
+    case 'news':
+      return 'bg-blue-600/20 text-blue-400 border-blue-600/30';
+    case 'announcement':
+      return 'bg-emerald-600/20 text-emerald-400 border-emerald-600/30';
+    default:
+      return 'bg-gray-600/20 text-gray-400 border-gray-600/30';
+  }
+};
 
-  const filtered = useMemo(() => {
-    let result = news;
-    
-    if (selectedCategory !== 'all') {
-      result = result.filter(n => n.category === selectedCategory);
-    }
-    
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(n => 
-        n.title.toLowerCase().includes(query) ||
-        n.excerpt.toLowerCase().includes(query)
-      );
-    }
-    
-    return result;
-  }, [selectedCategory, searchQuery]);
+const getCategoryLabel = (category: string) => {
+  switch (category) {
+    case 'events': return 'Događaj';
+    case 'news': return 'Vijest';
+    case 'announcement': return 'Najava';
+    default: return 'Ostalo';
+  }
+};
 
-  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const paginatedNews = filtered.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('hr-HR', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+
+// News item type
+interface NewsItem {
+  id: number;
+  title: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  category: string;
+  slug: string;
+  image: string;
+  readTime: string;
+}
+
+// Render a single news card
+function NewsCard({ item, index }: { item: NewsItem; index: number }) {
+  return (
+    <motion.div
+      key={item.id}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+    >
+      <MotionCard
+        className="bg-slate-900/50 border border-yellow-600/20 overflow-hidden h-full flex flex-col active:scale-[0.98] transition-transform"
+        hoverY={-8}
+      >
+        {/* Image placeholder */}
+        <div className="relative h-36 sm:h-44 md:h-48 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10" />
+          <span className="text-3xl sm:text-4xl">📰</span>
+        </div>
+
+        <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
+          {/* Category & Date */}
+          <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+            <Badge className={getCategoryColor(item.category)}>
+              {getCategoryLabel(item.category)}
+            </Badge>
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs text-gray-400 whitespace-nowrap">
+              <Clock className="w-3 h-3" />
+              {item.readTime}
+            </div>
+          </div>
+
+          <h3 className="text-base sm:text-lg font-light text-white mb-2 sm:mb-3 line-clamp-2">
+            {item.title}
+          </h3>
+          <p className="text-gray-400 font-light text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 flex-grow">
+            {item.excerpt}
+          </p>
+
+          <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-yellow-600/10">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-gray-400">
+              <Calendar className="w-3 h-3" />
+              <span className="truncate max-w-[100px] sm:max-w-none">{formatDate(item.date)}</span>
+            </div>
+            <Link
+              href={`/vijesti/${item.slug}`}
+              className="text-yellow-500 hover:text-yellow-400 text-sm inline-flex items-center gap-1 group min-h-[44px] items-center"
+            >
+              Pročitaj više
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </MotionCard>
+    </motion.div>
   );
+}
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'events':
-        return 'bg-yellow-600/20 text-yellow-500 border-yellow-600/30';
-      case 'news':
-        return 'bg-blue-600/20 text-blue-400 border-blue-600/30';
-      case 'announcement':
-        return 'bg-emerald-600/20 text-emerald-400 border-emerald-600/30';
-      default:
-        return 'bg-gray-600/20 text-gray-400 border-gray-600/30';
-    }
-  };
-
-  const getCategoryLabel = (category: string) => {
-    switch (category) {
-      case 'events': return 'Događaj';
-      case 'news': return 'Vijest';
-      case 'announcement': return 'Najava';
-      default: return 'Ostalo';
-    }
-  };
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('hr-HR', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
+export default function VijestiPage() {
   return (
     <main className="bg-slate-950 min-h-screen">
       <Navigation />
@@ -178,167 +222,22 @@ export default function VijestiPage() {
         </Container>
       </section>
 
-      {/* Filters & Search */}
+      {/* News Section with Filtering */}
       <Section>
         <Container>
-          <FadeIn className="mb-12 space-y-6">
-            {/* Search */}
-            <div className="relative max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <Input
-                type="text"
-                placeholder="Pretraži vijesti..."
-                value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="pl-12"
-              />
-            </div>
-
-            {/* Category filters */}
-            <div className="flex flex-wrap gap-3">
-              {categories.map(cat => (
-                <MotionButton
-                  key={cat.value}
-                  onClick={() => {
-                    setSelectedCategory(cat.value);
-                    setCurrentPage(1);
-                  }}
-                  variant={selectedCategory === cat.value ? 'default' : 'outline'}
-                  size="sm"
-                >
-                  {cat.label}
-                </MotionButton>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* News grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${selectedCategory}-${searchQuery}-${currentPage}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {paginatedNews.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                  {paginatedNews.map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                    >
-                      <MotionCard
-                        className="bg-slate-900/50 border border-yellow-600/20 overflow-hidden h-full flex flex-col active:scale-[0.98] transition-transform"
-                        hoverY={-8}
-                      >
-                        {/* Image placeholder */}
-                        <div className="relative h-36 sm:h-44 md:h-48 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10" />
-                          <span className="text-3xl sm:text-4xl">📰</span>
-                        </div>
-
-                        <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-grow">
-                          {/* Category & Date */}
-                          <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
-                            <Badge className={getCategoryColor(item.category)}>
-                              {getCategoryLabel(item.category)}
-                            </Badge>
-                            <div className="flex items-center gap-1 text-[10px] sm:text-xs text-gray-400 whitespace-nowrap">
-                              <Clock className="w-3 h-3" />
-                              {item.readTime}
-                            </div>
-                          </div>
-
-                          <h3 className="text-base sm:text-lg font-light text-white mb-2 sm:mb-3 line-clamp-2">
-                            {item.title}
-                          </h3>
-                          <p className="text-gray-400 font-light text-sm mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 flex-grow">
-                            {item.excerpt}
-                          </p>
-
-                          <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-yellow-600/10">
-                            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-gray-400">
-                              <Calendar className="w-3 h-3" />
-                              <span className="truncate max-w-[100px] sm:max-w-none">{formatDate(item.date)}</span>
-                            </div>
-                            <Link
-                              href={`/vijesti/${item.slug}`}
-                              className="text-yellow-500 hover:text-yellow-400 text-sm inline-flex items-center gap-1 group min-h-[44px] items-center"
-                            >
-                              Pročitaj više
-                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                          </div>
-                        </div>
-                      </MotionCard>
-                    </motion.div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-20">
-                  <p className="text-gray-400 text-lg mb-4">Nema rezultata za vašu pretragu.</p>
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      setSearchQuery('');
-                      setSelectedCategory('all');
-                    }}
-                  >
-                    Poništi filtre
-                  </Button>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <FadeIn className="mt-8 sm:mt-12 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-                className="w-full sm:w-auto min-h-[44px]"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                Prethodna
-              </Button>
-              
-              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto max-w-full py-2 px-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`min-w-[40px] w-10 h-10 sm:min-w-[44px] sm:w-11 sm:h-11 rounded-lg font-medium transition-all flex-shrink-0 ${
-                      currentPage === page
-                        ? 'bg-yellow-600 text-white'
-                        : 'bg-slate-800 text-gray-300 hover:bg-slate-700 active:scale-95'
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
-              </div>
-              
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-                className="w-full sm:w-auto min-h-[44px]"
-              >
-                Sljedeća
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </FadeIn>
-          )}
+          <FilterableList<NewsItem>
+            items={news}
+            filterOptions={categories}
+            filterKey="category"
+            searchKeys={['title', 'excerpt']}
+            searchPlaceholder="Pretraži vijesti..."
+            showFilterLabel={false}
+            itemsPerPage={ITEMS_PER_PAGE}
+            gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+            renderItem={(item, index) => (
+              <NewsCard key={item.id} item={item} index={index} />
+            )}
+          />
         </Container>
       </Section>
 

@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Camera, X, ZoomIn, Grid, List } from 'lucide-react';
+import { ChevronRight, Camera } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import {
@@ -16,6 +14,8 @@ import {
 import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
 import { MotionCard } from '@/app/components/ui/Card';
 import { Button } from '@/app/components/ui/Button';
+import { GalleryLightbox } from '@/app/components/ui/GalleryLightbox';
+import { ViewToggle } from '@/app/components/ui/ViewToggle';
 
 // Gallery categories with images
 const galleryCategories = [
@@ -74,9 +74,6 @@ const featuredImages = [
 ];
 
 export default function GalerijaPage() {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
-
   const totalPhotos = galleryCategories.reduce((sum, cat) => sum + cat.count, 0);
 
   return (
@@ -106,43 +103,8 @@ export default function GalerijaPage() {
       {/* View Toggle & Gallery Categories */}
       <Section>
         <Container>
-          {/* View toggle */}
-          <FadeIn className="mb-6 sm:mb-8 flex justify-end">
-            <div className="flex items-center gap-1 sm:gap-2 bg-slate-900 rounded-lg p-1 border border-yellow-600/20">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`p-2.5 sm:p-2 rounded-md transition-all active:scale-95 min-w-[44px] min-h-[44px] flex items-center justify-center ${
-                  viewMode === 'grid' 
-                    ? 'bg-yellow-600 text-white' 
-                    : 'text-gray-400 hover:text-white'
-                }`}
-                aria-label="Grid view"
-              >
-                <Grid className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2.5 sm:p-2 rounded-md transition-all active:scale-95 min-w-[44px] min-h-[44px] flex items-center justify-center ${
-                  viewMode === 'list' 
-                    ? 'bg-yellow-600 text-white' 
-                    : 'text-gray-400 hover:text-white'
-                }`}
-                aria-label="List view"
-              >
-                <List className="w-5 h-5" />
-              </button>
-            </div>
-          </FadeIn>
-
-          {/* Categories */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={viewMode}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
+          <ViewToggle>
+            {(viewMode) => (
               <StaggerContainer 
                 className={viewMode === 'grid' 
                   ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" 
@@ -230,8 +192,8 @@ export default function GalerijaPage() {
                   </StaggerItem>
                 ))}
               </StaggerContainer>
-            </motion.div>
-          </AnimatePresence>
+            )}
+          </ViewToggle>
         </Container>
       </Section>
 
@@ -246,28 +208,10 @@ export default function GalerijaPage() {
             />
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-8 sm:mt-12">
-            {featuredImages.map((image) => (
-              <StaggerItem key={image.id}>
-                <motion.button
-                  onClick={() => setLightboxImage(image.src)}
-                  className="group relative aspect-square overflow-hidden rounded-lg active:scale-[0.98] transition-transform"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                    <ZoomIn className="w-6 h-6 sm:w-8 sm:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                </motion.button>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <GalleryLightbox 
+            images={featuredImages} 
+            className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-8 sm:mt-12"
+          />
         </Container>
       </Section>
 
@@ -289,41 +233,6 @@ export default function GalerijaPage() {
           </FadeIn>
         </Container>
       </Section>
-
-      {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 sm:p-4"
-            onClick={() => setLightboxImage(null)}
-          >
-            <button
-              onClick={() => setLightboxImage(null)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-3 text-white/70 hover:text-white transition-colors bg-black/50 rounded-full min-w-[48px] min-h-[48px] flex items-center justify-center active:scale-95"
-              aria-label="Close lightbox"
-            >
-              <X className="w-6 h-6 sm:w-8 sm:h-8" />
-            </button>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-5xl max-h-[85vh] w-full h-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={lightboxImage}
-                alt="Gallery image"
-                fill
-                className="object-contain"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <Footer />
     </main>

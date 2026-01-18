@@ -84,3 +84,10 @@ export { LegalAccordion } from './LegalAccordion';
 export type { LegalSection } from './LegalAccordion';
 export { FAQAccordion } from './FAQAccordion';
 export { AnimatedSection, FadeUp, FadeLeft, FadeRight } from './AnimatedSection';
+
+// Filterable List
+export { FilterableList, Pagination } from './FilterableList';
+export type { FilterOption, FilterableListProps } from './FilterableList';
+
+// Contact Form
+export { ContactFormClient } from './ContactFormClient';

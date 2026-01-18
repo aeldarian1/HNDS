@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, BookOpen, Calendar, MapPin, Users, Music, Globe, Filter } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronRight, BookOpen, Calendar, MapPin, Users, Music, Globe } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import dynamic from 'next/dynamic';
@@ -13,7 +12,9 @@ import {
 } from '@/app/components/ui/Animations';
 import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
 import { MotionCard } from '@/app/components/ui/Card';
-import { Button, MotionButton } from '@/app/components/ui/Button';
+import { Button } from '@/app/components/ui/Button';
+import { FilterableList } from '@/app/components/ui/FilterableList';
+import type { FilterOption } from '@/app/components/ui/FilterableList';
 
 const EventCalendar = dynamic(
   () => import('@/app/components/EventCalendar').then(mod => ({ default: mod.EventCalendar })),
@@ -85,22 +86,68 @@ const activities = [
   },
 ];
 
+// Activity type
+interface Activity {
+  id: number;
+  title: string;
+  type: string;
+  category: string;
+  description: string;
+  icon: typeof BookOpen;
+  gradient: string;
+  iconColor: string;
+  borderColor: string;
+}
+
+// Filter configuration
+const filters: FilterOption[] = [
+  { value: 'all', label: 'Sve', count: activities.length },
+  { value: 'courses', label: 'Tečajevi', count: activities.filter(a => a.type === 'courses').length },
+  { value: 'events', label: 'Događaji', count: activities.filter(a => a.type === 'events').length },
+  { value: 'excursions', label: 'Izleti', count: activities.filter(a => a.type === 'excursions').length },
+  { value: 'social', label: 'Društveni', count: activities.filter(a => a.type === 'social').length },
+  { value: 'cultural', label: 'Kulturni', count: activities.filter(a => a.type === 'cultural').length },
+];
+
+// Activity card component
+function ActivityCard({ activity, index }: { activity: Activity; index: number }) {
+  const Icon = activity.icon;
+  return (
+    <motion.div
+      key={activity.id}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+    >
+      <MotionCard
+        className={`bg-gradient-to-br ${activity.gradient} border ${activity.borderColor} p-5 sm:p-6 md:p-8 h-full flex flex-col active:scale-[0.98] transition-transform`}
+        hoverY={-8}
+      >
+        <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
+          <div className={`p-2.5 sm:p-3 rounded-lg bg-slate-900/50 ${activity.iconColor}`}>
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+          </div>
+          <Badge variant="secondary" size="sm" className="text-[10px] sm:text-xs">
+            {activity.category}
+          </Badge>
+        </div>
+        <h3 className="text-lg sm:text-xl font-light text-white mb-2 sm:mb-3">{activity.title}</h3>
+        <p className="text-gray-300 font-light text-sm mb-4 sm:mb-6 flex-grow leading-relaxed line-clamp-3 sm:line-clamp-none">
+          {activity.description}
+        </p>
+        <Link 
+          href="#" 
+          className="text-yellow-500 font-light text-sm hover:text-yellow-400 transition inline-flex items-center gap-2 group min-h-[44px] items-center"
+        >
+          Saznaj više 
+          <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </MotionCard>
+    </motion.div>
+  );
+}
+
 export default function AktivnostiPage() {
-  const [activeFilter, setActiveFilter] = useState('all');
-
-  const filters = [
-    { value: 'all', label: 'Sve', count: activities.length },
-    { value: 'courses', label: 'Tečajevi', count: activities.filter(a => a.type === 'courses').length },
-    { value: 'events', label: 'Događaji', count: activities.filter(a => a.type === 'events').length },
-    { value: 'excursions', label: 'Izleti', count: activities.filter(a => a.type === 'excursions').length },
-    { value: 'social', label: 'Društveni', count: activities.filter(a => a.type === 'social').length },
-    { value: 'cultural', label: 'Kulturni', count: activities.filter(a => a.type === 'cultural').length },
-  ];
-
-  const filtered = useMemo(() => {
-    if (activeFilter === 'all') return activities;
-    return activities.filter(a => a.type === activeFilter);
-  }, [activeFilter]);
 
   return (
     <main className="bg-slate-950 min-h-screen">
@@ -145,83 +192,18 @@ export default function AktivnostiPage() {
       {/* Activities Grid */}
       <Section>
         <Container>
-          {/* Filter buttons */}
-          <FadeIn className="mb-8 sm:mb-12">
-            <div className="flex items-center gap-2 mb-3 sm:mb-4 text-gray-400">
-              <Filter className="w-4 h-4" />
-              <span className="text-xs sm:text-sm font-light">Filtriraj aktivnosti</span>
-            </div>
-            <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
-              {filters.map(filter => (
-                <MotionButton
-                  key={filter.value}
-                  onClick={() => setActiveFilter(filter.value)}
-                  variant={activeFilter === filter.value ? 'default' : 'outline'}
-                  size="sm"
-                  className="gap-1.5 sm:gap-2 whitespace-nowrap flex-shrink-0 min-h-[40px] active:scale-95"
-                >
-                  {filter.label}
-                  <span className={`text-[10px] sm:text-xs px-1 sm:px-1.5 py-0.5 rounded ${
-                    activeFilter === filter.value 
-                      ? 'bg-white/20' 
-                      : 'bg-yellow-600/20 text-yellow-600'
-                  }`}>
-                    {filter.count}
-                  </span>
-                </MotionButton>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Activities grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFilter}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-                {filtered.map((activity, index) => {
-                  const Icon = activity.icon;
-                  return (
-                    <motion.div
-                      key={activity.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                    >
-                      <MotionCard
-                        className={`bg-gradient-to-br ${activity.gradient} border ${activity.borderColor} p-5 sm:p-6 md:p-8 h-full flex flex-col active:scale-[0.98] transition-transform`}
-                        hoverY={-8}
-                      >
-                        <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
-                          <div className={`p-2.5 sm:p-3 rounded-lg bg-slate-900/50 ${activity.iconColor}`}>
-                            <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                          </div>
-                          <Badge variant="secondary" size="sm" className="text-[10px] sm:text-xs">
-                            {activity.category}
-                          </Badge>
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-light text-white mb-2 sm:mb-3">{activity.title}</h3>
-                        <p className="text-gray-300 font-light text-sm mb-4 sm:mb-6 flex-grow leading-relaxed line-clamp-3 sm:line-clamp-none">
-                          {activity.description}
-                        </p>
-                        <Link 
-                          href="#" 
-                          className="text-yellow-500 font-light text-sm hover:text-yellow-400 transition inline-flex items-center gap-2 group min-h-[44px] items-center"
-                        >
-                          Saznaj više 
-                          <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      </MotionCard>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          <FilterableList<Activity>
+            items={activities}
+            filterOptions={filters}
+            filterKey="type"
+            searchKeys={['title', 'description']}
+            searchPlaceholder="Pretraži aktivnosti..."
+            filterLabel="Filtriraj aktivnosti"
+            gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6"
+            renderItem={(activity, index) => (
+              <ActivityCard key={activity.id} activity={activity} index={index} />
+            )}
+          />
         </Container>
       </Section>
 
