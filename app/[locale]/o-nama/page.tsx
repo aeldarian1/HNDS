@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { MapPin, Users, BookOpen, Globe, Award, Building2, LucideIcon } from 'lucide-react';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 import {
   Container,
   Section,
@@ -16,7 +16,7 @@ import {
   StaggerContainer,
   StaggerItem,
   Badge,
-} from '../components/ui';
+} from '@/app/components/ui';
 
 // ==================== DATA DEFINITIONS ====================
 

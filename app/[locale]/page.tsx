@@ -8,12 +8,12 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, ArrowRight, Calendar, BookOpen, Globe, MapPin } from 'lucide-react';
 
 // Components
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 
 // Dynamic imports for below-fold components
 const NewsletterSignup = dynamic(
-  () => import('./components/NewsletterSignup').then(mod => mod.NewsletterSignup),
+  () => import('@/app/components/NewsletterSignup').then(mod => mod.NewsletterSignup),
   { ssr: false }
 );
 
@@ -31,7 +31,7 @@ import {
   FadeIn,
   StaggerContainer,
   StaggerItem,
-} from './components/ui';
+} from '@/app/components/ui';
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);

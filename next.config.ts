@@ -1,7 +1,10 @@
 import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const nextConfig: NextConfig = {
+const withNextIntl = createNextIntlPlugin();
+
+let nextConfig: NextConfig = {
   // Enable React Strict Mode for development
   reactStrictMode: true,
 
@@ -38,6 +41,9 @@ const nextConfig: NextConfig = {
       '@sanity/client',
       '@sanity/image-url',
     ],
+    // Fix for next-intl with Next.js 16 + Turbopack
+    // Tell next-intl to use the old experimental.turbo config location
+    turbo: {},
   },
 
   // Headers for security and caching
@@ -107,4 +113,4 @@ const withAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-export default withAnalyzer(nextConfig);
+export default withNextIntl(withAnalyzer(nextConfig));

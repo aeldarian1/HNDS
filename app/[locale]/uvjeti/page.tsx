@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
 import { HeroFadeIn, FadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
 import { LegalAccordion, type LegalSection } from "@/app/components/ui/LegalAccordion";
