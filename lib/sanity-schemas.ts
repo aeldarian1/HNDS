@@ -7,7 +7,7 @@ export const eventSchema = {
       name: "title",
       type: "string",
       title: "Event Title",
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
     },
     {
       name: "slug",
@@ -21,7 +21,7 @@ export const eventSchema = {
       name: "date",
       type: "datetime",
       title: "Event Date",
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
     },
     {
       name: "location",
@@ -66,7 +66,7 @@ export const pageSchema = {
       name: "title",
       type: "string",
       title: "Page Title",
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: { required: () => unknown }) => Rule.required(),
     },
     {
       name: "slug",

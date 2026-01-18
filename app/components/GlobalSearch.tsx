@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, FileText, Calendar, Image, Users, ArrowRight, Loader2 } from 'lucide-react';
-import { Input } from '@/app/components/ui/Form';
 import { Badge } from '@/app/components/ui/Common';
 
 interface SearchResult {
@@ -65,13 +64,18 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
     }
   }, [isOpen]);
 
-  // Reset state when closed
+  // Reset state when closed - defer updates to avoid cascading renders
+  const prevIsOpenRef = useRef(isOpen);
   useEffect(() => {
-    if (!isOpen) {
-      setQuery('');
-      setResults([]);
-      setSelectedIndex(0);
+    if (prevIsOpenRef.current && !isOpen) {
+      const timer = setTimeout(() => {
+        setQuery('');
+        setResults([]);
+        setSelectedIndex(0);
+      }, 0);
+      return () => clearTimeout(timer);
     }
+    prevIsOpenRef.current = isOpen;
   }, [isOpen]);
 
   // Search function
@@ -183,7 +187,7 @@ export function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                 {query && results.length === 0 && !isSearching && (
                   <div className="p-8 text-center text-gray-400">
                     <Search className="w-12 h-12 mx-auto mb-4 opacity-30" />
-                    <p>Nema rezultata za "{query}"</p>
+                    <p>Nema rezultata za &ldquo;{query}&rdquo;</p>
                   </div>
                 )}
 

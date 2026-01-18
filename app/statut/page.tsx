@@ -5,7 +5,7 @@ import { ChevronDown, FileText, BookOpen } from "lucide-react";
 import { useState } from "react";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
-import { FadeIn, HeroFadeIn, StaggerContainer, StaggerItem } from "@/app/components/ui/Animations";
+import { FadeIn, HeroFadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
 
 export default function Statut() {

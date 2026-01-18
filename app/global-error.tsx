@@ -8,6 +8,7 @@ import { HeroFadeIn } from '@/app/components/ui/Animations';
 import { Container } from '@/app/components/ui/Common';
 
 export default function GlobalError({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   error,
   reset,
 }: {

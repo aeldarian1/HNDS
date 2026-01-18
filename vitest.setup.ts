@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
+import React from 'react';
 
 // Mock next/navigation
 vi.mock('next/navigation', () => ({
@@ -17,9 +18,13 @@ vi.mock('next/navigation', () => ({
 
 // Mock next/image
 vi.mock('next/image', () => ({
-  default: (props: Record<string, unknown>) => {
-    const { src, alt, ...rest } = props;
-    return `img-mock`;
+  default: function MockImage(props: { src: string; alt: string; className?: string; fill?: boolean }) {
+    return React.createElement('img', {
+      src: props.src,
+      alt: props.alt,
+      className: props.className,
+      'data-fill': props.fill ? 'true' : undefined,
+    });
   },
 }));
 

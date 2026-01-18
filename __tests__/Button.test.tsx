@@ -41,13 +41,13 @@ describe('Button Component', () => {
 
   it('renders with different sizes', () => {
     const { rerender } = render(<Button size="sm">Small</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-9');
+    expect(screen.getByRole('button')).toHaveClass('h-10'); // Mobile-first: h-10 sm:h-9
 
     rerender(<Button size="lg">Large</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-14');
+    expect(screen.getByRole('button')).toHaveClass('h-12'); // Mobile-first: h-12 sm:h-14
 
     rerender(<Button size="xl">Extra Large</Button>);
-    expect(screen.getByRole('button')).toHaveClass('h-16');
+    expect(screen.getByRole('button')).toHaveClass('h-14'); // Mobile-first: h-14 sm:h-16
   });
 
   it('applies rounded variants', () => {

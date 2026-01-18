@@ -144,11 +144,13 @@ export function useArrowNavigation(
  * Reduced motion preference hook
  */
 export function useReducedMotion(): boolean {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const handler = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
@@ -257,21 +259,12 @@ export function LoadingAnnouncer({
   loadingMessage = 'Učitavanje...',
   loadedMessage = 'Sadržaj učitan',
 }: LoadingAnnouncerProps) {
-  const [shouldAnnounce, setShouldAnnounce] = useState(false);
+  // Derive message directly from props
+  const message = isLoading ? loadingMessage : loadedMessage;
 
-  useEffect(() => {
-    if (isLoading) {
-      setShouldAnnounce(true);
-    } else if (shouldAnnounce) {
-      const timer = setTimeout(() => {
-        setShouldAnnounce(true);
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading, shouldAnnounce]);
-
-  const content = isLoading ? loadingMessage : shouldAnnounce ? loadedMessage : null;
-  return React.createElement(LiveRegion, { mode: 'polite', children: content });
+  return (
+    <LiveRegion mode="polite">{message}</LiveRegion>
+  );
 }
 
 /**

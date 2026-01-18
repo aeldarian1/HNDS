@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -307,10 +308,12 @@ const Avatar: React.FC<AvatarProps> = ({
       {...props}
     >
       {src && !error ? (
-        <img
+        <Image
           src={src}
-          alt={alt}
-          className="aspect-square h-full w-full object-cover"
+          alt={alt || ''}
+          fill
+          className="object-cover"
+          sizes="64px"
           onError={() => setError(true)}
         />
       ) : (

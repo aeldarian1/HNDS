@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Menu, X, ChevronRight, Home, Info, Activity, Newspaper, Image as ImageIcon, Mail, Instagram, Facebook, Youtube, Sun, Moon, Search } from 'lucide-react';
+import { X, Home, Info, Activity, Newspaper, Image as ImageIcon, Mail, Instagram, Facebook, Youtube, Search } from 'lucide-react';
 import { GlobalSearch, useGlobalSearch } from './GlobalSearch';
 import { cn } from '@/lib/utils';
 

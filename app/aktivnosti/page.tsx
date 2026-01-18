@@ -10,8 +10,6 @@ import dynamic from 'next/dynamic';
 import {
   HeroFadeIn,
   FadeIn,
-  StaggerContainer,
-  StaggerItem,
 } from '@/app/components/ui/Animations';
 import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
 import { MotionCard } from '@/app/components/ui/Card';

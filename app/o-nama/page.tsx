@@ -8,8 +8,6 @@ import {
   Container,
   Section,
   SectionHeader,
-  Grid,
-  Card,
   MotionCard,
   HeroFadeIn,
   FadeIn,
@@ -123,7 +121,7 @@ export default function About() {
               {/* Quote */}
               <blockquote className="border-l-2 border-yellow-600 pl-4 sm:pl-6 py-3 sm:py-4">
                 <p className="text-base sm:text-lg text-gray-300 font-light italic leading-relaxed mb-3 sm:mb-4">
-                  "Gradimo mostove razumijevanja i prijateljstva između naših naroda već više od tri desetljeća."
+                  &ldquo;Gradimo mostove razumijevanja i prijateljstva između naših naroda već više od tri desetljeća.&rdquo;
                 </p>
                 <footer>
                   <cite className="not-italic text-yellow-600 font-medium">

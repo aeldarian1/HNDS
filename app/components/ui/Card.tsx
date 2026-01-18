@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Card Container
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -127,15 +128,26 @@ const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDiv
 CardFooter.displayName = 'CardFooter';
 
 // Card Image
-interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface CardImageProps {
+  src?: string;
+  alt?: string;
   overlay?: boolean;
   overlayGradient?: string;
+  className?: string;
 }
 
 const CardImage = React.forwardRef<HTMLDivElement, CardImageProps>(
-  ({ className, src, alt, overlay = true, overlayGradient, ...props }, ref) => (
+  ({ className, src, alt = '', overlay = true, overlayGradient }, ref) => (
     <div ref={ref} className={cn('relative overflow-hidden', className)}>
-      <img src={src} alt={alt} className="w-full h-full object-cover" {...props} />
+      {src && (
+        <Image 
+          src={src} 
+          alt={alt} 
+          fill 
+          className="object-cover" 
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      )}
       {overlay && (
         <div
           className={cn(

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Camera, X, ZoomIn, Grid, List, Calendar } from 'lucide-react';
+import { ChevronRight, Camera, X, ZoomIn, Grid, List } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import {
@@ -15,7 +15,7 @@ import {
 } from '@/app/components/ui/Animations';
 import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
 import { MotionCard } from '@/app/components/ui/Card';
-import { Button, MotionButton } from '@/app/components/ui/Button';
+import { Button } from '@/app/components/ui/Button';
 
 // Gallery categories with images
 const galleryCategories = [

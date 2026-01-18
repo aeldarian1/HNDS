@@ -2,19 +2,16 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, User, ArrowRight, Clock, Tag, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, ArrowRight, Clock, Tag, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import {
   HeroFadeIn,
   FadeIn,
-  StaggerContainer,
-  StaggerItem,
 } from '@/app/components/ui/Animations';
-import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
-import { MotionCard, NewsCard } from '@/app/components/ui/Card';
+import { Container, Section, Badge } from '@/app/components/ui/Common';
+import { MotionCard } from '@/app/components/ui/Card';
 import { Button, MotionButton } from '@/app/components/ui/Button';
 import { Input } from '@/app/components/ui/Form';
 

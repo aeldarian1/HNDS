@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Calendar, BookOpen, TrendingUp, Search, Download, ExternalLink } from 'lucide-react';
+import { ArrowRight, Calendar, BookOpen, TrendingUp, Search, Download } from 'lucide-react';
 import Navigation from '@/app/components/Navigation';
 import Footer from '@/app/components/Footer';
 import {
@@ -11,9 +11,8 @@ import {
   FadeIn,
   StaggerContainer,
   StaggerItem,
-  Counter,
 } from '@/app/components/ui/Animations';
-import { SectionHeader, Container, Section, Badge } from '@/app/components/ui/Common';
+import { Container, Section, Badge } from '@/app/components/ui/Common';
 import { MotionCard } from '@/app/components/ui/Card';
 import { Button, MotionButton } from '@/app/components/ui/Button';
 import { Input } from '@/app/components/ui/Form';

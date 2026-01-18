@@ -91,7 +91,7 @@ export function ContactForm() {
         <div>
           <h3 className="text-2xl font-light text-white mb-4">Pratite nas</h3>
           <div className="flex gap-4">
-            {['Facebook', 'Instagram', 'YouTube'].map((social, i) => (
+            {['Facebook', 'Instagram', 'YouTube'].map((social) => (
               <motion.a
                 key={social}
                 href="#"

@@ -4,7 +4,7 @@ import { ChevronDown, Lock } from "lucide-react";
 import { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { HeroFadeIn, FadeIn } from "@/app/components/ui/Animations";
+import { HeroFadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
 
 export default function PrivacyPolicy() {
@@ -104,7 +104,7 @@ export default function PrivacyPolicy() {
       <Section className="bg-slate-900 border-b border-yellow-600/30">
         <Container className="max-w-4xl">
           <div className="space-y-4">
-            {sections.map((section: any, index: number) => (
+            {sections.map((section, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

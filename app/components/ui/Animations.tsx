@@ -1,8 +1,7 @@
 'use client';
 
-import { motion, Variants, HTMLMotionProps } from 'framer-motion';
-import { ReactNode, forwardRef, useState, useEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { ReactNode, useState, useEffect, useRef } from 'react';
 
 // Animation constants
 const EASING = [0.22, 0.61, 0.36, 1] as const;

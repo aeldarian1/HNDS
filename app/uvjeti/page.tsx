@@ -151,7 +151,7 @@ export default function TermsOfUse() {
         <Container className="max-w-4xl">
           <FadeIn className="space-y-6 text-gray-300 font-light leading-relaxed">
             <p>
-              Ovi Uvjeti korištenja ("Uvjeti") predstavljaju pravni ugovor između vas i 
+              Ovi Uvjeti korištenja (&ldquo;Uvjeti&rdquo;) predstavljaju pravni ugovor između vas i 
               Hrvatsko-njemačkog društva Split vezano uz korištenje ove web stranice. 
               Pročitajte pažljivo prije nego što nastavite.
             </p>
