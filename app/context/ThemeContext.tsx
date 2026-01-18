@@ -24,6 +24,10 @@ let themeListeners: Array<() => void> = [];
 let currentTheme: Theme = 'dark';
 let currentResolved: 'dark' | 'light' = 'dark';
 
+// Cached snapshots (must be stable references until theme changes)
+const serverSnapshot: { theme: Theme; resolved: 'dark' | 'light' } = { theme: 'dark', resolved: 'dark' };
+let clientSnapshot: { theme: Theme; resolved: 'dark' | 'light' } = { theme: currentTheme, resolved: currentResolved };
+
 const themeStore = {
   subscribe(listener: () => void) {
     themeListeners.push(listener);
@@ -32,20 +36,26 @@ const themeStore = {
     };
   },
   getSnapshot(): { theme: Theme; resolved: 'dark' | 'light' } {
-    return { theme: currentTheme, resolved: currentResolved };
+    // Return cached snapshot (only updates when setTheme/updateResolved is called)
+    return clientSnapshot;
   },
   getServerSnapshot(): { theme: Theme; resolved: 'dark' | 'light' } {
-    return { theme: 'dark', resolved: 'dark' };
+    // Return cached object to avoid infinite loop
+    return serverSnapshot;
   },
   setTheme(newTheme: Theme) {
     currentTheme = newTheme;
     currentResolved = newTheme === 'system' ? getSystemTheme() : newTheme;
+    // Create new snapshot reference to trigger re-render
+    clientSnapshot = { theme: currentTheme, resolved: currentResolved };
     localStorage.setItem('theme', newTheme);
     applyTheme(currentResolved);
     themeListeners.forEach(l => l());
   },
   updateResolved(resolved: 'dark' | 'light') {
     currentResolved = resolved;
+    // Create new snapshot reference to trigger re-render
+    clientSnapshot = { theme: currentTheme, resolved: currentResolved };
     applyTheme(resolved);
     themeListeners.forEach(l => l());
   },
@@ -54,6 +64,8 @@ const themeStore = {
     const stored = (localStorage.getItem('theme') as Theme) || 'dark';
     currentTheme = stored;
     currentResolved = stored === 'system' ? getSystemTheme() : stored;
+    // Create new snapshot reference
+    clientSnapshot = { theme: currentTheme, resolved: currentResolved };
     applyTheme(currentResolved);
   }
 };
