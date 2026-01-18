@@ -111,7 +111,7 @@ export default function GalerijaPage() {
                   : "flex flex-col gap-3 sm:gap-4"
                 }
               >
-                {galleryCategories.map((category) => (
+                {galleryCategories.map((category, index) => (
                   <StaggerItem key={category.slug}>
                     {viewMode === 'grid' ? (
                       <Link href={`/galerija/${category.slug}`}>
@@ -127,6 +127,8 @@ export default function GalerijaPage() {
                               fill
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                               className="object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-500"
+                              priority={index === 0}
+                              loading={index === 0 ? "eager" : "lazy"}
                             />
                           </div>
                           
