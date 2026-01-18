@@ -82,3 +82,5 @@ export {
 export { Accordion, SimpleAccordionItem } from './Accordion';
 export { LegalAccordion } from './LegalAccordion';
 export type { LegalSection } from './LegalAccordion';
+export { FAQAccordion } from './FAQAccordion';
+export { AnimatedSection, FadeUp, FadeLeft, FadeRight } from './AnimatedSection';
