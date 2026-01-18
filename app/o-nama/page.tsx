@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { MapPin, Users, BookOpen, Globe, Award, Building2 } from 'lucide-react';
+import { MapPin, Users, BookOpen, Globe, Award, Building2, LucideIcon } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import {
@@ -18,67 +18,101 @@ import {
   Badge,
 } from '../components/ui';
 
+// ==================== DATA DEFINITIONS ====================
+
+interface LeadershipMember {
+  name: string;
+  role: string;
+  icon: LucideIcon;
+  image: string;
+}
+
+interface Branch {
+  name: string;
+  president: string;
+  icon: LucideIcon;
+  color: string;
+  image: string;
+}
+
+// Leadership data
+const leadership: LeadershipMember[] = [
+  {
+    name: 'Nikola Horvat',
+    role: 'Predsjednik',
+    icon: Award,
+    image: '/images/leadership/nikola-horvat.avif',
+  },
+  {
+    name: 'Dragutin Korlaet',
+    role: 'Potpredsjednik',
+    icon: Users,
+    image: '/images/leadership/dragutin-korlaet.avif',
+  },
+  {
+    name: 'Petar Fabijanović',
+    role: 'Potpredsjednik',
+    icon: Users,
+    image: '/images/leadership/petar-fabjanovic.avif',
+  },
+  {
+    name: 'Tomislav Drašković',
+    role: 'Predsjednik Upravnog odbora',
+    icon: Building2,
+    image: '/images/leadership/tomislav-draskovic.avif',
+  },
+];
+
+// Branches data
+const branches: Branch[] = [
+  {
+    name: 'Ogranak Makarska',
+    president: 'Herbert Buche',
+    icon: MapPin,
+    color: 'from-blue-600/20 to-cyan-600/20',
+    image: '/images/cities/Makarska-Riviera-Kroatien-Tipps-e1726048350267.webp',
+  },
+  {
+    name: 'Ogranak Brač',
+    president: 'Petar Fabijanović',
+    icon: Globe,
+    color: 'from-emerald-600/20 to-green-600/20',
+    image: '/images/cities/1679584344Island_of_Brac-e1726048476766.avif',
+  },
+  {
+    name: 'Ogranak Sinj',
+    president: 'U osnivanju',
+    icon: BookOpen,
+    color: 'from-purple-600/20 to-pink-600/20',
+    image: '/images/cities/Slike-sa-snimanja-Grad-Sinj-2-2022-no-logo-27-1024x682-1.jpg.webp',
+  },
+];
+
+// Stats data
+const stats = [
+  { value: '30+', label: 'Godina tradicije' },
+  { value: '500+', label: 'Aktivnih članova' },
+  { value: '50+', label: 'Godišnjih događanja' },
+  { value: '5', label: 'Ogranaka' },
+];
+
+// Mission points
+const missionPoints = [
+  { icon: Users, title: 'Izgradnja zajednice', desc: 'Povezivanje ljudi koji dijele strast prema hrvatsko-njemačkoj kulturnoj razmjeni' },
+  { icon: BookOpen, title: 'Edukacija', desc: 'Pružanje tečajeva njemačkog jezika i kulturnih obrazovnih programa' },
+  { icon: Globe, title: 'Povezivanje', desc: 'Njegovanje međunarodnih veza i suradnje' },
+];
+
+// Partners data
+const partners = [
+  { name: 'AHK Hrvatska', image: '/images/partners/ahk_kroatien_njema_ko_hrvatska_industrijska_i_trgovinska_komora_logo.png' },
+  { name: 'Grad Mainz', image: '/images/partners/Coat_of_arms_of_Mainz-2008_new.png' },
+  { name: 'Grad Berlin', image: '/images/partners/Country_symbol_of_Berlin_color.png.webp' },
+];
+
+// ==================== COMPONENT ====================
+
 export default function About() {
-  // Leadership data
-  const leadership = [
-    {
-      name: 'Nikola Horvat',
-      role: 'Predsjednik',
-      icon: Award,
-      image: '/images/leadership/nikola-horvat.avif',
-    },
-    {
-      name: 'Dragutin Korlaet',
-      role: 'Potpredsjednik',
-      icon: Users,
-      image: '/images/leadership/dragutin-korlaet.avif',
-    },
-    {
-      name: 'Petar Fabijanović',
-      role: 'Potpredsjednik',
-      icon: Users,
-      image: '/images/leadership/petar-fabjanovic.avif',
-    },
-    {
-      name: 'Tomislav Drašković',
-      role: 'Predsjednik Upravnog odbora',
-      icon: Building2,
-      image: '/images/leadership/tomislav-draskovic.avif',
-    },
-  ];
-
-  // Branches data
-  const branches = [
-    {
-      name: 'Ogranak Makarska',
-      president: 'Herbert Buche',
-      icon: MapPin,
-      color: 'from-blue-600/20 to-cyan-600/20',
-      image: '/images/cities/Makarska-Riviera-Kroatien-Tipps-e1726048350267.webp',
-    },
-    {
-      name: 'Ogranak Brač',
-      president: 'Petar Fabijanović',
-      icon: Globe,
-      color: 'from-emerald-600/20 to-green-600/20',
-      image: '/images/cities/1679584344Island_of_Brac-e1726048476766.avif',
-    },
-    {
-      name: 'Ogranak Sinj',
-      president: 'U osnivanju',
-      icon: BookOpen,
-      color: 'from-purple-600/20 to-pink-600/20',
-      image: '/images/cities/Slike-sa-snimanja-Grad-Sinj-2-2022-no-logo-27-1024x682-1.jpg.webp',
-    },
-  ];
-
-  // Stats data
-  const stats = [
-    { value: '30+', label: 'Godina tradicije' },
-    { value: '500+', label: 'Aktivnih članova' },
-    { value: '50+', label: 'Godišnjih događanja' },
-    { value: '5', label: 'Ogranaka' },
-  ];
 
   return (
     <main className="bg-slate-950 text-white">
@@ -133,11 +167,7 @@ export default function About() {
 
               {/* Mission Points */}
               <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
-                {[
-                  { icon: Users, title: 'Izgradnja zajednice', desc: 'Povezivanje ljudi koji dijele strast prema hrvatsko-njemačkoj kulturnoj razmjeni' },
-                  { icon: BookOpen, title: 'Edukacija', desc: 'Pružanje tečajeva njemačkog jezika i kulturnih obrazovnih programa' },
-                  { icon: Globe, title: 'Povezivanje', desc: 'Njegovanje međunarodnih veza i suradnje' },
-                ].map((item, i) => (
+                {missionPoints.map((item, i) => (
                   <div key={i} className="flex gap-3 sm:gap-4">
                     <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600 flex-shrink-0 mt-0.5 sm:mt-1" />
                     <div>
@@ -305,11 +335,7 @@ export default function About() {
 
           <StaggerContainer>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              {[
-                { name: 'AHK Hrvatska', image: '/images/partners/ahk_kroatien_njema_ko_hrvatska_industrijska_i_trgovinska_komora_logo.png' },
-                { name: 'Grad Mainz', image: '/images/partners/Coat_of_arms_of_Mainz-2008_new.png' },
-                { name: 'Grad Berlin', image: '/images/partners/Country_symbol_of_Berlin_color.png.webp' },
-              ].map((partner, i) => (
+              {partners.map((partner, i) => (
                 <StaggerItem key={i}>
                   <MotionCard variant="outline" className="p-5 sm:p-6 md:p-8 flex flex-col items-center text-center h-full active:scale-[0.98] transition-transform" hoverY={-4}>
                     <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mb-4 sm:mb-6">
