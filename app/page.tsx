@@ -40,6 +40,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
+    layoutEffect: false, // Suppress scroll position warnings in dev
   });
   
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);

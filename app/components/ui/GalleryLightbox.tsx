@@ -28,7 +28,7 @@ export function GalleryLightbox({ images, className }: GalleryLightboxProps) {
           <StaggerItem key={image.id}>
             <motion.button
               onClick={() => setLightboxImage(image.src)}
-              className="group relative aspect-square overflow-hidden rounded-lg active:scale-[0.98] transition-transform"
+              className="group relative w-full h-0 pb-[100%] overflow-hidden rounded-lg active:scale-[0.98] transition-transform"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
