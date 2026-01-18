@@ -66,7 +66,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 md:px-8">
         {/* Top CTA Section */}
         <div className="py-16 md:py-20 border-b border-white/5">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative">
             <div className="text-center lg:text-left">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
