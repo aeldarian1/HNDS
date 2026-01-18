@@ -1,0 +1,483 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "activities": "Aktivitäten",
+    "news": "Nachrichten",
+    "gallery": "Galerie",
+    "contact": "Kontakt",
+    "chronicles": "Chroniken",
+    "membership": "Mitgliedschaft",
+    "statute": "Satzung",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "search": "Suchen...",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "close": "Schließen",
+    "followUs": "Folgen Sie uns",
+    "language": "Sprache"
+  },
+  "common": {
+    "navigation": {
+      "home": "Startseite",
+      "about": "Über uns",
+      "activities": "Aktivitäten",
+      "news": "Nachrichten",
+      "gallery": "Galerie",
+      "contact": "Kontakt",
+      "chronicles": "Chroniken",
+      "membership": "Mitgliedschaft",
+      "statute": "Satzung",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen"
+    },
+    "footer": {
+      "cta": "Werden Sie Teil unserer Gemeinschaft",
+      "ctaSubtitle": "Treten Sie der Kroatisch-Deutschen Gesellschaft Split bei und entdecken Sie die reichen kulturellen Verbindungen zwischen unseren Völkern.",
+      "becomeMember": "Mitglied werden",
+      "contactUs": "Kontaktieren Sie uns",
+      "quickLinks": "Schnelllinks",
+      "legal": "Rechtliche Informationen",
+      "locations": "Standorte",
+      "rights": "Alle Rechte vorbehalten.",
+      "description": "Die Kroatisch-Deutsche Gesellschaft Split fördert seit 1990 kulturelle, sprachliche und freundschaftliche Beziehungen zwischen Kroatien und Deutschland.",
+      "followUs": "Folgen Sie uns",
+      "newsletter": "Newsletter",
+      "newsletterDesc": "Erhalten Sie Neuigkeiten über unsere Aktivitäten"
+    },
+    "buttons": {
+      "learnMore": "Mehr erfahren",
+      "readMore": "Weiterlesen",
+      "viewAll": "Alle anzeigen",
+      "submit": "Absenden",
+      "subscribe": "Abonnieren",
+      "close": "Schließen",
+      "search": "Suchen",
+      "filter": "Filtern",
+      "showMore": "Mehr anzeigen",
+      "showLess": "Weniger anzeigen"
+    },
+    "language": {
+      "switch": "Sprache wechseln",
+      "hr": "Kroatisch",
+      "de": "Deutsch"
+    },
+    "meta": {
+      "siteName": "Kroatisch-Deutsche Gesellschaft Split",
+      "siteDescription": "Kroatisch-Deutsche Gesellschaft Split - mehr als 35 Jahre Freundschaft, kultureller Austausch und Zusammenarbeit zwischen Kroatien und Deutschland."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Brücke zwischen Kulturen",
+      "subtitle": "Kroatisch-Deutsche Gesellschaft Split - mehr als 35 Jahre Freundschaft und Zusammenarbeit.",
+      "exploreActivities": "Aktivitäten entdecken",
+      "learnMore": "Mehr erfahren"
+    },
+    "stats": {
+      "yearsOfTradition": "Jahre Tradition",
+      "members": "Mitglieder",
+      "locations": "Standorte",
+      "yearsOfFriendship": "Jahre Freundschaft"
+    },
+    "features": {
+      "title": "Was wir bieten",
+      "subtitle": "Entdecken Sie die vielfältigen Möglichkeiten, die wir Ihnen bieten",
+      "richHistory": {
+        "title": "Reiche Geschichte",
+        "description": "Mehr als drei Jahrzehnte Förderung kroatisch-deutscher Beziehungen und kulturellen Austauschs."
+      },
+      "languageCourses": {
+        "title": "Sprachkurse",
+        "description": "Hochwertige Deutschkurse für alle Niveaus mit erfahrenen Lehrern."
+      },
+      "culturalEvents": {
+        "title": "Kulturelle Veranstaltungen",
+        "description": "Ausstellungen, Vorträge, Konzerte und Kulturabende, die zwei Kulturen verbinden."
+      },
+      "trips": {
+        "title": "Ausflüge und Reisen",
+        "description": "Organisierte Ausflüge durch Kroatien und Deutschland für unsere Mitglieder."
+      },
+      "library": {
+        "title": "Bibliothek",
+        "description": "Reichhaltige Sammlung von Büchern, Zeitschriften und Multimedia-Inhalten in deutscher Sprache."
+      },
+      "networking": {
+        "title": "Vernetzung",
+        "description": "Verbindung mit anderen kroatisch-deutschen Gesellschaften und Partnerorganisationen."
+      }
+    },
+    "about": {
+      "label": "Über uns",
+      "title": "Wer sind wir?",
+      "description": "Die Kroatisch-Deutsche Gesellschaft Split fördert seit 1990 kulturelle, sprachliche und freundschaftliche Beziehungen zwischen Kroatien und Deutschland. Unsere Mission ist es, Brücken des Verständnisses und der Zusammenarbeit zwischen zwei Völkern zu bauen.",
+      "readMore": "Mehr über uns erfahren"
+    },
+    "news": {
+      "title": "Aktuelle Nachrichten",
+      "subtitle": "Verfolgen Sie unsere Aktivitäten und Veranstaltungen",
+      "allNews": "Alle Nachrichten",
+      "noNews": "Derzeit keine Nachrichten."
+    },
+    "events": {
+      "title": "Kommende Veranstaltungen",
+      "subtitle": "Verpassen Sie nicht unsere Aktivitäten",
+      "allEvents": "Alle Veranstaltungen",
+      "noEvents": "Derzeit keine bevorstehenden Veranstaltungen."
+    },
+    "cta": {
+      "title": "Treten Sie unserer Gemeinschaft bei",
+      "description": "Werden Sie Teil unserer Gemeinschaft und entdecken Sie die reichen kulturellen Verbindungen zwischen Kroatien und Deutschland.",
+      "button": "Mitglied werden"
+    },
+    "partners": {
+      "title": "Unsere Partner",
+      "subtitle": "Wir danken unseren Partnern für ihre Unterstützung"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Über uns",
+      "description": "Erfahren Sie mehr über die Kroatisch-Deutsche Gesellschaft Split, unsere Geschichte, Mission und Aktivitäten."
+    },
+    "hero": {
+      "badge": "Seit 1990",
+      "title": "Über uns",
+      "subtitle": "Kroatisch-Deutsche Gesellschaft Split"
+    },
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Die Kroatisch-Deutsche Gesellschaft Split widmet sich der Förderung des kulturellen Austauschs, der Bildung und dauerhafter Freundschaft zwischen Kroatien und Deutschland.",
+      "quote": "Wir bauen seit mehr als drei Jahrzehnten Brücken des Verständnisses und der Freundschaft zwischen unseren Völkern.",
+      "quoteAuthor": "Nikola Horvat",
+      "quoteRole": "Präsident der KDGS"
+    },
+    "history": {
+      "title": "Unsere Geschichte",
+      "description": "Von bescheidenen Anfängen 1990 bis heute ist unsere Gesellschaft zu einer der aktivsten Organisationen zur Förderung kroatisch-deutscher Beziehungen gewachsen."
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "friendship": {
+        "title": "Freundschaft",
+        "description": "Wir pflegen dauerhafte Verbindungen zwischen Menschen und Kulturen."
+      },
+      "education": {
+        "title": "Bildung",
+        "description": "Wir fördern das Erlernen der deutschen Sprache und den kulturellen Austausch."
+      },
+      "cooperation": {
+        "title": "Zusammenarbeit",
+        "description": "Wir arbeiten mit Partnern zusammen, um gemeinsame Ziele zu erreichen."
+      },
+      "openness": {
+        "title": "Offenheit",
+        "description": "Willkommen sind alle, die die deutsche Kultur und Sprache kennenlernen möchten."
+      }
+    },
+    "leadership": {
+      "title": "Führung",
+      "subtitle": "Lernen Sie unser Team kennen"
+    },
+    "branches": {
+      "title": "Unsere Zweigstellen",
+      "subtitle": "Präsent in ganz Dalmatien"
+    }
+  },
+  "activities": {
+    "meta": {
+      "title": "Aktivitäten",
+      "description": "Sehen Sie alle Aktivitäten der Kroatisch-Deutschen Gesellschaft Split - Kurse, Veranstaltungen, Ausflüge und mehr."
+    },
+    "hero": {
+      "badge": "Aktivitäten und Veranstaltungen",
+      "title": "Unsere Aktivitäten",
+      "subtitle": "Entdecken Sie die vielfältigen Möglichkeiten, die wir Ihnen bieten"
+    },
+    "filter": {
+      "all": "Alle",
+      "courses": "Kurse",
+      "events": "Veranstaltungen",
+      "trips": "Ausflüge",
+      "workshops": "Workshops"
+    },
+    "calendar": {
+      "title": "Veranstaltungskalender",
+      "noEvents": "Keine Veranstaltungen für das ausgewählte Datum."
+    },
+    "categories": {
+      "languageCourses": {
+        "title": "Deutschkurse",
+        "description": "Lernen Sie Deutsch mit unseren erfahrenen Lehrern"
+      },
+      "culturalEvents": {
+        "title": "Kulturelle Veranstaltungen",
+        "description": "Ausstellungen, Vorträge, Konzerte und Kulturabende"
+      },
+      "trips": {
+        "title": "Ausflüge und Reisen",
+        "description": "Organisierte Ausflüge durch Kroatien und Deutschland"
+      },
+      "library": {
+        "title": "Bibliothek",
+        "description": "Bücher, Zeitschriften und Multimedia-Inhalte"
+      }
+    }
+  },
+  "news": {
+    "meta": {
+      "title": "Nachrichten",
+      "description": "Aktuelle Nachrichten und Ankündigungen der Kroatisch-Deutschen Gesellschaft Split."
+    },
+    "hero": {
+      "badge": "Bleiben Sie informiert",
+      "title": "Nachrichten",
+      "subtitle": "Aktuelle Nachrichten und Ankündigungen unserer Gesellschaft"
+    },
+    "filter": {
+      "all": "Alle Nachrichten",
+      "news": "Nachrichten",
+      "events": "Veranstaltungen",
+      "announcements": "Ankündigungen"
+    },
+    "search": {
+      "placeholder": "Nachrichten durchsuchen...",
+      "noResults": "Keine Ergebnisse für Ihre Suche."
+    },
+    "readMore": "Weiterlesen",
+    "publishedAt": "Veröffentlicht",
+    "category": "Kategorie"
+  },
+  "gallery": {
+    "meta": {
+      "title": "Galerie",
+      "description": "Fotos von Veranstaltungen der Kroatisch-Deutschen Gesellschaft Split."
+    },
+    "hero": {
+      "badge": "Fotogalerie",
+      "title": "Galerie",
+      "subtitle": "Sehen Sie sich Fotos von unseren Veranstaltungen an"
+    },
+    "filter": {
+      "all": "Alle Kategorien",
+      "events": "Veranstaltungen",
+      "trips": "Ausflüge",
+      "courses": "Kurse",
+      "celebrations": "Feiern"
+    },
+    "viewMode": {
+      "grid": "Raster",
+      "list": "Liste"
+    },
+    "photos": "Fotos",
+    "viewGallery": "Galerie ansehen"
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontakt",
+      "description": "Kontaktieren Sie die Kroatisch-Deutsche Gesellschaft Split - Adresse, Telefon, E-Mail und Kontaktformular."
+    },
+    "hero": {
+      "badge": "Kontaktieren Sie uns",
+      "title": "Kontakt",
+      "subtitle": "Wir beantworten gerne Ihre Fragen"
+    },
+    "info": {
+      "address": {
+        "title": "Adresse",
+        "content": "Matice hrvatske 2",
+        "subcontent": "21000 Split, Kroatien"
+      },
+      "phone": {
+        "title": "Telefon",
+        "content": "+385 21 344 561",
+        "subcontent": "Geschäftszeiten: Mo-Fr"
+      },
+      "email": {
+        "title": "E-Mail",
+        "content": "info@hnds.hr",
+        "subcontent": "Wir antworten innerhalb von 24 Stunden"
+      },
+      "hours": {
+        "title": "Geschäftszeiten",
+        "content": "Mo - Fr: 09:00 - 17:00",
+        "subcontent": "Sa - So: Geschlossen"
+      }
+    },
+    "form": {
+      "title": "Senden Sie uns eine Nachricht",
+      "name": "Name",
+      "namePlaceholder": "Ihr vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "emailPlaceholder": "ihre@email.com",
+      "phone": "Telefon (optional)",
+      "phonePlaceholder": "+385 ...",
+      "subject": "Betreff",
+      "subjectPlaceholder": "Betreff auswählen",
+      "subjects": {
+        "general": "Allgemeine Anfrage",
+        "membership": "Mitgliedschaft",
+        "courses": "Kurse",
+        "events": "Veranstaltungen",
+        "other": "Sonstiges"
+      },
+      "message": "Nachricht",
+      "messagePlaceholder": "Ihre Nachricht...",
+      "privacy": "Ich stimme den Datenschutzbestimmungen zu",
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet...",
+      "success": {
+        "title": "Nachricht gesendet!",
+        "message": "Vielen Dank für Ihre Nachricht. Wir werden uns schnellstmöglich bei Ihnen melden."
+      },
+      "error": {
+        "title": "Fehler",
+        "message": "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
+    },
+    "map": {
+      "title": "Finden Sie uns"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Wie kann ich Mitglied werden?",
+          "answer": "Sie können persönlich in unseren Räumlichkeiten oder über das Online-Formular auf der Mitgliedschaftsseite beitreten."
+        },
+        {
+          "question": "Wie hoch ist der Mitgliedsbeitrag?",
+          "answer": "Der Jahresbeitrag beträgt 100 kn für Einzelpersonen, 150 kn für Familien und 50 kn für Studenten und Rentner."
+        },
+        {
+          "question": "Wie melde ich mich für einen Deutschkurs an?",
+          "answer": "Anmeldungen für Kurse nehmen wir zu Beginn jedes Semesters entgegen. Kontaktieren Sie uns für weitere Informationen."
+        }
+      ]
+    }
+  },
+  "membership": {
+    "meta": {
+      "title": "Mitgliedschaft",
+      "description": "Werden Sie Mitglied der Kroatisch-Deutschen Gesellschaft Split und genießen Sie zahlreiche Vorteile."
+    },
+    "hero": {
+      "badge": "Treten Sie uns bei",
+      "title": "Mitglied werden",
+      "subtitle": "Entdecken Sie die Vorteile einer Mitgliedschaft in unserer Gesellschaft"
+    },
+    "benefits": {
+      "title": "Mitgliedschaftsvorteile",
+      "items": [
+        "Rabatte auf Deutschkurse",
+        "Kostenloser Zugang zur Bibliothek",
+        "Einladungen zu exklusiven Veranstaltungen",
+        "Rabatte auf Ausflüge und Reisen",
+        "Newsletter mit Neuigkeiten",
+        "Vernetzung mit anderen Mitgliedern"
+      ]
+    },
+    "pricing": {
+      "title": "Mitgliedschaftsarten",
+      "individual": {
+        "title": "Einzelperson",
+        "price": "100 kn/Jahr",
+        "features": ["Alle Vorteile", "1 Person"]
+      },
+      "family": {
+        "title": "Familie",
+        "price": "150 kn/Jahr",
+        "features": ["Alle Vorteile", "Ganze Familie"]
+      },
+      "student": {
+        "title": "Student",
+        "price": "50 kn/Jahr",
+        "features": ["Alle Vorteile", "Mit Studentenausweis"]
+      }
+    },
+    "cta": {
+      "title": "Bereit für die Mitgliedschaft?",
+      "description": "Füllen Sie das Online-Formular aus oder besuchen Sie uns persönlich.",
+      "button": "Anmelden"
+    }
+  },
+  "chronicles": {
+    "meta": {
+      "title": "Chroniken",
+      "description": "Chroniken der Kroatisch-Deutschen Gesellschaft Split - Geschichte und Archiv unserer Tätigkeit."
+    },
+    "hero": {
+      "badge": "Unser Archiv",
+      "title": "Chroniken",
+      "subtitle": "Durchstöbern Sie die reiche Geschichte unserer Gesellschaft"
+    },
+    "filter": {
+      "all": "Alle Jahre",
+      "search": "Chroniken durchsuchen..."
+    },
+    "viewPdf": "PDF ansehen",
+    "download": "Herunterladen"
+  },
+  "statute": {
+    "meta": {
+      "title": "Satzung",
+      "description": "Satzung der Kroatisch-Deutschen Gesellschaft Split."
+    },
+    "hero": {
+      "badge": "Rechtliche Dokumente",
+      "title": "Satzung der Gesellschaft",
+      "subtitle": "Grunddokument der Kroatisch-Deutschen Gesellschaft Split"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Datenschutz",
+      "description": "Datenschutzrichtlinien der Kroatisch-Deutschen Gesellschaft Split."
+    },
+    "hero": {
+      "badge": "Rechtliche Informationen",
+      "title": "Datenschutzrichtlinien",
+      "subtitle": "Wie wir Ihre Daten sammeln und verwenden"
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Nutzungsbedingungen",
+      "description": "Nutzungsbedingungen der Website der Kroatisch-Deutschen Gesellschaft Split."
+    },
+    "hero": {
+      "badge": "Rechtliche Informationen",
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Regeln für die Nutzung unserer Website"
+    }
+  },
+  "newsletter": {
+    "title": "Abonnieren Sie unseren Newsletter",
+    "subtitle": "Seien Sie die Ersten, die von unseren Neuigkeiten und Veranstaltungen erfahren",
+    "placeholder": "Ihre E-Mail-Adresse",
+    "submit": "Abonnieren",
+    "success": "Sie haben sich erfolgreich angemeldet!",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "privacy": "Ihre Daten sind sicher und wir werden sie nicht an Dritte weitergeben."
+  },
+  "search": {
+    "title": "Suche",
+    "placeholder": "Website durchsuchen...",
+    "noResults": "Keine Ergebnisse für",
+    "hint": "Beginnen Sie mit der Eingabe, um zu suchen..."
+  },
+  "errors": {
+    "404": {
+      "title": "Seite nicht gefunden",
+      "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+      "backHome": "Zurück zur Startseite"
+    },
+    "500": {
+      "title": "Serverfehler",
+      "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+      "retry": "Erneut versuchen"
+    }
+  }
+}

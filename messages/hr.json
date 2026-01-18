@@ -1,0 +1,483 @@
+{
+  "navigation": {
+    "home": "Naslovna",
+    "about": "O nama",
+    "activities": "Aktivnosti",
+    "news": "Vijesti",
+    "gallery": "Galerija",
+    "contact": "Kontakt",
+    "chronicles": "Kronike",
+    "membership": "Članstvo",
+    "statute": "Statut",
+    "privacy": "Privatnost",
+    "terms": "Uvjeti korištenja",
+    "search": "Pretraži...",
+    "openMenu": "Otvori izbornik",
+    "closeMenu": "Zatvori izbornik",
+    "close": "Zatvori",
+    "followUs": "Pratite nas",
+    "language": "Jezik"
+  },
+  "common": {
+    "navigation": {
+      "home": "Naslovna",
+      "about": "O nama",
+      "activities": "Aktivnosti",
+      "news": "Vijesti",
+      "gallery": "Galerija",
+      "contact": "Kontakt",
+      "chronicles": "Kronike",
+      "membership": "Članstvo",
+      "statute": "Statut",
+      "privacy": "Privatnost",
+      "terms": "Uvjeti korištenja"
+    },
+    "footer": {
+      "cta": "Postanite dio naše zajednice",
+      "ctaSubtitle": "Pridružite se Hrvatsko-njemačkom društvu Split i otkrijte bogate kulturne veze između naših naroda.",
+      "becomeMember": "Postanite član",
+      "contactUs": "Kontaktirajte nas",
+      "quickLinks": "Brze poveznice",
+      "legal": "Pravne informacije",
+      "locations": "Lokacije",
+      "rights": "Sva prava pridržana.",
+      "description": "Hrvatsko-njemačko društvo Split od 1990. godine promiče kulturne, jezične i prijateljske veze između Hrvatske i Njemačke.",
+      "followUs": "Pratite nas",
+      "newsletter": "Newsletter",
+      "newsletterDesc": "Primajte novosti o našim aktivnostima"
+    },
+    "buttons": {
+      "learnMore": "Saznajte više",
+      "readMore": "Pročitajte više",
+      "viewAll": "Pogledaj sve",
+      "submit": "Pošalji",
+      "subscribe": "Pretplati se",
+      "close": "Zatvori",
+      "search": "Pretraži",
+      "filter": "Filtriraj",
+      "showMore": "Prikaži više",
+      "showLess": "Prikaži manje"
+    },
+    "language": {
+      "switch": "Promijeni jezik",
+      "hr": "Hrvatski",
+      "de": "Deutsch"
+    },
+    "meta": {
+      "siteName": "Hrvatsko-njemačko društvo Split",
+      "siteDescription": "Hrvatsko-njemačko društvo Split - više od 35 godina prijateljstva, kulturne razmjene i suradnje između Hrvatske i Njemačke."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Most između kultura",
+      "subtitle": "Hrvatsko-njemačko društvo Split - više od 35 godina prijateljstva i suradnje.",
+      "exploreActivities": "Istražite aktivnosti",
+      "learnMore": "Saznajte više"
+    },
+    "stats": {
+      "yearsOfTradition": "Godina tradicije",
+      "members": "Članova",
+      "locations": "Lokacija",
+      "yearsOfFriendship": "Godina prijateljstva"
+    },
+    "features": {
+      "title": "Što nudimo",
+      "subtitle": "Otkrijte raznolike mogućnosti koje vam pružamo",
+      "richHistory": {
+        "title": "Bogata povijest",
+        "description": "Više od tri desetljeća promicanja hrvatsko-njemačkih veza i kulturne razmjene."
+      },
+      "languageCourses": {
+        "title": "Tečajevi jezika",
+        "description": "Kvalitetni tečajevi njemačkog jezika za sve razine znanja s iskusnim predavačima."
+      },
+      "culturalEvents": {
+        "title": "Kulturni događaji",
+        "description": "Izložbe, predavanja, koncerti i kulturne večeri koje povezuju dvije kulture."
+      },
+      "trips": {
+        "title": "Izleti i putovanja",
+        "description": "Organizirani izleti po Hrvatskoj i Njemačkoj za naše članove."
+      },
+      "library": {
+        "title": "Knjižnica",
+        "description": "Bogata zbirka knjiga, časopisa i multimedijskih sadržaja na njemačkom jeziku."
+      },
+      "networking": {
+        "title": "Umrežavanje",
+        "description": "Povezivanje s drugim hrvatsko-njemačkim društvima i partnerskim organizacijama."
+      }
+    },
+    "about": {
+      "label": "O nama",
+      "title": "Tko smo mi?",
+      "description": "Hrvatsko-njemačko društvo Split od 1990. godine promiče kulturne, jezične i prijateljske veze između Hrvatske i Njemačke. Naša misija je graditi mostove razumijevanja i suradnje između dva naroda.",
+      "readMore": "Saznajte više o nama"
+    },
+    "news": {
+      "title": "Najnovije vijesti",
+      "subtitle": "Pratite naše aktivnosti i događanja",
+      "allNews": "Sve vijesti",
+      "noNews": "Trenutno nema vijesti."
+    },
+    "events": {
+      "title": "Nadolazeći događaji",
+      "subtitle": "Ne propustite naše aktivnosti",
+      "allEvents": "Svi događaji",
+      "noEvents": "Trenutno nema nadolazećih događaja."
+    },
+    "cta": {
+      "title": "Pridružite se zajednici",
+      "description": "Postanite dio naše zajednice i otkrijte bogate kulturne veze između Hrvatske i Njemačke.",
+      "button": "Postanite član"
+    },
+    "partners": {
+      "title": "Naši partneri",
+      "subtitle": "Zahvaljujemo našim partnerima na podršci"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "O nama",
+      "description": "Saznajte više o Hrvatsko-njemačkom društvu Split, našoj povijesti, misiji i aktivnostima."
+    },
+    "hero": {
+      "badge": "Od 1990. godine",
+      "title": "O nama",
+      "subtitle": "Hrvatsko-njemačko društvo Split"
+    },
+    "mission": {
+      "title": "Naša misija",
+      "description": "Hrvatsko-njemačko društvo Split posvećeno je promicanju kulturne razmjene, obrazovanja i trajnog prijateljstva između Hrvatske i Njemačke.",
+      "quote": "Gradimo mostove razumijevanja i prijateljstva između naših naroda već više od tri desetljeća.",
+      "quoteAuthor": "Nikola Horvat",
+      "quoteRole": "Predsjednik HNDS-a"
+    },
+    "history": {
+      "title": "Naša povijest",
+      "description": "Od skromnih početaka 1990. godine do danas, naše društvo je izraslo u jednu od najaktivnijih organizacija za promicanje hrvatsko-njemačkih odnosa."
+    },
+    "values": {
+      "title": "Naše vrijednosti",
+      "friendship": {
+        "title": "Prijateljstvo",
+        "description": "Njegujemo trajne veze između ljudi i kultura."
+      },
+      "education": {
+        "title": "Obrazovanje",
+        "description": "Promičemo učenje njemačkog jezika i kulturnu razmjenu."
+      },
+      "cooperation": {
+        "title": "Suradnja",
+        "description": "Radimo zajedno s partnerima na ostvarenju zajedničkih ciljeva."
+      },
+      "openness": {
+        "title": "Otvorenost",
+        "description": "Dobrodošli svi koji žele upoznati njemačku kulturu i jezik."
+      }
+    },
+    "leadership": {
+      "title": "Vodstvo",
+      "subtitle": "Upoznajte naš tim"
+    },
+    "branches": {
+      "title": "Naši ogranci",
+      "subtitle": "Prisutni diljem Dalmacije"
+    }
+  },
+  "activities": {
+    "meta": {
+      "title": "Aktivnosti",
+      "description": "Pregledajte sve aktivnosti Hrvatsko-njemačkog društva Split - tečajevi, događaji, izleti i više."
+    },
+    "hero": {
+      "badge": "Aktivnosti i događaji",
+      "title": "Naše aktivnosti",
+      "subtitle": "Otkrijte raznolike mogućnosti koje vam pružamo"
+    },
+    "filter": {
+      "all": "Sve",
+      "courses": "Tečajevi",
+      "events": "Događaji",
+      "trips": "Izleti",
+      "workshops": "Radionice"
+    },
+    "calendar": {
+      "title": "Kalendar događaja",
+      "noEvents": "Nema događaja za odabrani datum."
+    },
+    "categories": {
+      "languageCourses": {
+        "title": "Tečajevi njemačkog jezika",
+        "description": "Učite njemački jezik s našim iskusnim predavačima"
+      },
+      "culturalEvents": {
+        "title": "Kulturni događaji",
+        "description": "Izložbe, predavanja, koncerti i kulturne večeri"
+      },
+      "trips": {
+        "title": "Izleti i putovanja",
+        "description": "Organizirani izleti po Hrvatskoj i Njemačkoj"
+      },
+      "library": {
+        "title": "Knjižnica",
+        "description": "Knjige, časopisi i multimedijski sadržaji"
+      }
+    }
+  },
+  "news": {
+    "meta": {
+      "title": "Vijesti",
+      "description": "Najnovije vijesti i obavijesti iz Hrvatsko-njemačkog društva Split."
+    },
+    "hero": {
+      "badge": "Ostanite informirani",
+      "title": "Vijesti",
+      "subtitle": "Najnovije vijesti i obavijesti iz našeg društva"
+    },
+    "filter": {
+      "all": "Sve vijesti",
+      "news": "Vijesti",
+      "events": "Događaji",
+      "announcements": "Obavijesti"
+    },
+    "search": {
+      "placeholder": "Pretraži vijesti...",
+      "noResults": "Nema rezultata za vašu pretragu."
+    },
+    "readMore": "Pročitajte više",
+    "publishedAt": "Objavljeno",
+    "category": "Kategorija"
+  },
+  "gallery": {
+    "meta": {
+      "title": "Galerija",
+      "description": "Fotografije s događanja Hrvatsko-njemačkog društva Split."
+    },
+    "hero": {
+      "badge": "Foto galerija",
+      "title": "Galerija",
+      "subtitle": "Pogledajte fotografije s naših događanja"
+    },
+    "filter": {
+      "all": "Sve kategorije",
+      "events": "Događaji",
+      "trips": "Izleti",
+      "courses": "Tečajevi",
+      "celebrations": "Proslave"
+    },
+    "viewMode": {
+      "grid": "Mreža",
+      "list": "Lista"
+    },
+    "photos": "fotografija",
+    "viewGallery": "Pogledaj galeriju"
+  },
+  "contact": {
+    "meta": {
+      "title": "Kontakt",
+      "description": "Kontaktirajte Hrvatsko-njemačko društvo Split - adresa, telefon, email i kontakt obrazac."
+    },
+    "hero": {
+      "badge": "Javite nam se",
+      "title": "Kontaktirajte nas",
+      "subtitle": "Rado ćemo odgovoriti na vaša pitanja"
+    },
+    "info": {
+      "address": {
+        "title": "Adresa",
+        "content": "Matice hrvatske 2",
+        "subcontent": "21000 Split, Hrvatska"
+      },
+      "phone": {
+        "title": "Telefon",
+        "content": "+385 21 344 561",
+        "subcontent": "Radno vrijeme: pon-pet"
+      },
+      "email": {
+        "title": "Email",
+        "content": "info@hnds.hr",
+        "subcontent": "Odgovaramo u roku 24h"
+      },
+      "hours": {
+        "title": "Radno vrijeme",
+        "content": "Pon - Pet: 09:00 - 17:00",
+        "subcontent": "Sub - Ned: Zatvoreno"
+      }
+    },
+    "form": {
+      "title": "Pošaljite nam poruku",
+      "name": "Ime i prezime",
+      "namePlaceholder": "Vaše ime i prezime",
+      "email": "Email adresa",
+      "emailPlaceholder": "vasa@email.com",
+      "phone": "Telefon (opcionalno)",
+      "phonePlaceholder": "+385 ...",
+      "subject": "Tema",
+      "subjectPlaceholder": "Odaberite temu",
+      "subjects": {
+        "general": "Opći upit",
+        "membership": "Članstvo",
+        "courses": "Tečajevi",
+        "events": "Događaji",
+        "other": "Ostalo"
+      },
+      "message": "Poruka",
+      "messagePlaceholder": "Vaša poruka...",
+      "privacy": "Slažem se s pravilima privatnosti",
+      "submit": "Pošalji poruku",
+      "submitting": "Slanje...",
+      "success": {
+        "title": "Poruka poslana!",
+        "message": "Hvala vam na poruci. Odgovorit ćemo vam u najkraćem mogućem roku."
+      },
+      "error": {
+        "title": "Greška",
+        "message": "Došlo je do greške prilikom slanja. Molimo pokušajte ponovno."
+      }
+    },
+    "map": {
+      "title": "Pronađite nas"
+    },
+    "faq": {
+      "title": "Često postavljana pitanja",
+      "items": [
+        {
+          "question": "Kako se mogu učlaniti?",
+          "answer": "Učlaniti se možete osobno u našim prostorijama ili putem online obrasca na stranici Članstvo."
+        },
+        {
+          "question": "Kolika je članarina?",
+          "answer": "Godišnja članarina iznosi 100 kn za pojedince, 150 kn za obitelji i 50 kn za studente i umirovljenike."
+        },
+        {
+          "question": "Kako se prijaviti na tečaj njemačkog?",
+          "answer": "Prijave za tečajeve primamo na početku svakog semestra. Kontaktirajte nas za više informacija."
+        }
+      ]
+    }
+  },
+  "membership": {
+    "meta": {
+      "title": "Članstvo",
+      "description": "Postanite član Hrvatsko-njemačkog društva Split i uživajte u brojnim pogodnostima."
+    },
+    "hero": {
+      "badge": "Pridružite nam se",
+      "title": "Postanite član",
+      "subtitle": "Otkrijte prednosti članstva u našem društvu"
+    },
+    "benefits": {
+      "title": "Pogodnosti članstva",
+      "items": [
+        "Popusti na tečajeve njemačkog jezika",
+        "Besplatan pristup knjižnici",
+        "Pozivnice na ekskluzivne događaje",
+        "Popusti na izlete i putovanja",
+        "Newsletter s novostima",
+        "Umrežavanje s drugim članovima"
+      ]
+    },
+    "pricing": {
+      "title": "Vrste članstva",
+      "individual": {
+        "title": "Pojedinačno",
+        "price": "100 kn/god",
+        "features": ["Sve pogodnosti", "1 osoba"]
+      },
+      "family": {
+        "title": "Obiteljsko",
+        "price": "150 kn/god",
+        "features": ["Sve pogodnosti", "Cijela obitelj"]
+      },
+      "student": {
+        "title": "Studentsko",
+        "price": "50 kn/god",
+        "features": ["Sve pogodnosti", "Uz indeks"]
+      }
+    },
+    "cta": {
+      "title": "Spremni za članstvo?",
+      "description": "Ispunite online obrazac ili nas posjetite osobno.",
+      "button": "Prijavi se"
+    }
+  },
+  "chronicles": {
+    "meta": {
+      "title": "Kronike",
+      "description": "Kronike Hrvatsko-njemačkog društva Split - povijest i arhiva našeg djelovanja."
+    },
+    "hero": {
+      "badge": "Naša arhiva",
+      "title": "Kronike",
+      "subtitle": "Pregledajte bogatu povijest našeg društva"
+    },
+    "filter": {
+      "all": "Sve godine",
+      "search": "Pretraži kronike..."
+    },
+    "viewPdf": "Pogledaj PDF",
+    "download": "Preuzmi"
+  },
+  "statute": {
+    "meta": {
+      "title": "Statut",
+      "description": "Statut Hrvatsko-njemačkog društva Split."
+    },
+    "hero": {
+      "badge": "Pravni dokumenti",
+      "title": "Statut društva",
+      "subtitle": "Temeljni akt Hrvatsko-njemačkog društva Split"
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Pravila privatnosti",
+      "description": "Pravila privatnosti Hrvatsko-njemačkog društva Split."
+    },
+    "hero": {
+      "badge": "Pravne informacije",
+      "title": "Pravila privatnosti",
+      "subtitle": "Kako prikupljamo i koristimo vaše podatke"
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Uvjeti korištenja",
+      "description": "Uvjeti korištenja web stranice Hrvatsko-njemačkog društva Split."
+    },
+    "hero": {
+      "badge": "Pravne informacije",
+      "title": "Uvjeti korištenja",
+      "subtitle": "Pravila korištenja naše web stranice"
+    }
+  },
+  "newsletter": {
+    "title": "Pretplatite se na naš newsletter",
+    "subtitle": "Budite prvi koji će saznati za naše novosti i događanja",
+    "placeholder": "Vaša email adresa",
+    "submit": "Pretplati se",
+    "success": "Uspješno ste se pretplatili!",
+    "error": "Došlo je do greške. Pokušajte ponovno.",
+    "privacy": "Vaši podaci su sigurni i nećemo ih dijeliti s trećim stranama."
+  },
+  "search": {
+    "title": "Pretraga",
+    "placeholder": "Pretražite stranicu...",
+    "noResults": "Nema rezultata za",
+    "hint": "Započnite upisivati za pretragu..."
+  },
+  "errors": {
+    "404": {
+      "title": "Stranica nije pronađena",
+      "description": "Stranica koju tražite ne postoji ili je premještena.",
+      "backHome": "Povratak na naslovnicu"
+    },
+    "500": {
+      "title": "Greška poslužitelja",
+      "description": "Došlo je do neočekivane greške. Molimo pokušajte ponovno kasnije.",
+      "retry": "Pokušaj ponovno"
+    }
+  }
+}

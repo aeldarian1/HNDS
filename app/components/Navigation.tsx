@@ -52,10 +52,12 @@ export default function Navigation() {
   const closeMenu = useCallback(() => setIsOpen(false), []);
   const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
 
-  // Check if link is active
+  // Check if link is active - handle locale prefix
   const isActive = useCallback((href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
+    // Remove locale prefix from pathname for comparison
+    const pathWithoutLocale = pathname.replace(/^\/(hr|de)/, '') || '/';
+    if (href === '/') return pathWithoutLocale === '/';
+    return pathWithoutLocale.startsWith(href);
   }, [pathname]);
 
   return (

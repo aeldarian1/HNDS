@@ -35,15 +35,6 @@ export const DynamicScrollProgress = dynamic(
   }
 );
 
-// Lazy load SmoothScroll to avoid blocking initial render
-export const DynamicSmoothScroll = dynamic(
-  () => import('@/app/components/SmoothScroll'),
-  {
-    loading: () => null,
-    ssr: false,
-  }
-);
-
 // Wrapper for components that should load dynamically
 interface DynamicWrapperProps {
   children: ReactNode;

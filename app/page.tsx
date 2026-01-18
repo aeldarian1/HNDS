@@ -3,13 +3,19 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronRight, ArrowRight, Calendar, BookOpen, Globe, MapPin } from 'lucide-react';
 
 // Components
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import { NewsletterSignup } from './components/NewsletterSignup';
+
+// Dynamic imports for below-fold components
+const NewsletterSignup = dynamic(
+  () => import('./components/NewsletterSignup').then(mod => mod.NewsletterSignup),
+  { ssr: false }
+);
 
 // UI Components
 import {
@@ -122,6 +128,7 @@ export default function Home() {
             fill
             priority
             quality={75}
+            sizes="100vw"
             className="object-cover object-center"
             style={{ filter: 'brightness(1.1) contrast(1.05)' }}
           />
@@ -283,6 +290,7 @@ export default function Home() {
                   src="/images/gallery/1566.avif"
                   alt="HNDS događaj"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
