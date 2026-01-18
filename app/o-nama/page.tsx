@@ -185,6 +185,7 @@ export default function About() {
                   src="/images/gallery/2318.avif"
                   alt="HNDS Split"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
@@ -242,6 +243,7 @@ export default function About() {
                           src={person.image}
                           alt={person.name}
                           fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
@@ -292,6 +294,7 @@ export default function About() {
                           src={branch.image}
                           alt={branch.name}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className={`absolute inset-0 bg-gradient-to-t ${branch.color} mix-blend-overlay`} />
@@ -343,6 +346,7 @@ export default function About() {
                         src={partner.image}
                         alt={partner.name}
                         fill
+                        sizes="96px"
                         className="object-contain"
                       />
                     </div>

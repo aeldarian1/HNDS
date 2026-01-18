@@ -125,6 +125,7 @@ export default function GalerijaPage() {
                               src={category.coverImage}
                               alt={category.name}
                               fill
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                               className="object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-500"
                             />
                           </div>
@@ -165,6 +166,7 @@ export default function GalerijaPage() {
                               src={category.coverImage}
                               alt={category.name}
                               fill
+                              sizes="96px"
                               className="object-cover group-hover:scale-110 transition-transform duration-500"
                             />
                           </div>

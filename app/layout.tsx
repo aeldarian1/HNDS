@@ -208,7 +208,7 @@ export default async function RootLayout({
             Preskoči na sadržaj
           </a>
           
-          <div id="main-content">{children}</div>
+          <div id="main-content" className="relative">{children}</div>
           
           {/* Analytics */}
           <Analytics />

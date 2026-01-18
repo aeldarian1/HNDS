@@ -36,6 +36,7 @@ export function GalleryLightbox({ images, className }: GalleryLightboxProps) {
                 src={image.src}
                 alt={image.alt}
                 fill
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
@@ -74,6 +75,7 @@ export function GalleryLightbox({ images, className }: GalleryLightboxProps) {
                 src={lightboxImage}
                 alt="Gallery image"
                 fill
+                sizes="100vw"
                 className="object-contain"
               />
             </motion.div>

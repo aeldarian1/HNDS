@@ -109,7 +109,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-slate-950 text-white overflow-x-hidden">
+    <main className="relative bg-slate-950 text-white overflow-x-hidden">
       <Navigation />
 
       {/* ==================== HERO SECTION ==================== */}
