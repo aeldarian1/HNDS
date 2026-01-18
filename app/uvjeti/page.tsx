@@ -1,130 +1,129 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { ChevronDown, FileText } from "lucide-react";
-import { useState } from "react";
+import { FileText } from "lucide-react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { HeroFadeIn, FadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
+import { LegalAccordion, type LegalSection } from "@/app/components/ui/LegalAccordion";
+
+const sections: LegalSection[] = [
+  {
+    title: "1. Prihvaćanje uvjeta korištenja",
+    subtitle: "Slažete se sa svim odredbama",
+    content: [
+      "Korištenjem ove web stranice prihvaćate sve uvjete korištenja.",
+      "Ako se ne slažete s uvjetima, molimo vas da prestanete koristiti stranicu",
+      "Nastavkom korištenja dajete svoju eksplicitnu suglasnost",
+      "Odgovorni ste za poštovanje svih primijenjenih zakona",
+      "Možete biti odgovorni za neovlaštenu upotrebu",
+    ],
+  },
+  {
+    title: "2. Licenca korištenja web stranice",
+    subtitle: "Ograničeni pristup sadržaju",
+    content: [
+      "Dodjeljujemo vam ograničenu, neisključivu licencu za osobnu upotrebu",
+      "Možete pregledavati i koristiti sadržaj za osobne svrhe",
+      "Zabranjeno je komercijalno korištenje bez dozvole",
+      "Zabranjeno je reproduciranje i distribuiranje",
+      "Zabranjeno je prepravljanje ili adaptacija sadržaja",
+    ],
+  },
+  {
+    title: "3. Intelektualno svojstvo",
+    subtitle: "Zaštita autorskih prava",
+    content: [
+      "Sav sadržaj je zaštićen autorskim pravima Hrvatsko-njemačkog društva Split",
+      "Uključuje tekstove, slike, grafike, videozapise, glazbu i kôd",
+      "Zabranjeno je kopiranje bez pisane dozvole",
+      "Zabranjena je reprodukcija, distribucija ili javna izvedba",
+      "Zabranjeno je modificiranje ili stvaranje derivativnih radova",
+    ],
+  },
+  {
+    title: "4. Ograničenja odgovornosti",
+    subtitle: "Ono što nismo odgovorni",
+    content: [
+      "Web stranica se pruža 'kakva jest' bez jamstava",
+      "Ne jamčimo točnost, pouzdanost ili dostupnost sadržaja",
+      "Nismo odgovorni za pogreške ili neprekidnu dostupnost",
+      "Nismo odgovorni za štete iz korištenja stranice",
+      "Nismo odgovorni za gubitke podataka ili financijske gubitke",
+    ],
+  },
+  {
+    title: "5. Ponašanje korisnika",
+    subtitle: "Očekivano vladanje",
+    content: [
+      "Zabranjeno je objavljivanje uvredljivog ili diskriminatornog sadržaja",
+      "Zabranjeno je objavljivanje spama ili marketinških poruka",
+      "Zabranjeno je objavljivanje sadržaja koji krši autorska prava",
+      "Zabranjeno je objavljivanje malvera ili štetnog koda",
+      "Zabranjeno je hakiranje ili neovlašteni pristup",
+      "Zabranjeno je uznemiravanje ili nasilje",
+    ],
+  },
+  {
+    title: "6. Vanjske poveznice",
+    subtitle: "Treće web stranice",
+    content: [
+      "Stranica može sadržavati vanjske poveznice",
+      "Nismo odgovorni za sadržaj vanjskih stranica",
+      "Vanjske stranice imaju svoje Uvjete korištenja",
+      "Preporučujemo da pročitate njihove Uvjete prije korištenja",
+      "Vanjske poveznice se pružaju samo kao referenca",
+    ],
+  },
+  {
+    title: "7. Korisnički računi",
+    subtitle: "Sigurnost lozinke i pristupa",
+    content: [
+      "Ako kreirate račun, odgovorni ste za lozinku",
+      "Morate čuvati lozinku tajno i sigurno",
+      "Morate nas odmah obavijestiti ako sumnjate na krađu",
+      "Vi ste odgovorni za sve aktivnosti na svojem računu",
+      "Ne smijete dijeliti pristup s drugim osobama",
+    ],
+  },
+  {
+    title: "8. Zabranjene aktivnosti",
+    subtitle: "Što nije dozvoljeno",
+    content: [
+      "Skidanje web stranice ili njezinih dijelova bez dozvole",
+      "Korištenje robota, pauka ili drugih alata za prikupljanje podataka",
+      "Preusmjeravanje ili reprodukcija sadržaja na drugim stranicama",
+      "Pokušaji pristupa neovlaštenim dijelovima",
+      "Narušavanje rada web stranice (DDoS, itd.)",
+      "Praćenje ili preusmjeravanje prometa",
+    ],
+  },
+  {
+    title: "9. Izmjene uvjeta korištenja",
+    subtitle: "Ažuriranje Uvjeta",
+    content: [
+      "Zadržavamo pravo mijenjati ove Uvjete u bilo kojem trenutku",
+      "Izmjene stupaju na snagu kad se objave na web stranici",
+      "Nastavak korištenja znači prihvaćanje novih Uvjeta",
+      "Preporučujemo da redovito provjerite ažuriranja",
+      "Obavijestit ćemo vas o značajnim izmjenama",
+    ],
+  },
+  {
+    title: "10. Primjena zakona i rješavanje sporova",
+    subtitle: "Pravni okvir i jurisdikcija",
+    content: [
+      "Ovi Uvjeti podliježu zakonima Republike Hrvatske",
+      "Primijenjuje se Zakon o zaštiti potrošača",
+      "Svi sporovi trebali bi biti razriješeni pred sudom u Splitu",
+      "Međutim, pokušajmo prvo razriješiti spor dogovornim putem",
+      "Komunikacija treba biti vođena u pisanom obliku na navedene adrese",
+    ],
+  },
+];
 
 export default function TermsOfUse() {
-  const [expandedSection, setExpandedSection] = useState<number | null>(null);
-
-  const sections = [
-    {
-      title: "1. Prihvaćanje uvjeta korištenja",
-      subtitle: "Slažete se sa svim odredbama",
-      content: [
-        "Korištenjem ove web stranice prihvaćate sve uvjete korištenja.",
-        "Ako se ne slažete s uvjetima, molimo vas da prestanete koristiti stranicu",
-        "Nastavkom korištenja dajete svoju eksplicitnu suglasnost",
-        "Odgovorni ste za poštovanje svih primijenjenih zakona",
-        "Možete biti odgovorni za neovlaštenu upotrebu",
-      ],
-    },
-    {
-      title: "2. Licenca korištenja web stranice",
-      subtitle: "Ograničeni pristup sadržaju",
-      content: [
-        "Dodjeljujemo vam ograničenu, neisključivu licencu za osobnu upotrebu",
-        "Možete pregledavati i koristiti sadržaj za osobne svrhe",
-        "Zabranjeno je komercijalno korištenje bez dozvole",
-        "Zabranjeno je reproduciranje i distribuiranje",
-        "Zabranjeno je prepravljanje ili adaptacija sadržaja",
-      ],
-    },
-    {
-      title: "3. Intelektualno svojstvo",
-      subtitle: "Zaštita autorskih prava",
-      content: [
-        "Sav sadržaj je zaštićen autorskim pravima Hrvatsko-njemačkog društva Split",
-        "Uključuje tekstove, slike, grafike, videozapise, glazbu i kôd",
-        "Zabranjeno je kopiranje bez pisane dozvole",
-        "Zabranjena je reprodukcija, distribucija ili javna izvedba",
-        "Zabranjeno je modificiranje ili stvaranje derivativnih radova",
-      ],
-    },
-    {
-      title: "4. Ograničenja odgovornosti",
-      subtitle: "Ono što nismo odgovorni",
-      content: [
-        "Web stranica se pruža 'kakva jest' bez jamstava",
-        "Ne jamčimo točnost, pouzdanost ili dostupnost sadržaja",
-        "Nismo odgovorni za pogreške ili neprekidnu dostupnost",
-        "Nismo odgovorni za štete iz korištenja stranice",
-        "Nismo odgovorni za gubitke podataka ili financijske gubitke",
-      ],
-    },
-    {
-      title: "5. Ponašanje korisnika",
-      subtitle: "Očekivano vladanje",
-      content: [
-        "Zabranjeno je objavljivanje uvredljivog ili diskriminatornog sadržaja",
-        "Zabranjeno je objavljivanje spama ili marketinških poruka",
-        "Zabranjeno je objavljivanje sadržaja koji krši autorska prava",
-        "Zabranjeno je objavljivanje malvera ili štetnog koda",
-        "Zabranjeno je hakiranje ili neovlašteni pristup",
-        "Zabranjeno je uznemiravanje ili nasilje",
-      ],
-    },
-    {
-      title: "6. Vanjske poveznice",
-      subtitle: "Treće web stranice",
-      content: [
-        "Stranica može sadržavati vanjske poveznice",
-        "Nismo odgovorni za sadržaj vanjskih stranica",
-        "Vanjske stranice imaju svoje Uvjete korištenja",
-        "Preporučujemo da pročitate njihove Uvjete prije korištenja",
-        "Vanjske poveznice se pružaju samo kao referenca",
-      ],
-    },
-    {
-      title: "7. Korisnički računi",
-      subtitle: "Sigurnost lozinke i pristupa",
-      content: [
-        "Ako kreirate račun, odgovorni ste za lozinku",
-        "Morate čuvati lozinku tajno i sigurno",
-        "Morate nas odmah obavijestiti ako sumnjate na krađu",
-        "Vi ste odgovorni za sve aktivnosti na svojem računu",
-        "Ne smijete dijeliti pristup s drugim osobama",
-      ],
-    },
-    {
-      title: "8. Zabranjene aktivnosti",
-      subtitle: "Što nije dozvoljeno",
-      content: [
-        "Skidanje web stranice ili njezinih dijelova bez dozvole",
-        "Korištenje robota, pauka ili drugih alata za prikupljanje podataka",
-        "Preusmjeravanje ili reprodukcija sadržaja na drugim stranicama",
-        "Pokušaji pristupa neovlaštenim dijelovima",
-        "Narušavanje rada web stranice (DDoS, itd.)",
-        "Praćenje ili preusmjeravanje prometa",
-      ],
-    },
-    {
-      title: "9. Izmjene uvjeta korištenja",
-      subtitle: "Ažuriranje Uvjeta",
-      content: [
-        "Zadržavamo pravo mijenjati ove Uvjete u bilo kojem trenutku",
-        "Izmjene stupaju na snagu kad se objave na web stranici",
-        "Nastavak korištenja znači prihvaćanje novih Uvjeta",
-        "Preporučujemo da redovito provjerite ažuriranja",
-        "Obavijestit ćemo vas o značajnim izmjenama",
-      ],
-    },
-    {
-      title: "10. Primjena zakona i rješavanje sporova",
-      subtitle: "Pravni okvir i jurisdikcija",
-      content: [
-        "Ovi Uvjeti podliježu zakonima Republike Hrvatske",
-        "Primijenjuje se Zakon o zaštiti potrošača",
-        "Svi sporovi trebali bi biti razriješeni pred sudom u Splitu",
-        "Međutim, pokušajmo prvo razriješiti spor dogovornim putem",
-        "Komunikacija treba biti vođena u pisanom obliku na navedene adrese",
-      ],
-    },
-  ];
-
   return (
     <main className="bg-slate-950 min-h-screen">
       <Navigation />
@@ -177,62 +176,7 @@ export default function TermsOfUse() {
             <div className="w-12 h-px bg-yellow-600" />
           </FadeIn>
 
-          <div className="space-y-4">
-            {sections.map((section, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="border border-yellow-600/30 hover:border-yellow-600 transition duration-300"
-              >
-                <button
-                  onClick={() => setExpandedSection(expandedSection === index ? null : index)}
-                  className="w-full p-6 flex items-start gap-4 hover:bg-yellow-600/5 transition duration-300 text-left"
-                >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-light text-white mb-1">{section.title}</h3>
-                    <p className="text-sm text-gray-400 font-light">{section.subtitle}</p>
-                  </div>
-                  <motion.div
-                    animate={{ rotate: expandedSection === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0 mt-1"
-                  >
-                    <ChevronDown className="w-5 h-5 text-yellow-600" />
-                  </motion.div>
-                </button>
-
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{
-                    height: expandedSection === index ? "auto" : 0,
-                    opacity: expandedSection === index ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-6 pb-6 pt-0 border-t border-yellow-600/20 bg-yellow-600/5">
-                    <ul className="space-y-3">
-                      {section.content.map((item, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                          className="flex gap-3 text-gray-300 font-light"
-                        >
-                          <span className="text-yellow-600 mt-1">•</span>
-                          <span>{item}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+          <LegalAccordion sections={sections} />
         </Container>
       </Section>
 

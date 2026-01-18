@@ -1,17 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, FileText, BookOpen } from "lucide-react";
-import { useState } from "react";
+import { FileText, BookOpen } from "lucide-react";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
 import { FadeIn, HeroFadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
+import { LegalAccordion, type LegalSection } from "@/app/components/ui/LegalAccordion";
 
-export default function Statut() {
-  const [expandedSection, setExpandedSection] = useState<number | null>(null);
-
-  const sections = [
+const sections: LegalSection[] = [
     {
       title: "I. Opće odredbe",
       subtitle: "Osnovna pravila i informacije o udruzi",
@@ -173,6 +170,7 @@ export default function Statut() {
     },
   ];
 
+export default function Statut() {
   return (
     <main className="bg-slate-950 min-h-screen">
       <Navigation />
@@ -221,62 +219,7 @@ export default function Statut() {
             <div className="w-12 h-px bg-yellow-600" />
           </FadeIn>
 
-          <div className="space-y-4">
-            {sections.map((section, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="border border-yellow-600/30 hover:border-yellow-600 transition duration-300"
-              >
-                <button
-                  onClick={() => setExpandedSection(expandedSection === index ? null : index)}
-                  className="w-full p-6 flex items-start gap-4 hover:bg-yellow-600/5 transition duration-300 text-left"
-                >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-light text-white mb-1">{section.title}</h3>
-                    <p className="text-sm text-gray-400 font-light">{section.subtitle}</p>
-                  </div>
-                  <motion.div
-                    animate={{ rotate: expandedSection === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0 mt-1"
-                  >
-                    <ChevronDown className="w-5 h-5 text-yellow-600" />
-                  </motion.div>
-                </button>
-
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{
-                    height: expandedSection === index ? "auto" : 0,
-                    opacity: expandedSection === index ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-6 pb-6 pt-0 border-t border-yellow-600/20 bg-yellow-600/5">
-                    <ul className="space-y-3">
-                      {section.content.map((item, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                          className="flex gap-3 text-gray-300 font-light"
-                        >
-                          <span className="text-yellow-600 mt-1">•</span>
-                          <span>{item}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+          <LegalAccordion sections={sections} />
         </Container>
       </Section>
 

@@ -77,3 +77,8 @@ export {
   // Motion export
   motion,
 } from './Animations';
+
+// Accordion Components
+export { Accordion, SimpleAccordionItem } from './Accordion';
+export { LegalAccordion } from './LegalAccordion';
+export type { LegalSection } from './LegalAccordion';

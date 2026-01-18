@@ -1,86 +1,84 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { ChevronDown, Lock } from "lucide-react";
-import { useState } from "react";
+import { Lock } from "lucide-react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { HeroFadeIn } from "@/app/components/ui/Animations";
 import { Container, Section } from "@/app/components/ui/Common";
+import { LegalAccordion, type LegalSection } from "@/app/components/ui/LegalAccordion";
+
+const sections: LegalSection[] = [
+  {
+    title: "Uvod",
+    content: ["Hrvatsko-njemačko društvo Split posvećeno je zaštiti vaše privatnosti. Ova pravila privatnosti objašnjavaju kako prikupljamo, koristimo i štitimo vaše osobne podatke."],
+  },
+  {
+    title: "Prikupljanje podataka",
+    content: [
+      "Prikupljamo sljedeće vrste podataka:",
+      "Osobni podaci: ime, email adresa, broj telefona",
+      "Tehnički podaci: IP adresa, vrsta preglednika, operativni sustav",
+      "Podaci o korištenju: posjećene stranice, vrijeme provedeno na stranici",
+      "Kolačići: za poboljšanje korisničkog iskustva",
+    ],
+  },
+  {
+    title: "Korištenje podataka",
+    content: [
+      "Vaše podatke koristimo za:",
+      "Pružanje i poboljšanje naših usluga",
+      "Komunikaciju s vama",
+      "Slanje newslettera (uz vašu suglasnost)",
+      "Analizu korištenja web stranice",
+      "Ispunjavanje zakonskih obveza",
+    ],
+  },
+  {
+    title: "Dijeljenje podataka",
+    content: ["Vaše podatke ne prodajemo i ne dijelimo s trećim stranama, osim kada je to potrebno za pružanje usluga ili zakonski obavezno."],
+  },
+  {
+    title: "Sigurnost podataka",
+    content: ["Koristimo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših podataka od neovlaštenog pristupa, gubitka ili zlouporabe."],
+  },
+  {
+    title: "Kolačići",
+    content: [
+      "Naša web stranica koristi kolačiće:",
+      "Nužni kolačići: potrebni za funkcioniranje stranice",
+      "Analitički kolačići: za razumijevanje kako koristite stranicu",
+      "Kolačići za postavke: za pamćenje vaših preferencija",
+      "Možete upravljati kolačićima kroz postavke preglednika",
+    ],
+  },
+  {
+    title: "Vaša prava",
+    content: [
+      "Prema GDPR-u imate pravo na:",
+      "Pristup vašim osobnim podacima",
+      "Ispravak netočnih podataka",
+      "Brisanje vaših podataka",
+      "Ograničenje obrade",
+      "Prenosivost podataka",
+      "Prigovor na obradu",
+    ],
+  },
+  {
+    title: "Zadržavanje podataka",
+    content: ["Vaše podatke zadržavamo samo onoliko dugo koliko je potrebno za svrhe za koje su prikupljeni ili prema zakonskim zahtjevima."],
+  },
+  {
+    title: "Promjene pravila",
+    content: ["Možemo povremeno ažurirati ova pravila privatnosti. O svim značajnim promjenama obavijestit ćemo vas putem naše web stranice."],
+  },
+  {
+    title: "Kontakt",
+    content: ["Za sva pitanja vezana uz vaše osobne podatke možete nas kontaktirati na info@hnds.hr ili putem kontakt obrasca na našoj web stranici."],
+  },
+];
 
 export default function PrivacyPolicy() {
-  const [expandedSection, setExpandedSection] = useState<number | null>(null);
-
-  // Build sections with hardcoded Croatian text
-  const sections = [
-    {
-      title: "Uvod",
-      content: ["Hrvatsko-njemačko društvo Split posvećeno je zaštiti vaše privatnosti. Ova pravila privatnosti objašnjavaju kako prikupljamo, koristimo i štitimo vaše osobne podatke."],
-    },
-    {
-      title: "Prikupljanje podataka",
-      content: [
-        "Prikupljamo sljedeće vrste podataka:",
-        "• Osobni podaci: ime, email adresa, broj telefona",
-        "• Tehnički podaci: IP adresa, vrsta preglednika, operativni sustav",
-        "• Podaci o korištenju: posjećene stranice, vrijeme provedeno na stranici",
-        "• Kolačići: za poboljšanje korisničkog iskustva",
-      ],
-    },
-    {
-      title: "Korištenje podataka",
-      content: [
-        "Vaše podatke koristimo za:",
-        "• Pružanje i poboljšanje naših usluga",
-        "• Komunikaciju s vama",
-        "• Slanje newslettera (uz vašu suglasnost)",
-        "• Analizu korištenja web stranice",
-        "• Ispunjavanje zakonskih obveza",
-      ],
-    },
-    {
-      title: "Dijeljenje podataka",
-      content: ["Vaše podatke ne prodajemo i ne dijelimo s trećim stranama, osim kada je to potrebno za pružanje usluga ili zakonski obavezno."],
-    },
-    {
-      title: "Sigurnost podataka",
-      content: ["Koristimo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših podataka od neovlaštenog pristupa, gubitka ili zlouporabe."],
-    },
-    {
-      title: "Kolačići",
-      content: [
-        "Naša web stranica koristi kolačiće:",
-        "• Nužni kolačići: potrebni za funkcioniranje stranice",
-        "• Analitički kolačići: za razumijevanje kako koristite stranicu",
-        "• Kolačići za postavke: za pamćenje vaših preferencija",
-        "• Možete upravljati kolačićima kroz postavke preglednika",
-      ],
-    },
-    {
-      title: "Vaša prava",
-      content: [
-        "Prema GDPR-u imate pravo na:",
-        "• Pristup vašim osobnim podacima",
-        "• Ispravak netočnih podataka",
-        "• Brisanje vaših podataka",
-        "• Ograničenje obrade",
-        "• Prenosivost podataka",
-        "• Prigovor na obradu",
-      ],
-    },
-    {
-      title: "Zadržavanje podataka",
-      content: ["Vaše podatke zadržavamo samo onoliko dugo koliko je potrebno za svrhe za koje su prikupljeni ili prema zakonskim zahtjevima."],
-    },
-    {
-      title: "Promjene pravila",
-      content: ["Možemo povremeno ažurirati ova pravila privatnosti. O svim značajnim promjenama obavijestit ćemo vas putem naše web stranice."],
-    },
-    {
-      title: "Kontakt",
-      content: ["Za sva pitanja vezana uz vaše osobne podatke možete nas kontaktirati na info@hnds.hr ili putem kontakt obrasca na našoj web stranici."],
-    },
-  ];
-
   return (
     <main className="bg-slate-950 min-h-screen">
       <Navigation />
@@ -103,66 +101,7 @@ export default function PrivacyPolicy() {
       {/* Sections */}
       <Section className="bg-slate-900 border-b border-yellow-600/30">
         <Container className="max-w-4xl">
-          <div className="space-y-4">
-            {sections.map((section, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="border border-yellow-600/30 hover:border-yellow-600 transition duration-300"
-              >
-                <button
-                  onClick={() => setExpandedSection(expandedSection === index ? null : index)}
-                  className="w-full p-6 flex items-start gap-4 hover:bg-yellow-600/5 transition duration-300 text-left"
-                >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-light text-white mb-1">{section.title}</h3>
-                  </div>
-                  <motion.div
-                    animate={{ rotate: expandedSection === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0 mt-1"
-                  >
-                    <ChevronDown className="w-5 h-5 text-yellow-600" />
-                  </motion.div>
-                </button>
-
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{
-                    height: expandedSection === index ? "auto" : 0,
-                    opacity: expandedSection === index ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-6 pb-6 pt-0 border-t border-yellow-600/20 bg-yellow-600/5">
-                    <div className="space-y-3 text-gray-300 font-light">
-                      {section.content.map((item: string, idx: number) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                        >
-                          {item.startsWith("•") ? (
-                            <div className="flex gap-3">
-                              <span className="text-yellow-600 flex-shrink-0">•</span>
-                              <span>{item.substring(1).trim()}</span>
-                            </div>
-                          ) : (
-                            <p>{item}</p>
-                          )}
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+          <LegalAccordion sections={sections} />
         </Container>
       </Section>
 
